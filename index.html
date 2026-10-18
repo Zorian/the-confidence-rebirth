@@ -170,6 +170,10 @@ section{padding-block:72px}
 .tag{justify-self:start;font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;background:var(--rose);color:var(--on-rose)}
 @media (max-width:900px){.offer{grid-template-columns:1fr;gap:18px;padding:24px}.offer .act{justify-items:stretch;text-align:left}.offer .act small{max-width:none}}
 
+.offer.is-soon{opacity:.82}
+.soon-tag{background:var(--blue);color:var(--quiz-fg)}
+.step.soon-step .price{font-size:17px;font-weight:600;color:var(--blue)}
+
 /* proof */
 .quotes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
 .quote{display:grid;gap:16px;align-content:start;padding:28px;border-radius:20px;background:var(--blush)}
@@ -303,7 +307,7 @@ footer a:hover{color:var(--rose-deep)}
       <nav class="stairs" aria-label="Offers">
         <a class="step" href="#free"><span class="tier">Start here</span><h3>Free workshop</h3><span class="price">$0</span><p>One live session a month with Dani.</p><span class="go">See what's inside</span></a>
         <a class="step" href="#club"><span class="tier">Community</span><h3>The Club</h3><span class="price">$33<small>/mo</small></span><p>Monthly coaching call, challenges, replays and the sisterhood chat.</p><span class="go">See what's inside</span></a>
-        <a class="step" href="#course"><span class="tier">Self paced</span><h3>The Course</h3><span class="price">$888</span><p>Six modules, one for each part of your life. Yours forever.</p><span class="go">See what's inside</span></a>
+        <a class="step soon-step" href="#course"><span class="tier">Self paced</span><h3>The Course</h3><span class="price">Coming soon</span><p>Six modules, one for each part of your life.</p><span class="go">Hear first</span></a>
         <a class="step" href="#circle"><span class="tier">Small group</span><h3>Rebirth Circle</h3><span class="price">$3,333</span><p>8 weeks with Dani and 19 other women.</p><span class="go">See what's inside</span></a>
         <a class="step" href="#vip"><span class="tier">1:1</span><h3>Big Sis VIP</h3><span class="price">$8,888</span><p>12 weeks with Dani, just you.</p><span class="go">See what's inside</span></a>
       </nav>
@@ -358,10 +362,10 @@ footer a:hover{color:var(--rose-deep)}
           <ul><li>A live group coaching call with Dani every month</li><li>A new confidence challenge every month</li><li>Every replay and workbook</li><li>The members' chat: wins, questions, real support</li></ul>
           <div class="act"><a class="btn" href="#" data-link="club">Join the Club</a><small>Cancel any time.</small></div>
         </article>
-        <article class="offer" id="course">
-          <div class="name"><span class="tier">Self paced</span><h3>The Confidence Rebirth Course</h3><div class="price">$888<small>Includes 3 months of the Club</small></div></div>
+        <article class="offer is-soon" id="course">
+          <div class="name"><span class="tier">Self paced</span><h3>The Confidence Rebirth Course</h3><div class="price">Coming soon<small>Free members hear first</small></div></div>
           <ul><li>Six modules: body, work, love, money, travel and solo life</li><li>Short lessons you can watch on your phone</li><li>Workbook and a 90 day plan</li><li>Lifetime access</li></ul>
-          <div class="act"><a class="btn" href="#" data-link="course">Get the Course</a><small>Start today, go at your pace.</small></div>
+          <div class="act"><a class="btn ghost" href="#" data-link="free">Join free to hear first</a><small>Launching soon.</small></div>
         </article>
         <article class="offer" id="circle">
           <div class="name"><span class="tier">Small group, 20 women max</span><h3>The Rebirth Circle</h3><div class="price">$3,333<small>or 3 payments of $1,199</small></div></div>
@@ -406,9 +410,9 @@ footer a:hover{color:var(--rose-deep)}
       <div class="sec-head"><h2>Questions</h2></div>
       <div class="faq">
         <details><summary>Is this only about body confidence?</summary><p>No. Body is one part. We work on confidence at work, in relationships, with money, travelling and living on your own terms.</p></details>
-        <details><summary>Where does everything happen?</summary><p>In our private community app. Live calls, replays, the course and the chat are all in one place, on your phone or laptop.</p></details>
+        <details><summary>Where does everything happen?</summary><p>In our private community app. Live calls, replays and the chat are all in one place, on your phone or laptop.</p></details>
         <details><summary>What if I can't make the live calls?</summary><p>Every call is recorded. Free members get the replay for 7 days. Club members and above keep every replay.</p></details>
-        <details><summary>Which option is right for me?</summary><p>Start with the free workshop. If you want ongoing support, join the Club. If you want a full reset at your own pace, take the Course. If you want Dani in your corner every week, apply for the Circle or VIP.</p></details>
+        <details><summary>Which option is right for me?</summary><p>Start with the free workshop. If you want ongoing support, join the Club. If you want Dani in your corner every week, apply for the Circle or VIP.</p></details>
         <details><summary>Can I cancel the Club?</summary><p>Yes, any time, in two taps. You keep access until the end of the month you paid for.</p></details>
         <details><summary>How do I contact Dani?</summary><p>Send a DM to @theconfidencerebirth on Instagram. We reply within a day.</p></details>
       </div>
@@ -498,7 +502,7 @@ const NEXT_WORKSHOP = "2026-11-12T19:00:00-05:00"; // PLACEHOLDER: confirm with 
   const QS = [
     { q: "What do you want most right now?", a: [
       "To see what this is about first", "A community of women in my corner",
-      "A full reset I can do in my own time", "Dani coaching me directly" ] },
+      "Weekly coaching in a small group", "Dani coaching me directly" ] },
     { q: "How much time can you give this each week?", a: [
       "Less than an hour", "An hour or two", "A few hours", "Whatever it takes" ] },
     { q: "How ready are you to invest in yourself?", a: [
@@ -530,7 +534,7 @@ const NEXT_WORKSHOP = "2026-11-12T19:00:00-05:00"; // PLACEHOLDER: confirm with 
     }
     // Score 0 to 9, mapped to the five tiers. "Dani coaching me directly" or "I'm all in" pull upward.
     const score = answers.reduce((s, v) => s + v, 0);
-    const pick = score <= 1 ? 0 : score <= 3 ? 1 : score <= 5 ? 2 : score <= 7 ? 3 : 4;
+    const pick = score <= 1 ? 0 : score <= 4 ? 1 : score <= 7 ? 3 : 4; // Course (2) is coming soon, so it is never picked
     const r = RESULTS[pick];
     body.innerHTML = `<div class="q-result">
         <span class="tier">Dani's pick for you</span>
