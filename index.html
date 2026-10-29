@@ -351,6 +351,20 @@ html.motion .q-result{animation:stick .6s cubic-bezier(.34,1.4,.6,1) both}
   .qdots i.on{opacity:1;width:22px;border-radius:4px}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+
+/* confidence quiz teaser */
+.qcta{padding-block:24px 32px}
+.qcard{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px 36px;align-items:center;padding:34px 34px 30px;background:var(--card);border:1.5px solid var(--ink);border-radius:6px;transform:rotate(-.6deg)}
+.qcard::before{content:"";position:absolute;top:-13px;left:calc(50% - 46px);width:92px;height:26px;background:var(--tape);transform:rotate(-3deg)}
+.qcard-txt{display:grid;gap:12px;justify-items:start;min-width:0}
+.qcard-txt .note{transform:rotate(-2deg);transform-origin:left}
+.qcard h2{font-size:clamp(28px,3.6vw,42px)}
+.qcard p{color:var(--muted);max-width:46ch}
+.qtypes{display:flex;flex-wrap:wrap;gap:4px 10px;margin:4px 0 0;padding:0;list-style:none}
+.qtypes li{font:600 21px/1.1 var(--hand);color:var(--blue)}
+.qtypes li+li::before{content:"/";margin-right:10px;color:var(--red)}
+.qlink{color:var(--blue);font-weight:600;font-size:15px;text-underline-offset:4px;text-decoration-thickness:1.5px}
+@media (max-width:760px){.qcard{grid-template-columns:1fr;padding:30px 22px 26px}.qcard .btn{width:100%}}
 </style>
 <script>
 // Tracking. Paste the IDs in before launch; nothing loads while they are empty.
@@ -394,6 +408,7 @@ if (GA_ID) {
         <p class="sub">You were never too much. You were just waiting for permission.</p>
         <div class="hero-cta">
           <a class="btn" href="#" data-link="free">Join the free workshop</a>
+          <a class="qlink" href="quiz.html">or take the 2 minute confidence quiz</a>
           <div class="next" id="next" aria-live="polite">
             <span class="next-when"><span class="live"></span>Next live: <b id="next-date"></b></span>
             <span class="clock" id="clock" role="timer">Starts in <b id="cd-d">0</b>d <b id="cd-h">0</b>h <b id="cd-m">0</b>m <b id="cd-s">0</b>s</span>
@@ -417,6 +432,20 @@ if (GA_ID) {
           <span class="soon" id="soon" hidden>Dani's video lands here soon ☆</span>
         </button>
         <span class="note">this one's for you, sis ☆</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="qcta" id="confidence-quiz">
+    <div class="wrap">
+      <div class="qcard">
+        <div class="qcard-txt">
+          <span class="note">2 minute quiz ☆</span>
+          <h2>What's really holding your <span class="hl">confidence</span> back?</h2>
+          <p>Ten quick taps. Find your Confidence Type and get Dani's plan for it.</p>
+          <ul class="qtypes" aria-label="The five types"><li>People Pleaser</li><li>Overthinker</li><li>Hider</li><li>Imposter</li><li>Main Character</li></ul>
+        </div>
+        <a class="btn" href="quiz.html">Take the quiz</a>
       </div>
     </div>
   </section>
