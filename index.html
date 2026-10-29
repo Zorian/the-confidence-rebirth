@@ -169,8 +169,10 @@ section{padding-block:88px;overflow-x:clip}
 .offer.featured{border-width:2.5px}
 .circled{position:relative;display:inline-block;padding:2px 12px 4px;font:600 24px/1 var(--hand);color:var(--blue)}
 .circled svg{position:absolute;inset:-6px -8px;width:calc(100% + 16px);height:calc(100% + 12px);overflow:visible}
-.offer.is-soon{background:transparent;border-style:dashed}
-.offer.is-soon .price,.offer.by-app .price{font:600 28px/1 var(--hand);color:var(--blue)}
+.soon-line{display:flex;align-items:center;gap:10px;margin-top:22px;font-size:16px;color:var(--muted)}
+.soon-line .star{width:22px;height:22px;flex:none}
+.soon-line a{color:var(--ink);font-weight:600;text-underline-offset:3px}
+.offer.by-app .price{font:600 28px/1 var(--hand);color:var(--blue)}
 @media (max-width:900px){.offer{grid-template-columns:1fr;gap:20px;padding:26px 22px}.offer .act{justify-items:stretch;text-align:left}.offer .act small{max-width:none}}
 
 /* proof: gold star wins */
@@ -269,6 +271,23 @@ footer .legal{width:100%}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 </style>
+<script>
+// Tracking. Paste the IDs in before launch; nothing loads while they are empty.
+const META_PIXEL_ID = ""; // Meta Events Manager > Data sources > Pixel ID
+const GA_ID = "";         // Google Analytics 4 measurement ID, e.g. G-XXXXXXX
+if (META_PIXEL_ID) {
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;
+  s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', META_PIXEL_ID); fbq('track', 'PageView');
+}
+if (GA_ID) {
+  const g = document.createElement('script'); g.async = true; g.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+  document.head.appendChild(g);
+  window.dataLayer = window.dataLayer || []; window.gtag = function(){ dataLayer.push(arguments); };
+  gtag('js', new Date()); gtag('config', GA_ID);
+}
+</script>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -398,22 +417,18 @@ footer .legal{width:100%}
           <ul><li><svg class="star"><use href="#star"/></svg>A live group coaching call with Dani every month</li><li><svg class="star"><use href="#star"/></svg>A new confidence challenge every month</li><li><svg class="star"><use href="#star"/></svg>Every replay and workbook</li><li><svg class="star"><use href="#star"/></svg>The members' chat: wins, questions, real support</li></ul>
           <div class="act"><a class="btn" href="#" data-link="club">Join the Club</a><small>Cancel any time.</small></div>
         </article>
-        <article class="offer is-soon" id="course">
-          <div class="name"><span class="tier">self paced</span><h3>The Confidence Rebirth Course</h3><div class="price">coming soon<small>Free members hear first</small></div></div>
-          <ul><li><svg class="star"><use href="#star-paper"/></svg>Six modules: body, work, love, money, travel and solo life</li><li><svg class="star"><use href="#star-paper"/></svg>Short lessons you can watch on your phone</li><li><svg class="star"><use href="#star-paper"/></svg>Workbook and a 90 day plan</li><li><svg class="star"><use href="#star-paper"/></svg>Lifetime access</li></ul>
-          <div class="act"><a class="btn ghost" href="#" data-link="free">Join free to hear first</a><small>Launching soon.</small></div>
-        </article>
         <article class="offer by-app" id="circle">
           <div class="name"><span class="tier">small group, 20 women max</span><h3>The Rebirth Circle</h3><div class="price">by application<small>Payment plans available</small></div></div>
           <ul><li><svg class="star"><use href="#star"/></svg>8 weeks of coaching with Dani</li><li><svg class="star"><use href="#star"/></svg>A live group call every week</li><li><svg class="star"><use href="#star"/></svg>Private group chat and voice notes from Dani</li><li><svg class="star"><use href="#star"/></svg>A closing day together in person</li></ul>
-          <div class="act"><a class="btn ghost" href="#" data-link="circle">Apply for the Circle</a><small>A short form, then a call with Dani.</small></div>
+          <div class="act"><a class="btn ghost" href="#" data-link="circle">Apply for the Circle</a><small>A short form, then a call with our team.</small></div>
         </article>
         <article class="offer by-app" id="vip">
           <div class="name"><span class="tier">1:1, limited places</span><h3>Big Sis VIP</h3><div class="price">by application<small>Payment plans available</small></div></div>
           <ul><li><svg class="star"><use href="#star"/></svg>12 weeks with Dani, just you</li><li><svg class="star"><use href="#star"/></svg>A 1:1 call every two weeks</li><li><svg class="star"><use href="#star"/></svg>Direct voice note access</li><li><svg class="star"><use href="#star"/></svg>An in person VIP day: styling, photoshoot and a day out</li><li><svg class="star"><use href="#star"/></svg>A free place at every live event that year</li></ul>
-          <div class="act"><a class="btn ghost" href="#" data-link="vip">Apply for VIP</a><small>A short form, then a call with Dani. A few places each quarter.</small></div>
+          <div class="act"><a class="btn ghost" href="#" data-link="vip">Apply for VIP</a><small>A short form, then a call with our team. A few places each quarter.</small></div>
         </article>
       </div>
+      <p class="soon-line" id="course"><svg class="star" aria-hidden="true"><use href="#star-paper"/></svg><span>The Confidence Rebirth Course is coming soon. <a href="#" data-link="free">Join free</a> to hear first.</span></p>
     </div>
   </section>
 
@@ -426,6 +441,8 @@ footer .legal{width:100%}
         <details><summary>What if I can't make the live calls?</summary><p>Every call is recorded. Free members get the replay for 7 days. Club members and above keep every replay.</p></details>
         <details><summary>Which option is right for me?</summary><p>Start with the free workshop. If you want ongoing support, join the Club. If you want Dani in your corner every week, apply for the Circle or VIP.</p></details>
         <details><summary>Can I cancel the Club?</summary><p>Yes, any time, in two taps. You keep access until the end of the month you paid for.</p></details>
+        <details><summary>What happens on the call?</summary><p>A relaxed 20 minute chat about where you are and where you want to be. If the Circle or VIP is right for you, we'll tell you. If it isn't, we'll point you to what is. No pressure.</p></details>
+        <details><summary>Are there payment plans?</summary><p>Yes. The Circle and VIP both have payment plans. We'll go through the options on your call.</p></details>
         <details><summary>How do I contact Dani?</summary><p>Send a DM to @theconfidencerebirth on Instagram. We reply within a day.</p></details>
       </div>
     </div>
@@ -468,6 +485,23 @@ document.querySelectorAll("[data-link]").forEach(a => {
   const url = LINKS[a.dataset.link];
   if (url) a.href = url;
   if (/^https?:/.test(url || "")) { a.target = "_blank"; a.rel = "noopener"; }
+});
+
+// Carry ad UTMs through to Circle and Tally so every signup and application shows its source.
+const UTM = new URLSearchParams(location.search);
+[...UTM.keys()].filter(k => !k.startsWith("utm_")).forEach(k => UTM.delete(k));
+if ([...UTM].length) document.querySelectorAll("[data-link]").forEach(a => {
+  if (!/^https?:/.test(a.href)) return;
+  const u = new URL(a.href); UTM.forEach((v, k) => u.searchParams.set(k, v)); a.href = u;
+});
+
+// Conversion events: free signup = Lead, Club = InitiateCheckout, Circle/VIP = application started.
+const EVENTS = { free: "Lead", club: "InitiateCheckout", circle: "ApplyCircle", vip: "ApplyVIP" };
+document.addEventListener("click", e => {
+  const a = e.target.closest("[data-link]"); const ev = a && EVENTS[a.dataset.link];
+  if (!ev) return;
+  if (window.fbq) ["Lead","InitiateCheckout"].includes(ev) ? fbq("track", ev) : fbq("trackCustom", ev);
+  if (window.gtag) gtag("event", ev.toLowerCase(), { place: a.closest("section")?.id || "page" });
 });
 
 // Next free workshop. Change this each month (date, time, time zone offset).
