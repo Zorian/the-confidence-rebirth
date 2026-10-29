@@ -9,10 +9,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&display=swap">
 <style>
-/* Layout: inspo 2 (jayshettycoaching.com). Navy hero with video, cream body, orange pill buttons, burnt orange story band, navy step band, light blue proof band. */
+/* Layout: inspo 2 (jayshettycoaching.com) in Rebirth colours. Ink hero with video, paper body, highlighter yellow pill buttons, yellow story band, ink step band, pale yellow proof band. */
 :root{
-  --navy:#17335B; --orange:#FE7501; --orange-d:#E86A00; --cream:#F7F0E3; --cream-2:#FFF9F1;
-  --sky:#B1C7DE; --sky-2:#D1E2EA; --ink:#0C0C0C; --body:#333333; --rust:#CB5A06; --amber:#CA8738;
+  --navy:#161514; --orange:#F5D33A; --orange-d:#EBC51F; --cream:#F7F3E8; --cream-2:#FFFDF6;
+  --sky:#FBEFB0; --sky-2:#FDF6D2; --ink:#161514; --body:#4E4A45; --rust:#F5D33A; --amber:#F9E27A;
+  --line:#E6D27E;
   --sans:"Figtree","Helvetica Neue",Arial,sans-serif;
   --max:1180px; color-scheme:light;
 }
@@ -251,6 +252,48 @@ footer{background:linear-gradient(135deg,var(--rust),var(--amber));color:var(--c
 
 .dock{display:none}
 
+/* Rebirth highlighter overrides: yellow accents need ink text */
+.btn{color:var(--ink)}
+.btn.cream{background:var(--ink);color:var(--orange)}
+.btn.cream:hover{background:#000}
+.btn.outline{color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
+.hl{background:linear-gradient(100deg,rgba(245,211,58,0) 0 1%,var(--orange) 3% 96%,rgba(245,211,58,0) 99%);color:var(--ink);padding:0 .12em;margin:0 -.04em;-webkit-box-decoration-break:clone;box-decoration-break:clone;border-radius:3px}
+.menu-btn span,.menu-btn span::before,.menu-btn span::after{background:var(--ink)}
+.rating .stars i{color:var(--ink)}
+.video .bigplay::before{border-left-color:var(--ink)}
+.statbar .live{background:#C8373F}
+.ocard,.offer{border-color:var(--line)}
+.ring{border-color:var(--ink);box-shadow:inset 0 0 0 3px var(--cream),inset 0 0 0 10px var(--orange)}
+.checks li::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M6 10.5l2.6 2.5L14 7.5' stroke='%23161514' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E")}
+.stories{color:var(--ink)}
+.stories h2{color:var(--ink)}
+.circle-btn{background:var(--ink);color:var(--orange)}
+.circle-btn:hover{background:#000}
+.story:nth-child(2n){background:#2B2926}
+.story:nth-child(3n){background:#3A3733}
+.avatars span{color:var(--ink)}
+.avatars span:nth-child(2){color:var(--orange)}
+.avatars span:nth-child(3){background:#fff}
+.offer.featured{border-color:var(--ink)}
+.offer .tag,.q-result .tag{justify-self:start;align-self:flex-start;background:var(--orange);color:var(--ink);padding:2px 8px;border-radius:4px;font-size:13px}
+.offer li::before{background:var(--ink)}
+.fdots i{background:#EFE3B5}
+.fdots i.on{background:var(--ink)}
+.q-opt:hover{border-color:var(--ink)}
+.q-opt.picked{color:var(--ink);border-color:var(--ink)}
+.q-label,.q-result h3,.price,.eyebrow-sm,.faq-title,.h2{color:var(--ink)}
+.steps-band .h2,.hero h1{color:var(--cream)}
+.faq summary::after{width:28px;height:28px;border-radius:50%;background:var(--orange);color:var(--ink);font-size:22px;display:grid;place-items:center;flex:none}
+.faq-more a{color:var(--ink)}
+.pill .av{color:var(--orange)}
+.pill:nth-child(3n+2) .av{color:var(--ink)}
+.pill:nth-child(3n) .av{background:#fff;color:var(--ink)}
+.pill small{color:var(--ink)}
+.phone .pbtn{color:var(--ink)}
+.phone .ptitle{font-weight:600}
+footer{color:var(--ink)}
+.f-bottom{border-top-color:rgba(22,21,20,.25)}
+
 @media (max-width:1000px){
   .offers{grid-template-columns:repeat(2,1fr)}
   .steps{grid-template-columns:repeat(2,1fr)}
@@ -332,7 +375,7 @@ footer{background:linear-gradient(135deg,var(--rust),var(--amber));color:var(--c
   <div class="wrap">
     <div class="hero-grid">
       <div class="copy">
-        <h1>Your rebirth starts now.</h1>
+        <h1>Your rebirth starts <span class="hl">now.</span></h1>
         <p class="sub">You don't need to become someone new. You need to come back to you.</p>
         <p class="lead">Coaching with Dani Carbonari, your confidence big sis. Build real confidence at work, in love, with money and in your own skin, with a sisterhood that has your back.</p>
         <div class="actions">
@@ -408,7 +451,7 @@ footer{background:linear-gradient(135deg,var(--rust),var(--amber));color:var(--c
     <figure class="story" style="margin:0"><span class="big" aria-hidden="true">"</span><blockquote>Best decision I've ever made.</blockquote><p>I went back and forth on whether I deserved to spend that on myself. Between the workbook, the weekly sessions and the sisterhood, it was worth every penny.</p><cite>Jada, 23</cite><small>Rebirth member</small></figure>
     <figure class="story" style="margin:0"><span class="big" aria-hidden="true">"</span><blockquote>It unlocked a new level of confidence inside of me.</blockquote><p>I spoke with women from all walks of life and felt heard. It taught me confidence goes far deeper than how you look.</p><cite>Taylor, 28</cite><small>Rebirth member</small></figure>
     <figure class="story" style="margin:0"><span class="big" aria-hidden="true">"</span><blockquote>I love the person I am becoming.</blockquote><p>Five weeks of laughing, crying and finding a safe space with powerful women. The catalyst I needed.</p><cite>Jaleesa, 25</cite><small>Rebirth member</small></figure>
-    <figure class="story" style="margin:0;background:var(--cream-2);color:var(--navy);justify-content:center;align-items:flex-start"><blockquote style="font-size:22px">Your story could be next.</blockquote><p style="opacity:1">Start with the free workshop this month.</p><a class="btn" href="#free" data-link="free" style="margin-top:8px">Join free</a></figure>
+    <figure class="story" style="margin:0;background:var(--cream-2);color:var(--ink);justify-content:center;align-items:flex-start"><blockquote style="font-size:22px">Your story could be next.</blockquote><p style="opacity:1">Start with the free workshop this month.</p><a class="btn" href="#free" data-link="free" style="margin-top:8px">Join free</a></figure>
   </div>
 </section>
 
@@ -500,7 +543,7 @@ footer{background:linear-gradient(135deg,var(--rust),var(--amber));color:var(--c
 
 <section class="photo-cta" aria-labelledby="ready-h">
   <div class="txt">
-    <h2 id="ready-h">Your rebirth starts with one yes.</h2>
+    <h2 id="ready-h">Your rebirth starts with one <span class="hl">yes.</span></h2>
     <p>Join the free workshop this month. Bring yourself, Dani will bring the rest.</p>
     <a class="btn" href="#free" data-link="free">Join the free monthly workshop</a>
     <small>No card needed. Live with Dani, replay for 7 days.</small>
@@ -546,9 +589,9 @@ footer{background:linear-gradient(135deg,var(--rust),var(--amber));color:var(--c
   <div class="wrap">
     <div class="f-grid">
       <div class="f-brand">
-        <img src="../inspo-1/img/logo-cutout-light.png" alt="The Confidence Rebirth" loading="lazy" width="720" height="231">
+        <img src="../inspo-1/img/logo-cutout.png" alt="The Confidence Rebirth" loading="lazy" width="720" height="231">
         <p>Coaching with your confidence big sis</p>
-        <a class="btn" href="#free" data-link="free" style="background:var(--cream-2);color:var(--orange)">Join free</a>
+        <a class="btn" href="#free" data-link="free" style="background:var(--ink);color:var(--orange)">Join free</a>
       </div>
       <div class="f-col"><h4>Coaching</h4><a href="#free">Free workshop</a><a href="#club">The Confidence Club</a><a href="#circle">The Rebirth Circle</a><a href="#vip">Big Sis VIP</a><a href="#course">The Course (coming soon)</a></div>
       <div class="f-col"><h4>Explore</h4><a href="https://zorian.github.io/the-confidence-rebirth/quiz.html">Confidence quiz</a><a href="#fit">Find your fit</a><a href="#stories">Stories</a><a href="#faq">FAQ</a></div>
