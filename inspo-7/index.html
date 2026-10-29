@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Confidence Rebirth Inspo 7</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,700;1,400&family=DM+Mono:wght@400;500&family=Bebas+Neue&family=Bodoni+Moda:opsz,wght@6..96,400&family=Mrs+Saint+Delafield&display=swap">
+<style>
+/* Layout: inspo 7 (jennakutcher.com) in Rebirth colours. Ink promo bar, yellow hero with giant name behind the cutout and a spinning badge, ink mission band with multi-tone words, photo quiz band, checkerboard offer grid with hexagon labels, video band with episode style list, file-tab library cards, photo signup, signature footer. */
+:root{
+  --ink:#1A1918; --ink-2:#2A2826; --yellow:#F5D33A; --butter:#FFF1B8; --cream:#FBF7EC; --white:#fff; --text:#222; --muted:#6E6A61; --peach:#F3B183;
+  --serif:"Young Serif",Georgia,serif; --sans:"Plus Jakarta Sans","Helvetica Neue",Arial,sans-serif; --mono:"DM Mono",ui-monospace,monospace; --cond:"Bebas Neue","Arial Narrow",sans-serif; --thin:"Bodoni Moda",Didot,serif; --sig:"Mrs Saint Delafield",cursive;
+  --max:1200px; color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{overflow-x:clip}
+body{margin:0;background:var(--white);color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.7;-webkit-font-smoothing:antialiased;padding-top:env(safe-area-inset-top,0px)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--ink);z-index:61}
+[hidden]{display:none!important}
+a{color:inherit}
+img,video{max-width:100%;height:auto;display:block}
+h1,h2,h3{margin:0;font-weight:400;line-height:1.1;text-wrap:balance}
+p{margin:0}
+.wrap{max-width:var(--max);margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.mono{font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:6px}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:10px 28px;border-radius:40px;background:var(--yellow);color:var(--ink);font-family:var(--mono);font-weight:500;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;border:0;cursor:pointer;transition:transform .15s;line-height:1.3;text-align:center}
+.btn:hover{transform:translateY(-2px)}
+.btn.white{background:#fff}
+.btn.ink{background:var(--ink);color:var(--yellow)}
+.circled{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;padding:6px 14px;border:2px solid currentColor;border-radius:50%/60%;rotate:-3deg;color:var(--ink);font-weight:500}
+.circled:hover{background:var(--yellow)}
+
+/* promo bar */
+.promo{background:var(--ink);color:#fff}
+.promo .wrap{display:grid;grid-template-columns:auto 1fr auto;gap:20px;align-items:center;padding-block:12px}
+.promo .thumb{width:118px;aspect-ratio:16/10;border-radius:4px;overflow:hidden;border:3px solid #fff;box-shadow:4px 4px 0 var(--yellow)}
+.promo .thumb img{width:100%;height:100%;object-fit:cover}
+.promo b{font-family:var(--cond);font-weight:400;font-size:22px;letter-spacing:.06em;color:var(--yellow);display:block;line-height:1}
+.promo .t{font-family:var(--serif);font-size:20px;line-height:1.2}
+.promo small{display:block;font-size:12.5px;opacity:.8;margin-top:2px}
+.promo .clock{font-variant-numeric:tabular-nums}
+.promo .btn{border-radius:2px;min-height:38px;padding:8px 16px}
+
+/* hero */
+.hero{background:radial-gradient(ellipse at 50% 35%,#FFE680 0%,var(--yellow) 55%,#EBC524 100%);position:relative;overflow:hidden}
+.hnav{display:flex;justify-content:center;gap:34px;padding-top:26px;position:relative;z-index:3}
+.hnav a{font-size:12px;font-weight:700;text-decoration:none;color:var(--ink)}
+.hnav a:hover{text-decoration:underline;text-underline-offset:4px}
+.diamond{position:absolute;right:max(20px,env(safe-area-inset-right,0px));top:18px;z-index:4;width:64px;height:38px;border:0;cursor:pointer;background:var(--ink);clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);display:grid;place-items:center}
+.diamond span,.diamond span::before{display:block;width:18px;height:2px;background:var(--yellow);position:relative}
+.diamond span::before{content:"";position:absolute;top:5px}
+.diamond span{top:-2px}
+.drawer{position:absolute;right:max(20px,env(safe-area-inset-right,0px));top:64px;z-index:5;background:var(--ink);border-radius:14px;padding:10px 22px;display:none}
+.open .drawer{display:grid}
+.drawer a{color:var(--yellow);font-family:var(--serif);font-size:26px;text-decoration:none;padding:4px 0}
+.hero-in{position:relative;min-height:clamp(520px,50vw,700px);display:grid}
+.name{position:absolute;inset:6% 0 auto;text-align:center;font-family:var(--serif);color:#fff;font-size:clamp(110px,17vw,250px);line-height:.82;letter-spacing:-.03em;z-index:1;pointer-events:none;text-shadow:0 2px 0 rgba(0,0,0,.04)}
+.name span{display:block}
+.name span:last-child{padding-left:.25em}
+.hero .cut{position:absolute;bottom:0;left:50%;translate:-50% 0;width:min(560px,58%);z-index:2}
+.side{position:absolute;z-index:3;font-weight:700;font-size:clamp(14px,1.3vw,17px);line-height:1.3;color:var(--ink);max-width:16ch;text-align:center}
+.side em{font-style:normal;color:#fff;text-shadow:0 1px 0 rgba(0,0,0,.08)}
+.side.l{left:16%;bottom:24%}
+.side.r{right:14%;bottom:18%}
+.seen{position:absolute;left:max(20px,env(safe-area-inset-left,0px));bottom:30px;z-index:3;color:var(--ink)}
+.seen b{display:block;font-family:var(--serif);font-size:24px;letter-spacing:-.02em;margin-top:2px}
+.badge{position:absolute;left:50%;bottom:-54px;translate:-50% 0;width:108px;height:108px;border-radius:50%;background:var(--ink);z-index:4;display:grid;place-items:center;border:3px solid var(--yellow)}
+.badge svg{position:absolute;inset:0;animation:spin 20s linear infinite}
+.badge b{font-family:var(--serif);color:var(--yellow);font-size:34px}
+@keyframes spin{to{rotate:360deg}}
+
+/* mission */
+.mission{background:var(--ink);color:#fff;text-align:center;padding-block:96px 72px}
+.mission h2{font-family:var(--serif);font-size:clamp(28px,3.4vw,44px);line-height:1.25;max-width:24ch;margin:0 auto}
+.mission .y{color:var(--yellow)}
+.mission .b{color:var(--butter)}
+.mission .p{color:var(--peach)}
+.mission .u{text-decoration:underline wavy var(--yellow);text-decoration-thickness:2px;text-underline-offset:10px}
+.mission p{max-width:60ch;margin:28px auto 0;opacity:.9}
+.mission .row{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:30px}
+.next{margin-top:20px;font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;opacity:.85}
+.next b{color:var(--yellow);font-weight:500}
+.live{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--yellow);margin-right:8px;animation:pulse 1.6s infinite}
+@keyframes pulse{50%{opacity:.3}}
+
+/* quiz band */
+.quiz{background:var(--ink-2);color:#fff;display:grid;grid-template-columns:1fr 1fr;min-height:520px}
+.quiz .txt{padding:clamp(40px,6vw,80px) clamp(20px,5vw,72px);display:grid;gap:18px;align-content:center;justify-items:start}
+.quiz h2{font-family:var(--thin);font-size:clamp(40px,4.4vw,62px);text-transform:uppercase;letter-spacing:.06em;line-height:1.05}
+.quiz h2 b{display:block;font-family:var(--cond);font-weight:400;color:var(--yellow);font-size:1.35em;letter-spacing:.04em;line-height:.9}
+.quiz p{max-width:44ch;opacity:.88}
+.quiz .img{position:relative;overflow:hidden}
+.quiz .img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 25%}
+.quiz .img .tag{position:absolute;right:28px;top:26px;font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:#fff;text-align:center}
+.quiz .img .tag::before{content:"✳";display:block;font-size:30px;line-height:1;color:var(--yellow)}
+
+/* coaching grid */
+.coach{background:var(--butter);padding-block:clamp(56px,7vw,96px)}
+.coach .head{text-align:center;display:grid;gap:6px;margin-bottom:34px}
+.coach .head .mono{color:var(--ink)}
+.coach h2{font-family:var(--thin);font-size:clamp(64px,10vw,140px);letter-spacing:.04em;color:var(--ink);line-height:1}
+.board{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));max-width:820px;margin:0 auto;box-shadow:0 16px 40px rgba(0,0,0,.08)}
+.board .ph{aspect-ratio:1;overflow:hidden}
+.board .ph img{width:100%;height:100%;object-fit:cover}
+.board .card{aspect-ratio:1;background:#fff;display:grid;align-content:center;justify-items:center;text-align:center;gap:10px;padding:22px;position:relative}
+.hex{display:inline-block;background:var(--yellow);color:var(--ink);font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;padding:9px 22px;clip-path:polygon(12% 0,88% 0,100% 50%,88% 100%,12% 100%,0 50%);font-weight:500}
+.hex.k{background:var(--ink);color:var(--yellow)}
+.board h3{font-family:var(--serif);font-size:clamp(20px,2vw,26px);color:var(--ink)}
+.board .price{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--muted)}
+.board ul{list-style:none;padding:0;margin:0;font-size:13px;line-height:1.55;color:var(--text)}
+.board .card .circled{margin-top:4px}
+.more{text-align:center;margin-top:48px}
+.more h3{font-family:var(--serif);font-size:clamp(24px,2.4vw,30px);color:var(--ink)}
+.more nav{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 46px;margin-top:16px}
+.more a{color:var(--ink);font-size:16px;text-decoration:none;border-bottom:2px solid var(--yellow)}
+
+/* video band */
+.vband{background:var(--ink);color:#fff}
+.vband .stats{padding-block:40px 24px;display:grid;gap:4px}
+.vhero{position:relative;height:clamp(360px,42vw,520px);overflow:hidden;border:0;padding:0;width:100%;display:block;cursor:pointer;background:#000;color:#fff;font:inherit}
+.vhero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%;opacity:.7}
+.vhero .t{position:absolute;inset:0;display:grid;place-items:center;align-content:center;text-align:center}
+.vhero .t i{font-family:var(--sig);font-style:normal;font-size:clamp(50px,6vw,84px);line-height:.6}
+.vhero .t strong{font-family:var(--serif);font-weight:400;color:var(--yellow);font-size:clamp(64px,10vw,150px);line-height:.85;letter-spacing:-.03em}
+.vhero .t small{font-family:var(--mono);letter-spacing:.2em;text-transform:uppercase;font-size:12px;margin-top:10px}
+.soon{position:absolute;left:50%;bottom:20px;translate:-50% 0;background:var(--yellow);color:var(--ink);padding:10px 18px;border-radius:30px;font-size:14px;font-weight:700}
+.grad{background:linear-gradient(110deg,#FFF6CC 0%,#FBF7EC 45%,#FFE58A 100%);color:var(--text);padding-block:56px}
+.grad .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,64px)}
+.grad h3{font-family:var(--serif);font-size:22px;color:var(--ink);line-height:1.35}
+.grad .small{font-size:13px}
+.eps{grid-column:1/-1;max-width:600px}
+.eps .mono{color:var(--ink);margin-bottom:10px;display:block;font-size:11px}
+.eps li{list-style:none;display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:baseline;padding:12px 0;border-bottom:1px solid rgba(0,0,0,.1)}
+.eps ol{padding:0;margin:0}
+.eps small{font-family:var(--mono);font-size:10px;color:var(--muted)}
+.eps b{font-family:var(--serif);font-weight:400;font-size:19px;color:var(--ink)}
+.eps span{font-size:13px;color:var(--muted);grid-column:2}
+.eps i{width:18px;height:18px;border-radius:50%;background:#fff;grid-row:1;grid-column:3;display:grid;place-items:center;font-style:normal;font-size:10px}
+
+/* stories */
+.stories{background:var(--ink-2);color:#fff;padding-block:clamp(56px,7vw,96px)}
+.stories h2{font-family:var(--cond);font-size:clamp(54px,7vw,92px);line-height:.95;letter-spacing:.04em;text-align:center}
+.stories h2 .y{color:var(--yellow)}
+.stories h2 .b{color:var(--butter)}
+.sgrid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(24px,5vw,60px);margin-top:40px;align-items:start}
+.sgrid .ph{border-radius:24px;overflow:hidden;aspect-ratio:4/5}
+.sgrid .ph img{width:100%;height:100%;object-fit:cover;object-position:50% 25%}
+.sgrid ul{list-style:none;padding:0;margin:0}
+.sgrid li{display:grid;grid-template-columns:64px 1fr;gap:18px;padding:22px 0;border-bottom:1px solid rgba(255,255,255,.18)}
+.sgrid .av{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;font-family:var(--serif);font-size:26px;background:var(--yellow);color:var(--ink)}
+.sgrid li:nth-child(2) .av{background:var(--butter)}
+.sgrid li:nth-child(3) .av{background:var(--peach)}
+.sgrid small{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--yellow)}
+.sgrid blockquote{margin:2px 0 6px;font-family:var(--serif);font-size:21px;line-height:1.25}
+.sgrid p{font-size:14px;opacity:.82}
+
+/* library tabs */
+.lib{padding-block:clamp(56px,7vw,96px);display:grid;gap:64px}
+.tab{max-width:760px;margin:0 auto;width:100%;position:relative;padding-top:30px}
+.tab::before{content:"";position:absolute;left:5%;top:0;width:26%;height:34px;background:var(--c,var(--yellow));clip-path:polygon(8% 0,92% 0,100% 100%,0 100%);border-radius:6px 6px 0 0}
+.tab .lbl{position:relative;background:var(--c,var(--yellow));color:var(--t,var(--ink));font-family:var(--sans);font-weight:700;font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-align:right;padding:8px 14px}
+.tab .body{padding:30px clamp(18px,4vw,36px);display:grid;gap:12px;justify-items:start}
+.tab .num{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.tab .num b{font-size:20px;color:var(--ink);letter-spacing:0;margin-right:8px}
+.tab h3{font-family:var(--serif);font-size:clamp(30px,3vw,40px);color:var(--ink)}
+.tab .body > p{max-width:60ch}
+.tab.k{--c:var(--ink);--t:var(--yellow)}
+.tab.b{--c:var(--butter)}
+.fdots{display:flex;gap:6px}
+.fdots i{width:28px;height:4px;border-radius:2px;background:#EEE}
+.fdots i.on{background:var(--ink)}
+#q-body{display:grid;gap:10px;width:100%}
+.q-label{font-family:var(--serif);font-size:22px;color:var(--ink);margin-bottom:4px}
+.q-opt{text-align:left;font:inherit;font-size:15px;font-weight:500;min-height:52px;padding:12px 22px;border-radius:40px;border:2px solid #EEE;background:#fff;color:var(--ink);cursor:pointer;transition:border-color .15s}
+.q-opt:hover{border-color:var(--ink)}
+.q-opt.picked{background:var(--yellow);border-color:var(--yellow)}
+.q-back{justify-self:start;background:none;border:0;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;padding:6px 0}
+.q-result{display:grid;gap:10px;justify-items:start}
+.q-result .tag{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;background:var(--yellow);padding:4px 10px}
+.q-result h3{font-size:32px}
+.q-result .price{font-family:var(--mono);font-size:13px}
+.q-result .row{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center}
+.tlink{font-weight:700;text-underline-offset:4px}
+.step{animation:stepIn .3s ease-out}
+@keyframes stepIn{from{opacity:.2;transform:translateY(6px)}}
+.faq{width:100%}
+.faq details{border-bottom:1px solid #EAE6DA}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:16px;align-items:center;padding:16px 0;font-family:var(--serif);font-size:19px;color:var(--ink);line-height:1.3}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--mono);font-size:20px;transition:rotate .2s}
+.faq details[open] summary::after{rotate:45deg}
+.faq details p{padding:0 0 18px}
+
+/* signup */
+.sign{position:relative;min-height:560px;display:grid;place-items:center;text-align:center;color:#fff;overflow:hidden}
+.sign > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 20%}
+.sign::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,25,24,.55),rgba(26,25,24,.78));z-index:1}
+.sign .in{position:relative;z-index:2;display:grid;gap:14px;justify-items:center;padding:60px 20px;max-width:640px}
+.sign .env{font-size:34px;line-height:1}
+.sign h2{font-family:var(--serif);font-size:clamp(40px,5vw,64px);line-height:1.02}
+.sign h2 span{position:relative;display:inline-block}
+.sign h2 span::after{content:"";position:absolute;inset:-6px -14px;border:3px solid var(--yellow);border-radius:50%;rotate:-4deg}
+.sign p{font-size:14px;opacity:.9}
+.form{display:grid;gap:8px;width:min(400px,100%)}
+.form input{height:40px;border:0;border-radius:0;padding:0 12px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);background:#fff}
+.form .btn{border-radius:0;min-height:40px}
+.form .err{color:var(--yellow);font-size:13px}
+.done{background:var(--yellow);color:var(--ink);padding:14px 18px;font-weight:700}
+
+footer{background:var(--cream);padding-block:44px 28px;position:relative}
+.f-top{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:center}
+.sig{font-family:var(--sig);font-size:clamp(64px,8vw,110px);color:var(--ink);line-height:1}
+.sig span{color:var(--yellow);text-shadow:1px 1px 0 var(--ink)}
+.get{display:grid;gap:4px;justify-items:end}
+.get h4{margin:0;font-family:var(--cond);font-weight:400;font-size:44px;line-height:.9;color:var(--ink);text-align:right}
+.get nav{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:6px 18px;margin-top:10px;font-size:14px}
+.get a{text-decoration:none}
+.get a:hover{text-decoration:underline}
+.legal{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin-top:28px;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.legal nav{display:flex;gap:16px}
+.legal a{text-decoration:none}
+
+.dock{display:none}
+
+@media (max-width:900px){
+  .promo .wrap{grid-template-columns:auto 1fr}
+  .promo .btn{grid-column:1/-1;justify-self:start}
+  .promo .thumb{width:84px}
+  .promo .t{font-size:16px}
+  .hnav{display:none}
+  .hero-in{min-height:600px}
+  .name{inset:80px 0 auto;font-size:clamp(84px,25vw,140px)}
+  .hero .cut{width:92%}
+  .side{display:none}
+  .seen{display:none}
+  .quiz{grid-template-columns:1fr}
+  .quiz .img{height:380px;order:-1}
+  .board{grid-template-columns:1fr}
+  .board .ph{aspect-ratio:16/10}
+  .board .card{aspect-ratio:auto;padding:32px 22px}
+  .board>:nth-child(4),.board>:nth-child(8){display:none}
+  .coach h2{font-size:clamp(44px,14vw,80px);letter-spacing:.02em}
+  .name{font-size:clamp(80px,24vw,130px)}
+  .grad .wrap,.sgrid,.f-top{grid-template-columns:1fr}
+  .sgrid .ph{aspect-ratio:16/12}
+  .get{justify-items:start}
+  .get h4{text-align:left}
+  .get nav{justify-content:flex-start}
+  .dock{display:block;position:fixed;left:0;right:0;bottom:0;z-index:50;padding:10px max(20px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(20px,env(safe-area-inset-left,0px));transform:translateY(120%);transition:transform .3s}
+  .dock.show{transform:none}
+  .dock .btn{width:100%;min-height:52px;box-shadow:0 0 0 2px var(--ink),0 10px 24px rgba(0,0,0,.2)}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<div class="promo">
+  <div class="wrap" id="next" aria-live="polite">
+    <div class="thumb"><img src="../inspo-1/img/dani-loop-poster.jpg" alt="" width="540" height="960"></div>
+    <div>
+      <b>Free workshop!</b>
+      <p class="t">Feel like you again, live with Dani, once a month.</p>
+      <small class="next-when">Next live: <span id="next-date"></span> <span class="clock" id="clock" role="timer">(<span id="cd-d">0</span>d <span id="cd-h">0</span>h <span id="cd-m">0</span>m <span id="cd-s">00</span>s)</span></small>
+    </div>
+    <a class="btn" href="#join">Yes! Save me a seat</a>
+  </div>
+</div>
+
+<header class="hero" id="top">
+  <nav class="hnav" aria-label="Main"><a href="#top">Home</a><a href="#about">About</a><a href="#coaching">Coaching</a><a href="#quiz">Quiz</a><a href="#watch">Watch</a><a href="#stories">Stories</a><a href="#library">Course</a><a href="#faq">FAQ</a></nav>
+  <button class="diamond" id="menu-btn" type="button" aria-label="Open menu" aria-expanded="false"><span></span></button>
+  <nav class="drawer" aria-label="Mobile"><a href="#about">About</a><a href="#coaching">Coaching</a><a href="#quiz">Quiz</a><a href="#stories">Stories</a><a href="#faq">FAQ</a></nav>
+  <div class="hero-in">
+    <h1 class="name" aria-label="Your rebirth starts now"><span>Your</span><span>Rebirth</span></h1>
+    <img class="cut" src="../inspo-1/img/dani-portrait-cut.webp" alt="Dani Carbonari smiling at the microphone" width="885" height="900">
+    <p class="side l">Feel confident at work, in love, with money and <em>in your own skin…</em></p>
+    <p class="side r">…without shrinking yourself to fit <em>anyone else.</em></p>
+    <p class="seen mono" style="font-size:10px">Host of<b>The Confidence Hour</b></p>
+    <div class="badge" aria-hidden="true">
+      <svg viewBox="0 0 108 108"><defs><path id="bc" d="M54 54 m-38 0 a38 38 0 1 1 76 0 a38 38 0 1 1 -76 0"/></defs><text font-family="DM Mono" font-size="9.5" letter-spacing="2.6" fill="#F5D33A"><textPath href="#bc">NICE TO MEET YOU ☆ I'M DANI ☆ YOUR BIG SIS ☆</textPath></text></svg>
+      <b>D</b>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="mission" id="about" aria-labelledby="about-h">
+  <div class="wrap">
+    <h2 id="about-h">I help <span class="y">women</span> who keep <span class="b">shrinking</span> themselves come back to <span class="y u">who they are</span>, and feel <span class="p u">confident</span> in <span class="b u">every part</span> of life.</h2>
+    <p>I spent years living by everyone else's expectations. Choosing myself changed everything, and now helping you do the same is my life's work. I've coached women 1:1, run workshops, and host The Confidence Hour podcast. My approach is simple: honest conversations, practical tools and a sisterhood that has your back.</p>
+    <div class="row"><a class="btn" href="#join" data-hero-cta>Join my free workshop</a><a class="btn white" href="#coaching">See the coaching</a></div>
+    <p class="next"><span class="live"></span>Your rebirth starts <b>now</b>. You don't need to become someone new.</p>
+  </div>
+</section>
+
+<section class="quiz" id="quiz" aria-labelledby="quiz-h">
+  <div class="txt">
+    <h2 id="quiz-h">What's really holding you <b>back?</b></h2>
+    <p>Ten quick taps, two minutes. Find your Confidence Type (People Pleaser, Overthinker, Hider, Imposter or Main Character) and get Dani's plan for it.</p>
+    <a class="btn white" href="#" data-link="quiz">Curious? Take the quiz →</a>
+  </div>
+  <div class="img"><img src="../inspo-1/img/dani-stage.jpg" alt="Dani speaking on stage" loading="lazy" width="480" height="742"><span class="tag">Free quiz</span></div>
+</section>
+
+<section class="coach" id="coaching" aria-labelledby="coach-h">
+  <div class="wrap">
+    <div class="head"><span class="mono">Every level includes the community</span><h2 id="coach-h">COACHING</h2></div>
+    <div class="board">
+      <div class="ph"><img src="../inspo-1/img/dani-portrait.jpg" alt="Dani at the microphone" loading="lazy" width="1236" height="1400" style="object-position:50% 20%"></div>
+      <article class="card" id="free"><span class="hex">Free workshop</span><h3>One live workshop with Dani, every month</h3><p class="price">$0, no card needed</p><ul><li>Replay for 7 days</li><li>Join the community and introduce yourself</li></ul><a class="circled" href="#join">Join free</a></article>
+      <article class="card" id="club"><span class="hex k">Most popular</span><h3>The Confidence Club</h3><p class="price">$33 a month, or $333 a year</p><ul><li>A live group coaching call every month</li><li>A new challenge every month</li><li>Every replay, workbook and the members' chat</li></ul><a class="circled" href="#club" data-link="club">Join the Club</a></article>
+      <div class="ph"><img src="../inspo-1/img/dani-stage.jpg" alt="Dani on stage" loading="lazy" width="480" height="742" style="object-position:50% 30%"></div>
+      <div class="ph"><img src="../inspo-1/img/dani-studio.jpg" alt="Behind the scenes with Dani" loading="lazy" width="1120" height="1280" style="object-position:50% 40%"></div>
+      <article class="card" id="circle"><span class="hex">20 women max</span><h3>The Rebirth Circle</h3><p class="price">By application, payment plans available</p><ul><li>8 weeks of coaching, a live group call every week</li><li>Private group chat and voice notes from Dani</li><li>A closing day together in person</li></ul><a class="circled" href="#circle" data-link="circle">Apply now</a></article>
+      <article class="card" id="vip"><span class="hex k">1:1, limited</span><h3>Big Sis VIP</h3><p class="price">By application, payment plans available</p><ul><li>12 weeks with Dani, just you</li><li>A 1:1 call every two weeks, voice note access</li><li>An in person VIP day and a free place at every live event that year</li></ul><a class="circled" href="#vip" data-link="vip">Apply now</a></article>
+      <div class="ph"><img src="../inspo-1/img/dani-laugh.jpg" alt="Dani laughing" loading="lazy" width="1120" height="1400" style="object-position:50% 25%"></div>
+    </div>
+    <div class="more"><h3>Not sure which one? I got you.</h3><nav><a href="#" data-link="quiz">Confidence quiz</a><a href="#library">Find your fit</a><a href="#stories">Member stories</a><a href="#faq">FAQ</a></nav></div>
+  </div>
+</section>
+
+<section class="vband" id="watch" aria-labelledby="watch-h">
+  <div class="wrap stats"><span class="mono" style="font-size:11px">Free live workshop every month</span><span class="mono" style="font-size:11px">7 day replays</span><span class="mono" style="font-size:11px">20 women max per Circle</span></div>
+  <button class="vhero" id="vsl" type="button" aria-label="Play Dani's video">
+    <video src="../inspo-1/img/dani-loop.mp4" poster="../inspo-1/img/dani-loop-poster.jpg" muted autoplay loop playsinline aria-hidden="true"></video>
+    <span class="t"><i>a</i><strong id="watch-h">Message</strong><small>from Dani, 4 min, tap for sound</small></span>
+    <span class="soon" id="soon" hidden>Dani's video lands here soon ☆</span>
+  </button>
+  <div class="grad">
+    <div class="wrap">
+      <div><h3>Confidence for your whole life, not just how you look. Honest conversations and practical tools for every part of life where you keep shrinking yourself.</h3><a class="btn white" href="https://youtube.com/@theconfidencehour" target="_blank" rel="noopener" style="margin-top:20px">Tune in to The Confidence Hour</a></div>
+      <p class="small">Dani hosts The Confidence Hour podcast and runs a free live workshop every month. Each one tackles a different part of life, so you leave with something you can use straight away. Can't make it live? Every free workshop has a 7 day replay.</p>
+      <div class="eps"><span class="mono">Where we work on it</span>
+        <ol>
+          <li><small>01</small><b>Body</b><span>Wear the thing. Take up the space. Stop waiting for a smaller version of you.</span><i aria-hidden="true">▶</i></li>
+          <li><small>02</small><b>Work</b><span>Speak up in the meeting, ask for the raise, go for the role you keep talking yourself out of.</span><i aria-hidden="true">▶</i></li>
+          <li><small>03</small><b>Love</b><span>Know your worth before you walk in, and stop settling for less than you'd want for your best friend.</span><i aria-hidden="true">▶</i></li>
+          <li><small>04</small><b>Money</b><span>Charge what you're worth and invest in yourself without the guilt.</span><i aria-hidden="true">▶</i></li>
+          <li><small>05</small><b>Travel</b><span>Book the trip. Go alone if you have to. Come back different.</span><i aria-hidden="true">▶</i></li>
+          <li><small>06</small><b>Solo life</b><span>Enjoy your own company. Eat alone, live alone, choose yourself.</span><i aria-hidden="true">▶</i></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stories" id="stories" aria-labelledby="st-h">
+  <div class="wrap">
+    <h2 id="st-h"><span class="y">Not your</span> <span class="b">average</span><br>confidence coaching</h2>
+    <div class="sgrid">
+      <div class="ph"><img src="../inspo-1/img/dani-portrait.jpg" alt="Dani smiling" loading="lazy" width="1236" height="1400"></div>
+      <ul>
+        <li><span class="av" aria-hidden="true">J</span><div><small>Jada, 23</small><blockquote>"Best decision I've ever made."</blockquote><p>I went back and forth on whether I deserved to spend that on myself. Between the workbook, the weekly sessions and the sisterhood, it was worth every penny.</p></div></li>
+        <li><span class="av" aria-hidden="true">T</span><div><small>Taylor, 28</small><blockquote>"It unlocked a new level of confidence inside of me."</blockquote><p>I spoke with women from all walks of life and felt heard. It taught me confidence goes far deeper than how you look.</p></div></li>
+        <li><span class="av" aria-hidden="true">J</span><div><small>Jaleesa, 25</small><blockquote>"I love the person I am becoming."</blockquote><p>Five weeks of laughing, crying and finding a safe space with powerful women. The catalyst I needed.</p></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="wrap lib" id="library" aria-label="The Rebirth library">
+  <article class="tab" id="course">
+    <p class="lbl">The Rebirth library</p>
+    <div class="body">
+      <p class="num"><b>01</b>Coming soon</p>
+      <h3>The Confidence Rebirth Course</h3>
+      <p>Six modules at your own pace, plus 3 months of the Club so you're never doing it alone. Join the free workshop and you'll hear about it first.</p>
+      <a class="circled" href="#join">Tell me first</a>
+    </div>
+  </article>
+  <article class="tab k" id="fit">
+    <p class="lbl">The Rebirth library</p>
+    <div class="body">
+      <p class="num"><b>02</b>Find your fit</p>
+      <h3>Not sure which level?</h3>
+      <p>Three quick questions. Dani's pick for you at the end.</p>
+      <div class="fdots" id="q-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+      <div id="q-body" aria-live="polite"></div>
+    </div>
+  </article>
+  <article class="tab b" id="faq">
+    <p class="lbl">The Rebirth library</p>
+    <div class="body">
+      <p class="num"><b>03</b>Your questions</p>
+      <h3>You asked, Dani answered</h3>
+      <div class="faq">
+        <details><summary>Is this only about body confidence?</summary><p>No. Body is one part. We work on confidence at work, in relationships, with money, travelling and living on your own terms.</p></details>
+        <details><summary>Where does everything happen?</summary><p>In our private community app. Live calls, replays and the chat are all in one place, on your phone or laptop.</p></details>
+        <details><summary>What if I can't make the live calls?</summary><p>Every call is recorded. Free members get the replay for 7 days. Club members and above keep every replay.</p></details>
+        <details><summary>Which option is right for me?</summary><p>Start with the free workshop. If you want ongoing support, join the Club. If you want Dani in your corner every week, apply for the Circle or VIP.</p></details>
+        <details><summary>Can I cancel the Club?</summary><p>Yes, any time, in two taps. You keep access until the end of the month you paid for.</p></details>
+        <details><summary>What happens on the call?</summary><p>A relaxed 20 minute chat about where you are and where you want to be. If the Circle or VIP is right for you, we'll tell you. If it isn't, we'll point you to what is. No pressure.</p></details>
+        <details><summary>Are there payment plans?</summary><p>Yes. The Circle and VIP both have payment plans. We'll go through the options on your call.</p></details>
+        <details><summary>How do I contact Dani?</summary><p>Send a DM to @theconfidencerebirth on Instagram. We reply within a day.</p></details>
+      </div>
+    </div>
+  </article>
+</section>
+
+<section class="sign" id="join" aria-labelledby="join-h" data-hide-dock>
+  <img src="../inspo-1/img/dani-studio.jpg" alt="" loading="lazy" width="1120" height="1280">
+  <div class="in">
+    <span class="env" aria-hidden="true">✉</span>
+    <h2 id="join-h">Your rebirth starts with one <span>yes.</span></h2>
+    <p>Join the free workshop this month. Bring yourself, Dani will bring the rest. We'll message you the link and a reminder before it starts.</p>
+    <form class="form" id="ws-form" novalidate>
+      <label for="ws-name" style="position:absolute;left:-9999px">First name</label><input id="ws-name" type="text" placeholder="First name*" autocomplete="given-name">
+      <label for="ws-ig" style="position:absolute;left:-9999px">Instagram handle</label><input id="ws-ig" type="text" placeholder="Instagram handle*" autocomplete="off">
+      <label for="ws-wa" style="position:absolute;left:-9999px">WhatsApp number</label><input id="ws-wa" type="tel" placeholder="WhatsApp number*" autocomplete="tel">
+      <button class="btn" type="submit">I'm in. Save my spot</button>
+      <p class="err" id="ws-err" hidden>Add your first name, Instagram handle and WhatsApp number to save your spot.</p>
+    </form>
+    <p class="done" id="ws-done" hidden></p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-top">
+      <p class="sig">Dani <span>☆</span></p>
+      <div class="get"><h4>Get<br>around</h4><nav aria-label="Footer"><a href="#coaching">Coaching</a><a href="#" data-link="quiz">Quiz</a><a href="#stories">Stories</a><a href="#faq">FAQ</a><a href="https://www.instagram.com/theconfidencerebirth/" target="_blank" rel="noopener">@theconfidencerebirth</a><a href="https://www.instagram.com/danidmc/" target="_blank" rel="noopener">@danidmc</a><a href="https://youtube.com/@theconfidencehour" target="_blank" rel="noopener">The Confidence Hour</a></nav></div>
+    </div>
+    <div class="legal"><span>© 2026 The Confidence Rebirth</span><nav aria-label="Legal"><a href="#" data-link="privacy">Privacy</a><a href="#" data-link="terms">Terms</a><a href="#" data-link="refunds">Refunds</a></nav></div>
+  </div>
+</footer>
+
+<div class="dock" id="dock"><a class="btn" href="#join">Join the free workshop</a></div>
+<script src="../inspo-shared/rebirth.js"></script>
+<script>document.querySelectorAll('[data-link="free"]').forEach(a=>a.href="#join");</script>
+</body>
+</html>
