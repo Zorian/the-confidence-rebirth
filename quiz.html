@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F3F0EA">
+<meta name="robots" content="noindex">
+<title>Confidence Type Quiz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Caveat:wght@500;600&display=swap">
+<style>
+/* Layout: one question per notebook page, red margin line, highlighter swipe marks every pick; the result reveal is the one big moment. */
+:root{
+  --paper:#F3F0EA; --card:#FBFAF6; --ink:#161514; --hl:#F2CE3E; --blue:#2F5A8C; --red:#C8373F; --red-deep:#A92D35;
+  --muted:#4E4A45; --muted-on-ink:#BDB7AE; --rule:rgba(47,90,140,.17); --tape:rgba(226,212,176,.88); --shade:rgba(22,21,20,.6);
+  --head:"Montserrat","Avenir Next","Segoe UI",sans-serif;
+  --body:"DM Sans","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --hand:"Caveat","Bradley Hand",cursive;
+  --line:32px;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background-color:var(--paper);color:var(--ink);font:400 17px/1.55 var(--body);-webkit-font-smoothing:antialiased;
+  background-image:repeating-linear-gradient(to bottom,transparent 0 calc(var(--line) - 1px),var(--rule) calc(var(--line) - 1px) var(--line))}
+body::after{content:"";position:fixed;top:0;bottom:0;left:max(14px, calc(50% - 330px));width:2px;background:var(--red);opacity:.5;pointer-events:none}
+h1,h2,h3{font-family:var(--head);font-weight:700;text-transform:uppercase;line-height:1.02;margin:0;text-wrap:balance}
+p{margin:0}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:4px}
+
+.app{min-height:100%;display:flex;flex-direction:column;max-width:620px;margin:0 auto;
+  padding-left:max(28px, env(safe-area-inset-left, 0px));padding-right:max(18px, env(safe-area-inset-right, 0px));padding-block:14px 40px}
+
+/* top bar */
+.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:44px}
+.logo{font:700 13px/1.1 var(--head);letter-spacing:.04em;text-transform:uppercase}
+.logo .hl::before{transform:rotate(-2deg)}
+.count{font:600 24px/1 var(--hand);color:var(--blue);white-space:nowrap}
+.track{height:6px;border-radius:3px;background:rgba(22,21,20,.1);overflow:hidden;margin-top:8px}
+.fill{height:100%;width:0;background:var(--hl);border-radius:3px;transition:width .4s cubic-bezier(.4,0,.2,1)}
+
+/* highlighter */
+.hl{position:relative;isolation:isolate;padding:0 .12em;margin:0 -.04em;white-space:nowrap}
+.hl::before{content:"";position:absolute;z-index:-1;left:-.06em;right:-.14em;top:.1em;bottom:.02em;background:var(--hl);transform:rotate(-1.4deg);
+  transform-origin:left center;clip-path:polygon(1% 6%,30% 0,70% 4%,99% 0,100% 92%,62% 100%,22% 95%,0 100%)}
+.swipe::before{animation:swipe .7s cubic-bezier(.6,.05,.3,1) .25s both}
+@keyframes swipe{from{transform:rotate(-1.4deg) scaleX(0)}to{transform:rotate(-1.4deg) scaleX(1)}}
+
+.note{font:600 26px/1.1 var(--hand);color:var(--blue)}
+.star{width:1em;height:1em;flex:none;vertical-align:-.12em}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:0 30px;border-radius:999px;border:0;cursor:pointer;
+  background:var(--red);color:var(--paper);font:700 15px/1.1 var(--head);letter-spacing:.06em;text-transform:uppercase;text-decoration:none;text-align:center;transition:background .15s,transform .15s}
+.btn:hover{background:var(--red-deep)}
+.btn:active{transform:scale(.98)}
+.link{background:none;border:0;padding:8px 2px;cursor:pointer;color:var(--muted);font:500 15px var(--body);text-decoration:underline;text-underline-offset:4px}
+.link:hover{color:var(--ink)}
+
+.screen{flex:1;display:flex;flex-direction:column}
+
+/* intro */
+.intro{justify-content:center;gap:22px;padding-block:40px}
+.intro .note{transform:rotate(-3deg);transform-origin:left;align-self:flex-start}
+.intro h1{font-size:clamp(38px,9vw,60px)}
+.intro .lede{font-size:18px;color:var(--muted);max-width:34ch}
+.intro .go{display:grid;justify-items:start;gap:12px;margin-top:8px}
+.intro small{color:var(--muted);font-size:14px}
+.types{display:flex;flex-wrap:wrap;gap:6px 10px;margin-top:18px;padding:0;list-style:none}
+.types li{font:600 22px/1 var(--hand);color:var(--ink);opacity:.55}
+.types li+li::before{content:"/";margin-right:10px;color:var(--red);opacity:.8}
+
+/* question */
+.qwrap{flex:1;display:flex;flex-direction:column;gap:24px;padding-top:34px}
+.qtext{font:600 clamp(24px,5.6vw,30px)/1.22 var(--body);letter-spacing:-.01em;text-wrap:balance;max-width:24ch}
+.opts{display:grid;gap:12px;list-style:none;margin:0;padding:0}
+.opt{position:relative;isolation:isolate;display:grid;grid-template-columns:28px 1fr;gap:12px;align-items:center;width:100%;min-height:60px;padding:14px 18px 14px 14px;
+  text-align:left;cursor:pointer;background:var(--card);border:1.5px solid var(--ink);border-radius:6px;font:500 17px/1.35 var(--body);
+  transition:transform .15s,box-shadow .15s}
+.opt:hover{transform:translate(-2px,-2px);box-shadow:3px 3px 0 var(--ink)}
+.opt::before{content:"";position:absolute;z-index:-1;inset:6px 8px;background:var(--hl);border-radius:3px;transform:rotate(-.8deg) scaleX(0);transform-origin:left center;
+  clip-path:polygon(0 8%,40% 0,100% 6%,99% 94%,55% 100%,1% 92%);transition:transform .38s cubic-bezier(.6,.05,.3,1)}
+.box{width:28px;height:28px;display:grid;place-items:center;border:1.5px solid var(--ink);border-radius:50%;background:var(--paper)}
+.box svg{width:18px;height:18px;opacity:0;transform:scale(.4) rotate(-30deg);transition:opacity .2s .15s,transform .3s .15s}
+.opt.picked{transform:none;box-shadow:none}
+.opt.picked::before{transform:rotate(-.8deg) scaleX(1)}
+.opt.picked .box svg{opacity:1;transform:none}
+.opts.locked .opt:not(.picked){opacity:.45;transition:opacity .2s}
+.qfoot{margin-top:auto;padding-top:12px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.qfoot small{color:var(--muted);font-size:13px}
+
+.enter{animation:enter .4s cubic-bezier(.2,.7,.2,1) both}
+@keyframes enter{from{opacity:0;transform:translateX(28px)}to{opacity:1;transform:none}}
+.enter-back{animation:enterb .4s cubic-bezier(.2,.7,.2,1) both}
+@keyframes enterb{from{opacity:0;transform:translateX(-28px)}to{opacity:1;transform:none}}
+
+/* thinking */
+.thinking{justify-content:center;align-items:flex-start;gap:16px}
+.thinking .note{font-size:34px}
+.scribble{width:220px;height:40px}
+.scribble path{stroke:var(--hl);stroke-width:14;stroke-linecap:round;fill:none;stroke-dasharray:400;stroke-dashoffset:400;animation:draw 1.3s ease-in-out forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+
+/* result */
+.result{gap:26px;padding-top:30px}
+.r-head{display:grid;gap:10px}
+.r-head .note{transform:rotate(-2deg);transform-origin:left;justify-self:start}
+.r-name{font-size:clamp(40px,10.5vw,68px)}
+.r-name .the{display:block;font-size:.42em;letter-spacing:.06em;margin-bottom:.15em}
+.r-hook{font:600 clamp(20px,4.6vw,24px)/1.3 var(--body);max-width:28ch}
+.r-desc{color:var(--muted);max-width:52ch}
+
+.video{position:relative;display:grid;place-items:center;aspect-ratio:9/12;max-height:420px;width:min(100%,320px);padding:18px;background:var(--ink);color:var(--paper);
+  transform:rotate(1.5deg);box-shadow:0 22px 36px -24px var(--shade);text-align:center;justify-self:start}
+.video::before{content:"";position:absolute;top:-13px;left:calc(50% - 44px);width:88px;height:26px;background:var(--tape);transform:rotate(-3deg)}
+.video .inner{display:grid;gap:12px;justify-items:center}
+.video .play{width:72px;height:72px;border-radius:50%;background:var(--hl);border:3px solid var(--paper);display:grid;place-items:center}
+.video .play svg{width:24px;height:24px;margin-left:4px;fill:var(--ink)}
+.video .note{color:var(--hl);font-size:26px}
+.video small{color:var(--muted-on-ink);font-size:13px}
+.video video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+
+.shows{display:grid;gap:6px;padding-left:16px;border-left:3px solid var(--blue)}
+.shows .note{font-size:24px}
+.shows p{font:500 18px/1.45 var(--body)}
+
+.mix{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+.mix-title{font:600 24px/1 var(--hand);color:var(--blue)}
+.mix li{display:grid;grid-template-columns:minmax(0,9.5em) 1fr 3ch;gap:12px;align-items:center;font-size:15px}
+.mix .meter{height:12px;background:rgba(22,21,20,.08);border-radius:2px;overflow:hidden}
+.mix .meter i{display:block;height:100%;width:0;background:var(--ink);transition:width .9s cubic-bezier(.4,0,.2,1) .6s}
+.mix li.top .meter i{background:var(--hl);box-shadow:inset 0 0 0 1.5px var(--ink)}
+.mix li.top{font-weight:600}
+.mix b{font-variant-numeric:tabular-nums;text-align:right;font-weight:600}
+
+.sticky{position:relative;display:grid;gap:8px;padding:22px 22px 24px;background:var(--hl);transform:rotate(-1.2deg);box-shadow:0 16px 26px -18px var(--shade);max-width:460px}
+.sticky .note{color:var(--ink);font-size:26px}
+.sticky p{font:500 17px/1.45 var(--body)}
+
+.cta{display:grid;gap:12px;justify-items:start;padding-top:8px}
+.cta small{color:var(--muted);font-size:14px;max-width:40ch}
+.cta .btn{width:100%;max-width:460px}
+.again{display:flex;gap:18px;flex-wrap:wrap}
+
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom, 0px));transform:translate(-50%,20px);opacity:0;pointer-events:none;
+  background:var(--ink);color:var(--paper);padding:12px 18px;border-radius:6px;font-size:14px;max-width:calc(100% - 32px);transition:opacity .2s,transform .2s;z-index:30}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+@media (max-width:420px){
+  .mix li{grid-template-columns:minmax(0,7.6em) 1fr 3ch;font-size:14px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;transition-duration:.01ms!important;transition-delay:0s!important}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="star" viewBox="0 0 100 100"><path d="M50 9 61 38 94 39 68 59 78 91 50 72 22 91 32 59 6 39 39 38Z" fill="#F2CE3E" stroke="#161514" stroke-width="7" stroke-linejoin="round"/></symbol>
+  <symbol id="tick" viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6" fill="none" stroke="#161514" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
+<div class="app">
+  <header>
+    <div class="bar">
+      <span class="logo">The <span class="hl">Confidence</span> Rebirth</span>
+      <span class="count" id="count" hidden></span>
+    </div>
+    <div class="track" id="track" hidden><div class="fill" id="fill"></div></div>
+  </header>
+
+  <!-- intro -->
+  <main class="screen intro" id="s-intro">
+    <span class="note">a 2 minute quiz from Dani</span>
+    <h1>What's really holding your <span class="hl swipe">confidence</span> back?</h1>
+    <p class="lede">Nine quick questions. Find your Confidence Type and get Dani's plan for it.</p>
+    <div class="go">
+      <button class="btn" id="start" type="button"><svg class="star" aria-hidden="true"><use href="#star"/></svg>Start the quiz</button>
+      <small>Free. Your result shows straight away.</small>
+    </div>
+    <ul class="types" aria-label="The four types">
+      <li>People Pleaser</li><li>Overthinker</li><li>Hider</li><li>Imposter</li>
+    </ul>
+  </main>
+
+  <!-- question -->
+  <main class="screen" id="s-q" hidden>
+    <div class="qwrap" id="qwrap">
+      <h2 class="qtext" id="qtext" tabindex="-1"></h2>
+      <ul class="opts" id="opts"></ul>
+      <div class="qfoot">
+        <button class="link" id="back" type="button">Back</button>
+        <small>Pick the one that sounds most like you</small>
+      </div>
+    </div>
+  </main>
+
+  <!-- thinking -->
+  <main class="screen thinking" id="s-think" hidden aria-live="polite">
+    <span class="note">Reading your answers…</span>
+    <svg class="scribble" viewBox="0 0 220 40" aria-hidden="true"><path d="M8 26 C 50 10, 90 32, 130 18 S 190 12, 212 22"/></svg>
+  </main>
+
+  <!-- result -->
+  <main class="screen result" id="s-result" hidden>
+    <div class="r-head">
+      <span class="note" id="r-intro">You're</span>
+      <h1 class="r-name" id="r-name" tabindex="-1"></h1>
+      <p class="r-hook" id="r-hook"></p>
+    </div>
+
+    <div class="video" id="video">
+      <div class="inner">
+        <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 3.5v17L20 12z"/></svg></span>
+        <span class="note" id="v-note"></span>
+        <small>Video from Dani coming soon</small>
+      </div>
+    </div>
+
+    <p class="r-desc" id="r-desc"></p>
+
+    <div class="shows">
+      <span class="note" id="shows-title"></span>
+      <p id="shows-text"></p>
+    </div>
+
+    <div class="sticky">
+      <span class="note">Try this today</span>
+      <p id="win"></p>
+    </div>
+
+    <div>
+      <p class="mix-title" style="margin-bottom:12px">Your mix</p>
+      <ul class="mix" id="mix"></ul>
+    </div>
+
+    <div class="cta">
+      <a class="btn" id="dm" href="#"><svg class="star" aria-hidden="true"><use href="#star"/></svg>Send my full plan to my DMs</a>
+      <small>Opens Instagram. Dani's full plan for your type lands in your DMs, with your invite to the free confidence call.</small>
+      <div class="again"><button class="link" id="retake" type="button">Retake the quiz</button></div>
+    </div>
+  </main>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+/* ===== Settings: paste real links before launch ===== */
+// ManyChat Instagram ref link per type, e.g. https://ig.me/m/theconfidencerebirth?ref=overthinker
+const DM_LINKS = { P: "", O: "", H: "", I: "" };
+// Dani's reveal video per type (mp4 URL from Bunny/Vimeo). Leave blank to show the placeholder.
+const VIDEOS = { P: "", O: "", H: "", I: "" };
+
+const TYPES = {
+  P: { the: "The", name: "People Pleaser", short: "People Pleasers",
+       hook: "You light up every room but your own.",
+       desc: "You're the one everyone leans on. Somewhere along the way, keeping everyone happy became your job, and you got left off the list.",
+       win: "Next time someone asks you for something, say \"Let me check and get back to you.\" Then decide later, on your terms.",
+       shows: {
+         work: "You take on everyone's tasks and stay quiet about your own wins.",
+         body: "You dress for other people's comfort instead of your own.",
+         dating: "You shrink your needs so nobody leaves.",
+         travel: "You go wherever everyone else wants and call it being easygoing.",
+         social: "You always show up for your friends, and rarely get asked how you are."
+       } },
+  O: { the: "The", name: "Overthinker", short: "Overthinkers",
+       hook: "Your mind is brilliant. It just never clocks off.",
+       desc: "You see every angle, which is a gift. But the what-ifs run on a loop, and by the time you've decided, the moment has gone.",
+       win: "Make one small decision today in under two minutes, and don't go back to it.",
+       shows: {
+         work: "You rewrite the email five times and still don't send it.",
+         body: "You replay every photo and every glance in the mirror.",
+         dating: "You read meaning into every late reply.",
+         travel: "You plan the trip so hard you stop wanting to go.",
+         social: "You leave every night out replaying what you said."
+       } },
+  H: { the: "The", name: "Hider", short: "Hiders",
+       hook: "You've been playing small so nobody looks too closely.",
+       desc: "You're not shy. You learned that staying small felt safer than being seen, and now that habit keeps you on the sidelines.",
+       win: "Keep one photo of yourself you'd normally delete. Look at it once a day this week.",
+       shows: {
+         work: "You keep your camera off and your best ideas to yourself.",
+         body: "You pick clothes, poses and angles that let you disappear.",
+         dating: "You keep people at arm's length so nobody sees too much.",
+         travel: "You skip the trip, the beach and the photo.",
+         social: "You stand at the edge of the room and hope nobody notices."
+       } },
+  I: { the: "The", name: "Imposter", short: "Imposters",
+       hook: "You earned it. You just haven't believed it yet.",
+       desc: "You've done the work and the proof is there. You keep waiting to feel ready, and the waiting is what's holding you back.",
+       win: "Write down three wins from this year. Read them before your next big moment.",
+       shows: {
+         work: "You wait to feel ready before going for the role you've already earned.",
+         body: "You feel like you haven't earned the right to feel good yet.",
+         dating: "You wonder what they see in you and wait for them to work it out.",
+         travel: "You talk yourself out of the solo trip because other people are braver.",
+         social: "You assume everyone else in the group is more interesting than you."
+       } }
+};
+
+const FOCUS = {
+  work: "How it shows up at work",
+  body: "How it shows up with your body",
+  dating: "How it shows up in love",
+  travel: "How it shows up when you travel",
+  social: "How it shows up with friends"
+};
+
+const QUESTIONS = [
+  { q: "Someone asks you for a favour you don't have time for. You…", o: [
+    ["P","Say yes and sort yourself out later"],["O","Spend an hour working out how to say no"],
+    ["H","Leave them on read"],["I","Say yes so they don't think you can't cope"]] },
+  { q: "You walk into a room full of strangers. First thought?", o: [
+    ["P","I hope they like me"],["O","What if I say something stupid?"],
+    ["H","Where can I stand so nobody notices me?"],["I","Everyone here is doing better than me"]] },
+  { q: "Someone compliments you. You…", o: [
+    ["P","Instantly compliment them back"],["O","Wonder if they actually meant it"],
+    ["H","Cringe and change the subject"],["I","Put it down to luck"]] },
+  { q: "A big opportunity lands: a promotion, a pitch, a solo trip. You…", o: [
+    ["P","Worry about letting people down"],["O","Plan every outcome until it all feels too much"],
+    ["H","Talk yourself out of it before anyone finds out"],["I","Wonder why they picked you"]] },
+  { q: "When you get dressed, you mostly think about…", o: [
+    ["P","What other people will think"],["O","Changing outfits four times"],
+    ["H","What hides you best"],["I","Looking the part so nobody questions you"]] },
+  { q: "After a disagreement, you…", o: [
+    ["P","Apologise, even when you weren't wrong"],["O","Replay it in your head for days"],
+    ["H","Go quiet and disappear"],["I","Assume they're right because they know more"]] },
+  { q: "The voice in your head says this most often…", tiebreak: true, o: [
+    ["P","\"Don't upset anyone.\""],["O","\"But what if…?\""],
+    ["H","\"Don't draw attention.\""],["I","\"You're not good enough yet.\""]] },
+  { q: "If your confidence was fixed tomorrow, the first thing you'd do is…", o: [
+    ["P","Say no without the guilt"],["O","Make decisions fast"],
+    ["H","Wear and post what you actually want"],["I","Go for the thing you keep putting off"]] },
+  { q: "Where do you want to feel confident most?", focus: true, fixed: true, o: [
+    ["work","At work"],["body","In my body"],["dating","Dating and relationships"],["travel","Travel and doing things solo"],["social","With friends and socially"]] }
+];
+
+/* ===== state ===== */
+const $ = id => document.getElementById(id);
+let idx = 0, answers = [], order = [], busy = false;
+
+function shuffle(a){ a = a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+function track(name, data){ try{ window.fbq && fbq("trackCustom", name, data); }catch(e){} try{ window.gtag && gtag("event", name, data); }catch(e){} }
+function show(id){ ["s-intro","s-q","s-think","s-result"].forEach(s => $(s).hidden = s !== id); }
+function toast(msg){ const t=$("toast"); t.textContent=msg; t.classList.add("show"); clearTimeout(toast.t); toast.t=setTimeout(()=>t.classList.remove("show"),2600); }
+
+function progress(){
+  const total = QUESTIONS.length, onQ = !$("s-q").hidden;
+  $("count").hidden = $("track").hidden = !onQ;
+  $("count").textContent = (idx+1) + " of " + total;
+  $("fill").style.width = (idx / total * 100) + "%";
+}
+
+function render(dir){
+  const Q = QUESTIONS[idx];
+  if(!order[idx]) order[idx] = Q.fixed ? Q.o.slice() : shuffle(Q.o);
+  $("qtext").textContent = Q.q;
+  const ul = $("opts"); ul.className = "opts"; ul.innerHTML = "";
+  order[idx].forEach(([k, label], n) => {
+    const li = document.createElement("li");
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "opt"; b.id = "opt-" + idx + "-" + k;
+    b.innerHTML = '<span class="box"><svg aria-hidden="true"><use href="#tick"/></svg></span><span></span>';
+    b.lastChild.textContent = label;
+    if(answers[idx] === k) b.classList.add("picked");
+    b.addEventListener("click", () => pick(b, k));
+    li.appendChild(b); ul.appendChild(li);
+  });
+  $("back").style.visibility = idx === 0 ? "hidden" : "visible";
+  const w = $("qwrap"); w.classList.remove("enter","enter-back"); void w.offsetWidth; w.classList.add(dir === -1 ? "enter-back" : "enter");
+  progress();
+  $("qtext").focus({preventScroll:true});
+}
+
+function pick(btn, k){
+  if(busy) return; busy = true;
+  answers[idx] = k;
+  $("opts").querySelectorAll(".opt").forEach(o => o.classList.remove("picked"));
+  btn.classList.add("picked"); $("opts").classList.add("locked");
+  $("fill").style.width = ((idx+1) / QUESTIONS.length * 100) + "%";
+  setTimeout(() => {
+    busy = false;
+    if(idx < QUESTIONS.length - 1){ idx++; render(1); } else finish();
+  }, 560);
+}
+
+function score(){
+  const c = {P:0,O:0,H:0,I:0}; let tb = null;
+  QUESTIONS.forEach((Q,i) => { if(Q.focus) return; c[answers[i]]++; if(Q.tiebreak) tb = answers[i]; });
+  const max = Math.max(...Object.values(c));
+  const tied = Object.keys(c).filter(k => c[k] === max);
+  const type = tied.includes(tb) ? tb : tied[0];
+  return { type, counts: c, scored: QUESTIONS.filter(Q => !Q.focus).length };
+}
+
+function finish(){
+  show("s-think"); progress();
+  const r = score(), focus = answers[QUESTIONS.length - 1];
+  track("QuizComplete", { confidence_type: TYPES[r.type].name, focus });
+  const wait = matchMedia("(prefers-reduced-motion: reduce)").matches ? 300 : 1700;
+  setTimeout(() => reveal(r, focus), wait);
+}
+
+function reveal(r, focus){
+  const T = TYPES[r.type];
+  $("r-name").innerHTML = '<span class="the"></span><span class="hl swipe"></span>';
+  $("r-name").firstChild.textContent = T.the;
+  $("r-name").lastChild.textContent = T.name;
+  $("r-hook").textContent = T.hook;
+  $("r-desc").textContent = T.desc;
+  $("shows-title").textContent = FOCUS[focus];
+  $("shows-text").textContent = T.shows[focus];
+  $("win").textContent = T.win;
+  $("v-note").textContent = "Dani's message for " + T.short;
+
+  const v = $("video"); const old = v.querySelector("video"); if(old) old.remove();
+  if(VIDEOS[r.type]){
+    const vid = document.createElement("video");
+    vid.src = VIDEOS[r.type]; vid.controls = true; vid.playsInline = true; vid.preload = "metadata";
+    v.appendChild(vid);
+  }
+
+  const mix = $("mix"); mix.innerHTML = "";
+  Object.keys(r.counts).sort((a,b) => r.counts[b] - r.counts[a]).forEach(k => {
+    const pct = Math.round(r.counts[k] / r.scored * 100);
+    const li = document.createElement("li"); if(k === r.type) li.className = "top";
+    li.innerHTML = '<span></span><span class="meter"><i></i></span><b></b>';
+    li.children[0].textContent = TYPES[k].name;
+    li.children[2].textContent = pct + "%";
+    mix.appendChild(li);
+    requestAnimationFrame(() => requestAnimationFrame(() => li.querySelector("i").style.width = pct + "%"));
+  });
+
+  $("dm").dataset.type = r.type;
+  $("dm").href = DM_LINKS[r.type] || "#";
+  show("s-result"); progress();
+  window.scrollTo({top:0});
+  $("r-name").focus({preventScroll:true});
+}
+
+$("dm").addEventListener("click", e => {
+  const t = $("dm").dataset.type;
+  track("QuizDMClick", { confidence_type: TYPES[t] ? TYPES[t].name : "" });
+  if(!DM_LINKS[t]){ e.preventDefault(); toast("The ManyChat link for this type goes here."); }
+});
+$("start").addEventListener("click", () => { idx = 0; answers = []; order = []; show("s-q"); render(1); track("QuizStart", {}); });
+$("back").addEventListener("click", () => { if(busy || idx === 0) return; idx--; render(-1); });
+$("retake").addEventListener("click", () => { idx = 0; answers = []; order = []; show("s-q"); render(1); });
+
+document.addEventListener("keydown", e => {
+  if($("s-q").hidden || busy) return;
+  const n = parseInt(e.key, 10);
+  const btns = $("opts").querySelectorAll(".opt");
+  if(n >= 1 && n <= btns.length) btns[n-1].click();
+});
+</script>
+</body>
+</html>
