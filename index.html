@@ -365,6 +365,18 @@ html.motion .q-result{animation:stick .6s cubic-bezier(.34,1.4,.6,1) both}
 .qtypes li+li::before{content:"/";margin-right:10px;color:var(--red)}
 .qlink{color:var(--blue);font-weight:600;font-size:15px;text-underline-offset:4px;text-decoration-thickness:1.5px}
 @media (max-width:760px){.qcard{grid-template-columns:1fr;padding:30px 22px 26px}.qcard .btn{width:100%}}
+
+/* routes to the offers */
+.top-act{display:flex;align-items:center;gap:18px}
+.toplink{font:700 13px/1 var(--head);letter-spacing:.06em;text-transform:uppercase;text-decoration:none;color:var(--ink);padding:12px 2px;
+  background:linear-gradient(var(--hl),var(--hl)) left 70%/0 8px no-repeat;transition:background-size .25s}
+.toplink:hover{background-size:100% 8px}
+.proof-cta{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:14px 22px;margin-top:44px;text-align:center}
+.proof-cta p{font:600 26px/1.15 var(--hand);color:var(--blue)}
+@media (max-width:640px){.top-act{gap:12px}.proof-cta{margin-top:32px}.proof-cta .btn{width:100%}}
+.top .btn{white-space:nowrap}
+#offers{scroll-margin-top:72px}
+@media (max-width:359px){.toplink{display:none}}
 </style>
 <script>
 // Tracking. Paste the IDs in before launch; nothing loads while they are empty.
@@ -394,7 +406,10 @@ if (GA_ID) {
 <header class="top">
   <div class="wrap">
     <a class="logo" href="#top"><img src="logo.png" width="540" height="178" alt="The Confidence Rebirth, home"></a>
-    <a class="btn" href="#" data-link="free">Join free</a>
+    <div class="top-act">
+      <a class="toplink" href="#offers">Coaching</a>
+      <a class="btn" href="#" data-link="free">Join free</a>
+    </div>
   </div>
   <span class="progress" aria-hidden="true"></span>
 </header>
@@ -459,6 +474,10 @@ if (GA_ID) {
         <figure class="quote"><svg class="star"><use href="#star"/></svg><blockquote>I love the person I am becoming.</blockquote><p>Five weeks of laughing, crying and finding a safe space with powerful women. The catalyst I needed.</p><cite>Jaleesa, 25</cite></figure>
       </div>
       <div class="qdots" id="qdots" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
+      <div class="proof-cta">
+        <p>Ready for more than the free workshop?</p>
+        <a class="btn ghost" href="#offers">See the coaching options</a>
+      </div>
     </div>
   </section>
 
