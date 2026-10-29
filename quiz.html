@@ -105,6 +105,10 @@ button{font:inherit;color:inherit}
 .tile .tick svg{width:14px;height:14px}
 .tile[aria-pressed="true"] .tick{opacity:1;transform:none}
 .tile:disabled{opacity:.4;cursor:default}
+.tiles .solo{grid-column:1/-1}
+.solo .tile{grid-template-columns:auto auto;justify-content:center;align-items:center;min-height:64px;gap:12px;padding:10px 16px}
+.solo .ic{width:36px;height:36px}
+.solo .ic svg{width:18px;height:18px}
 .mfoot{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
 .mfoot .note{font-size:24px}
 .mfoot .btn{min-height:50px;padding:0 26px}
@@ -197,6 +201,7 @@ button{font:inherit;color:inherit}
   <symbol id="i-no" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/></symbol>
   <symbol id="i-body" viewBox="0 0 24 24"><ellipse cx="12" cy="10" rx="6" ry="7.5"/><path d="M12 17.5V21M8.5 21h7"/></symbol>
   <symbol id="i-motivation" viewBox="0 0 24 24"><path d="M12 3c1 3.5 5 5.5 5 10a5 5 0 0 1-10 0c0-2.4 1.2-3.8 2.4-5 .3 1.6 1.1 2.6 2.1 3 .4-2.6-.2-5.4.5-8z"/></symbol>
+  <symbol id="i-none" viewBox="0 0 24 24"><path d="M12 3l2.6 6.1 6.6.3-5.1 4.2 1.7 6.4L12 16.4 6.2 20l1.7-6.4-5.1-4.2 6.6-.3z"/></symbol>
   <symbol id="i-love" viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-7.5-10A4.3 4.3 0 0 1 12 7.4 4.3 4.3 0 0 1 19.5 10c0 5.4-7.5 10-7.5 10z"/></symbol>
 </svg>
 
@@ -218,8 +223,8 @@ button{font:inherit;color:inherit}
       <button class="btn" id="start" type="button"><svg class="star" aria-hidden="true"><use href="#star"/></svg>Start the quiz</button>
       <small>Free. Your result shows straight away.</small>
     </div>
-    <ul class="types" aria-label="The four types">
-      <li>People Pleaser</li><li>Overthinker</li><li>Hider</li><li>Imposter</li>
+    <ul class="types" aria-label="The five types">
+      <li>People Pleaser</li><li>Overthinker</li><li>Hider</li><li>Imposter</li><li>Main Character</li>
     </ul>
   </main>
 
@@ -296,9 +301,9 @@ button{font:inherit;color:inherit}
 <script>
 /* ===== Settings: paste real links before launch ===== */
 // ManyChat Instagram ref link per type, e.g. https://ig.me/m/theconfidencerebirth?ref=overthinker
-const DM_LINKS = { P: "", O: "", H: "", I: "" };
+const DM_LINKS = { P: "", O: "", H: "", I: "", C: "" };
 // Dani's reveal video per type (mp4 URL from Bunny/Vimeo). Leave blank to show the placeholder.
-const VIDEOS = { P: "", O: "", H: "", I: "" };
+const VIDEOS = { P: "", O: "", H: "", I: "", C: "" };
 
 const TYPES = {
   P: { the: "The", name: "People Pleaser", short: "People Pleasers",
@@ -344,6 +349,17 @@ const TYPES = {
          dating: "You wonder what they see in you and wait for them to work it out.",
          travel: "You talk yourself out of the solo trip because other people are braver.",
          social: "You assume everyone else in the group is more interesting than you."
+       } },
+  C: { the: "The", name: "Main Character", short: "Main Characters",
+       hook: "You know who you are. Now it's about owning it everywhere.",
+       desc: "You've already done a lot of the work. The next level is staying confident when it counts: the big room, the bad day, the moment nobody's clapping.",
+       win: "Write down the one place you still shrink. That's your next level, and it's where Dani starts with you.",
+       shows: {
+         work: "You back yourself at work. The next step is asking for what you're worth.",
+         body: "You mostly feel good in your skin. The next step is keeping that on the off days.",
+         dating: "You know your worth in love. The next step is saying it out loud.",
+         travel: "You'll go places on your own. The next step is the trip that properly scares you.",
+         social: "You hold your own in a room. The next step is taking up more space in it."
        } }
 };
 
@@ -369,31 +385,40 @@ const FOCUS = {
 const QUESTIONS = [
   { q: "Someone asks you for a favour you don't have time for. You…", o: [
     ["P","Say yes and sort yourself out later"],["O","Spend an hour working out how to say no"],
-    ["H","Leave them on read"],["I","Say yes so they don't think you can't cope"]] },
+    ["H","Leave them on read"],["I","Say yes so they don't think you can't cope"],
+    ["C","Say no kindly, without the guilt"]] },
   { q: "You walk into a room full of strangers. First thought?", o: [
     ["P","I hope they like me"],["O","What if I say something stupid?"],
-    ["H","Where can I stand so nobody notices me?"],["I","Everyone here is doing better than me"]] },
+    ["H","Where can I stand so nobody notices me?"],["I","Everyone here is doing better than me"],
+    ["C","Who am I going to meet tonight?"]] },
   { q: "Someone compliments you. You…", o: [
     ["P","Instantly compliment them back"],["O","Wonder if they actually meant it"],
-    ["H","Cringe and change the subject"],["I","Put it down to luck"]] },
+    ["H","Cringe and change the subject"],["I","Put it down to luck"],
+    ["C","Say thank you and mean it"]] },
   { q: "A big opportunity lands: a promotion, a pitch, a solo trip. You…", o: [
     ["P","Worry about letting people down"],["O","Plan every outcome until it all feels too much"],
-    ["H","Talk yourself out of it before anyone finds out"],["I","Wonder why they picked you"]] },
+    ["H","Talk yourself out of it before anyone finds out"],["I","Wonder why they picked you"],
+    ["C","Say yes and back yourself"]] },
   { q: "When you get dressed, you mostly think about…", o: [
     ["P","What other people will think"],["O","Changing outfits four times"],
-    ["H","What hides you best"],["I","Looking the part so nobody questions you"]] },
+    ["H","What hides you best"],["I","Looking the part so nobody questions you"],
+    ["C","What makes me feel good"]] },
   { q: "After a disagreement, you…", o: [
     ["P","Apologise, even when you weren't wrong"],["O","Replay it in your head for days"],
-    ["H","Go quiet and disappear"],["I","Assume they're right because they know more"]] },
+    ["H","Go quiet and disappear"],["I","Assume they're right because they know more"],
+    ["C","Say how you feel, then move on"]] },
   { q: "The voice in your head says this most often…", tiebreak: true, o: [
     ["P","\"Don't upset anyone.\""],["O","\"But what if…?\""],
-    ["H","\"Don't draw attention.\""],["I","\"You're not good enough yet.\""]] },
+    ["H","\"Don't draw attention.\""],["I","\"You're not good enough yet.\""],
+    ["C","\"You've got this.\""]] },
   { q: "If your confidence was fixed tomorrow, the first thing you'd do is…", o: [
     ["P","Say no without the guilt"],["O","Make decisions fast"],
-    ["H","Wear and post what you actually want"],["I","Go for the thing you keep putting off"]] },
+    ["H","Wear and post what you actually want"],["I","Go for the thing you keep putting off"],
+    ["C","Honestly, I'm already doing most of it"]] },
   { q: "What do you struggle with most?", sub: "Pick up to 3", multi: true, max: 3, fixed: true, o: [
     ["anxiety","Anxiety & nerves"],["doubt","Self-doubt"],["compare","Comparison"],["speak","Speaking up"],
-    ["no","Saying no"],["body","Body image"],["motivation","Motivation"],["love","Relationships"]] },
+    ["no","Saying no"],["body","Body image"],["motivation","Motivation"],["love","Relationships"],
+    ["none","None of these right now", true]] },
   { q: "Where do you want to feel confident most?", focus: true, fixed: true, o: [
     ["work","At work"],["body","In my body"],["dating","Dating and relationships"],["travel","Travel and doing things solo"],["social","With friends and socially"]] }
 ];
@@ -446,20 +471,23 @@ function renderTiles(Q, ul){
     ul.querySelectorAll(".tile").forEach(t => {
       const on = sel.includes(t.dataset.k);
       t.setAttribute("aria-pressed", on);
-      t.disabled = !on && sel.length >= Q.max;
+      t.disabled = !on && sel.length >= Q.max && t.dataset.k !== "none";
     });
-    $("mcount").textContent = sel.length ? sel.length + " of " + Q.max + " picked" : "Tap to pick";
+    const real = sel.filter(k => k !== "none").length;
+    $("mcount").textContent = sel.includes("none") ? "All good here" : real ? real + " of " + Q.max + " picked" : "Tap to pick";
     $("mnext").disabled = !sel.length;
   };
-  order[idx].forEach(([k, label]) => {
-    const li = document.createElement("li");
+  order[idx].forEach(([k, label, solo]) => {
+    const li = document.createElement("li"); if(solo) li.className = "solo";
     const b = document.createElement("button");
     b.type = "button"; b.className = "tile"; b.id = "tile-" + k; b.dataset.k = k;
     b.innerHTML = '<span class="tick"><svg aria-hidden="true"><use href="#tick-w"/></svg></span><span class="ic"><svg aria-hidden="true"><use href="#i-' + k + '"/></svg></span><span></span>';
     b.lastChild.textContent = label;
     b.addEventListener("click", () => {
       const at = sel.indexOf(k);
-      if(at > -1) sel.splice(at, 1); else if(sel.length < Q.max) sel.push(k);
+      if(at > -1) sel.splice(at, 1);
+      else if(solo) sel.splice(0, sel.length, k);
+      else { const n = sel.indexOf("none"); if(n > -1) sel.splice(n, 1); if(sel.length < Q.max) sel.push(k); }
       sync();
     });
     li.appendChild(b); ul.appendChild(li);
@@ -486,10 +514,11 @@ function pick(btn, k){
 const isTypeQ = Q => !Q.focus && !Q.multi;
 
 function score(){
-  const c = {P:0,O:0,H:0,I:0}; let tb = null;
+  const c = {P:0,O:0,H:0,I:0,C:0}; let tb = null;
   QUESTIONS.forEach((Q,i) => { if(!isTypeQ(Q)) return; c[answers[i]]++; if(Q.tiebreak) tb = answers[i]; });
   const max = Math.max(...Object.values(c));
-  const tied = Object.keys(c).filter(k => c[k] === max);
+  // Ties go to the Q7 answer, then to a growth type over Main Character
+  const tied = Object.keys(c).filter(k => c[k] === max).sort((a,b) => (a === "C") - (b === "C"));
   const type = tied.includes(tb) ? tb : tied[0];
   return { type, counts: c, scored: QUESTIONS.filter(isTypeQ).length };
 }
@@ -524,7 +553,9 @@ function reveal(r, focus, struggles){
     li.querySelector("p").textContent = S.fix;
     steps.appendChild(li);
   });
-  $("plan-title").textContent = struggles.length > 1 ? "Your " + struggles.length + " step plan" : "Your first step";
+  const n = steps.children.length;
+  $("plan-title").closest(".plan").hidden = !n;
+  $("plan-title").textContent = n > 1 ? "Your " + n + " step plan" : "Your first step";
   $("v-note").textContent = "Dani's message for " + T.short;
 
   const v = $("video"); const old = v.querySelector("video"); if(old) old.remove();
