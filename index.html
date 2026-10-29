@@ -265,6 +265,12 @@ footer .legal{width:100%}
   .quotes{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin-right:calc(-1 * var(--gut-r));padding:18px var(--gut-r) 12px 4px;scrollbar-width:none}
   .quotes::-webkit-scrollbar{display:none}
   .quote{flex:0 0 84%;scroll-snap-align:start;transform:none!important}
+  .areas{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin-right:calc(-1 * var(--gut-r));padding:8px var(--gut-r) 14px 4px;scrollbar-width:none}
+  .areas::-webkit-scrollbar{display:none}
+  .area{flex:0 0 74%;scroll-snap-align:start;align-content:start;padding:24px 22px 26px;background:var(--card);border:1.5px solid var(--ink);border-radius:6px;min-height:200px}
+  .area .star{font-size:36px;grid-row:auto;grid-column:1/-1;margin:0 0 6px}
+  .area h3,.area p{grid-column:1/-1}
+  .area h3{font-size:26px}
   .final .btn{width:100%}
   .final .big-star{font-size:80px}
   .faq summary{font-size:17px}
@@ -321,7 +327,7 @@ html.motion .q-result{animation:stick .6s cubic-bezier(.34,1.4,.6,1) both}
 /* testimonials on phones: swipe, cards tilt as they slide */
 .qdots{display:none}
 @media (max-width:640px){
-  html.motion .quote{transform:rotate(var(--qt,0deg)) scale(var(--qs,1))!important;transition:none}
+  html.motion .quote,html.motion .area{transform:rotate(var(--qt,0deg)) scale(var(--qs,1))!important;transition:none}
   .qdots{display:flex;justify-content:center;gap:8px;margin-top:10px}
   .qdots i{width:8px;height:8px;border-radius:50%;background:var(--ink);opacity:.2;transition:opacity .2s,width .2s}
   .qdots i.on{opacity:1;width:22px;border-radius:4px}
@@ -419,7 +425,7 @@ if (GA_ID) {
         <h2>Confidence for your <span class="hl">whole</span> life</h2>
         <span class="note">not just how you look</span>
       </div>
-      <ul class="areas">
+      <ul class="areas" id="areas">
         <li class="area"><svg class="star"><use href="#star"/></svg><h3>Body</h3><p>Wear the thing. Take up the space. Stop waiting for a smaller version of you.</p></li>
         <li class="area"><svg class="star"><use href="#star"/></svg><h3>Work</h3><p>Speak up in the meeting, ask for the raise, go for the role you keep talking yourself out of.</p></li>
         <li class="area"><svg class="star"><use href="#star"/></svg><h3>Love</h3><p>Know your worth before you walk in, and stop settling for less than you'd want for your best friend.</p></li>
@@ -427,6 +433,7 @@ if (GA_ID) {
         <li class="area"><svg class="star"><use href="#star"/></svg><h3>Travel</h3><p>Book the trip. Go alone if you have to. Come back different.</p></li>
         <li class="area"><svg class="star"><use href="#star"/></svg><h3>Solo life</h3><p>Enjoy your own company. Eat alone, live alone, choose yourself.</p></li>
       </ul>
+      <div class="qdots" id="adots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div>
     </div>
   </section>
 
@@ -701,11 +708,13 @@ const NEXT_WORKSHOP = "2026-11-12T19:00:00-05:00"; // PLACEHOLDER: confirm with 
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { rootMargin: "0px 0px -18% 0px" });
   document.querySelectorAll(".area, .about .txt, .offer.featured, .final").forEach(el => io.observe(el));
 
-  // testimonials on phones: cards tilt and shrink as they slide away, dots follow
-  const q = document.getElementById("quotes"), dots = [...document.querySelectorAll("#qdots i")];
-  if (q) {
+  // swipe rows on phones (testimonials, life areas): cards tilt and shrink as they slide away, dots follow
+  [["quotes","qdots"],["areas","adots"]].forEach(([listId, dotsId]) => {
+    const q = document.getElementById(listId), dots = [...document.querySelectorAll("#" + dotsId + " i")];
+    if (!q) return;
     const cards = [...q.children];
     const tilt = () => {
+      if (getComputedStyle(q).display !== "flex") return;
       const mid = q.getBoundingClientRect().left + q.clientWidth / 2; let best = 0, bestD = 1e9;
       cards.forEach((c, i) => {
         const r = c.getBoundingClientRect(), d = (r.left + r.width / 2 - mid) / r.width;
@@ -715,8 +724,9 @@ const NEXT_WORKSHOP = "2026-11-12T19:00:00-05:00"; // PLACEHOLDER: confirm with 
       });
       dots.forEach((d, i) => d.classList.toggle("on", i === best));
     };
-    q.addEventListener("scroll", () => requestAnimationFrame(tilt), { passive: true }); tilt();
-  }
+    q.addEventListener("scroll", () => requestAnimationFrame(tilt), { passive: true });
+    addEventListener("resize", tilt); tilt();
+  });
 
   // desktop: the video tilts toward the cursor
   if (frame && matchMedia("(hover: hover) and (pointer: fine)").matches) {
