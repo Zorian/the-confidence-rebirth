@@ -238,8 +238,8 @@ footer .legal{width:100%}
 @media (max-width:760px){.dock.show{display:block}}
 
 @media (max-width:900px){
-  .hero .wrap{grid-template-columns:1fr;gap:40px}
-  .vsl-frame{max-width:640px}
+  .hero .wrap{grid-template-columns:1fr;gap:34px}
+  .vsl-frame{max-width:640px;order:-1;margin-top:14px}
 }
 @media (max-width:640px){
   body{font-size:16px}
@@ -269,6 +269,63 @@ footer .legal{width:100%}
   .final .big-star{font-size:80px}
   .faq summary{font-size:17px}
 }
+
+/* ---------- motion: the page moves with you ---------- */
+/* highlights are scrubbed by scroll: --p runs 0 to 1 as the heading rises into view */
+.hl::before{transform-origin:left center;transform:rotate(-1.4deg) scaleX(var(--p,1))}
+.top{position:sticky}
+.top .progress{position:absolute;left:0;right:0;bottom:-3px;height:5px;background:var(--hl);transform-origin:left;transform:scaleX(var(--sp,0));pointer-events:none}
+.btn{transition:background .15s,transform .12s}
+.btn:active{transform:scale(.96)}
+
+/* the struck-out words get crossed out as the page opens */
+html.motion .scrap s{text-decoration:none;position:relative}
+html.motion .scrap s::after{content:"";position:absolute;left:-2%;right:-2%;top:54%;height:3px;border-radius:2px;background:var(--red);transform-origin:left;transform:scaleX(0) rotate(-2deg);animation:strike .5s cubic-bezier(.6,.05,.3,1) .15s forwards}
+@keyframes strike{to{transform:scaleX(1) rotate(-2deg)}}
+
+/* taped photos drift and straighten as you scroll past */
+html.motion .vsl-frame{transform:translateY(calc(var(--p,0) * -26px)) rotate(calc(1.2deg - var(--p,0) * 2.6deg))}
+html.motion .photo{transform:translateY(calc((1 - var(--p,1)) * 40px)) rotate(calc(-5deg + var(--p,1) * 3deg))}
+
+/* gold stars get stamped on, one after another */
+html.motion .area .star,html.motion .about .facts .star{transform:scale(0) rotate(-60deg);transition:transform .55s cubic-bezier(.34,1.7,.6,1) calc(var(--i,0) * 90ms)}
+html.motion .in .star,html.motion .area.in .star{transform:none}
+
+/* offer cards are loose index cards that settle flat as they reach you */
+html.motion .offer{transform:translateY(calc((1 - var(--p,1)) * 46px)) rotate(calc((1 - var(--p,1)) * var(--r,2deg)))}
+.offer:nth-child(even){--r:-2.4deg}
+.offer:nth-child(odd){--r:2deg}
+
+/* pen loops draw themselves on */
+html.motion .circled use,html.motion .final .yes use{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset .8s cubic-bezier(.6,.05,.3,1) .2s}
+html.motion .in .circled use,html.motion .final.in .yes use{stroke-dashoffset:0}
+html.motion .final .big-star{transform:scale(.3) rotate(-120deg);transition:transform .8s cubic-bezier(.34,1.5,.6,1)}
+html.motion .final.in .big-star{transform:rotate(-8deg)}
+
+/* quiz: your answer gets circled before the next question slides in */
+.q-opt{position:relative}
+.q-opt .pick{position:absolute;inset:-7px -6px;width:calc(100% + 12px);height:calc(100% + 14px);overflow:visible;pointer-events:none}
+.q-opt .pick use{stroke-dasharray:1;stroke-dashoffset:1;animation:draw .38s cubic-bezier(.6,.05,.3,1) forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.q-opt.picked{border-color:var(--hl);background:rgba(242,206,62,.1)}
+html.motion .quiz-body.step > *{animation:slidein .4s cubic-bezier(.2,.8,.3,1) both}
+html.motion .quiz-body.step > *:nth-child(2){animation-delay:.04s}
+html.motion .quiz-body.step > *:nth-child(3){animation-delay:.08s}
+html.motion .quiz-body.step > *:nth-child(4){animation-delay:.12s}
+html.motion .quiz-body.step > *:nth-child(5){animation-delay:.16s}
+@keyframes slidein{from{opacity:0;transform:translateX(28px)}}
+html.motion .q-result{animation:stick .6s cubic-bezier(.34,1.4,.6,1) both}
+@keyframes stick{from{opacity:0;transform:translateY(-40px) rotate(-7deg) scale(1.05)}to{transform:rotate(-1deg)}}
+.dots i{transition:background .3s,opacity .3s}
+
+/* testimonials on phones: swipe, cards tilt as they slide */
+.qdots{display:none}
+@media (max-width:640px){
+  html.motion .quote{transform:rotate(var(--qt,0deg)) scale(var(--qs,1))!important;transition:none}
+  .qdots{display:flex;justify-content:center;gap:8px;margin-top:10px}
+  .qdots i{width:8px;height:8px;border-radius:50%;background:var(--ink);opacity:.2;transition:opacity .2s,width .2s}
+  .qdots i.on{opacity:1;width:22px;border-radius:4px}
+}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 </style>
 <script>
@@ -293,7 +350,7 @@ if (GA_ID) {
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="star" viewBox="0 0 100 100"><path d="M50 9 61 38 94 39 68 59 78 91 50 72 22 91 32 59 6 39 39 38Z" fill="#F2CE3E" stroke="#161514" stroke-width="7" stroke-linejoin="round"/><path d="M48 12 52 2" stroke="#161514" stroke-width="7" stroke-linecap="round"/></symbol>
   <symbol id="star-paper" viewBox="0 0 100 100"><path d="M50 9 61 38 94 39 68 59 78 91 50 72 22 91 32 59 6 39 39 38Z" fill="#F3F0EA" stroke="#161514" stroke-width="6" stroke-linejoin="round"/><path d="M48 12 52 2" stroke="#161514" stroke-width="6" stroke-linecap="round"/></symbol>
-  <symbol id="loop" viewBox="0 0 200 80" preserveAspectRatio="none"><path d="M24 14C70 2 168 2 190 26c16 18-10 44-74 48C50 78 6 66 8 40 10 20 52 8 96 8" fill="none" stroke-width="4" stroke-linecap="round" vector-effect="non-scaling-stroke"/></symbol>
+  <symbol id="loop" viewBox="0 0 200 80" preserveAspectRatio="none"><path pathLength="1" d="M24 14C70 2 168 2 190 26c16 18-10 44-74 48C50 78 6 66 8 40 10 20 52 8 96 8" fill="none" stroke-width="4" stroke-linecap="round" vector-effect="non-scaling-stroke"/></symbol>
 </svg>
 
 <header class="top">
@@ -301,6 +358,7 @@ if (GA_ID) {
     <a class="logo" href="#top" aria-label="The Confidence Rebirth, home">THE <span class="hl">CONFIDENCE</span> REBIRTH</a>
     <a class="btn" href="#" data-link="free">Join free</a>
   </div>
+  <span class="progress" aria-hidden="true"></span>
 </header>
 
 <main id="top">
@@ -346,11 +404,12 @@ if (GA_ID) {
   <section id="proof">
     <div class="wrap">
       <div class="sec-head"><h2>From women who did the <span class="hl">work</span></h2><span class="note">gold stars, every one</span></div>
-      <div class="quotes">
+      <div class="quotes" id="quotes">
         <figure class="quote"><svg class="star"><use href="#star"/></svg><blockquote>Best decision I've ever made.</blockquote><p>I went back and forth on whether I deserved to spend that on myself. Between the workbook, the weekly sessions and the sisterhood, it was worth every penny.</p><cite>Jada, 23</cite></figure>
         <figure class="quote"><svg class="star"><use href="#star"/></svg><blockquote>It unlocked a new level of confidence inside of me.</blockquote><p>I spoke with women from all walks of life and felt heard. It taught me confidence goes far deeper than how you look.</p><cite>Taylor, 28</cite></figure>
         <figure class="quote"><svg class="star"><use href="#star"/></svg><blockquote>I love the person I am becoming.</blockquote><p>Five weeks of laughing, crying and finding a safe space with powerful women. The catalyst I needed.</p><cite>Jaleesa, 25</cite></figure>
       </div>
+      <div class="qdots" id="qdots" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
     </div>
   </section>
 
@@ -572,6 +631,7 @@ const NEXT_WORKSHOP = "2026-11-12T19:00:00-05:00"; // PLACEHOLDER: confirm with 
   let answers = [];
   const esc = t => t.replace(/[&<>"]/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;" }[c]));
   function render(){
+    body.classList.remove("step"); void body.offsetWidth; body.classList.add("step");
     dots.forEach((d, i) => d.classList.toggle("on", i <= Math.min(answers.length, 2)));
     if (answers.length < QS.length) {
       const { q, a } = QS[answers.length];
@@ -594,10 +654,80 @@ const NEXT_WORKSHOP = "2026-11-12T19:00:00-05:00"; // PLACEHOLDER: confirm with 
   }
   body.addEventListener("click", e => {
     const opt = e.target.closest(".q-opt"), back = e.target.closest(".q-back");
-    if (opt) { answers.push(+opt.dataset.i); render(); body.querySelector("button, a")?.focus(); }
+    if (opt) {
+      if (body.dataset.busy) return;
+      const go = () => { delete body.dataset.busy; answers.push(+opt.dataset.i); render(); body.querySelector("button, a")?.focus({ preventScroll: true }); };
+      if (!document.documentElement.classList.contains("motion")) return go();
+      body.dataset.busy = 1; opt.classList.add("picked");
+      opt.insertAdjacentHTML("beforeend", '<svg class="pick" aria-hidden="true" stroke="#F2CE3E"><use href="#loop"/></svg>');
+      if (navigator.vibrate) navigator.vibrate(8);
+      setTimeout(go, 420);
+    }
     else if (back) { back.hasAttribute("data-restart") ? answers = [] : answers.pop(); render(); }
   });
   render();
+})();
+
+// Motion: the page moves with the reader. Off for anyone who prefers reduced motion.
+(function motion(){
+  const root = document.documentElement;
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  root.classList.add("motion");
+  const clamp = v => Math.max(0, Math.min(1, v));
+  const header = document.querySelector(".top");
+  // scrubbed elements: [element, start (fraction of screen height where it begins), length]
+  const scrub = [];
+  document.querySelectorAll("main .hl").forEach(el => { if (!el.closest(".hero")) scrub.push([el, .92, .3]); });
+  document.querySelectorAll(".offer").forEach(el => scrub.push([el, 1.02, .42]));
+  const photo = document.querySelector(".photo"); if (photo) scrub.push([photo, 1, .6]);
+  const frame = document.querySelector(".vsl-frame");
+  function update(){
+    const vh = innerHeight, max = document.documentElement.scrollHeight - vh;
+    header.style.setProperty("--sp", max > 0 ? (scrollY / max).toFixed(4) : 0);
+    for (const [el, start, len] of scrub) {
+      const top = el.getBoundingClientRect().top;
+      el.style.setProperty("--p", clamp((vh * start - top) / (vh * len)).toFixed(3));
+    }
+    if (frame) frame.style.setProperty("--p", clamp(scrollY / (vh * .9)).toFixed(3));
+  }
+  let ticking = false;
+  const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(() => { update(); ticking = false; }); } };
+  addEventListener("scroll", onScroll, { passive: true }); addEventListener("resize", onScroll);
+  update();
+
+  // one-off moments: stars stamp, loops draw, the final star spins in
+  document.querySelectorAll(".area").forEach((el, i) => el.style.setProperty("--i", i % 3));
+  document.querySelectorAll(".about .facts li").forEach((el, i) => el.style.setProperty("--i", i + 2));
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { rootMargin: "0px 0px -18% 0px" });
+  document.querySelectorAll(".area, .about .txt, .offer.featured, .final").forEach(el => io.observe(el));
+
+  // testimonials on phones: cards tilt and shrink as they slide away, dots follow
+  const q = document.getElementById("quotes"), dots = [...document.querySelectorAll("#qdots i")];
+  if (q) {
+    const cards = [...q.children];
+    const tilt = () => {
+      const mid = q.getBoundingClientRect().left + q.clientWidth / 2; let best = 0, bestD = 1e9;
+      cards.forEach((c, i) => {
+        const r = c.getBoundingClientRect(), d = (r.left + r.width / 2 - mid) / r.width;
+        c.style.setProperty("--qt", (d * 5).toFixed(2) + "deg");
+        c.style.setProperty("--qs", (1 - Math.min(Math.abs(d), 1) * .06).toFixed(3));
+        if (Math.abs(d) < bestD) { bestD = Math.abs(d); best = i; }
+      });
+      dots.forEach((d, i) => d.classList.toggle("on", i === best));
+    };
+    q.addEventListener("scroll", () => requestAnimationFrame(tilt), { passive: true }); tilt();
+  }
+
+  // desktop: the video tilts toward the cursor
+  if (frame && matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    const vsl = frame.querySelector(".vsl");
+    frame.addEventListener("pointermove", e => {
+      const r = frame.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+      vsl.style.transform = `perspective(900px) rotateY(${x * 6}deg) rotateX(${-y * 6}deg)`;
+    });
+    frame.addEventListener("pointerleave", () => vsl.style.transform = "");
+    vsl.style.transition = "transform .25s ease-out";
+  }
 })();
 
 // Placeholder until the VSL is filmed: swap the button for a <video> element.
