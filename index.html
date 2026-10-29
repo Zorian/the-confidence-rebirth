@@ -276,6 +276,17 @@ footer .legal{width:100%}
   .faq summary{font-size:17px}
 }
 
+
+/* simplified hero: one quiet countdown line */
+.next{display:flex;flex-wrap:wrap;align-items:center;gap:4px 14px;margin-top:2px;font-size:15px;color:var(--muted)}
+.next-when{display:inline-flex;align-items:center;gap:8px}
+.live{width:9px;height:9px;border-radius:50%;background:var(--red);box-shadow:0 0 0 0 rgba(200,55,63,.5);animation:pulse 1.8s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 8px rgba(200,55,63,0)}100%{box-shadow:0 0 0 0 rgba(200,55,63,0)}}
+.next .clock{display:inline;width:auto;font-variant-numeric:tabular-nums}
+.next .clock b{font:600 15px var(--body);color:var(--ink)}
+.next .cal summary{min-height:36px;font-size:14px}
+@media (max-width:640px){.hero .scrap{display:none}.next{font-size:14px}}
+
 /* ---------- motion: the page moves with you ---------- */
 /* highlights are scrubbed by scroll: --p runs 0 to 1 as the heading rises into view */
 .hl::before{transform-origin:left center;transform:rotate(-1.4deg) scaleX(var(--p,1))}
@@ -374,14 +385,11 @@ if (GA_ID) {
         <span class="scrap" aria-hidden="true"><s>too much, too loud, too big</s></span>
         <h1>Stop <span class="hl">shrinking.</span></h1>
         <p class="sub">You were never too much. You were just waiting for permission.</p>
-        <p class="lede">Big sis coaching from Dani Carbonari for women ready to take up space at work, in love, in their body and everywhere else. Watch this first.</p>
         <div class="hero-cta">
-          <a class="btn" href="#" data-link="free">Join the free monthly workshop</a>
+          <a class="btn" href="#" data-link="free">Join the free workshop</a>
           <div class="next" id="next" aria-live="polite">
-            <span class="next-when">Next live workshop: <b id="next-date"></b></span>
-            <span class="clock" id="clock" role="timer">
-              <span><b id="cd-d">0</b>days</span><span><b id="cd-h">0</b>hrs</span><span><b id="cd-m">0</b>mins</span><span><b id="cd-s">0</b>secs</span>
-            </span>
+            <span class="next-when"><span class="live"></span>Next live: <b id="next-date"></b></span>
+            <span class="clock" id="clock" role="timer">Starts in <b id="cd-d">0</b>d <b id="cd-h">0</b>h <b id="cd-m">0</b>m <b id="cd-s">0</b>s</span>
             <details class="cal" id="cal">
               <summary>Add to calendar</summary>
               <div class="cal-menu">
@@ -390,7 +398,6 @@ if (GA_ID) {
               </div>
             </details>
           </div>
-          <small>Free. Live with Dani once a month. Replay for 7 days.</small>
         </div>
       </div>
 
@@ -576,7 +583,7 @@ const NEXT_WORKSHOP = "2026-11-12T19:00:00-05:00"; // PLACEHOLDER: confirm with 
   const box = document.getElementById("next"), when = new Date(NEXT_WORKSHOP);
   if (isNaN(when)) { box.hidden = true; return; }
   document.getElementById("next-date").textContent = when.toLocaleString(undefined,
-    { weekday:"short", day:"numeric", month:"short", hour:"numeric", minute:"2-digit", timeZoneName:"short" });
+    { weekday:"short", day:"numeric", month:"short", hour:"numeric", minute:"2-digit" });
   const el = id => document.getElementById(id);
   const tick = () => {
     let s = Math.floor((when - Date.now()) / 1000);
