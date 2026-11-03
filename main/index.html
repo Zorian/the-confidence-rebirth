@@ -152,7 +152,7 @@ p{margin:0}
 .offer>.mwrap{grid-row:4}
 .offer>ul{grid-row:5;align-self:start}
 #free>ul{grid-row:4 / 6}
-.offer>.act{grid-row:6;align-self:end}
+.offer>.act{grid-row:6;align-self:start}
 .mwrap{display:grid;gap:10px;align-content:start}
 .offers-hint{display:none}
 .offer.featured{border-color:var(--ink);box-shadow:6px 6px 0 var(--yellow)}
@@ -863,9 +863,9 @@ const METHODS = {
     document.querySelectorAll(".mrow").forEach(b=>b.setAttribute("aria-pressed",b.dataset.m===k));
     const c=el("course-cta"), g=el("class-cta");
     c.textContent=M.open?"Get the course":"Join the waitlist"; set(c,M.open?M.course:wait(k)); c.classList.toggle("line",!M.open);
-    el("course-note").textContent=M.open?"No application needed.":"The "+M.name+" course is coming soon.";
+    el("course-note").textContent=M.open?"No application needed.":"This course is coming soon.";
     g.textContent=M.open?"Apply to join":"Join the waitlist"; set(g,M.open?M.apply:wait(k)); g.classList.toggle("line",!M.open);
-    el("class-note").textContent=M.open?"A short form, then a call with our team.":"The "+M.name+" group is coming soon.";
+    el("class-note").textContent=M.open?"A short form, then a call with our team.":"This group is coming soon.";
   }
   document.querySelectorAll(".mrow").forEach(b=>b.addEventListener("click",()=>pick(b.dataset.m)));
   document.querySelectorAll("[data-pick]").forEach(a=>a.addEventListener("click",()=>pick(a.dataset.pick)));
