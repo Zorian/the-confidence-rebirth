@@ -42,6 +42,11 @@ button{font:inherit;color:inherit}
 .logo{display:block;line-height:0}
 .logo img{height:40px;width:auto;display:block}
 .count{font:400 18px/1.2 var(--hand);color:var(--blue);white-space:nowrap}
+.siteback{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 2px;font:600 14px/1.2 var(--body);color:var(--ink);text-decoration:underline;text-underline-offset:4px;white-space:nowrap}
+.siteback:hover{text-decoration-thickness:2px}
+.siteback svg{flex:none;transition:transform .15s}
+.siteback:hover svg{transform:translateX(-4px)}
+.count{display:block;text-align:right;margin-top:6px}
 .track{height:6px;border-radius:3px;background:rgba(22,21,20,.1);overflow:hidden;margin-top:8px}
 .fill{height:100%;width:0;background:var(--hl);box-shadow:inset 0 0 0 1px var(--ink);border-radius:3px;transition:width .4s cubic-bezier(.4,0,.2,1)}
 
@@ -225,8 +230,9 @@ button{font:inherit;color:inherit}
   <header>
     <div class="bar">
       <a class="logo" href="./"><img src="img/logo-cutout.png" width="720" height="231" alt="The Confidence Rebirth, back to home"></a>
-      <span class="count" id="count" hidden></span>
+      <a class="siteback" href="./"><svg viewBox="0 0 34 16" width="24" height="12" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M32 8C23 6.500 14 6.800 3 8M10 2C7.500 4.500 5.500 6.500 3 8c2.800 1.500 5 3.500 7 6"/></svg>Back to website</a>
     </div>
+    <span class="count" id="count" hidden></span>
     <div class="track" id="track" hidden><div class="fill" id="fill"></div></div>
   </header>
 
