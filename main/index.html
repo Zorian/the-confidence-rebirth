@@ -267,6 +267,14 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
 .phone:hover{transform:translateY(calc((1 - var(--r,1))*150px));translate:0 -8px}
 .phone{transition:translate .25s}
 
+/* method picker inside the offers */
+.mpick{font-family:var(--hand);font-size:16px;line-height:1.2;margin-bottom:-6px}
+.mrows{display:grid;gap:6px}
+.mrow{display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;min-height:44px;padding:8px 12px;border:1.5px solid transparent;border-radius:10px;background:var(--stone);color:var(--ink);font:inherit;font-size:15px;font-weight:600;font-variation-settings:"wdth" 106;text-align:left;cursor:pointer;transition:background .15s,transform .15s}
+.mrow:hover{background:var(--stone-2)}
+.mrow[aria-pressed="true"]{background:var(--yellow);border-color:var(--ink)}
+.mrow i{flex:none;font-style:normal;font-family:var(--hand);font-size:12px;font-weight:400;line-height:1;white-space:nowrap}
+
 /* find your method */
 .methods{overflow:hidden}
 .m-note{font-family:var(--hand);font-size:clamp(17px,1.8vw,22px);rotate:-2deg;display:inline-block;margin-bottom:6px}
@@ -581,7 +589,7 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
         <h3><small>The</small>Come Back<small>Method</small></h3>
         <p><b>Who it's for</b> Women who've lost themselves.</p>
         <p><b>What changes</b> Come back to who you are and go after the life you want, without becoming someone new.</p>
-        <a class="btn" href="#offers">See how to start</a>
+        <a class="btn" href="#offers" data-pick="come">See how to start</a>
       </article>
       <article class="mcard">
         <span class="mstat">Coming soon</span>
@@ -674,7 +682,7 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
   <div class="wrap">
     <div class="row-head" style="display:grid;gap:10px;justify-items:center;justify-content:center;text-align:center;margin-bottom:36px">
       <h2 id="offers-h" style="font-size:clamp(32px,3.6vw,46px)">Choose your <span class="hl v2">next step</span></h2>
-      <p class="lede" style="text-align:center">Not sure which one? <a href="#fit">Find your fit</a>, or start free.</p>
+      <p class="lede" style="text-align:center">Three methods, taught three ways. Not sure which one? <a href="#fit">Find your fit</a>, or start free.</p>
     </div>
     <div class="offers">
       <article class="offer" id="free">
@@ -684,20 +692,26 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
         <div class="act"><a class="btn" href="#free" data-link="free">Join free</a><small>Takes 30 seconds.</small></div>
       </article>
       <article class="offer" id="course">
-        <span class="tier">In your own time</span><h3>The Course</h3>
-        <div class="price">$888<small>One recorded course for your method</small></div>
-        <ul><li>Your full method, recorded by Dani</li><li>Go through the chapters in your own time</li><li>Buy online and start when you're ready</li></ul>
-        <div class="act"><a class="btn" href="#" data-link="course">Get the course</a><small>No application needed.</small></div>
+        <span class="tier">3 recorded courses, one per method</span><h3>The Course</h3>
+        <div class="price">$888<small>Per course</small></div>
+        <p class="mpick">Pick your method</p>
+        <div class="mrows" role="group" aria-label="Choose your method"><button type="button" class="mrow" data-m="come" aria-pressed="false"><span>Come Back</span><i data-st="come"></i></button><button type="button" class="mrow" data-m="say" aria-pressed="false"><span>Say No</span><i data-st="say"></i></button><button type="button" class="mrow" data-m="space" aria-pressed="false"><span>Take Up Space</span><i data-st="space"></i></button></div>
+        <ul><li>Recorded by Dani</li><li>Go through the chapters in your own time</li><li>Buy online and start when you're ready</li></ul>
+        <div class="act"><a class="btn" id="course-cta" href="#"></a><small id="course-note"></small></div>
       </article>
       <article class="offer featured" id="masterclass">
-        <span class="tier">Small group, 25 women max</span><h3>The 25 Woman Masterclass</h3>
+        <span class="tier">3 groups, 25 women max in each</span><h3>The 25 Woman Masterclass</h3>
         <div class="price">By application<small>Payment plans available</small></div>
-        <ul><li>8 weeks of coaching with Dani</li><li>A live group call every week</li><li>Go through your method live, with questions, support and accountability</li><li>Private group chat with the women in your group, and voice notes from Dani</li><li>The option of a closing day together in person</li><li>The course is included</li></ul>
-        <div class="act"><a class="btn" href="#" data-link="masterclass">Apply to join</a><small>A short form, then a call with our team.</small></div>
+        <p class="mpick">Pick your group</p>
+        <div class="mrows" role="group" aria-label="Choose your method"><button type="button" class="mrow" data-m="come" aria-pressed="false"><span>Come Back</span><i data-st="come"></i></button><button type="button" class="mrow" data-m="say" aria-pressed="false"><span>Say No</span><i data-st="say"></i></button><button type="button" class="mrow" data-m="space" aria-pressed="false"><span>Take Up Space</span><i data-st="space"></i></button></div>
+        <ul><li>8 weeks of coaching with Dani</li><li>A live group call every week</li><li>The same method as the course, taught live, with questions, support and accountability</li><li>Private group chat with the women in your group, and voice notes from Dani</li><li>The option of a closing day together in person</li><li>The course is included</li></ul>
+        <div class="act"><a class="btn" id="class-cta" href="#"></a><small id="class-note"></small></div>
       </article>
       <article class="offer" id="one">
         <span class="tier">1:1, 10 women only</span><h3>1:1 with Dani</h3>
         <div class="price">By application<small>Payment plans available</small></div>
+        <p class="mpick">Choose your method</p>
+        <div class="mrows" role="group" aria-label="Choose your method"><button type="button" class="mrow" data-m="come" aria-pressed="false"><span>Come Back</span></button><button type="button" class="mrow" data-m="say" aria-pressed="false"><span>Say No</span></button><button type="button" class="mrow" data-m="space" aria-pressed="false"><span>Take Up Space</span></button></div>
         <ul><li>12 weeks with Dani, just you</li><li>A 1:1 call every week</li><li>Your method, fully personalised to you</li><li>A custom confidence plan if one method doesn't fit</li><li>Direct voice note access</li><li>The option of an in person VIP day: styling, photoshoot and a day out</li><li>Access to the private community, plus the option to join the monthly call</li><li>A free place at every live event that year</li><li>The course is included</li></ul>
         <div class="act"><a class="btn line" href="#" data-link="one">Apply for 1:1</a><small>A short form, then a call with our team.</small></div>
       </article>
@@ -812,6 +826,30 @@ const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
     last=y; }
   const on=()=>{ if(!queued){ queued=true; requestAnimationFrame(run); } };
   addEventListener("scroll",on,{passive:true}); addEventListener("resize",on); addEventListener("load",on); run();
+})();
+
+// the three methods: set open to true on whichever is selling, and paste its checkout and application links
+const METHODS = {
+  come:  { name:"Come Back", open:true,  course:"#", apply:"#" },
+  say:   { name:"Say No", open:false, course:"#", apply:"#" },
+  space: { name:"Take Up Space", open:false, course:"#", apply:"#" }
+};
+(function(){ const param=new URLSearchParams(location.search).get("method"); const el=id=>document.getElementById(id);
+  document.querySelectorAll("[data-st]").forEach(t=>{ t.textContent=METHODS[t.dataset.st].open?"Open now":"Coming soon"; });
+  const wait=k=>"https://ig.me/m/theconfidencerebirth?ref="+k+"_waitlist";
+  const set=(a,href)=>{ a.href=href; if(/^https/.test(href)){ a.target="_blank"; a.rel="noopener"; } else { a.removeAttribute("target"); a.removeAttribute("rel"); } };
+  function pick(k){ const M=METHODS[k];
+    document.querySelectorAll(".mrow").forEach(b=>b.setAttribute("aria-pressed",b.dataset.m===k));
+    const c=el("course-cta"), g=el("class-cta");
+    c.textContent=M.open?"Get the "+M.name+" course":"Join the waitlist"; set(c,M.open?M.course:wait(k)); c.classList.toggle("line",!M.open);
+    el("course-note").textContent=M.open?"No application needed.":"The "+M.name+" course is coming soon.";
+    g.textContent=M.open?"Apply to join":"Join the waitlist"; set(g,M.open?M.apply:wait(k)); g.classList.toggle("line",!M.open);
+    el("class-note").textContent=M.open?"The "+M.name+" group. A short form, then a call with our team.":"The "+M.name+" group opens after the one before it fills.";
+  }
+  document.querySelectorAll(".mrow").forEach(b=>b.addEventListener("click",()=>pick(b.dataset.m)));
+  document.querySelectorAll("[data-pick]").forEach(a=>a.addEventListener("click",()=>pick(a.dataset.pick)));
+  const first=Object.keys(METHODS).find(k=>METHODS[k].open)||"come";
+  pick(METHODS[param]?param:first);
 })();
 
 // mobile menu

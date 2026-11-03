@@ -631,7 +631,7 @@ function reveal(r, focus, struggles){
   const act = (label, href, line, ev) => { const a = document.createElement("a"); a.className = "btn" + (line ? " line" : ""); a.textContent = label; a.href = href;
     if(/^https/.test(href)){ a.target = "_blank"; a.rel = "noopener"; }
     a.addEventListener("click", () => track(ev, { confidence_type: T.name, method: T.method })); acts.appendChild(a); };
-  if(M.open){ act("See how to start", "./#offers", false, "QuizMethodClick"); act("Join the free workshop", "./#free", true, "QuizWorkshopClick"); }
+  if(M.open){ act("See how to start", "./?method=" + T.method + "#offers", false, "QuizMethodClick"); act("Join the free workshop", "./#free", true, "QuizWorkshopClick"); }
   else { act("Join the waitlist", WAITLIST(T.method), false, "QuizWaitlistClick"); act("Join the free workshop", "./#free", true, "QuizWorkshopClick"); }
 
   $("dm").dataset.type = r.type;
