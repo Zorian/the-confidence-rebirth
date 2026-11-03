@@ -137,7 +137,11 @@ p{margin:0}
 .types svg{width:38px;height:38px;padding:8px;border-radius:50%;background:var(--yellow);stroke:var(--ink);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 
 /* proof row */
-.proof{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.proof-view{overflow:hidden;padding-top:14px}
+.proof{display:flex;gap:16px;width:max-content;animation:slideRight 60s linear infinite}
+.proof-view:hover .proof,.proof-view:focus-within .proof,.proof-view.held .proof{animation-play-state:paused}
+@keyframes slideRight{from{transform:translateX(-25%)}to{transform:translateX(0)}}
+.proof .pcard{flex:0 0 clamp(280px,27vw,380px)}
 .pcard{background:var(--white);border-radius:var(--r-card);padding:26px;display:grid;gap:14px;align-content:start}
 .pcard blockquote{margin:0;font-variation-settings:"wdth" 116;font-weight:600;font-size:22px;line-height:1.2}
 .pcard p{color:var(--ink-2);font-size:15px}
@@ -263,9 +267,7 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
 .title .cut img{transform:translateY(calc((1 - var(--r,1))*110px))}
 .quiz-band h2,.quiz-band .lede,.searchbar,.types li,.offer,.row-head,.fit-body,.coach-copy>*,.faq details,.pb-txt>*{transform:translateY(calc((1 - var(--r,1))*var(--d,36px)));opacity:var(--r,1)}
 .giant .box{transform:translateY(calc((1 - var(--r,1))*60px)) rotate(calc((1 - var(--r,1))*9deg))}
-.pcard{transform:translateY(calc((1 - var(--r,1))*60px)) rotate(calc((1 - var(--r,1))*var(--tilt,-4deg)));opacity:var(--r,1)}
-.pcard:nth-child(2){--tilt:3deg}
-.pcard:nth-child(3){--tilt:-2.5deg}
+.proof-view{transform:translateY(calc((1 - var(--r,1))*50px));opacity:var(--r,1)}
 .nf-col.no li{transform:translateX(calc((1 - var(--r,1))*-46px));opacity:var(--r,1)}
 .nf-col.yes li{transform:translateX(calc((1 - var(--r,1))*46px));opacity:var(--r,1)}
 .m-foot,.nf-big,.nf-sub,.nf-end,.nf-cta{transform:translateY(calc((1 - var(--r,1))*30px));opacity:var(--r,1)}
@@ -322,9 +324,8 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
 .pcard{position:relative}
 .pcard::before,.giant .box::before{content:"";position:absolute;top:-13px;left:calc(50% - 46px);width:92px;height:26px;background:var(--tape);z-index:2;pointer-events:none}
 .pcard::before{transform:rotate(-3deg)}
-.pcard:nth-child(2)::before{transform:rotate(2.500deg);left:calc(38% - 46px)}
-.pcard:nth-child(3)::before{transform:rotate(-1.500deg);left:calc(60% - 46px)}
-.proof{padding-top:14px}
+.pcard:nth-child(3n+2)::before{transform:rotate(2.500deg);left:calc(38% - 46px)}
+.pcard:nth-child(3n)::before{transform:rotate(-1.500deg);left:calc(60% - 46px)}
 .giant .box{position:relative}
 .giant .box::before{transform:rotate(-5deg)}
 
@@ -380,11 +381,11 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
 .title .cut img{max-height:600px;width:auto;margin-left:auto;filter:drop-shadow(5px 0 0 #fff) drop-shadow(-5px 0 0 #fff) drop-shadow(0 -5px 0 #fff)}
 
 /* take up space */
-.giant{padding-block:30px clamp(56px,7vw,96px);overflow:hidden}
+.giant{padding-block:30px clamp(44px,5vw,72px);overflow:hidden}
 .giant h2{font-family:var(--cond);font-weight:400;text-transform:uppercase;color:var(--yellow);font-size:clamp(104px,15vw,230px);line-height:.92;letter-spacing:-.005em}
 #grow{display:inline-block;position:relative;transform-origin:left center;transform:scale(var(--s,1))}
 .giant .note{position:absolute;font-family:var(--hand);font-size:clamp(14px,1.6vw,22px);color:var(--black);text-transform:none;letter-spacing:0;line-height:1.1;padding:6px 16px;border:2.5px solid var(--black);border-radius:50%;rotate:-8deg;left:2%;top:40%;background:rgba(255,255,255,.4);white-space:nowrap}
-.giant .box{margin:22px 0 0 auto;max-width:330px;font-family:var(--hand);font-size:clamp(17px,1.7vw,21px);color:var(--black);line-height:1.3;border:2.5px solid var(--black);border-radius:10px 14px 8px 12px;padding:12px 16px;rotate:2deg}
+.giant .box{margin:calc(-1 * clamp(0px,6vw,90px)) 0 0 auto;max-width:330px;font-family:var(--hand);font-size:clamp(17px,1.7vw,21px);color:var(--black);line-height:1.3;border:2.5px solid var(--black);border-radius:10px 14px 8px 12px;padding:12px 16px;rotate:2deg}
 
 /* not for everybody */
 .notfor{background:var(--black);color:#fff;padding-block:clamp(64px,9vw,120px);overflow:hidden}
@@ -484,10 +485,11 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
   .vsl-frame{margin:0 auto}
   .vsl-frame::before{left:-10px}
   .vsl-frame::after{right:-10px}
-  .swipe,.proof,.offers{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin-inline:calc(-1 * max(16px,env(safe-area-inset-left,0px)));padding-inline:max(16px,env(safe-area-inset-left,0px));scroll-padding-inline:max(16px,env(safe-area-inset-left,0px));scrollbar-width:none;padding-bottom:4px}
-  .swipe::-webkit-scrollbar,.proof::-webkit-scrollbar,.offers::-webkit-scrollbar{display:none}
+  .swipe,.offers{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin-inline:calc(-1 * max(16px,env(safe-area-inset-left,0px)));padding-inline:max(16px,env(safe-area-inset-left,0px));scroll-padding-inline:max(16px,env(safe-area-inset-left,0px));scrollbar-width:none;padding-bottom:4px}
+  .swipe::-webkit-scrollbar,.offers::-webkit-scrollbar{display:none}
   .swipe>*{flex:0 0 62%;scroll-snap-align:start}
-  .proof>*{flex:0 0 84%;scroll-snap-align:start}
+  .proof .pcard{flex:0 0 min(84vw,330px)}
+  .giant .box{margin-top:22px}
   .offers>*{flex:0 0 86%;scroll-snap-align:center}
   .offer{display:flex;flex-direction:column;grid-template-rows:none;gap:12px;padding:20px;border:1.5px solid var(--ink);min-height:0}
   .offer.featured{border-color:var(--ink);box-shadow:4px 4px 0 var(--yellow)}
@@ -510,6 +512,7 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
   #grow{transform:none}
+  .proof-view{overflow-x:auto}
   .phone:hover{translate:none}
   html{scroll-behavior:auto}
 }
@@ -673,7 +676,9 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
 <section class="band stone" id="stories" aria-labelledby="proof-h">
   <div class="wrap">
     <div class="row-head"><h2 class="kicker" id="proof-h">From women who did <span class="hl v3">the work</span></h2></div>
-    <div class="proof">
+  </div>
+  <div class="proof-view" aria-label="What women say">
+    <div class="proof" id="proof">
       <figure class="pcard" style="margin:0"><blockquote>Best decision I've ever made.</blockquote><p>I went back and forth on whether I deserved to spend that on myself. Between the workbook, the weekly sessions and the sisterhood, it was worth every penny.</p><cite>Jada, 23</cite></figure>
       <figure class="pcard" style="margin:0"><blockquote>It unlocked a new level of confidence inside of me.</blockquote><p>I spoke with women from all walks of life and felt heard. It taught me confidence goes far deeper than how you look.</p><cite>Taylor, 28</cite></figure>
       <figure class="pcard" style="margin:0"><blockquote>I love the person I am becoming.</blockquote><p>Five weeks of laughing, crying and finding a safe space with powerful women. The catalyst I needed.</p><cite>Jaleesa, 25</cite></figure>
@@ -846,8 +851,8 @@ const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   nfh.innerHTML=nfh.textContent.split(" ").map(w=>`<span aria-hidden="true">${w}</span>`).join(" ");
   const words=[...nfh.children];
   const hls=[...document.querySelectorAll(".hl")], grow=document.getElementById("grow"), hero=document.querySelector(".hero"), giant=grow.parentElement;
-  const LIST=".intro-copy>*,.vsl-frame,.stack .w,.stack .k,.stack .hand,.title .cut img,.mcard,.m-foot,.quiz-band h2,.quiz-band .lede,.searchbar,.types li,.giant .box,.pcard,.nf-big,.nf-sub,.nf-col li,.nf-end,.nf-cta,.row-head,.offer,.fit-body,.coach-copy>*,.faq details,.final,.final h2,.pb-txt>*,.phone";
-  const items=[...document.querySelectorAll(LIST)].map(el=>{ const sibs=[...el.parentElement.children]; const row=el.matches(".types li,.pcard,.offer,.mcard"); return {el,d:row?sibs.indexOf(el)*.14:0}; });
+  const LIST=".intro-copy>*,.vsl-frame,.stack .w,.stack .k,.stack .hand,.title .cut img,.mcard,.m-foot,.quiz-band h2,.quiz-band .lede,.searchbar,.types li,.giant .box,.proof-view,.nf-big,.nf-sub,.nf-col li,.nf-end,.nf-cta,.row-head,.offer,.fit-body,.coach-copy>*,.faq details,.final,.final h2,.pb-txt>*,.phone";
+  const items=[...document.querySelectorAll(LIST)].map(el=>{ const sibs=[...el.parentElement.children]; const row=el.matches(".types li,.offer,.mcard"); return {el,d:row?sibs.indexOf(el)*.14:0}; });
   const marq=document.getElementById("marq").getAnimations()[0]; let last=scrollY, slow, queued=false;
   function run(){ queued=false; const vh=innerHeight, y=scrollY, max=root.scrollHeight-vh;
     root.style.setProperty("--sp",max>0?(y/max).toFixed(4):0);
@@ -885,6 +890,13 @@ const METHODS = {
   document.querySelectorAll("[data-pick]").forEach(a=>a.addEventListener("click",()=>pick(a.dataset.pick)));
   const first=Object.keys(METHODS).find(k=>METHODS[k].open)||"come";
   pick(METHODS[param]?param:first);
+})();
+
+// testimonials: copies make the slide loop without a gap. Add real quotes as new figures in the HTML.
+(function(){ const p=document.getElementById("proof"), view=p.parentElement, cards=[...p.children];
+  for(let n=0;n<3;n++) cards.forEach(c=>{ const k=c.cloneNode(true); k.setAttribute("aria-hidden","true"); p.appendChild(k); });
+  view.addEventListener("touchstart",()=>view.classList.add("held"),{passive:true});
+  ["touchend","touchcancel"].forEach(t=>view.addEventListener(t,()=>view.classList.remove("held"),{passive:true}));
 })();
 
 // mobile menu
