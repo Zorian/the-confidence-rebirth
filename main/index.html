@@ -131,7 +131,7 @@ p{margin:0}
 .searchbar{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:560px;margin:28px auto 0;min-height:52px;padding:0 10px 0 20px;border-radius:12px;background:var(--stone);text-decoration:none;color:var(--muted);font-size:15px;transition:background .15s}
 .searchbar:hover{background:var(--stone-2)}
 .searchbar i{width:34px;height:34px;border-radius:8px;display:grid;place-items:center;background:var(--yellow);color:var(--ink)}
-.types{list-style:none;padding:0;margin:44px 0 0;display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.types{list-style:none;padding:0;margin:44px 0 0;display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
 .types a{display:grid;justify-items:center;gap:14px;padding:26px 12px;border-radius:12px;background:var(--stone);text-decoration:none;font-weight:600;font-size:14px;letter-spacing:.03em;text-transform:uppercase;transition:background .15s}
 .types a:hover{background:var(--stone-2)}
 .types svg{width:38px;height:38px;padding:8px;border-radius:50%;background:var(--yellow);stroke:var(--ink);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
@@ -159,22 +159,6 @@ p{margin:0}
 .offer .act small{font-size:13px;color:var(--muted)}
 .offer .btn{width:100%;padding:0 12px;text-align:center}
 .soon-line{margin-top:24px;text-align:center;font-size:15px;color:var(--ink-2)}
-
-/* about carousel */
-.about-band .wrap{max-width:900px}
-.car{position:relative}
-.car-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;border-radius:18px}
-.car-track::-webkit-scrollbar{display:none}
-.car-track img{flex:0 0 100%;width:100%;aspect-ratio:16/10;object-fit:cover;scroll-snap-align:center}
-.car-nav{display:flex;align-items:center;justify-content:space-between;margin-top:14px}
-.car-nav .arrow{width:40px;height:40px;border-radius:50%;border:0;background:var(--stone-2);cursor:pointer;display:grid;place-items:center;font-size:18px;color:var(--ink)}
-.car-nav .arrow:hover{background:#DADACB}
-.about-txt{text-align:center;display:grid;gap:18px;justify-items:center;margin-top:36px}
-.about-txt h2{font-size:clamp(32px,3.6vw,46px)}
-.about-txt p{color:var(--ink-2);max-width:60ch}
-.about-txt p b{color:var(--ink);font-weight:600}
-.facts{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
-.facts li{background:var(--white);border-radius:999px;padding:6px 14px;font-size:13px;font-weight:600}
 
 /* fit finder */
 .fit{display:grid;grid-template-columns:1fr 1.2fr;gap:clamp(28px,5vw,72px);align-items:start}
@@ -268,7 +252,7 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
 .stack .k{translate:calc((1 - var(--r,1))*90px) 0}
 .stack .hand{opacity:var(--r,1)}
 .title .cut img{transform:translateY(calc((1 - var(--r,1))*110px))}
-.quiz-band h2,.quiz-band .lede,.searchbar,.types li,.offer,.row-head,.fit-body,.about-txt>*,.faq details,.pb-txt>*{transform:translateY(calc((1 - var(--r,1))*var(--d,36px)));opacity:var(--r,1)}
+.quiz-band h2,.quiz-band .lede,.searchbar,.types li,.offer,.row-head,.fit-body,.coach-copy>*,.faq details,.pb-txt>*{transform:translateY(calc((1 - var(--r,1))*var(--d,36px)));opacity:var(--r,1)}
 .giant .box{transform:translateY(calc((1 - var(--r,1))*60px)) rotate(calc((1 - var(--r,1))*9deg))}
 .pcard{transform:translateY(calc((1 - var(--r,1))*60px)) rotate(calc((1 - var(--r,1))*var(--tilt,-4deg)));opacity:var(--r,1)}
 .pcard:nth-child(2){--tilt:3deg}
@@ -277,7 +261,6 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
 .nf-col.yes li{transform:translateX(calc((1 - var(--r,1))*46px));opacity:var(--r,1)}
 .m-foot,.nf-big,.nf-sub,.nf-end,.nf-cta{transform:translateY(calc((1 - var(--r,1))*30px));opacity:var(--r,1)}
 .notfor h2 span{display:inline-block}
-.car{transform:scale(calc(.92 + var(--r,1)*.08))}
 .final{clip-path:inset(0 calc((1 - var(--r,1))*7%) round calc((1 - var(--r,1))*32px))}
 .final h2{transform:scale(calc(.86 + var(--r,1)*.14))}
 .phone{transform:translateY(calc((1 - var(--r,1))*150px))}
@@ -318,12 +301,11 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
 .vsl-frame::before{left:-22px;transform:rotate(-24deg)}
 .vsl-frame::after{right:-22px;transform:rotate(24deg)}
 .pcard{position:relative}
-.pcard::before,.car::before,.giant .box::before{content:"";position:absolute;top:-13px;left:calc(50% - 46px);width:92px;height:26px;background:var(--tape);z-index:2;pointer-events:none}
+.pcard::before,.giant .box::before{content:"";position:absolute;top:-13px;left:calc(50% - 46px);width:92px;height:26px;background:var(--tape);z-index:2;pointer-events:none}
 .pcard::before{transform:rotate(-3deg)}
 .pcard:nth-child(2)::before{transform:rotate(2.500deg);left:calc(38% - 46px)}
 .pcard:nth-child(3)::before{transform:rotate(-1.500deg);left:calc(60% - 46px)}
 .proof{padding-top:14px}
-.car::before{transform:rotate(-2deg)}
 .giant .box{position:relative}
 .giant .box::before{transform:rotate(-5deg)}
 
@@ -361,13 +343,21 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
 
 /* confidence coach */
 .title{background:var(--yellow);overflow:hidden}
-.title .wrap{display:grid;grid-template-columns:1.3fr .7fr;align-items:end;gap:20px}
+.title .wrap{display:grid;grid-template-columns:1.25fr .75fr;align-items:end;gap:20px}
 .stack{padding-block:clamp(40px,6vw,72px);display:grid;justify-items:start}
 .cond{font-family:var(--cond);text-transform:uppercase;letter-spacing:.005em;line-height:.92;font-size:clamp(60px,9vw,128px)}
 .stack .w{background:#fff;color:var(--black);padding:.06em .14em 0;rotate:-1.5deg}
 .stack .k{background:var(--black);color:var(--yellow);padding:.06em .2em 0;margin-left:clamp(40px,8vw,110px);rotate:1deg}
-.stack .hand{font-family:var(--hand);margin-top:22px;font-size:clamp(17px,1.8vw,22px);color:var(--black)}
-.title .cut img{max-height:440px;width:auto;margin-left:auto;filter:drop-shadow(5px 0 0 #fff) drop-shadow(-5px 0 0 #fff) drop-shadow(0 -5px 0 #fff)}
+.coach-h{display:grid;justify-items:start;font:inherit;margin:0;text-wrap:wrap;color:inherit}
+.stack .hand{font-family:var(--hand);margin-bottom:14px;font-size:clamp(20px,2.2vw,28px);line-height:1.2;color:var(--black);rotate:-1.5deg}
+.coach-copy{width:100%;display:grid;gap:14px;justify-items:start;margin-top:clamp(24px,3vw,36px);max-width:54ch;color:var(--ink);font-size:17px}
+.facts{list-style:none;margin:2px 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.facts li{background:#fff;border-radius:999px;padding:6px 14px;font-size:13px;font-weight:600}
+.coach-cta{width:100%;display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+.coach-cta .btn.line{border-color:var(--ink)}
+.coach-cta .btn.line:hover{background:#fff}
+.title :focus-visible{outline-color:var(--ink)}
+.title .cut img{max-height:600px;width:auto;margin-left:auto;filter:drop-shadow(5px 0 0 #fff) drop-shadow(-5px 0 0 #fff) drop-shadow(0 -5px 0 #fff)}
 
 /* take up space */
 .giant{padding-block:30px clamp(56px,7vw,96px);overflow:hidden}
@@ -428,7 +418,7 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
 }
 @media (max-width:760px){
   .top .logo img{width:118px}
-  .quiz-band h2,.quiz-band .lede,.searchbar,.types li,.offer,.row-head,.fit-body,.about-txt>*,.faq details,.pb-txt>*{--d:20px}
+  .quiz-band h2,.quiz-band .lede,.searchbar,.types li,.offer,.row-head,.fit-body,.coach-copy>*,.faq details,.pb-txt>*{--d:20px}
   .stack .w{translate:calc((1 - var(--r,1))*-40px) 0}
   .stack .k{translate:calc((1 - var(--r,1))*40px) 0}
   .nf-col.no li{transform:translateX(calc((1 - var(--r,1))*-22px))}
@@ -443,6 +433,7 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
   .pb-txt{padding-bottom:12px}
   .final{padding-bottom:clamp(56px,8vw,104px)}
   .nf-cta .btn{width:100%}
+  .coach-cta,.coach-cta .btn{width:100%}
   .pill a:not(.join){display:none}
   .menu-btn{display:inline-flex}
   .drawer{position:absolute;top:100%;left:max(16px,env(safe-area-inset-left,0px));right:max(16px,env(safe-area-inset-right,0px));background:var(--white);border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.25);padding:8px;display:none}
@@ -466,7 +457,6 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
   .proof>*{flex:0 0 84%;scroll-snap-align:start}
   .offers>*{flex:0 0 84%;scroll-snap-align:start}
   .types{grid-template-columns:repeat(2,1fr)}
-  .types li:last-child{grid-column:1/-1}
   .f-top{grid-template-columns:1fr 1fr}
   .f-top>div:first-child{grid-column:1/-1}
   .dock{display:block;position:fixed;left:0;right:0;bottom:0;z-index:40;padding:10px max(16px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));background:linear-gradient(0deg,var(--white) 60%,rgba(255,255,255,0));transform:translateY(110%);transition:transform .3s}
@@ -487,9 +477,9 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
 <div class="ticker" aria-label="Announcement">
   <div class="ticker-track">
     <a href="#free">Free monthly confidence workshop with Dani. Save your spot</a>
-    <a href="../quiz.html">What's holding your confidence back? Take the 2 minute quiz</a>
+    <a href="quiz.html">What's holding your confidence back? Take the 2 minute quiz</a>
     <a href="#free">Free monthly confidence workshop with Dani. Save your spot</a>
-    <a href="../quiz.html">What's holding your confidence back? Take the 2 minute quiz</a>
+    <a href="quiz.html">What's holding your confidence back? Take the 2 minute quiz</a>
   </div>
 </div>
 
@@ -540,7 +530,7 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
       </div>
       <div class="cta-row">
         <a class="btn" href="#free" data-link="free">Join the free workshop</a>
-        <a class="quizlink" href="../quiz.html"><span class="hl-static">Or take the 2 minute quiz</span><svg viewBox="0 0 34 16" width="30" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8c9-1.500 18-1.200 29 0M24 2c2.500 2.500 4.500 4.500 7 6-2.800 1.500-5 3.500-7 6"/></svg></a>
+        <a class="quizlink" href="quiz.html"><span class="hl-static">Or take the 2 minute quiz</span><svg viewBox="0 0 34 16" width="30" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8c9-1.500 18-1.200 29 0M24 2c2.500 2.500 4.500 4.500 7 6-2.800 1.500-5 3.500-7 6"/></svg></a>
         <p class="quiznote">what's your Confidence Type?</p>
       </div>
     </div>
@@ -558,12 +548,23 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
   <div class="marq" id="marq"><a class="s1" href="https://youtube.com/@theconfidencehour" target="_blank" rel="noopener">The Confidence Hour</a><a class="s2" href="https://www.instagram.com/danidmc/" target="_blank" rel="noopener">@danidmc</a><a class="s3" href="#free">Live workshops</a><a class="s4" href="https://www.instagram.com/theconfidencerebirth/" target="_blank" rel="noopener">IG</a><a class="s1" href="#about">On stage</a><a class="s2" href="https://www.instagram.com/theconfidencerebirth/" target="_blank" rel="noopener">@theconfidencerebirth</a><a class="s3" href="https://youtube.com/@theconfidencehour" target="_blank" rel="noopener">YouTube</a></div>
 </section>
 
-<section class="title" aria-label="Dani's title">
+<section class="title" id="about" aria-labelledby="about-h">
   <div class="wrap">
     <div class="stack">
-      <span class="cond w">Confidence</span>
-      <span class="cond k">Coach</span>
-      <span class="hand">Host, speaker, your biggest cheerleader</span>
+      <h2 id="about-h" class="coach-h">
+        <span class="hand">Hey, I'm Dani, your</span>
+        <span class="cond w">Confidence</span>
+        <span class="cond k">Coach</span>
+      </h2>
+      <div class="coach-copy">
+        <p>I spent years living by everyone else's expectations. Choosing myself changed everything, and now helping you do the same is my life's work.</p>
+        <p>I've coached women 1:1, I run workshops and I host The Confidence Hour podcast. My approach is simple: honest conversations, practical tools and a sisterhood that has your back.</p>
+        <ul class="facts"><li>Host, The Confidence Hour</li><li>Workshop host</li><li>Speaker</li></ul>
+        <div class="coach-cta">
+          <a class="btn dark" href="#free" data-link="free">Join my free workshop</a>
+          <a class="btn line" href="quiz.html">New here? Take the quiz</a>
+        </div>
+      </div>
     </div>
     <div class="cut"><img src="img/dani-stage-cut.webp" alt="Dani on stage" width="341" height="567" loading="lazy"></div>
   </div>
@@ -578,22 +579,22 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
       <article class="mcard open">
         <span class="mstat">Open now</span>
         <h3><small>The</small>Come Back<small>Method</small></h3>
-        <p><b>For women who</b> have lost themselves.</p>
-        <p><b>You get</b> to feel like yourself again.</p>
+        <p><b>Who it's for</b> Women who've lost themselves.</p>
+        <p><b>What changes</b> Come back to who you are and go after the life you want, without becoming someone new.</p>
         <a class="btn" href="#offers">See how to start</a>
       </article>
       <article class="mcard">
         <span class="mstat">Coming soon</span>
         <h3><small>The</small>Say No<small>Method</small></h3>
-        <p><b>For women who</b> put everyone else first.</p>
-        <p><b>You get</b> to say no without the guilt.</p>
+        <p><b>Who it's for</b> People pleasers.</p>
+        <p><b>What changes</b> Say no and mean it, without feeling guilty.</p>
         <a class="btn line" href="#" data-link="waitlist">Join the waitlist</a>
       </article>
       <article class="mcard">
         <span class="mstat">Coming soon</span>
         <h3><small>The</small>Take Up Space<small>Method</small></h3>
-        <p><b>For women who</b> play small at work and in life.</p>
-        <p><b>You get</b> to speak up, get seen and ask for more.</p>
+        <p><b>Who it's for</b> Women who shrink and play small.</p>
+        <p><b>What changes</b> Be seen and take up space, without faking it till you make it.</p>
         <a class="btn line" href="#" data-link="waitlist">Join the waitlist</a>
       </article>
     </div>
@@ -604,14 +605,15 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
 <section class="band quiz-band" id="quiz" aria-labelledby="quiz-h">
   <div class="wrap">
     <h2 id="quiz-h">What's really holding your <span class="hl v2">confidence</span> back?</h2>
-    <p class="lede">Ten quick taps. Find your <b>Confidence Type</b> and get Dani's plan for it.</p>
-    <a class="searchbar" href="../quiz.html">Take the 2 minute confidence quiz<i aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></a>
+    <p class="lede">Ten quick taps. Find your <b>Confidence Type</b>, get a free plan for it and see which method is made for you.</p>
+    <a class="searchbar" href="quiz.html">Take the 2 minute confidence quiz<i aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></a>
     <ul class="types">
-      <li><a href="../quiz.html"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg>People Pleaser</a></li>
-      <li><a href="../quiz.html"><svg viewBox="0 0 24 24"><path d="M7 18a4 4 0 0 1-.6-8A6 6 0 0 1 18 9a4.5 4.5 0 0 1-.5 9z"/><path d="M10 14h4"/></svg>Overthinker</a></li>
-      <li><a href="../quiz.html"><svg viewBox="0 0 24 24"><path d="M3 12s3.5-6 9-6c1.6 0 3 .5 4.2 1.2M21 12s-3.5 6-9 6c-1.6 0-3-.5-4.2-1.2"/><path d="M4 20 20 4"/></svg>Hider</a></li>
-      <li><a href="../quiz.html"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M5 21c.8-3.6 3.6-6 7-6s6.2 2.4 7 6"/></svg>Imposter</a></li>
-      <li><a href="../quiz.html"><svg viewBox="0 0 24 24"><path d="M4 18 3 8l5 4 4-7 4 7 5-4-1 10z"/></svg>Main Character</a></li>
+      <li><a href="quiz.html"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg>People Pleaser</a></li>
+      <li><a href="quiz.html"><svg viewBox="0 0 24 24"><path d="M14.500 6.500a4 4 0 0 1 5-1l-2.700 2.700 2 2 2.700-2.700a4 4 0 0 1-5.500 5L8 20a2 2 0 0 1-3-3l7.500-7.500a4 4 0 0 1 2-3z"/></svg>Fixer</a></li>
+      <li><a href="quiz.html"><svg viewBox="0 0 24 24"><path d="M7 18a4 4 0 0 1-.6-8A6 6 0 0 1 18 9a4.5 4.5 0 0 1-.5 9z"/><path d="M10 14h4"/></svg>Overthinker</a></li>
+      <li><a href="quiz.html"><svg viewBox="0 0 24 24"><path d="M3 12s3.5-6 9-6c1.6 0 3 .5 4.2 1.2M21 12s-3.5 6-9 6c-1.6 0-3-.5-4.2-1.2"/><path d="M4 20 20 4"/></svg>Hider</a></li>
+      <li><a href="quiz.html"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M5 21c.8-3.6 3.6-6 7-6s6.2 2.4 7 6"/></svg>Imposter</a></li>
+      <li><a href="quiz.html"><svg viewBox="0 0 24 24"><path d="M4 18 3 8l5 4 4-7 4 7 5-4-1 10z"/></svg>Main Character</a></li>
     </ul>
   </div>
 </section>
@@ -663,7 +665,7 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
     <p class="nf-end">Still reading? That's usually the sign.</p>
     <div class="nf-cta">
       <a class="btn" href="#free" data-link="free">I'm ready. Save my spot</a>
-      <a class="nf-alt" href="../quiz.html">Not sure yet? Take the 2 minute quiz</a>
+      <a class="nf-alt" href="quiz.html">Not sure yet? Take the 2 minute quiz</a>
     </div>
   </div>
 </section>
@@ -714,34 +716,6 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
   </div>
 </section>
 
-<section class="band stone about-band" id="about" aria-labelledby="about-h">
-  <div class="wrap">
-    <div class="car">
-      <div class="car-track" id="car">
-        <img src="img/dani-portrait.jpg" alt="Dani smiling at the microphone" loading="lazy" width="1236" height="1400" style="object-position:50% 25%">
-        <img src="img/dani-stage.jpg" alt="Dani speaking on stage" loading="lazy" width="480" height="742" style="object-position:50% 20%">
-        <img src="img/dani-studio.jpg" alt="Behind the scenes: Dani on the camera monitor" loading="lazy" width="1120" height="1280" style="object-position:50% 40%">
-        <img src="img/dani-laugh.jpg" alt="Dani laughing at dinner" loading="lazy" width="1120" height="1400" style="object-position:50% 25%">
-      </div>
-      <div class="car-nav">
-        <button class="arrow" type="button" id="prev" aria-label="Previous photo">←</button>
-        <div class="dots dark" id="car-dots" style="margin:0"></div>
-        <button class="arrow" type="button" id="nextp" aria-label="Next photo">→</button>
-      </div>
-    </div>
-    <div class="about-txt">
-      <h2 id="about-h">Hey, I'm Dani, your <span class="hl v3">confidence coach</span></h2>
-      <p>I spent years living by everyone else's expectations. Choosing myself changed everything, and now helping you do the same is my life's work.</p>
-      <p><b>Dani Carbonari</b> has coached women 1:1, runs workshops and hosts The Confidence Hour podcast. Her approach is simple: honest conversations, practical tools and a sisterhood that has your back.</p>
-      <ul class="facts"><li>Host, The Confidence Hour</li><li>Workshop host</li><li>Speaker</li></ul>
-      <div class="cta-row" style="justify-content:center">
-        <a class="btn" href="#free" data-link="free">Join my free workshop</a>
-        <a class="btn line" href="../quiz.html">New here? Take the quiz</a>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section class="band paper" id="faq" aria-labelledby="faq-h">
   <div class="wrap faq-grid">
     <h2 id="faq-h">You asked, Dani <span class="hl v2">answered</span></h2>
@@ -772,11 +746,11 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
   <div class="wrap pb-grid">
     <div class="pb-txt">
       <h2 id="pb-h">What's really holding your confidence back?</h2>
-      <p>Take the 2 minute quiz to find your Confidence Type and get Dani's plan for it.</p>
-      <ul class="chips"><li>People Pleaser</li><li>Overthinker</li><li>Hider</li><li>Imposter</li><li>Main Character</li></ul>
-      <a class="btn" href="../quiz.html">Take the 2 minute quiz</a>
+      <p>Take the 2 minute quiz to find your Confidence Type, get a free plan for it and see which method is made for you.</p>
+      <ul class="chips"><li>People Pleaser</li><li>Fixer</li><li>Overthinker</li><li>Hider</li><li>Imposter</li><li>Main Character</li></ul>
+      <a class="btn" href="quiz.html">Take the 2 minute quiz</a>
     </div>
-    <a class="phone" href="../quiz.html" aria-label="Find my Confidence Type">
+    <a class="phone" href="quiz.html" aria-label="Find my Confidence Type">
       <span class="ptitle">The Confidence<br>Rebirth</span>
       <span class="face"><img src="img/dani-portrait.jpg" alt="" loading="lazy" width="1236" height="1400"></span>
       <span class="pbtn">Find my type</span>
@@ -790,7 +764,7 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
     <div class="f-top">
       <div><a href="#top"><img src="img/logo-cutout.png" alt="The Confidence Rebirth" loading="lazy" width="720" height="231"></a></div>
       <div class="f-col"><h4>Coaching</h4><a href="#free">Free workshop</a><a href="#course">The Course</a><a href="#masterclass">25 Woman Masterclass</a><a href="#one">1:1 with Dani</a></div>
-      <div class="f-col"><h4>Explore</h4><a href="../quiz.html">Confidence quiz</a><a href="#methods">Find your method</a><a href="#fit">Find your fit</a><a href="#stories">Stories</a><a href="#about">About Dani</a><a href="#faq">FAQ</a></div>
+      <div class="f-col"><h4>Explore</h4><a href="quiz.html">Confidence quiz</a><a href="#methods">Find your method</a><a href="#fit">Find your fit</a><a href="#stories">Stories</a><a href="#about">About Dani</a><a href="#faq">FAQ</a></div>
       <div class="f-col"><h4>Follow along</h4><a href="https://www.instagram.com/theconfidencerebirth/" target="_blank" rel="noopener">@theconfidencerebirth</a><a href="https://www.instagram.com/danidmc/" target="_blank" rel="noopener">@danidmc</a><a href="https://youtube.com/@theconfidencehour" target="_blank" rel="noopener">The Confidence Hour</a></div>
     </div>
     <div class="socials">
@@ -823,7 +797,7 @@ const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   nfh.innerHTML=nfh.textContent.split(" ").map(w=>`<span aria-hidden="true">${w}</span>`).join(" ");
   const words=[...nfh.children];
   const hls=[...document.querySelectorAll(".hl")], grow=document.getElementById("grow"), hero=document.querySelector(".hero"), giant=grow.parentElement;
-  const LIST=".intro-copy>*,.vsl-frame,.stack .w,.stack .k,.stack .hand,.title .cut img,.mcard,.m-foot,.quiz-band h2,.quiz-band .lede,.searchbar,.types li,.giant .box,.pcard,.nf-big,.nf-sub,.nf-col li,.nf-end,.nf-cta,.row-head,.offer,.fit-body,.car,.about-txt>*,.faq details,.final,.final h2,.pb-txt>*,.phone";
+  const LIST=".intro-copy>*,.vsl-frame,.stack .w,.stack .k,.stack .hand,.title .cut img,.mcard,.m-foot,.quiz-band h2,.quiz-band .lede,.searchbar,.types li,.giant .box,.pcard,.nf-big,.nf-sub,.nf-col li,.nf-end,.nf-cta,.row-head,.offer,.fit-body,.coach-copy>*,.faq details,.final,.final h2,.pb-txt>*,.phone";
   const items=[...document.querySelectorAll(LIST)].map(el=>{ const sibs=[...el.parentElement.children]; const row=el.matches(".types li,.pcard,.offer,.mcard"); return {el,d:row?sibs.indexOf(el)*.14:0}; });
   const marq=document.getElementById("marq").getAnimations()[0]; let last=scrollY, slow, queued=false;
   function run(){ queued=false; const vh=innerHeight, y=scrollY, max=root.scrollHeight-vh;
@@ -867,17 +841,6 @@ const NEXT_WORKSHOP = "2026-11-12T19:00:00-05:00";
 
 // VSL placeholder until the real video is filmed
 (function(){ const v=document.getElementById("vsl"), s=document.getElementById("soon"); v.addEventListener("click",()=>{ s.hidden=!s.hidden; }); if(reduce){ const vid=v.querySelector("video"); vid.removeAttribute("autoplay"); vid.pause(); } })();
-
-// photo carousel
-(function(){ const tr=document.getElementById("car"), imgs=[...tr.children], dots=document.getElementById("car-dots");
-  imgs.forEach((_,n)=>{ const d=document.createElement("button"); d.type="button"; d.setAttribute("aria-label","Photo "+(n+1)); d.addEventListener("click",()=>to(n)); dots.appendChild(d); });
-  const ds=[...dots.children]; const cur=()=>Math.round(tr.scrollLeft/tr.clientWidth);
-  const to=n=>tr.scrollTo({left:((n+imgs.length)%imgs.length)*tr.clientWidth,behavior:reduce?"auto":"smooth"});
-  const mark=()=>ds.forEach((d,k)=>d.classList.toggle("on",k===cur()));
-  tr.addEventListener("scroll",()=>requestAnimationFrame(mark),{passive:true}); mark();
-  document.getElementById("prev").addEventListener("click",()=>to(cur()-1));
-  document.getElementById("nextp").addEventListener("click",()=>to(cur()+1));
-})();
 
 // find your fit
 (function(){
