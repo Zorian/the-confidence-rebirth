@@ -331,20 +331,24 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
 
 /* real highlighter: ends stay rough, only the middle stretches */
 .hl{position:relative;display:inline-block;isolation:isolate;padding:0 .1em;white-space:nowrap;--p:1}
-.hl::before,.hl-static::before{content:"";position:absolute;z-index:-1;inset:.03em -.08em -.01em;border-style:solid;border-width:0 .42em;border-image:url(img/hl-1.webp) 0 90 fill / 0 .42em stretch}
+.hl::before{content:"";position:absolute;z-index:-1;inset:.03em -.08em -.01em;border-style:solid;border-width:0 .42em;border-image:url(img/hl-1.webp) 0 90 fill / 0 .42em stretch}
 .hl::before{clip-path:inset(-15% calc((1 - var(--p))*100%) -15% 0)}
 .hl.v2::before{border-image-source:url(img/hl-2.webp)}
 .hl.v3::before{border-image-source:url(img/hl-3.webp)}
 
 /* eye catching quiz link */
 .intro .cta-row{display:grid;justify-items:start;gap:16px}
-.quizlink{display:inline-flex;align-items:center;gap:12px;font-weight:700;font-size:18px;line-height:1.2;text-decoration:none;font-variation-settings:"wdth" 110;color:var(--ink)}
-.hl-static{position:relative;isolation:isolate;display:inline-block;padding:10px 16px}
-.hl-static::before{inset:0 -2px;border-width:0 18px;border-image-width:0 18px}
-.quizlink svg{flex:none;animation:nudge 1.6s ease-in-out infinite}
-.quizlink:hover .hl-static{transform:rotate(-1deg)}
-@keyframes nudge{50%{transform:translateX(6px)}}
-.quiznote{font-family:var(--hand);font-size:16px;line-height:1.2;transform:rotate(-2deg);margin:-6px 0 0 16px;color:var(--ink)}
+.b5{display:grid;gap:12px;width:100%;max-width:430px;padding:16px 18px;border:1.5px solid var(--ink);border-radius:14px;background:#fff;text-decoration:none;color:var(--ink);transition:box-shadow .2s,translate .2s}
+.b5:hover{box-shadow:5px 5px 0 var(--yellow);translate:-2px -2px}
+.b5-q{font-weight:600;font-size:clamp(18px,1.6vw,20px);font-variation-settings:"wdth" 108;line-height:1.25}
+.b5-word{position:relative;isolation:isolate;display:inline-block;padding:0 .3em;white-space:nowrap}
+.b5-word::before{content:"";position:absolute;z-index:-1;inset:0 -.1em;border-style:solid;border-width:0 12px;border-image:url(img/hl-1.webp) 0 90 fill / 0 12px stretch}
+.b5-word span{display:inline-block}
+.b5-word span.in{animation:b5w .32s ease-out}
+@keyframes b5w{from{opacity:0;transform:translateY(8px)}}
+.b5-go{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:14px;font-weight:600;border-top:1px solid var(--stone-2);padding-top:12px}
+.b5-go svg{flex:none;animation:nudge 1.6s ease-in-out infinite}
+@keyframes nudge{50%{transform:translateX(5px)}}
 
 /* find dani on */
 .seen{background:var(--black);color:#fff;padding-block:28px 34px;overflow:hidden;text-align:center}
@@ -579,8 +583,7 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
       </div>
       <div class="cta-row">
         <a class="btn" href="#free" data-link="free">Join the free workshop</a>
-        <a class="quizlink" href="quiz.html"><span class="hl-static">Or take the 2 minute quiz</span><svg viewBox="0 0 34 16" width="30" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8c9-1.500 18-1.200 29 0M24 2c2.500 2.500 4.500 4.500 7 6-2.800 1.500-5 3.500-7 6"/></svg></a>
-        <p class="quiznote">what's your Confidence Type?</p>
+        <a class="b5" href="quiz.html"><span class="b5-q">Are you <span class="b5-word"><span id="b5-w">a People Pleaser</span></span>?</span><span class="b5-go">Take the 2 minute quiz to find out <svg viewBox="0 0 34 16" width="30" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8c9-1.500 18-1.200 29 0M24 2c2.500 2.500 4.500 4.500 7 6-2.800 1.500-5 3.500-7 6"/></svg></span></a>
       </div>
     </div>
     <div class="vsl-frame"><button class="cover" id="vsl" type="button" aria-label="Play Dani's video">
@@ -899,6 +902,11 @@ const METHODS = {
   for(let n=0;n<3;n++) cards.forEach(c=>{ const k=c.cloneNode(true); k.setAttribute("aria-hidden","true"); p.appendChild(k); });
   view.addEventListener("touchstart",()=>view.classList.add("held"),{passive:true});
   ["touchend","touchcancel"].forEach(t=>view.addEventListener(t,()=>view.classList.remove("held"),{passive:true}));
+})();
+
+// quiz button: the type names change by themselves
+(function(){ if(reduce) return; const W=["a People Pleaser","a Fixer","an Overthinker","a Hider","an Imposter","a Main Character"], el=document.getElementById("b5-w"); let i=0;
+  setInterval(()=>{ i=(i+1)%W.length; el.textContent=W[i]; el.classList.remove("in"); void el.offsetWidth; el.classList.add("in"); },1700);
 })();
 
 // mobile menu
