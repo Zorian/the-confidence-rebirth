@@ -216,7 +216,7 @@ p{margin:0}
 .final p{font-size:18px;max-width:44ch}
 
 /* footer */
-footer{background:linear-gradient(120deg,#F3CE3A,#F7DD66);padding-block:48px 28px;font-size:14px}
+footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
 .f-top{display:grid;grid-template-columns:1.3fr repeat(3,1fr);gap:28px}
 .f-top img{width:160px}
 .f-col h4{margin:0 0 12px;font-size:15px;font-weight:600;font-variation-settings:"wdth" 112}
@@ -562,6 +562,17 @@ footer{background:linear-gradient(120deg,#F3CE3A,#F7DD66);padding-block:48px 28p
   </div>
 </section>
 
+<section class="band" id="fit" style="padding-top:0" aria-labelledby="fit-h">
+  <div class="wrap fit">
+    <div>
+      <h2 id="fit-h">Not sure which level? Find your fit.</h2>
+      <p class="lede">Three quick questions. Dani's pick for you at the end.</p>
+      <div class="fdots" id="q-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+    </div>
+    <div class="fit-body" id="q-body" aria-live="polite"></div>
+  </div>
+</section>
+
 <section class="band stone about-band" id="about" aria-labelledby="about-h">
   <div class="wrap">
     <div class="car">
@@ -590,18 +601,7 @@ footer{background:linear-gradient(120deg,#F3CE3A,#F7DD66);padding-block:48px 28p
   </div>
 </section>
 
-<section class="band" id="fit" aria-labelledby="fit-h">
-  <div class="wrap fit">
-    <div>
-      <h2 id="fit-h">Not sure which level? Find your fit.</h2>
-      <p class="lede">Three quick questions. Dani's pick for you at the end.</p>
-      <div class="fdots" id="q-dots" aria-hidden="true"><i></i><i></i><i></i></div>
-    </div>
-    <div class="fit-body" id="q-body" aria-live="polite"></div>
-  </div>
-</section>
-
-<section class="band stone" id="faq" aria-labelledby="faq-h">
+<section class="band" id="faq" aria-labelledby="faq-h">
   <div class="wrap faq-grid">
     <h2 id="faq-h">You asked, Dani answered</h2>
     <div class="faq">
