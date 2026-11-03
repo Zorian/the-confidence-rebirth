@@ -619,14 +619,14 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
         <h3><small>The</small>Say No<small>Method</small></h3>
         <p><b>Who it's for</b> People pleasers.</p>
         <p><b>What changes</b> Say no and mean it, without feeling guilty.</p>
-        <a class="btn line" href="#" data-link="waitlist">Join the waitlist</a>
+        <a class="btn" href="#" data-link="waitlist">Join the waitlist</a>
       </article>
       <article class="mcard">
         <span class="mstat">Coming soon</span>
         <h3><small>The</small>Take Up Space<small>Method</small></h3>
         <p><b>Who it's for</b> Women who shrink and play small.</p>
         <p><b>What changes</b> Be seen and take up space, without faking it till you make it.</p>
-        <a class="btn line" href="#" data-link="waitlist">Join the waitlist</a>
+        <a class="btn" href="#" data-link="waitlist">Join the waitlist</a>
       </article>
     </div>
     <p class="m-foot">We fill one group, then open the next. Not sure which one is yours? <a href="#quiz">Take the 2 minute quiz</a>.</p>
@@ -726,7 +726,7 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
         <span class="tier">3 groups, 25 women each</span><h3>The 25 Woman Masterclass</h3>
         <div class="price">By application<small>Payment plans available</small></div>
         <div class="mwrap"><p class="mpick">Pick your group</p><div class="mrows" role="group" aria-label="Choose your method"><button type="button" class="mrow" data-m="come" aria-pressed="false"><span>Come Back</span><i data-st="come"></i></button><button type="button" class="mrow" data-m="say" aria-pressed="false"><span>Say No</span><i data-st="say"></i></button><button type="button" class="mrow" data-m="space" aria-pressed="false"><span>Take Up Space</span><i data-st="space"></i></button></div></div>
-        <ul><li>8 weeks of coaching with Dani</li><li>A live group call every week</li><li>Don't just watch it, live it: interactive coaching with Dani, your questions answered live on the spot and real accountability</li><li>Private group chat with the women in your group, and voice notes from Dani</li><li>Join a community of like-minded women who hold you accountable, grow with you and become friends who support you for life</li><li>The course is included</li></ul>
+        <ul><li>8 weeks of coaching with Dani</li><li>A live group call every week</li><li>Don't just watch it, live it: interactive coaching with Dani, your questions answered live on the spot and real accountability</li><li>Private group chat with the women in your group, and voice notes from Dani</li><li>Join a community of like-minded women you can text and talk to any time, who hold you accountable, grow with you and become friends for life</li><li>The course is included</li></ul>
         <div class="act"><a class="btn" id="class-cta" href="#"></a><small id="class-note"></small></div>
       </article>
       <article class="offer" id="one">
@@ -734,7 +734,7 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
         <div class="price">By application<small>Payment plans available</small></div>
         <div class="mwrap"><p class="mpick">Choose your method</p><div class="mrows" role="group" aria-label="Choose your method"><button type="button" class="mrow" data-m="come" aria-pressed="false"><span>Come Back</span></button><button type="button" class="mrow" data-m="say" aria-pressed="false"><span>Say No</span></button><button type="button" class="mrow" data-m="space" aria-pressed="false"><span>Take Up Space</span></button></div></div>
         <ul><li>12 weeks with Dani, just you</li><li>A 1:1 call every week</li><li>Your method, fully personalised to you</li><li>A custom confidence plan if one method doesn't fit</li><li>Direct voice note access</li><li>The option of an in person VIP day: styling, photoshoot and a day out</li><li>Access to the private community, plus the option to join the monthly call</li><li>A free place at every live event that year</li><li>The course is included</li></ul>
-        <div class="act"><a class="btn line" href="#" data-link="one">Apply for 1:1</a><small>A short form, then a call with our team.</small></div>
+        <div class="act"><a class="btn" href="#" data-link="one">Apply for 1:1</a><small>A short form, then a call with our team.</small></div>
       </article>
     </div>
   </div>
@@ -862,9 +862,9 @@ const METHODS = {
   function pick(k){ const M=METHODS[k];
     document.querySelectorAll(".mrow").forEach(b=>b.setAttribute("aria-pressed",b.dataset.m===k));
     const c=el("course-cta"), g=el("class-cta");
-    c.textContent=M.open?"Get the course":"Join the waitlist"; set(c,M.open?M.course:wait(k)); c.classList.toggle("line",!M.open);
+    c.textContent=M.open?"Get the course":"Join the waitlist"; set(c,M.open?M.course:wait(k));
     el("course-note").textContent=M.open?"No application needed.":"This course is coming soon.";
-    g.textContent=M.open?"Apply to join":"Join the waitlist"; set(g,M.open?M.apply:wait(k)); g.classList.toggle("line",!M.open);
+    g.textContent=M.open?"Apply to join":"Join the waitlist"; set(g,M.open?M.apply:wait(k));
     el("class-note").textContent=M.open?"A short form, then a call with our team.":"This group is coming soon.";
   }
   document.querySelectorAll(".mrow").forEach(b=>b.addEventListener("click",()=>pick(b.dataset.m)));
