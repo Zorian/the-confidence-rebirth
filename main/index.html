@@ -242,12 +242,12 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
 .fitband .btn{border-color:var(--yellow)}
 .fitband :focus-visible{outline-color:var(--yellow)}
 
-/* faq: lined notebook paper */
-.paper{position:relative;background-color:#F1EEE6;background-image:repeating-linear-gradient(180deg,transparent 0 31px,rgba(47,90,140,.17) 31px 32px)}
-.paper::before{content:"";position:absolute;top:0;bottom:0;left:max(8px,calc(50% - 620px));width:1.5px;background:rgba(200,55,63,.7)}
-.paper h2{font-family:"Montserrat",var(--wide);font-variation-settings:normal;font-weight:800;text-transform:uppercase;font-size:clamp(36px,4vw,54px);line-height:1.05;letter-spacing:-.01em;text-wrap:wrap}
-.paper .faq details{border-color:var(--ink)}
-.paper .faq p{color:var(--ink-2)}
+/* faq: big retro type, heavy rules */
+.faqband h2{font-family:var(--cond);font-weight:400;text-transform:uppercase;font-size:clamp(56px,6.4vw,92px);line-height:1.08;letter-spacing:.005em;color:var(--black);text-wrap:wrap}
+.faqband .faq details,.faqband .faq details:first-child{border-top:0;border-bottom:2px solid var(--black)}
+.faqband .faq summary{font-size:17px;font-weight:700;color:var(--black);padding:18px 0}
+.faqband .faq summary::after{border-radius:5px;background:var(--yellow);color:var(--black)}
+.faqband .faq details p{color:var(--ink-2);padding-bottom:20px}
 
 /* scroll progress */
 #sp{position:fixed;left:0;right:0;top:0;height:4px;background:var(--yellow);box-shadow:0 1px 0 var(--ink);transform:scaleX(var(--sp,0));transform-origin:left;z-index:70;pointer-events:none}
@@ -750,9 +750,9 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
   </div>
 </section>
 
-<section class="band paper" id="faq" aria-labelledby="faq-h">
+<section class="band faqband" id="faq" aria-labelledby="faq-h">
   <div class="wrap faq-grid">
-    <h2 id="faq-h">You asked, Dani <span class="hl v2">answered</span></h2>
+    <h2 id="faq-h">You asked,<br><span class="hl v2">Dani</span><br>answered</h2>
     <div class="faq">
       <details><summary>Is this for everyone?</summary><p>No, and that's on purpose. It's for the woman who is ready to do the work. If you're not sure yet, start with the free workshop and see how it feels.</p></details>
       <details><summary>Is this only about body confidence?</summary><p>No. Body is one part. We work on confidence at work, in relationships, with money, travelling and living on your own terms.</p></details>
