@@ -314,6 +314,7 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
 .m-foot a{font-weight:600;text-underline-offset:4px;color:var(--ink)}
 
 /* masking tape, used in a few places */
+.intro{overflow-x:clip}
 .vsl-frame{position:relative;max-width:520px;width:100%}
 .vsl-frame::before,.vsl-frame::after{content:"";position:absolute;top:-12px;width:96px;height:28px;background:var(--tape);z-index:2;pointer-events:none}
 .vsl-frame::before{left:-22px;transform:rotate(-24deg)}
@@ -363,7 +364,7 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
 .title{background:var(--yellow);overflow:hidden}
 .title .wrap{display:grid;grid-template-columns:1.25fr .75fr;align-items:end;gap:20px}
 .stack{padding-block:clamp(40px,6vw,72px);display:grid;justify-items:start}
-.cond{font-family:var(--cond);text-transform:uppercase;letter-spacing:.005em;line-height:.92;font-size:clamp(60px,9vw,128px)}
+.cond{font-family:var(--cond);text-transform:uppercase;letter-spacing:.005em;line-height:.92;font-size:clamp(52px,9vw,128px)}
 .stack .w{background:#fff;color:var(--black);padding:.06em .14em 0;rotate:-1.5deg}
 .stack .k{background:var(--black);color:var(--yellow);padding:.06em .2em 0;margin-left:clamp(40px,8vw,110px);rotate:1deg}
 .coach-h{display:grid;justify-items:start;font:inherit;margin:0;text-wrap:wrap;color:inherit}
@@ -374,6 +375,7 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
 .coach-cta{width:100%;display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
 .coach-cta .btn.line{border-color:var(--ink)}
 .coach-cta .btn.line:hover{background:#fff}
+.coach-line{font-weight:600}
 .title :focus-visible{outline-color:var(--ink)}
 .title .cut img{max-height:600px;width:auto;margin-left:auto;filter:drop-shadow(5px 0 0 #fff) drop-shadow(-5px 0 0 #fff) drop-shadow(0 -5px 0 #fff)}
 
@@ -441,6 +443,14 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
 }
 @media (max-width:760px){
   .top .logo img{width:118px}
+  .dots button{position:relative}
+  .dots button::after{content:"";position:absolute;inset:-14px -6px}
+  .f-col a{padding:8px 0}
+  .f-bottom a{display:inline-block;padding:8px 0}
+  .socials a{width:44px;height:44px;margin-left:-10px}
+  .socials{gap:6px}
+  .nf-alt,.m-foot a,.lede a{display:inline-block;padding-block:8px}
+  .top .logo{display:block;padding-block:6px}
   .quiz-band h2,.quiz-band .lede,.searchbar,.types li,.offer,.row-head,.fit-body,.coach-copy>*,.faq details,.pb-txt>*{--d:20px}
   .stack .w{translate:calc((1 - var(--r,1))*-40px) 0}
   .stack .k{translate:calc((1 - var(--r,1))*40px) 0}
@@ -493,6 +503,9 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
   .dock{display:block;position:fixed;left:0;right:0;bottom:0;z-index:40;padding:10px max(16px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));background:linear-gradient(0deg,var(--white) 60%,rgba(255,255,255,0));transform:translateY(110%);transition:transform .3s}
   .dock.show{transform:none}
   .dock .btn{width:100%;min-height:52px}
+}
+@media (max-width:350px){
+  .notfor h2{font-size:62px}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
@@ -590,6 +603,7 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
       <div class="coach-copy">
         <p>I spent years living by everyone else's expectations. Choosing myself changed everything, and now helping you do the same is my life's work.</p>
         <p>I've coached women 1:1, I run workshops and I host The Confidence Hour podcast. My approach is simple: honest conversations, practical tools and a sisterhood that has your back.</p>
+        <p class="coach-line">My coaching isn't for everyone. It's for the woman who's done waiting and ready to do the work. If that's you, you're in the right place.</p>
         <ul class="facts"><li>Host, The Confidence Hour</li><li>Workshop host</li><li>Speaker</li></ul>
         <div class="coach-cta">
           <a class="btn dark" href="#free" data-link="free">Join my free workshop</a>
@@ -888,10 +902,10 @@ const METHODS = {
   go(0); restart();
 })();
 
-// countdown to the next free workshop (placeholder date, confirm with Dani)
-const NEXT_WORKSHOP = "2026-11-12T19:00:00-05:00";
+// countdown to the next free workshop
+const NEXT_WORKSHOP = "2026-12-05T15:00:00Z";
 (function(){ const box=document.getElementById("next"), when=new Date(NEXT_WORKSHOP); if(isNaN(when)){box.hidden=true;return;}
-  document.getElementById("next-date").textContent = when.toLocaleString(undefined,{weekday:"short",day:"numeric",month:"short",hour:"numeric",minute:"2-digit",hour12:true});
+  document.getElementById("next-date").textContent = "Sat 5 Dec, 3pm GMT";
   const el=id=>document.getElementById(id);
   (function tick(){ let s=Math.floor((when-Date.now())/1000);
     if(s<=0){ box.querySelector(".next-when").textContent="This month's workshop has started. Join to catch the replay."; el("clock").hidden=true; return; }
