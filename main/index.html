@@ -9,7 +9,7 @@
 <meta name="robots" content="noindex, nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wdth,wght@100..125,400..700&family=Permanent+Marker&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@800&family=Archivo:wdth,wght@100..125,400..700&family=Permanent+Marker&display=swap">
 <style>
 :root{padding-top:env(safe-area-inset-top,0px)}
 body{margin:0}
@@ -18,7 +18,7 @@ body{margin:0}
 :root{
   --yellow:#FFDE17; --yellow-soft:#FFE58A; --ink:#212322; --ink-2:#404241; --muted:#5E605F;
   --stone:#F4F4EE; --stone-2:#E8E8DA; --white:#FFFFFF; --night:#0E0F0E; --sand:#DCD2C8;
-  --wide:"Archivo", "Helvetica Neue", Arial, sans-serif; --cond:"Anton","Impact","Arial Narrow",sans-serif; --hand:"Permanent Marker","Comic Sans MS",cursive; --black:#121212;
+  --wide:"Archivo", "Helvetica Neue", Arial, sans-serif; --cond:"Anton","Impact","Arial Narrow",sans-serif; --hand:"Permanent Marker","Comic Sans MS",cursive; --black:#121212; --tape:rgba(226,212,176,.9);
   --r-btn:12px; --r-card:14px; --max:1180px;
   color-scheme:light;
 }
@@ -229,6 +229,76 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
 .f-bottom nav{display:flex;gap:18px}
 .f-bottom a{text-underline-offset:3px}
 
+/* fit: dark notebook band */
+.fitband{background:#191917;color:#fff}
+.fitband h2{font-family:"Montserrat",var(--wide);font-variation-settings:normal;font-weight:800;text-transform:uppercase;color:#fff;font-size:clamp(38px,4.3vw,58px);line-height:1.04;letter-spacing:-.01em;text-wrap:wrap}
+.fitband .hl{color:var(--ink)}
+.fitband .lede{color:#CFCFC8}
+.fitband .fdots i{background:#55554F}
+.fitband .fdots i.on{background:var(--yellow)}
+.fitband .fit-body{background:none;padding:0;border-radius:0}
+.fitband .q-label{font-family:var(--hand);font-variation-settings:normal;font-weight:400;font-size:clamp(23px,2.2vw,28px);color:var(--yellow);line-height:1.2}
+.fitband .q-opt{background:transparent;border:1.5px solid rgba(255,255,255,.55);color:#fff;border-radius:6px;min-height:56px}
+.fitband .q-opt:hover{border-color:var(--yellow);color:var(--yellow)}
+.fitband .q-opt.picked{background:var(--yellow);border-color:var(--yellow);color:var(--ink)}
+.fitband .q-back,.fitband .tlink{color:#fff}
+.fitband .q-result h3{color:#fff}
+.fitband .q-result p{color:#CFCFC8}
+.fitband .q-result .price{color:#fff}
+.fitband .q-result .tier{color:var(--ink)}
+.fitband .btn{border-color:var(--yellow)}
+.fitband :focus-visible{outline-color:var(--yellow)}
+
+/* faq: lined notebook paper */
+.paper{position:relative;background-color:#F1EEE6;background-image:repeating-linear-gradient(180deg,transparent 0 31px,rgba(47,90,140,.17) 31px 32px)}
+.paper::before{content:"";position:absolute;top:0;bottom:0;left:max(8px,calc(50% - 620px));width:1.5px;background:rgba(200,55,63,.7)}
+.paper h2{font-family:"Montserrat",var(--wide);font-variation-settings:normal;font-weight:800;text-transform:uppercase;font-size:clamp(36px,4vw,54px);line-height:1.05;letter-spacing:-.01em;text-wrap:wrap}
+.paper .faq details{border-color:var(--ink)}
+.paper .faq p{color:var(--ink-2)}
+
+/* scroll progress */
+#sp{position:fixed;left:0;right:0;top:0;height:4px;background:var(--yellow);box-shadow:0 1px 0 var(--ink);transform:scaleX(var(--sp,0));transform-origin:left;z-index:70;pointer-events:none}
+
+/* everything below moves with the scroll; --r runs 0 to 1 and defaults to 1 without JS */
+.hero-photo img{transform:scale(calc(1 + var(--h,0)*.14)) translateY(calc(var(--h,0)*-3%))}
+.hq{transform:translateY(calc(var(--h,0)*-70px));opacity:calc(1 - var(--h,0)*.6)}
+.intro-copy>*{transform:translateY(calc((1 - var(--r,1))*34px));opacity:var(--r,1)}
+.vsl-frame{transform:rotate(calc((1 - var(--r,1))*-5deg)) scale(calc(.9 + var(--r,1)*.1))}
+.stack .w{translate:calc((1 - var(--r,1))*-90px) 0}
+.stack .k{translate:calc((1 - var(--r,1))*90px) 0}
+.stack .hand{opacity:var(--r,1)}
+.title .cut img{transform:translateY(calc((1 - var(--r,1))*110px))}
+.quiz-band h2,.quiz-band .lede,.searchbar,.types li,.offer,.row-head,.fit-body,.about-txt>*,.faq details,.pb-txt>*{transform:translateY(calc((1 - var(--r,1))*var(--d,36px)));opacity:var(--r,1)}
+.giant .box{transform:translateY(calc((1 - var(--r,1))*60px)) rotate(calc((1 - var(--r,1))*9deg))}
+.pcard{transform:translateY(calc((1 - var(--r,1))*60px)) rotate(calc((1 - var(--r,1))*var(--tilt,-4deg)));opacity:var(--r,1)}
+.pcard:nth-child(2){--tilt:3deg}
+.pcard:nth-child(3){--tilt:-2.5deg}
+.nf-col.no li{transform:translateX(calc((1 - var(--r,1))*-46px));opacity:var(--r,1)}
+.nf-col.yes li{transform:translateX(calc((1 - var(--r,1))*46px));opacity:var(--r,1)}
+.nf-big,.nf-sub,.nf-end,.nf-cta{transform:translateY(calc((1 - var(--r,1))*30px));opacity:var(--r,1)}
+.notfor h2 span{display:inline-block}
+.car{transform:scale(calc(.92 + var(--r,1)*.08))}
+.final{clip-path:inset(0 calc((1 - var(--r,1))*7%) round calc((1 - var(--r,1))*32px))}
+.final h2{transform:scale(calc(.86 + var(--r,1)*.14))}
+.phone{transform:translateY(calc((1 - var(--r,1))*150px))}
+.phone:hover{transform:translateY(calc((1 - var(--r,1))*150px));translate:0 -8px}
+.phone{transition:translate .25s}
+
+/* masking tape, used in a few places */
+.vsl-frame{position:relative;max-width:520px;width:100%}
+.vsl-frame::before,.vsl-frame::after{content:"";position:absolute;top:-12px;width:96px;height:28px;background:var(--tape);z-index:2;pointer-events:none}
+.vsl-frame::before{left:-22px;transform:rotate(-24deg)}
+.vsl-frame::after{right:-22px;transform:rotate(24deg)}
+.pcard{position:relative}
+.pcard::before,.car::before,.giant .box::before{content:"";position:absolute;top:-13px;left:calc(50% - 46px);width:92px;height:26px;background:var(--tape);z-index:2;pointer-events:none}
+.pcard::before{transform:rotate(-3deg)}
+.pcard:nth-child(2)::before{transform:rotate(2.500deg);left:calc(38% - 46px)}
+.pcard:nth-child(3)::before{transform:rotate(-1.500deg);left:calc(60% - 46px)}
+.proof{padding-top:14px}
+.car::before{transform:rotate(-2deg)}
+.giant .box{position:relative}
+.giant .box::before{transform:rotate(-5deg)}
+
 /* real highlighter: ends stay rough, only the middle stretches */
 .hl{position:relative;display:inline-block;isolation:isolate;padding:0 .1em;white-space:nowrap;--p:1}
 .hl::before,.hl-static::before{content:"";position:absolute;z-index:-1;inset:.03em -.08em -.01em;border-style:solid;border-width:0 .42em;border-image:url(img/hl-1.webp) 0 90 fill / 0 .42em stretch}
@@ -330,6 +400,11 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
 }
 @media (max-width:760px){
   .top .logo img{width:118px}
+  .quiz-band h2,.quiz-band .lede,.searchbar,.types li,.offer,.row-head,.fit-body,.about-txt>*,.faq details,.pb-txt>*{--d:20px}
+  .stack .w{translate:calc((1 - var(--r,1))*-40px) 0}
+  .stack .k{translate:calc((1 - var(--r,1))*40px) 0}
+  .nf-col.no li{transform:translateX(calc((1 - var(--r,1))*-22px))}
+  .nf-col.yes li{transform:translateX(calc((1 - var(--r,1))*22px))}
   .title .wrap,.nf-grid,.pb-grid{grid-template-columns:1fr}
   .title .cut img{max-height:320px;margin:0 auto}
   .stack{padding-bottom:6px}
@@ -352,7 +427,9 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
   .hq{width:100%;padding-top:0}
   .intro .wrap,.fit,.faq-grid{grid-template-columns:1fr}
   .intro-copy{margin:0;max-width:none}
-  .cover{margin:0 auto}
+  .vsl-frame{margin:0 auto}
+  .vsl-frame::before{left:-10px}
+  .vsl-frame::after{right:-10px}
   .swipe,.proof,.offers{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin-inline:calc(-1 * max(16px,env(safe-area-inset-left,0px)));padding-inline:max(16px,env(safe-area-inset-left,0px));scroll-padding-inline:max(16px,env(safe-area-inset-left,0px));scrollbar-width:none;padding-bottom:4px}
   .swipe::-webkit-scrollbar,.proof::-webkit-scrollbar,.offers::-webkit-scrollbar{display:none}
   .swipe>*{flex:0 0 62%;scroll-snap-align:start}
@@ -369,11 +446,13 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
   #grow{transform:none}
+  .phone:hover{translate:none}
   html{scroll-behavior:auto}
 }
 </style>
 </head>
 <body>
+<div id="sp" aria-hidden="true"></div>
 
 <div class="ticker" aria-label="Announcement">
   <div class="ticker-track">
@@ -435,12 +514,12 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
         <p class="quiznote">what's your Confidence Type?</p>
       </div>
     </div>
-    <button class="cover" id="vsl" type="button" aria-label="Play Dani's video">
+    <div class="vsl-frame"><button class="cover" id="vsl" type="button" aria-label="Play Dani's video">
       <video src="img/dani-loop.mp4" poster="img/dani-loop-poster.jpg" muted autoplay loop playsinline aria-hidden="true"></video>
       <span class="play" aria-hidden="true"></span>
       <span class="cover-tag"><small>A message from</small><strong>Dani<br>Carbonari</strong><em>4 min, tap for sound</em></span>
       <span class="soon" id="soon" hidden>Dani's video lands here soon</span>
-    </button>
+    </button></div>
   </div>
 </section>
 
@@ -562,10 +641,10 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
   </div>
 </section>
 
-<section class="band" id="fit" style="padding-top:0" aria-labelledby="fit-h">
+<section class="band fitband" id="fit" aria-labelledby="fit-h">
   <div class="wrap fit">
     <div>
-      <h2 id="fit-h">Not sure which level? Find your fit.</h2>
+      <h2 id="fit-h">Not sure which level? Find your <span class="hl">fit.</span></h2>
       <p class="lede">Three quick questions. Dani's pick for you at the end.</p>
       <div class="fdots" id="q-dots" aria-hidden="true"><i></i><i></i><i></i></div>
     </div>
@@ -601,9 +680,9 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
   </div>
 </section>
 
-<section class="band" id="faq" aria-labelledby="faq-h">
+<section class="band paper" id="faq" aria-labelledby="faq-h">
   <div class="wrap faq-grid">
-    <h2 id="faq-h">You asked, Dani answered</h2>
+    <h2 id="faq-h">You asked, Dani <span class="hl v2">answered</span></h2>
     <div class="faq">
       <details><summary>Is this for everyone?</summary><p>No, and that's on purpose. It's for the woman who is ready to do the work. If you're not sure yet, start with the free workshop and see how it feels.</p></details>
       <details><summary>Is this only about body confidence?</summary><p>No. Body is one part. We work on confidence at work, in relationships, with money, travelling and living on your own terms.</p></details>
@@ -673,18 +752,30 @@ const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 // marquee: duplicate so it loops; the copy is hidden from screen readers and tabbing
 (function(){ const m=document.getElementById("marq"); [...m.children].forEach(a=>{ const c=a.cloneNode(true); c.setAttribute("aria-hidden","true"); c.tabIndex=-1; m.appendChild(c); }); })();
 
-// scroll: highlighter swipes across as each word rises; TAKE UP SPACE grows until it fills its space
+// scroll: everything is scrubbed, so the page moves with you in both directions
 (function(){ if(reduce) return;
-  const hls=[...document.querySelectorAll(".hl")], grow=document.getElementById("grow"), clamp=v=>Math.min(1,Math.max(0,v)); let queued=false;
-  function run(){ queued=false; const vh=innerHeight;
+  const clamp=v=>Math.min(1,Math.max(0,v)), ease=t=>1-Math.pow(1-t,3), root=document.documentElement;
+  // split the big "not for everybody" line so it lights up word by word
+  const nfh=document.getElementById("ready-h"); nfh.setAttribute("aria-label",nfh.textContent);
+  nfh.innerHTML=nfh.textContent.split(" ").map(w=>`<span aria-hidden="true">${w}</span>`).join(" ");
+  const words=[...nfh.children];
+  const hls=[...document.querySelectorAll(".hl")], grow=document.getElementById("grow"), hero=document.querySelector(".hero"), giant=grow.parentElement;
+  const LIST=".intro-copy>*,.vsl-frame,.stack .w,.stack .k,.stack .hand,.title .cut img,.quiz-band h2,.quiz-band .lede,.searchbar,.types li,.giant .box,.pcard,.nf-big,.nf-sub,.nf-col li,.nf-end,.nf-cta,.row-head,.offer,.fit-body,.car,.about-txt>*,.faq details,.final,.final h2,.pb-txt>*,.phone";
+  const items=[...document.querySelectorAll(LIST)].map(el=>{ const sibs=[...el.parentElement.children]; const row=el.matches(".types li,.pcard,.offer"); return {el,d:row?sibs.indexOf(el)*.14:0}; });
+  const marq=document.getElementById("marq").getAnimations()[0]; let last=scrollY, slow, queued=false;
+  function run(){ queued=false; const vh=innerHeight, y=scrollY, max=root.scrollHeight-vh;
+    root.style.setProperty("--sp",max>0?(y/max).toFixed(4):0);
+    root.style.setProperty("--h",clamp(y/(hero.offsetHeight||1)).toFixed(3));
+    items.forEach(({el,d})=>{ const t=el.getBoundingClientRect().top; el.style.setProperty("--r",ease(clamp((vh*.98-t)/(vh*.36)-d)).toFixed(3)); });
     hls.forEach(h=>{ const t=h.getBoundingClientRect().top; h.style.setProperty("--p",clamp((vh*.9-t)/(vh*.32)).toFixed(3)); });
-    const r=grow.parentElement.getBoundingClientRect(); grow.style.setProperty("--s",(.78+.22*clamp((vh-r.top)/(vh*.75))).toFixed(3)); }
+    const g=giant.getBoundingClientRect().top; grow.style.setProperty("--s",(.78+.22*clamp((vh-g)/(vh*.75))).toFixed(3));
+    const n=nfh.getBoundingClientRect().top, np=clamp((vh*.86-n)/(vh*.46))*words.length;
+    words.forEach((w,i)=>{ const v=clamp(np-i); w.style.opacity=(.1+.9*v).toFixed(2); w.style.transform=`translateY(${((1-v)*26).toFixed(1)}px)`; });
+    if(marq){ marq.playbackRate=1+Math.min(Math.abs(y-last)*.16,6); clearTimeout(slow); slow=setTimeout(()=>{ marq.playbackRate=1; },140); }
+    last=y; }
   const on=()=>{ if(!queued){ queued=true; requestAnimationFrame(run); } };
-  addEventListener("scroll",on,{passive:true}); addEventListener("resize",on); run();
+  addEventListener("scroll",on,{passive:true}); addEventListener("resize",on); addEventListener("load",on); run();
 })();
-
-// ticker: duplicate so it loops seamlessly
-(function(){ const t=document.querySelector(".ticker-track"); t.innerHTML += t.innerHTML; })();
 
 // mobile menu
 (function(){ const b=document.getElementById("menu-btn"), top=document.getElementById("top");
