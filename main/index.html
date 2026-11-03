@@ -145,7 +145,7 @@ p{margin:0}
 
 /* offers */
 .offers{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(6,auto);column-gap:16px;row-gap:0;align-items:stretch}
-.offer{background:var(--white);border-radius:var(--r-card);padding:24px;display:grid;grid-row:span 6;grid-template-rows:subgrid;row-gap:16px;align-content:start;border:1.5px solid transparent}
+.offer{background:var(--white);border-radius:var(--r-card);padding:24px;display:grid;grid-row:span 6;grid-template-rows:subgrid;row-gap:16px;align-content:start;border:1.5px solid var(--ink)}
 .offer>.tier{grid-row:1;align-self:start}
 .offer>h3{grid-row:2}
 .offer>.price{grid-row:3}
@@ -277,12 +277,13 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
 .phone{transition:translate .25s}
 
 /* method picker inside the offers */
-.mpick{font-family:var(--hand);font-size:16px;line-height:1.2}
+.mpick{font-size:14px;font-weight:600;line-height:1.2}
 .mrows{display:grid;gap:6px}
 .mrow{display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;min-height:44px;padding:8px 12px;border:1.5px solid transparent;border-radius:10px;background:var(--stone);color:var(--ink);font:inherit;font-size:15px;font-weight:600;font-variation-settings:"wdth" 106;text-align:left;cursor:pointer;transition:background .15s,transform .15s}
 .mrow:hover{background:var(--stone-2)}
 .mrow[aria-pressed="true"]{background:var(--yellow);border-color:var(--ink)}
-.mrow i{flex:none;font-style:normal;font-family:var(--hand);font-size:12px;font-weight:400;line-height:1;white-space:nowrap}
+.mrow i{flex:none;font-style:normal;font-size:12px;font-weight:500;font-variation-settings:"wdth" 100;line-height:1;white-space:nowrap;color:var(--ink-2)}
+.mrow[aria-pressed="true"] i{color:var(--ink)}
 
 /* find your method */
 .methods{overflow:hidden}
@@ -296,7 +297,7 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
 .mcard::before{content:"";position:absolute;top:-13px;left:calc(50% - 46px);width:92px;height:26px;background:var(--tape);transform:rotate(-3deg)}
 .mcard:nth-child(2)::before{transform:rotate(3deg)}
 .mcard.open{background:var(--black);background-image:none;color:#fff}
-.mstat{font-family:var(--hand);font-size:17px;line-height:1.2;color:var(--ink-2);rotate:-2deg}
+.mstat{font-size:13px;font-weight:600;line-height:1.2;color:var(--ink-2)}
 .mcard.open .mstat{color:var(--yellow)}
 .mcard h3{font-family:var(--cond);font-weight:400;text-transform:uppercase;letter-spacing:.005em;font-size:clamp(44px,4.6vw,66px);line-height:.98;text-wrap:wrap;margin-bottom:6px}
 .mcard h3 small{display:block;font-family:var(--wide);font-variation-settings:"wdth" 112;font-weight:600;font-size:13px;letter-spacing:.06em;line-height:1.5}
@@ -478,7 +479,7 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
   .swipe>*{flex:0 0 62%;scroll-snap-align:start}
   .proof>*{flex:0 0 84%;scroll-snap-align:start}
   .offers>*{flex:0 0 86%;scroll-snap-align:center}
-  .offer{display:flex;flex-direction:column;grid-template-rows:none;gap:12px;padding:20px;border:1.5px solid var(--stone-2);min-height:0}
+  .offer{display:flex;flex-direction:column;grid-template-rows:none;gap:12px;padding:20px;border:1.5px solid var(--ink);min-height:0}
   .offer.featured{border-color:var(--ink);box-shadow:4px 4px 0 var(--yellow)}
   .offer>.act{margin-top:auto;align-self:stretch}
   .offers{padding-top:4px;padding-bottom:10px;align-items:flex-start}
