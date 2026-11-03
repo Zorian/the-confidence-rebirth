@@ -347,8 +347,8 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
 .b5-word span.in{animation:b5w .32s ease-out}
 @keyframes b5w{from{opacity:0;transform:translateY(8px)}}
 .b5-go{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:14px;font-weight:600;border-top:1px solid var(--stone-2);padding-top:12px}
-.b5-go svg{flex:none;animation:nudge 1.6s ease-in-out infinite}
-@keyframes nudge{50%{transform:translateX(5px)}}
+.b5-start{flex:none;display:inline-flex;align-items:center;padding:8px 18px;border-radius:999px;background:var(--yellow);border:1.5px solid var(--ink);font-size:13px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;animation:b5pop 1.8s ease-in-out infinite}
+@keyframes b5pop{50%{transform:scale(1.08)}}
 
 /* find dani on */
 .seen{background:var(--black);color:#fff;padding-block:28px 34px;overflow:hidden;text-align:center}
@@ -583,7 +583,7 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
       </div>
       <div class="cta-row">
         <a class="btn" href="#free" data-link="free">Join the free workshop</a>
-        <a class="b5" href="quiz.html"><span class="b5-q">Are you <span class="b5-word"><span id="b5-w">a People Pleaser</span></span>?</span><span class="b5-go">Take the 2 minute quiz to find out <svg viewBox="0 0 34 16" width="30" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8c9-1.500 18-1.200 29 0M24 2c2.500 2.500 4.500 4.500 7 6-2.800 1.500-5 3.500-7 6"/></svg></span></a>
+        <a class="b5" href="quiz.html"><span class="b5-q">Are you <span class="b5-word"><span id="b5-w">a People Pleaser</span></span>?</span><span class="b5-go"><span>Take the 2 minute quiz to find out</span><span class="b5-start">Start</span></span></a>
       </div>
     </div>
     <div class="vsl-frame"><button class="cover" id="vsl" type="button" aria-label="Play Dani's video">
