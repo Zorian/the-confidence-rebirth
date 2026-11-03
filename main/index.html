@@ -275,7 +275,7 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
 .pcard:nth-child(3){--tilt:-2.5deg}
 .nf-col.no li{transform:translateX(calc((1 - var(--r,1))*-46px));opacity:var(--r,1)}
 .nf-col.yes li{transform:translateX(calc((1 - var(--r,1))*46px));opacity:var(--r,1)}
-.nf-big,.nf-sub,.nf-end,.nf-cta{transform:translateY(calc((1 - var(--r,1))*30px));opacity:var(--r,1)}
+.m-foot,.nf-big,.nf-sub,.nf-end,.nf-cta{transform:translateY(calc((1 - var(--r,1))*30px));opacity:var(--r,1)}
 .notfor h2 span{display:inline-block}
 .car{transform:scale(calc(.92 + var(--r,1)*.08))}
 .final{clip-path:inset(0 calc((1 - var(--r,1))*7%) round calc((1 - var(--r,1))*32px))}
@@ -283,6 +283,34 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
 .phone{transform:translateY(calc((1 - var(--r,1))*150px))}
 .phone:hover{transform:translateY(calc((1 - var(--r,1))*150px));translate:0 -8px}
 .phone{transition:translate .25s}
+
+/* find your method */
+.methods{overflow:hidden}
+.m-note{font-family:var(--hand);font-size:clamp(17px,1.8vw,22px);rotate:-2deg;display:inline-block;margin-bottom:6px}
+.methods h2{font-family:var(--cond);font-weight:400;text-transform:uppercase;letter-spacing:.005em;font-size:clamp(68px,10vw,150px);line-height:1}
+.methods .lede{margin-top:14px}
+.mgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,24px);margin-top:clamp(36px,4vw,52px)}
+.mcard{position:relative;display:flex;flex-direction:column;gap:12px;align-items:flex-start;padding:30px 24px 24px;border-radius:6px;background-color:#F1EEE6;background-image:repeating-linear-gradient(180deg,transparent 0 27px,rgba(47,90,140,.07) 27px 28px);transform:translateY(calc((1 - var(--r,1))*90px)) rotate(calc((1 - var(--r,1))*var(--tilt,-5deg)));opacity:var(--r,1)}
+.mcard:nth-child(2){--tilt:4deg}
+.mcard:nth-child(3){--tilt:-3deg}
+.mcard::before{content:"";position:absolute;top:-13px;left:calc(50% - 46px);width:92px;height:26px;background:var(--tape);transform:rotate(-3deg)}
+.mcard:nth-child(2)::before{transform:rotate(3deg)}
+.mcard.open{background:var(--black);background-image:none;color:#fff}
+.mstat{font-family:var(--hand);font-size:17px;line-height:1.2;color:var(--ink-2);rotate:-2deg}
+.mcard.open .mstat{color:var(--yellow)}
+.mcard h3{font-family:var(--cond);font-weight:400;text-transform:uppercase;letter-spacing:.005em;font-size:clamp(44px,4.6vw,66px);line-height:.98;text-wrap:wrap;margin-bottom:6px}
+.mcard h3 small{display:block;font-family:var(--wide);font-variation-settings:"wdth" 112;font-weight:600;font-size:13px;letter-spacing:.06em;line-height:1.5}
+.mcard.open h3{color:var(--yellow)}
+.mcard.open h3 small{color:#fff}
+.mcard p{font-size:16px;line-height:1.4}
+.mcard p b{display:block;font-size:13px;font-weight:600;color:var(--muted)}
+.mcard.open p b{color:#BDBDB6}
+.mcard .btn{margin-top:auto}
+.mcard p:last-of-type{margin-bottom:10px}
+.mcard.open .btn{border-color:var(--yellow)}
+.mcard.open :focus-visible{outline-color:var(--yellow)}
+.m-foot{margin-top:24px;font-size:16px;color:var(--ink-2)}
+.m-foot a{font-weight:600;text-underline-offset:4px;color:var(--ink)}
 
 /* masking tape, used in a few places */
 .vsl-frame{position:relative;max-width:520px;width:100%}
@@ -405,7 +433,9 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
   .stack .k{translate:calc((1 - var(--r,1))*40px) 0}
   .nf-col.no li{transform:translateX(calc((1 - var(--r,1))*-22px))}
   .nf-col.yes li{transform:translateX(calc((1 - var(--r,1))*22px))}
-  .title .wrap,.nf-grid,.pb-grid{grid-template-columns:1fr}
+  .title .wrap,.nf-grid,.pb-grid,.mgrid{grid-template-columns:1fr}
+  .mcard{min-height:0}
+  .mgrid{gap:24px}
   .title .cut img{max-height:320px;margin:0 auto}
   .stack{padding-bottom:6px}
   .giant .note{left:auto;right:2%;top:42%}
@@ -503,7 +533,7 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
     <div class="intro-copy">
       <h1>Your <span class="hl">rebirth</span> starts now.</h1>
       <p class="sub">You don't need to become someone new. You need to come back to you.</p>
-      <p class="lede"><b>The Confidence Rebirth</b> is Dani Carbonari's coaching community for women ready to feel confident everywhere: at work, in love, with money, on the road and in their own skin. Start with a free live workshop every month.</p>
+      <p class="lede"><b>The Confidence Rebirth</b> is Dani Carbonari's confidence coaching for women ready to feel confident everywhere: at work, in love, with money, on the road and in their own skin. Three methods, one for where you are right now. Start with a free live workshop every month.</p>
       <div class="next" id="next" aria-live="polite">
         <span class="next-when"><span class="live"></span>Next live workshop: <b id="next-date"></b></span>
         <span class="clock" id="clock" role="timer">Starts in <b id="cd-d">0</b>d <b id="cd-h">0</b>h <b id="cd-m">0</b>m <b id="cd-s">00</b>s</span>
@@ -536,6 +566,38 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
       <span class="hand">Host, speaker, your biggest cheerleader</span>
     </div>
     <div class="cut"><img src="img/dani-stage-cut.webp" alt="Dani on stage" width="341" height="567" loading="lazy"></div>
+  </div>
+</section>
+
+<section class="band methods" id="methods" aria-labelledby="methods-h">
+  <div class="wrap">
+    <p class="m-note">one coach, three ways in</p>
+    <h2 id="methods-h">Find your <span class="hl v3">method</span></h2>
+    <p class="lede">Confidence coaching for women. Get your confidence back, starting from where you are right now.</p>
+    <div class="mgrid">
+      <article class="mcard open">
+        <span class="mstat">Open now</span>
+        <h3><small>The</small>Come Back<small>Method</small></h3>
+        <p><b>For women who</b> have lost themselves.</p>
+        <p><b>You get</b> to feel like yourself again.</p>
+        <a class="btn" href="#offers">See how to start</a>
+      </article>
+      <article class="mcard">
+        <span class="mstat">Coming soon</span>
+        <h3><small>The</small>Say No<small>Method</small></h3>
+        <p><b>For women who</b> put everyone else first.</p>
+        <p><b>You get</b> to say no without the guilt.</p>
+        <a class="btn line" href="#" data-link="waitlist">Join the waitlist</a>
+      </article>
+      <article class="mcard">
+        <span class="mstat">Coming soon</span>
+        <h3><small>The</small>Take Up Space<small>Method</small></h3>
+        <p><b>For women who</b> play small at work and in life.</p>
+        <p><b>You get</b> to speak up, get seen and ask for more.</p>
+        <a class="btn line" href="#" data-link="waitlist">Join the waitlist</a>
+      </article>
+    </div>
+    <p class="m-foot">We fill one group, then open the next. Not sure which one is yours? <a href="#quiz">Take the 2 minute quiz</a>.</p>
   </div>
 </section>
 
@@ -619,23 +681,23 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
         <ul><li>One live confidence workshop with Dani every month</li><li>Replay for 7 days</li><li>Join the community and introduce yourself</li></ul>
         <div class="act"><a class="btn" href="#free" data-link="free">Join free</a><small>Takes 30 seconds.</small></div>
       </article>
-      <article class="offer featured" id="club">
-        <span class="tier">Most popular</span><h3>The Confidence Club</h3>
-        <div class="price">$33 a month<small>or $333 a year, 2 months free</small></div>
-        <ul><li>A live group coaching call with Dani every month</li><li>A new confidence challenge every month</li><li>Every replay and workbook</li><li>The members' chat: wins, questions, real support</li></ul>
-        <div class="act"><a class="btn" href="#" data-link="club">Join the Club</a><small>Cancel any time.</small></div>
+      <article class="offer" id="course">
+        <span class="tier">In your own time</span><h3>The Course</h3>
+        <div class="price">$888<small>One recorded course for your method</small></div>
+        <ul><li>Your full method, recorded by Dani</li><li>Go through the chapters in your own time</li><li>Buy online and start when you're ready</li></ul>
+        <div class="act"><a class="btn" href="#" data-link="course">Get the course</a><small>No application needed.</small></div>
       </article>
-      <article class="offer" id="circle">
-        <span class="tier">Small group, 20 women max</span><h3>The Rebirth Circle</h3>
+      <article class="offer featured" id="masterclass">
+        <span class="tier">Small group, 25 women max</span><h3>The 25 Woman Masterclass</h3>
         <div class="price">By application<small>Payment plans available</small></div>
-        <ul><li>8 weeks of coaching with Dani</li><li>A live group call every week</li><li>Private group chat and voice notes from Dani</li><li>A closing day together in person</li></ul>
-        <div class="act"><a class="btn line" href="#" data-link="circle">Apply for the Circle</a><small>A short form, then a call with our team.</small></div>
+        <ul><li>8 weeks of coaching with Dani</li><li>A live group call every week</li><li>Go through your method live, with questions, support and accountability</li><li>The course is included</li></ul>
+        <div class="act"><a class="btn" href="#" data-link="masterclass">Apply to join</a><small>A short form, then a call with our team.</small></div>
       </article>
-      <article class="offer" id="vip">
-        <span class="tier">1:1, limited places</span><h3>Big Sis VIP</h3>
+      <article class="offer" id="one">
+        <span class="tier">1:1, 10 women only</span><h3>1:1 with Dani</h3>
         <div class="price">By application<small>Payment plans available</small></div>
-        <ul><li>12 weeks with Dani, just you</li><li>A 1:1 call every two weeks</li><li>Direct voice note access</li><li>An in person VIP day: styling, photoshoot and a day out</li><li>A free place at every live event that year</li></ul>
-        <div class="act"><a class="btn line" href="#" data-link="vip">Apply for VIP</a><small>A few places each quarter.</small></div>
+        <ul><li>12 weeks with Dani, just you</li><li>A 1:1 call every week</li><li>Your method, fully personalised to you</li><li>A custom confidence plan if one method doesn't fit</li><li>The course is included</li></ul>
+        <div class="act"><a class="btn line" href="#" data-link="one">Apply for 1:1</a><small>A short form, then a call with our team.</small></div>
       </article>
     </div>
   </div>
@@ -687,11 +749,12 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
       <details><summary>Is this for everyone?</summary><p>No, and that's on purpose. It's for the woman who is ready to do the work. If you're not sure yet, start with the free workshop and see how it feels.</p></details>
       <details><summary>Is this only about body confidence?</summary><p>No. Body is one part. We work on confidence at work, in relationships, with money, travelling and living on your own terms.</p></details>
       <details><summary>Where does everything happen?</summary><p>In our private community app. Live calls, replays and the chat are all in one place, on your phone or laptop.</p></details>
-      <details><summary>What if I can't make the live calls?</summary><p>Every call is recorded. Free members get the replay for 7 days. Club members and above keep every replay.</p></details>
-      <details><summary>Which option is right for me?</summary><p>Start with the free workshop. If you want ongoing support, join the Club. If you want Dani in your corner every week, apply for the Circle or VIP.</p></details>
-      <details><summary>Can I cancel the Club?</summary><p>Yes, any time, in two taps. You keep access until the end of the month you paid for.</p></details>
-      <details><summary>What happens on the call?</summary><p>A relaxed 20 minute chat about where you are and where you want to be. If the Circle or VIP is right for you, we'll tell you. If it isn't, we'll point you to what is. No pressure.</p></details>
-      <details><summary>Are there payment plans?</summary><p>Yes. The Circle and VIP both have payment plans. We'll go through the options on your call.</p></details>
+      <details><summary>What if I can't make the live calls?</summary><p>Every call is recorded. Free members get the replay for 7 days. Masterclass and 1:1 women keep every replay.</p></details>
+      <details><summary>Which option is right for me?</summary><p>Start with the free workshop. If you want to go at your own pace, get the course. If you want Dani in your corner every week, apply for the masterclass or 1:1.</p></details>
+      <details><summary>How do I know which method is mine?</summary><p>Take the 2 minute quiz. It points you to the one that fits where you are right now.</p></details>
+      <details><summary>Why is only one method open?</summary><p>We fill one group, then open the next. If yours isn't open yet, join the waitlist and you'll hear first.</p></details>
+      <details><summary>What happens on the call?</summary><p>A relaxed 20 minute chat about where you are and where you want to be. If the masterclass or 1:1 is right for you, we'll tell you. If it isn't, we'll point you to what is. No pressure.</p></details>
+      <details><summary>Are there payment plans?</summary><p>Yes. The masterclass and 1:1 both have payment plans. We'll go through the options on your call.</p></details>
       <details><summary>How do I contact Dani?</summary><p>Send a DM to @theconfidencerebirth on Instagram. We reply within a day.</p></details>
     </div>
   </div>
@@ -726,8 +789,8 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
   <div class="wrap">
     <div class="f-top">
       <div><a href="#top"><img src="img/logo-cutout.png" alt="The Confidence Rebirth" loading="lazy" width="720" height="231"></a></div>
-      <div class="f-col"><h4>Coaching</h4><a href="#free">Free workshop</a><a href="#club">The Confidence Club</a><a href="#circle">The Rebirth Circle</a><a href="#vip">Big Sis VIP</a></div>
-      <div class="f-col"><h4>Explore</h4><a href="../quiz.html">Confidence quiz</a><a href="#fit">Find your fit</a><a href="#stories">Stories</a><a href="#about">About Dani</a><a href="#faq">FAQ</a></div>
+      <div class="f-col"><h4>Coaching</h4><a href="#free">Free workshop</a><a href="#course">The Course</a><a href="#masterclass">25 Woman Masterclass</a><a href="#one">1:1 with Dani</a></div>
+      <div class="f-col"><h4>Explore</h4><a href="../quiz.html">Confidence quiz</a><a href="#methods">Find your method</a><a href="#fit">Find your fit</a><a href="#stories">Stories</a><a href="#about">About Dani</a><a href="#faq">FAQ</a></div>
       <div class="f-col"><h4>Follow along</h4><a href="https://www.instagram.com/theconfidencerebirth/" target="_blank" rel="noopener">@theconfidencerebirth</a><a href="https://www.instagram.com/danidmc/" target="_blank" rel="noopener">@danidmc</a><a href="https://youtube.com/@theconfidencehour" target="_blank" rel="noopener">The Confidence Hour</a></div>
     </div>
     <div class="socials">
@@ -745,7 +808,7 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
 
 <script>
 // Swap these for the real Circle, Stripe and Tally links before launch.
-const LINKS = { free:"#free", club:"#club", circle:"#circle", vip:"#vip", privacy:"#", terms:"#", refunds:"#" };
+const LINKS = { free:"#free", course:"#course", masterclass:"#masterclass", one:"#one", waitlist:"https://ig.me/m/theconfidencerebirth", privacy:"#", terms:"#", refunds:"#" };
 document.querySelectorAll("[data-link]").forEach(a => { const u = LINKS[a.dataset.link]; if (u) a.href = u; if (/^https?:/.test(u||"")) { a.target="_blank"; a.rel="noopener"; } });
 const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -760,8 +823,8 @@ const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   nfh.innerHTML=nfh.textContent.split(" ").map(w=>`<span aria-hidden="true">${w}</span>`).join(" ");
   const words=[...nfh.children];
   const hls=[...document.querySelectorAll(".hl")], grow=document.getElementById("grow"), hero=document.querySelector(".hero"), giant=grow.parentElement;
-  const LIST=".intro-copy>*,.vsl-frame,.stack .w,.stack .k,.stack .hand,.title .cut img,.quiz-band h2,.quiz-band .lede,.searchbar,.types li,.giant .box,.pcard,.nf-big,.nf-sub,.nf-col li,.nf-end,.nf-cta,.row-head,.offer,.fit-body,.car,.about-txt>*,.faq details,.final,.final h2,.pb-txt>*,.phone";
-  const items=[...document.querySelectorAll(LIST)].map(el=>{ const sibs=[...el.parentElement.children]; const row=el.matches(".types li,.pcard,.offer"); return {el,d:row?sibs.indexOf(el)*.14:0}; });
+  const LIST=".intro-copy>*,.vsl-frame,.stack .w,.stack .k,.stack .hand,.title .cut img,.mcard,.m-foot,.quiz-band h2,.quiz-band .lede,.searchbar,.types li,.giant .box,.pcard,.nf-big,.nf-sub,.nf-col li,.nf-end,.nf-cta,.row-head,.offer,.fit-body,.car,.about-txt>*,.faq details,.final,.final h2,.pb-txt>*,.phone";
+  const items=[...document.querySelectorAll(LIST)].map(el=>{ const sibs=[...el.parentElement.children]; const row=el.matches(".types li,.pcard,.offer,.mcard"); return {el,d:row?sibs.indexOf(el)*.14:0}; });
   const marq=document.getElementById("marq").getAnimations()[0]; let last=scrollY, slow, queued=false;
   function run(){ queued=false; const vh=innerHeight, y=scrollY, max=root.scrollHeight-vh;
     root.style.setProperty("--sp",max>0?(y/max).toFixed(4):0);
@@ -818,14 +881,14 @@ const NEXT_WORKSHOP = "2026-11-12T19:00:00-05:00";
 
 // find your fit
 (function(){
-  const QS=[{q:"What do you want most right now?",a:["To see what this is about first","A community of women in my corner","Weekly coaching in a small group","Dani coaching me directly"]},
+  const QS=[{q:"What do you want most right now?",a:["To see what this is about first","A course I can do in my own time","Weekly coaching in a small group","Dani coaching me directly"]},
             {q:"How much time can you give this each week?",a:["Less than an hour","An hour or two","A few hours","Whatever it takes"]},
-            {q:"How ready are you to invest in yourself?",a:["Just exploring for now","A little each month","A one off investment","I'm all in"]}];
+            {q:"How ready are you to invest in yourself?",a:["Just exploring for now","Something small to start","A one off investment","I'm all in"]}];
   const R=[{id:"free",name:"The free monthly workshop",price:"$0",why:"Meet Dani live, feel the energy and decide your next step from there.",cta:"Join free"},
-           {id:"club",name:"The Confidence Club",price:"$33 a month",why:"Monthly coaching with Dani and a sisterhood that keeps you going between calls.",cta:"Join the Club"},
+           {id:"course",name:"The Course",price:"$888",why:"Your full method from Dani, recorded, so you can go through it in your own time.",cta:"Get the course"},
            null,
-           {id:"circle",name:"The Rebirth Circle",price:"By application",why:"Eight weeks of Dani every week, with a small group of women who hold you to it.",cta:"Apply for the Circle"},
-           {id:"vip",name:"Big Sis VIP",price:"By application",why:"Twelve weeks with Dani, just you. The most personal support Dani offers.",cta:"Apply for VIP"}];
+           {id:"masterclass",name:"The 25 Woman Masterclass",price:"By application",why:"Eight weeks of Dani every week, with a small group of women who hold you to it.",cta:"Apply for the masterclass"},
+           {id:"one",name:"1:1 with Dani",price:"By application",why:"Twelve weeks with Dani, just you. The most personal support Dani offers.",cta:"Apply for 1:1"}];
   const body=document.getElementById("q-body"), dots=[...document.querySelectorAll("#q-dots i")]; let ans=[];
   const esc=t=>t.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
   function render(){ body.classList.remove("step"); void body.offsetWidth; body.classList.add("step");
