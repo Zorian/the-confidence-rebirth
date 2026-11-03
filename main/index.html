@@ -143,16 +143,6 @@ p{margin:0}
 .pcard p{color:var(--ink-2);font-size:15px}
 .pcard cite{font-style:normal;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
 
-/* course (book analogue) */
-.course .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,96px);align-items:center}
-.book{justify-self:center;width:min(360px,80%);aspect-ratio:3/4.2;background:var(--ink);border-radius:4px 10px 10px 4px;position:relative;box-shadow:18px 22px 34px rgba(0,0,0,.28), inset 8px 0 0 rgba(255,255,255,.06);padding:26px 24px;display:flex;flex-direction:column;justify-content:space-between;color:var(--white);transform:rotate(-2deg)}
-.book small{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--yellow)}
-.book img{width:100%}
-.book p{font-size:13px;opacity:.8}
-.badge{position:absolute;right:-26px;top:38%;width:104px;height:104px;border-radius:50%;background:var(--yellow);color:var(--ink);display:grid;place-items:center;text-align:center;font-weight:700;font-size:15px;line-height:1.05;font-variation-settings:"wdth" 112;transform:rotate(8deg);box-shadow:0 6px 18px rgba(0,0,0,.2)}
-.course-copy{display:grid;gap:20px;justify-items:start;max-width:420px}
-.course-copy h2{font-size:clamp(34px,3.6vw,48px)}
-
 /* offers */
 .offers{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;align-items:stretch}
 .offer{background:var(--white);border-radius:var(--r-card);padding:24px;display:flex;flex-direction:column;gap:16px;border:1.5px solid transparent}
@@ -169,23 +159,6 @@ p{margin:0}
 .offer .act small{font-size:13px;color:var(--muted)}
 .offer .btn{width:100%;padding:0 12px;text-align:center}
 .soon-line{margin-top:24px;text-align:center;font-size:15px;color:var(--ink-2)}
-
-/* workshop card (newsletter analogue) */
-.signup{max-width:680px;margin:0 auto;border-radius:18px;overflow:hidden;background:var(--white)}
-.signup-photo{aspect-ratio:16/10;overflow:hidden}
-.signup-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
-.signup-body{background:linear-gradient(160deg,#FFF8C9 0%,var(--yellow-soft) 55%,#FFD54A 100%);padding:clamp(26px,4vw,40px);text-align:center;display:grid;gap:14px}
-.signup-body h2{font-size:clamp(26px,3vw,34px)}
-.signup-body .tag{font-weight:600;font-size:15px}
-.form{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px;text-align:left}
-.form label{display:grid;gap:4px;font-size:12px;font-weight:600;color:var(--ink-2)}
-.form .full{grid-column:1/-1}
-.form input[type=text],.form input[type=tel]{height:48px;border-radius:10px;border:1px solid transparent;background:var(--white);padding:0 14px;font:inherit;font-size:15px;color:var(--ink)}
-.form input:focus{outline:2px solid var(--ink);outline-offset:1px}
-.check{display:flex!important;gap:10px;align-items:flex-start;font-weight:400!important;font-size:13px!important}
-.check input{width:18px;height:18px;margin-top:1px;accent-color:var(--ink)}
-.form .btn{justify-self:center;grid-column:1/-1;margin-top:6px}
-.form-done{font-weight:600;font-size:17px;padding:18px;background:var(--white);border-radius:12px}
 
 /* about carousel */
 .about-band .wrap{max-width:900px}
@@ -377,7 +350,7 @@ footer{background:linear-gradient(120deg,#F3CE3A,#F7DD66);padding-block:48px 28p
   .hero .wrap{justify-content:center;margin-top:-28px;padding-bottom:36px}
   .hero-photo img{object-position:50% 8%}
   .hq{width:100%;padding-top:0}
-  .intro .wrap,.course .wrap,.fit,.faq-grid{grid-template-columns:1fr}
+  .intro .wrap,.fit,.faq-grid{grid-template-columns:1fr}
   .intro-copy{margin:0;max-width:none}
   .cover{margin:0 auto}
   .swipe,.proof,.offers{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin-inline:calc(-1 * max(16px,env(safe-area-inset-left,0px)));padding-inline:max(16px,env(safe-area-inset-left,0px));scroll-padding-inline:max(16px,env(safe-area-inset-left,0px));scrollbar-width:none;padding-bottom:4px}
@@ -387,10 +360,6 @@ footer{background:linear-gradient(120deg,#F3CE3A,#F7DD66);padding-block:48px 28p
   .offers>*{flex:0 0 84%;scroll-snap-align:start}
   .types{grid-template-columns:repeat(2,1fr)}
   .types li:last-child{grid-column:1/-1}
-  .book{width:70%}
-  .badge{right:-14px;width:88px;height:88px;font-size:13px}
-  .course-copy{max-width:none}
-  .form{grid-template-columns:1fr}
   .f-top{grid-template-columns:1fr 1fr}
   .f-top>div:first-child{grid-column:1/-1}
   .dock{display:block;position:fixed;left:0;right:0;bottom:0;z-index:40;padding:10px max(16px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));background:linear-gradient(0deg,var(--white) 60%,rgba(255,255,255,0));transform:translateY(110%);transition:transform .3s}
@@ -408,9 +377,9 @@ footer{background:linear-gradient(120deg,#F3CE3A,#F7DD66);padding-block:48px 28p
 
 <div class="ticker" aria-label="Announcement">
   <div class="ticker-track">
-    <a href="#workshop">Free monthly confidence workshop with Dani. Save your spot</a>
+    <a href="#free">Free monthly confidence workshop with Dani. Save your spot</a>
     <a href="../quiz.html">What's holding your confidence back? Take the 2 minute quiz</a>
-    <a href="#workshop">Free monthly confidence workshop with Dani. Save your spot</a>
+    <a href="#free">Free monthly confidence workshop with Dani. Save your spot</a>
     <a href="../quiz.html">What's holding your confidence back? Take the 2 minute quiz</a>
   </div>
 </div>
@@ -424,7 +393,7 @@ footer{background:linear-gradient(120deg,#F3CE3A,#F7DD66);padding-block:48px 28p
       <a href="#offers">Coaching</a>
       <a href="#stories">Stories</a>
       <a href="#faq">FAQ</a>
-      <a class="join" href="#workshop" data-link="free">Free workshop</a>
+      <a class="join" href="#free" data-link="free">Free workshop</a>
       <button class="menu-btn" id="menu-btn" type="button" aria-label="Open menu" aria-expanded="false"><span></span></button>
     </nav>
   </div>
@@ -461,7 +430,7 @@ footer{background:linear-gradient(120deg,#F3CE3A,#F7DD66);padding-block:48px 28p
         <span class="clock" id="clock" role="timer">Starts in <b id="cd-d">0</b>d <b id="cd-h">0</b>h <b id="cd-m">0</b>m <b id="cd-s">00</b>s</span>
       </div>
       <div class="cta-row">
-        <a class="btn" href="#workshop" data-link="free">Join the free workshop</a>
+        <a class="btn" href="#free" data-link="free">Join the free workshop</a>
         <a class="quizlink" href="../quiz.html"><span class="hl-static">Or take the 2 minute quiz</span><svg viewBox="0 0 34 16" width="30" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8c9-1.500 18-1.200 29 0M24 2c2.500 2.500 4.500 4.500 7 6-2.800 1.500-5 3.500-7 6"/></svg></a>
         <p class="quiznote">what's your Confidence Type?</p>
       </div>
@@ -477,7 +446,7 @@ footer{background:linear-gradient(120deg,#F3CE3A,#F7DD66);padding-block:48px 28p
 
 <section class="seen" aria-label="Where to find Dani">
   <p class="seen-t">Find Dani on</p>
-  <div class="marq" id="marq"><a class="s1" href="https://youtube.com/@theconfidencehour" target="_blank" rel="noopener">The Confidence Hour</a><a class="s2" href="https://www.instagram.com/danidmc/" target="_blank" rel="noopener">@danidmc</a><a class="s3" href="#workshop">Live workshops</a><a class="s4" href="https://www.instagram.com/theconfidencerebirth/" target="_blank" rel="noopener">IG</a><a class="s1" href="#about">On stage</a><a class="s2" href="https://www.instagram.com/theconfidencerebirth/" target="_blank" rel="noopener">@theconfidencerebirth</a><a class="s3" href="https://youtube.com/@theconfidencehour" target="_blank" rel="noopener">YouTube</a></div>
+  <div class="marq" id="marq"><a class="s1" href="https://youtube.com/@theconfidencehour" target="_blank" rel="noopener">The Confidence Hour</a><a class="s2" href="https://www.instagram.com/danidmc/" target="_blank" rel="noopener">@danidmc</a><a class="s3" href="#free">Live workshops</a><a class="s4" href="https://www.instagram.com/theconfidencerebirth/" target="_blank" rel="noopener">IG</a><a class="s1" href="#about">On stage</a><a class="s2" href="https://www.instagram.com/theconfidencerebirth/" target="_blank" rel="noopener">@theconfidencerebirth</a><a class="s3" href="https://youtube.com/@theconfidencehour" target="_blank" rel="noopener">YouTube</a></div>
 </section>
 
 <section class="title" aria-label="Dani's title">
@@ -552,7 +521,7 @@ footer{background:linear-gradient(120deg,#F3CE3A,#F7DD66);padding-block:48px 28p
     </div>
     <p class="nf-end">Still reading? That's usually the sign.</p>
     <div class="nf-cta">
-      <a class="btn" href="#workshop" data-link="free">I'm ready. Save my spot</a>
+      <a class="btn" href="#free" data-link="free">I'm ready. Save my spot</a>
       <a class="nf-alt" href="../quiz.html">Not sure yet? Take the 2 minute quiz</a>
     </div>
   </div>
@@ -569,7 +538,7 @@ footer{background:linear-gradient(120deg,#F3CE3A,#F7DD66);padding-block:48px 28p
         <span class="tier">Start here</span><h3>Free monthly workshop</h3>
         <div class="price">$0<small>No card needed</small></div>
         <ul><li>One live confidence workshop with Dani every month</li><li>Replay for 7 days</li><li>Join the community and introduce yourself</li></ul>
-        <div class="act"><a class="btn" href="#workshop" data-link="free">Join free</a><small>Takes 30 seconds.</small></div>
+        <div class="act"><a class="btn" href="#free" data-link="free">Join free</a><small>Takes 30 seconds.</small></div>
       </article>
       <article class="offer featured" id="club">
         <span class="tier">Most popular</span><h3>The Confidence Club</h3>
@@ -589,43 +558,6 @@ footer{background:linear-gradient(120deg,#F3CE3A,#F7DD66);padding-block:48px 28p
         <ul><li>12 weeks with Dani, just you</li><li>A 1:1 call every two weeks</li><li>Direct voice note access</li><li>An in person VIP day: styling, photoshoot and a day out</li><li>A free place at every live event that year</li></ul>
         <div class="act"><a class="btn line" href="#" data-link="vip">Apply for VIP</a><small>A few places each quarter.</small></div>
       </article>
-    </div>
-  </div>
-</section>
-
-<section class="band stone course" id="course" aria-labelledby="course-h">
-  <div class="wrap">
-    <div class="book" aria-hidden="true">
-      <small>The Confidence Rebirth</small>
-      <img src="img/logo-cutout-light.png" alt="" width="720" height="231">
-      <p>Six modules at your own pace, with Dani.</p>
-      <span class="badge">Coming<br>soon</span>
-    </div>
-    <div class="course-copy">
-      <h2 id="course-h">The Confidence Rebirth Course</h2>
-      <p class="lede"><b>Six modules at your own pace</b>, plus 3 months of the Club so you're never doing it alone. The course is coming soon. Join the free workshop and you'll hear about it first.</p>
-      <a class="btn" href="#workshop" data-link="free">Join free to hear first</a>
-    </div>
-  </div>
-</section>
-
-<section class="band" id="workshop" aria-labelledby="ws-h">
-  <div class="wrap">
-    <div class="signup">
-      <div class="signup-photo"><img src="img/dani-studio.jpg" alt="Behind the scenes: Dani on the camera monitor during a shoot" loading="lazy" width="1120" height="1280"></div>
-      <div class="signup-body">
-        <h2 id="ws-h">One free live workshop. Every month.</h2>
-        <p class="tag">Live with Dani, replay for 7 days. No card needed.</p>
-        <form class="form" id="ws-form" novalidate>
-          <label for="ws-name">First name*<input id="ws-name" type="text" autocomplete="given-name" required></label>
-          <label for="ws-ig">Instagram handle*<input id="ws-ig" type="text" placeholder="@" autocomplete="off" required></label>
-          <label class="full" for="ws-wa">WhatsApp number*<input id="ws-wa" type="tel" autocomplete="tel" required></label>
-          <label class="check full" for="ws-ok"><input id="ws-ok" type="checkbox" required> Send me a reminder 24 hours and 1 hour before it starts.</label>
-          <button class="btn dark" type="submit">Save my spot</button>
-          <p class="full" id="ws-err" style="color:#9A1B12;font-size:14px;text-align:center" hidden>Add your first name, Instagram handle and WhatsApp number to save your spot.</p>
-        </form>
-        <p class="form-done" id="ws-done" hidden></p>
-      </div>
     </div>
   </div>
 </section>
@@ -651,7 +583,7 @@ footer{background:linear-gradient(120deg,#F3CE3A,#F7DD66);padding-block:48px 28p
       <p><b>Dani Carbonari</b> has coached women 1:1, runs workshops and hosts The Confidence Hour podcast. Her approach is simple: honest conversations, practical tools and a sisterhood that has your back.</p>
       <ul class="facts"><li>Host, The Confidence Hour</li><li>Workshop host</li><li>Speaker</li></ul>
       <div class="cta-row" style="justify-content:center">
-        <a class="btn" href="#workshop" data-link="free">Join my free workshop</a>
+        <a class="btn" href="#free" data-link="free">Join my free workshop</a>
         <a class="btn line" href="../quiz.html">New here? Take the quiz</a>
       </div>
     </div>
@@ -690,7 +622,7 @@ footer{background:linear-gradient(120deg,#F3CE3A,#F7DD66);padding-block:48px 28p
   <div class="wrap">
     <h2>Your rebirth starts with one yes.</h2>
     <p>Join the free workshop this month. Bring yourself, Dani will bring the rest.</p>
-    <a class="btn dark" href="#workshop" data-link="free">Join the free monthly workshop</a>
+    <a class="btn dark" href="#free" data-link="free">Join the free monthly workshop</a>
   </div>
 </section>
 
@@ -715,7 +647,7 @@ footer{background:linear-gradient(120deg,#F3CE3A,#F7DD66);padding-block:48px 28p
   <div class="wrap">
     <div class="f-top">
       <div><a href="#top"><img src="img/logo-cutout.png" alt="The Confidence Rebirth" loading="lazy" width="720" height="231"></a></div>
-      <div class="f-col"><h4>Coaching</h4><a href="#free">Free workshop</a><a href="#club">The Confidence Club</a><a href="#circle">The Rebirth Circle</a><a href="#vip">Big Sis VIP</a><a href="#course">The Course (coming soon)</a></div>
+      <div class="f-col"><h4>Coaching</h4><a href="#free">Free workshop</a><a href="#club">The Confidence Club</a><a href="#circle">The Rebirth Circle</a><a href="#vip">Big Sis VIP</a></div>
       <div class="f-col"><h4>Explore</h4><a href="../quiz.html">Confidence quiz</a><a href="#fit">Find your fit</a><a href="#stories">Stories</a><a href="#about">About Dani</a><a href="#faq">FAQ</a></div>
       <div class="f-col"><h4>Follow along</h4><a href="https://www.instagram.com/theconfidencerebirth/" target="_blank" rel="noopener">@theconfidencerebirth</a><a href="https://www.instagram.com/danidmc/" target="_blank" rel="noopener">@danidmc</a><a href="https://youtube.com/@theconfidencehour" target="_blank" rel="noopener">The Confidence Hour</a></div>
     </div>
@@ -730,11 +662,11 @@ footer{background:linear-gradient(120deg,#F3CE3A,#F7DD66);padding-block:48px 28p
   </div>
 </footer>
 
-<div class="dock" id="dock"><a class="btn" href="#workshop" data-link="free">Join the free workshop</a></div>
+<div class="dock" id="dock"><a class="btn" href="#free" data-link="free">Join the free workshop</a></div>
 
 <script>
 // Swap these for the real Circle, Stripe and Tally links before launch.
-const LINKS = { free:"#workshop", club:"#club", course:"#course", circle:"#circle", vip:"#vip", privacy:"#", terms:"#", refunds:"#" };
+const LINKS = { free:"#free", club:"#club", circle:"#circle", vip:"#vip", privacy:"#", terms:"#", refunds:"#" };
 document.querySelectorAll("[data-link]").forEach(a => { const u = LINKS[a.dataset.link]; if (u) a.href = u; if (/^https?:/.test(u||"")) { a.target="_blank"; a.rel="noopener"; } });
 const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -793,16 +725,6 @@ const NEXT_WORKSHOP = "2026-11-12T19:00:00-05:00";
   document.getElementById("nextp").addEventListener("click",()=>to(cur()+1));
 })();
 
-// workshop signup (not wired to a backend yet)
-(function(){ const f=document.getElementById("ws-form"), done=document.getElementById("ws-done"), err=document.getElementById("ws-err");
-  f.addEventListener("submit",e=>{ e.preventDefault();
-    const name=f.querySelector("#ws-name").value.trim(), ig=f.querySelector("#ws-ig").value.trim(), wa=f.querySelector("#ws-wa").value.trim();
-    if(!name||!ig||!wa){ err.hidden=false; return; }
-    err.hidden=true; f.hidden=true; done.hidden=false;
-    done.textContent=`You're in, ${name}. Dani will see you at the next workshop. Watch your WhatsApp for the link.`;
-  });
-})();
-
 // find your fit
 (function(){
   const QS=[{q:"What do you want most right now?",a:["To see what this is about first","A community of women in my corner","Weekly coaching in a small group","Dani coaching me directly"]},
@@ -829,11 +751,11 @@ const NEXT_WORKSHOP = "2026-11-12T19:00:00-05:00";
 })();
 
 // sticky join button on phones once the intro button scrolls away
-(function(){ const dock=document.getElementById("dock"), btn=document.querySelector(".intro .btn"), fin=document.getElementById("final"), ws=document.getElementById("workshop"), pb=document.getElementById("phoneband");
+(function(){ const dock=document.getElementById("dock"), btn=document.querySelector(".intro .btn"), fin=document.getElementById("final"), pb=document.getElementById("phoneband");
   if(!("IntersectionObserver" in window)) return; let gone=false, hide=false; const vis=new Set();
   const set=()=>dock.classList.toggle("show",gone&&!vis.size);
   new IntersectionObserver(([e])=>{ gone=!e.isIntersecting&&e.boundingClientRect.top<0; set(); }).observe(btn);
-  const io=new IntersectionObserver(es=>{ es.forEach(e=>e.isIntersecting?vis.add(e.target):vis.delete(e.target)); set(); }); io.observe(fin); io.observe(ws); io.observe(pb);
+  const io=new IntersectionObserver(es=>{ es.forEach(e=>e.isIntersecting?vis.add(e.target):vis.delete(e.target)); set(); }); io.observe(fin); io.observe(pb);
 })();
 </script>
 
