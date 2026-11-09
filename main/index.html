@@ -50,7 +50,6 @@ p{margin:0}
 
 /* ticker */
 .ticker{background:var(--yellow);overflow:hidden;white-space:nowrap;height:44px;display:flex;align-items:center;position:relative;z-index:5}
-.ticker::after{content:"";position:absolute;z-index:1;right:0;top:0;bottom:0;width:280px;background:linear-gradient(90deg,rgba(255,222,23,0),var(--yellow) 44px);pointer-events:none}
 .ticker .tk-cta{position:absolute;z-index:2;right:0;top:0;bottom:0;display:flex;align-items:center;gap:10px;padding:0 22px;background:var(--black);color:var(--yellow);font-weight:700;font-size:13px;letter-spacing:.05em;text-transform:uppercase;white-space:nowrap;text-decoration:none;font-variation-settings:"wdth" 108;overflow:hidden;isolation:isolate;transition:background .15s}
 .tk-cta:hover{background:#2A2A28}
 .tk-cta:active{background:#000;box-shadow:inset 0 3px 8px rgba(0,0,0,.6)}
@@ -462,7 +461,6 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;background:#EFEBE3 url
 }
 @media (max-width:760px){
   .top .logo img{width:118px}
-  .ticker::after{width:200px}
   .ticker .tk-cta{font-size:12px;padding:0 14px;gap:8px}
   .dots button{position:relative}
   .dots button::after{content:"";position:absolute;inset:-14px -6px}
@@ -550,7 +548,6 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;background:#EFEBE3 url
     <a href="#free">Free monthly confidence workshop with Dani. Save your spot</a>
     <a href="quiz.html">What's holding your confidence back? Take the 2 minute quiz</a>
   </div>
-  <a class="tk-cta" href="#free" data-link="free">Join free workshop<em aria-hidden="true">›</em></a>
 </div>
 
 <header class="top" id="top">
