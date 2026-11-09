@@ -324,9 +324,9 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
 .m-foot a{font-weight:600;text-underline-offset:4px;color:var(--ink)}
 
 /* crumpled notebook paper behind every light section; it stays still while the page scrolls */
-body::before{content:"";position:fixed;inset:0;z-index:-1;background:#EFEBE3 url(img/paper.jpg) 0% 50%/cover no-repeat;pointer-events:none}
+html::before{content:"";position:fixed;inset:0;z-index:-1;background:#EFEBE3 url(img/paper.jpg) 0% 50%/cover no-repeat;pointer-events:none}
 .band.stone,footer{background:transparent}
-@media (max-width:760px){body::before{background-position:50% 50%}}
+@media (max-width:760px){html::before{background-position:50% 50%}}
 
 /* hero workshop call to action */
 .hw{display:grid;justify-items:center;gap:14px;margin-top:26px}
