@@ -99,10 +99,11 @@ p{margin:0}
 .dots.dark button.on{background:var(--ink)}
 
 /* intro (podcast section analogue) */
-.intro .wrap{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(32px,6vw,96px);align-items:center}
-.intro-copy{display:grid;gap:22px;justify-items:start;max-width:440px;margin-left:auto}
+.vcard{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(24px,4vw,56px);align-items:center;padding:clamp(12px,1.4vw,18px);background:#FBFAF6;border:1px solid #E2DDD2;border-radius:24px;box-shadow:0 18px 40px -28px rgba(0,0,0,.35)}
+.intro-copy{display:grid;gap:16px;justify-items:start;max-width:460px;padding:clamp(4px,1vw,12px) clamp(4px,2vw,24px) clamp(4px,1vw,12px) 0}
 .intro h1{font-size:clamp(40px,4.6vw,60px)}
-.intro .sub{font-size:19px;color:var(--ink);font-weight:500;max-width:30ch}
+.intro .sub{font-size:19px;color:var(--ink);font-weight:500;max-width:30ch;margin:0}
+.intro .lede{margin:0;font-size:16px}
 .next{display:grid;gap:6px;padding:14px 16px;background:var(--white);border-radius:var(--r-card);border:1px solid var(--stone-2);font-size:14px;color:var(--ink-2)}
 .next b{color:var(--ink)}
 .live{display:inline-block;width:8px;height:8px;border-radius:50%;background:#E0362C;margin-right:8px;box-shadow:0 0 0 0 rgba(224,54,44,.5);animation:pulse 1.8s infinite}
@@ -110,16 +111,18 @@ p{margin:0}
 .clock{font-variant-numeric:tabular-nums}
 .cta-row{display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px}
 
-.cover{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:4/5;background:var(--white);max-width:520px;width:100%;border:0;padding:0;cursor:pointer;text-align:left;color:var(--ink);font:inherit}
+.cover{position:relative;display:block;border-radius:16px;overflow:hidden;aspect-ratio:16/11;background:var(--ink);width:100%;border:0;padding:0;cursor:pointer;text-align:left;color:var(--ink);font:inherit}
 .cover video,.cover img{width:100%;height:100%;object-fit:cover;object-position:50% 25%}
+.vtag{position:absolute;left:14px;bottom:14px;display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:6px;background:#E5484D;color:#fff;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.vtag i{width:7px;height:7px;border-radius:50%;background:#fff;animation:pulse 1.8s infinite}
 .cover-tag{position:absolute;left:0;right:0;bottom:0;height:46%;background:var(--yellow);clip-path:polygon(0 24%,100% 0,100% 100%,0 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:24px 26px}
 .cover-tag small{font-size:12px;font-weight:700;letter-spacing:.24em;text-transform:uppercase}
 .cover-tag strong{font-variation-settings:"wdth" 75;font-weight:700;font-size:clamp(40px,5vw,62px);line-height:.88;text-transform:uppercase;letter-spacing:-.01em}
 .cover-tag em{font-style:normal;display:inline-block;margin-top:10px;background:var(--ink);color:var(--white);font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;padding:4px 10px;align-self:flex-start}
-.play{position:absolute;top:22px;right:22px;width:64px;height:64px;border-radius:50%;background:var(--white);display:grid;place-items:center;box-shadow:0 6px 24px rgba(0,0,0,.25);transition:transform .2s}
+.play{position:absolute;top:50%;left:50%;margin:-32px 0 0 -32px;width:64px;height:64px;border-radius:50%;background:var(--white);display:grid;place-items:center;box-shadow:0 6px 24px rgba(0,0,0,.25);transition:transform .2s}
 .cover:hover .play{transform:scale(1.07)}
 .play::before{content:"";border-left:18px solid var(--ink);border-top:11px solid transparent;border-bottom:11px solid transparent;margin-left:5px}
-.soon{position:absolute;left:16px;right:16px;top:100px;background:var(--ink);color:var(--white);padding:14px 16px;border-radius:12px;font-size:15px;font-weight:500;text-align:center}
+.soon{position:absolute;left:16px;right:16px;top:16px;background:var(--ink);color:var(--white);padding:14px 16px;border-radius:12px;font-size:15px;font-weight:500;text-align:center}
 
 /* rows */
 .row-head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:22px}
@@ -268,7 +271,7 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
 .hero-photo img{transform:scale(calc(1 + var(--h,0)*.14)) translateY(calc(var(--h,0)*-3%))}
 .hq{transform:translateY(calc(var(--h,0)*-70px));opacity:calc(1 - var(--h,0)*.6)}
 .intro-copy>*{transform:translateY(calc((1 - var(--r,1))*34px));opacity:var(--r,1)}
-.vsl-frame{transform:rotate(calc((1 - var(--r,1))*-5deg)) scale(calc(.9 + var(--r,1)*.1))}
+.vsl-frame{transform:scale(calc(.94 + var(--r,1)*.06))}
 .stack .w{translate:calc((1 - var(--r,1))*-90px) 0}
 .stack .k{translate:calc((1 - var(--r,1))*90px) 0}
 .stack .hand{opacity:var(--r,1)}
@@ -356,10 +359,7 @@ html::before{content:"";position:fixed;inset:0;z-index:-1;background:#EFEBE3 url
 
 /* masking tape, used in a few places */
 .intro{overflow-x:clip}
-.vsl-frame{position:relative;max-width:520px;width:100%}
-.vsl-frame::before,.vsl-frame::after{content:"";position:absolute;top:-12px;width:96px;height:28px;background:var(--tape);z-index:2;pointer-events:none}
-.vsl-frame::before{left:-22px;transform:rotate(-24deg)}
-.vsl-frame::after{right:-22px;transform:rotate(24deg)}
+.vsl-frame{position:relative;width:100%}
 .pcard{position:relative}
 .pcard::before,.giant .box::before{content:"";position:absolute;top:-13px;left:calc(50% - 46px);width:92px;height:26px;background:var(--tape);z-index:2;pointer-events:none}
 .pcard::before{transform:rotate(-3deg)}
@@ -524,11 +524,10 @@ html::before{content:"";position:fixed;inset:0;z-index:-1;background:#EFEBE3 url
   .hero .wrap{justify-content:center;margin-top:-28px;padding-bottom:36px}
   .hero-photo img{object-position:50% 8%}
   .hq{width:100%;padding-top:0}
-  .intro .wrap,.fit,.faq-grid{grid-template-columns:1fr}
+  .vcard,.fit,.faq-grid{grid-template-columns:1fr}
+  .vcard{border-radius:20px}
+  .intro-copy{padding:4px 8px 10px}
   .intro-copy{margin:0;max-width:none}
-  .vsl-frame{margin:0 auto}
-  .vsl-frame::before{left:-10px}
-  .vsl-frame::after{right:-10px}
   .swipe,.offers{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin-inline:calc(-1 * max(16px,env(safe-area-inset-left,0px)));padding-inline:max(16px,env(safe-area-inset-left,0px));scroll-padding-inline:max(16px,env(safe-area-inset-left,0px));scrollbar-width:none;padding-bottom:4px}
   .swipe::-webkit-scrollbar,.offers::-webkit-scrollbar{display:none}
   .swipe>*{flex:0 0 62%;scroll-snap-align:start}
@@ -614,22 +613,24 @@ html::before{content:"";position:fixed;inset:0;z-index:-1;background:#EFEBE3 url
   </div>
 </section>
 
-<section class="band stone intro">
+<section class="band stone intro" aria-labelledby="intro-h">
   <div class="wrap">
-    <div class="intro-copy">
-      <h1>Your <span class="hl">rebirth</span> starts now.</h1>
-      <p class="sub">You don't need to become someone new. You need to come back to you.</p>
-      <p class="lede"><b>The Confidence Rebirth</b> is Dani Carbonari's confidence coaching for women ready to feel confident everywhere: at work, in love, with money, on the road and in their own skin. Three methods, one for where you are right now. Start with a free live workshop every month.</p>
-      <div class="cta-row">
-        <a class="b5" href="quiz.html"><span class="b5-q">Are you <span class="b5-word"><span id="b5-w">a People Pleaser</span></span>?</span><span class="b5-go"><span>Take the 2 minute quiz to find out</span><span class="b5-start">Start</span></span></a>
+    <div class="vcard">
+      <div class="vsl-frame"><button class="cover" id="vsl" type="button" aria-label="Play Dani's video">
+        <video src="img/dani-loop.mp4" poster="img/dani-loop-poster.jpg" muted autoplay loop playsinline aria-hidden="true"></video>
+        <span class="play" aria-hidden="true"></span>
+        <span class="vtag"><i></i>A message from Dani</span>
+        <span class="soon" id="soon" hidden>Dani's video lands here soon</span>
+      </button></div>
+      <div class="intro-copy">
+        <h1 id="intro-h">Your <span class="hl">rebirth</span> starts now.</h1>
+        <p class="sub">You don't need to become someone new. You need to come back to you.</p>
+        <p class="lede">Confidence coaching with Dani Carbonari, for women ready to feel confident at work, in love and in their own skin.</p>
+        <div class="cta-row">
+          <a class="b5" href="quiz.html"><span class="b5-q">Are you <span class="b5-word"><span id="b5-w">a People Pleaser</span></span>?</span><span class="b5-go"><span>Take the 2 minute quiz to find out</span><span class="b5-start">Start</span></span></a>
+        </div>
       </div>
     </div>
-    <div class="vsl-frame"><button class="cover" id="vsl" type="button" aria-label="Play Dani's video">
-      <video src="img/dani-loop.mp4" poster="img/dani-loop-poster.jpg" muted autoplay loop playsinline aria-hidden="true"></video>
-      <span class="play" aria-hidden="true"></span>
-      <span class="cover-tag"><small>A message from</small><strong>Dani<br>Carbonari</strong><em>4 min, tap for sound</em></span>
-      <span class="soon" id="soon" hidden>Dani's video lands here soon</span>
-    </button></div>
   </div>
 </section>
 
