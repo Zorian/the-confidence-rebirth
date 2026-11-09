@@ -24,7 +24,7 @@ body{margin:0}
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{background:var(--white);color:var(--ink);font-family:var(--wide);font-size:16px;line-height:1.55;font-variation-settings:"wdth" 100;-webkit-font-smoothing:antialiased}
+body{background:#EFEBE3;color:var(--ink);font-family:var(--wide);font-size:16px;line-height:1.55;font-variation-settings:"wdth" 100;-webkit-font-smoothing:antialiased}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--yellow)}
 a{color:inherit}
 img,video{max-width:100%;height:auto;display:block}
@@ -314,6 +314,11 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
 .mcard.open :focus-visible{outline-color:var(--yellow)}
 .m-foot{margin-top:24px;font-size:16px;color:var(--ink-2)}
 .m-foot a{font-weight:600;text-underline-offset:4px;color:var(--ink)}
+
+/* crumpled notebook paper behind every light section; it stays still while the page scrolls */
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:#EFEBE3 url(img/paper.jpg) 0% 50%/cover no-repeat;pointer-events:none}
+.band.stone,footer{background:transparent}
+@media (max-width:760px){body::before{background-position:50% 50%}}
 
 /* masking tape, used in a few places */
 .intro{overflow-x:clip}
