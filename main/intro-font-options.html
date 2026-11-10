@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Intro font options | The Confidence Rebirth</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Anton&family=Playfair+Display:ital,wght@1,500&family=Bodoni+Moda:opsz,wght@6..96,500&family=DM+Serif+Display&family=Covered+By+Your+Grace&family=Montserrat:wght@400;600;700&display=swap">
+<style>
+:root{--paper:#F7F3EA;--ink:#2B2623;--ink-2:#4A433E;--pen:#B4382F}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 15px/1.6 Montserrat,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.page{max-width:1180px;margin:0 auto;padding:clamp(28px,5vw,56px) 16px 80px}
+header{max-width:58ch;margin-bottom:30px}
+h1{font:400 clamp(40px,6vw,64px)/1 "Instrument Serif",serif;margin:0 0 10px}
+header p{margin:0;color:var(--ink-2)}
+.grid{display:grid;gap:22px}
+@media (min-width:860px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.card{margin:0;cursor:pointer}
+.sheet{position:relative;aspect-ratio:16/9;display:grid;place-items:center;border-radius:4px;border:1px solid rgba(43,38,35,.14);overflow:hidden;
+  background:#F3F0EA repeating-linear-gradient(to bottom,transparent 0 23px,rgba(47,90,140,.15) 23px 24px);box-shadow:0 14px 30px -24px rgba(70,50,30,.45)}
+.sheet::after{content:"";position:absolute;top:0;bottom:0;left:22px;width:1.5px;background:#C8373F;opacity:.45}
+.sheet svg{width:88%;overflow:visible}
+.w{fill:transparent;stroke:var(--ink);stroke-width:1.6;stroke-linejoin:round;stroke-dasharray:1600;stroke-dashoffset:1600}
+.go .w{animation:wr 1.5s ease-out forwards}
+.go .w+.w{animation-delay:.9s}
+@keyframes wr{60%{fill:transparent}to{stroke-dashoffset:0;fill:var(--ink)}}
+figcaption{display:flex;align-items:center;gap:12px;padding:14px 2px 0}
+.n{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#F3E2A0;font-weight:700;font-size:14px;flex:none}
+figcaption b{font-weight:600}
+figcaption small{display:block;color:#776D66;font-size:13px}
+.cur{margin-left:auto;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--pen);border:1px solid var(--pen);border-radius:999px;padding:3px 10px;white-space:nowrap}
+@media (prefers-reduced-motion:reduce){.w{stroke-dashoffset:0;fill:var(--ink)}.go .w{animation:none}}
+</style>
+</head>
+<body>
+<div class="page">
+<header>
+  <h1>Intro font options</h1>
+  <p>The "Your rebirth starts now" page that writes itself after the notebook opens, in 6 fonts. Tap any card to watch it write again. Pick a number.</p>
+</header>
+<div class="grid" id="grid"></div>
+</div>
+<script>
+// font, case, note, current
+const F=[
+  ["Instrument Serif",400,"normal",true,"Tall editorial serif, matches the new site headings",true],
+  ["Anton",400,"normal",true,"Bold and punchy, the original intro font"],
+  ["Playfair Display",500,"italic",false,"Elegant italic, soft and feminine"],
+  ["Bodoni Moda",500,"normal",true,"High fashion, like a magazine cover"],
+  ["DM Serif Display",400,"normal",false,"Warm, rounded serif, friendly"],
+  ["Covered By Your Grace",400,"normal",false,"Handwritten, like she wrote it in the notebook"]
+];
+const g=document.getElementById("grid");
+g.innerHTML=F.map(([f,w,st,up,note,cur],i)=>`<figure class="card" tabindex="0" role="button" aria-label="Replay option ${i+1}">
+  <div class="sheet"><svg viewBox="0 0 600 230" aria-hidden="true">
+    <text class="w" x="20" y="100" style="font-family:'${f}';font-weight:${w};font-style:${st};${up?'text-transform:uppercase;':''}">${up?'YOUR REBIRTH':'Your rebirth'}</text>
+    <text class="w" x="20" y="205" style="font-family:'${f}';font-weight:${w};font-style:${st};${up?'text-transform:uppercase;':''}">${up?'STARTS NOW.':'starts now.'}</text>
+  </svg></div>
+  <figcaption><span class="n">${i+1}</span><div><b>${f}</b><small>${note}</small></div>${cur?'<span class="cur">On the site now</span>':''}</figcaption></figure>`).join("");
+const play=c=>{ const s=c.querySelector(".sheet"); s.classList.remove("go"); void s.offsetWidth; s.classList.add("go"); };
+document.fonts.ready.then(()=>{
+  // size each line so both fill the same width, whatever the font
+  document.querySelectorAll(".sheet svg").forEach(sv=>{ sv.querySelectorAll("text").forEach(t=>{ t.style.fontSize="100px"; const L=t.getComputedTextLength(); t.style.fontSize=Math.min(118,100*560/L)+"px"; }); });
+  const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ play(e.target); io.unobserve(e.target); } }),{threshold:.5});
+  document.querySelectorAll(".card").forEach(c=>{ io.observe(c); c.addEventListener("click",()=>play(c)); c.addEventListener("keydown",e=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); play(c); } }); });
+});
+</script>
+</body>
+</html>
