@@ -743,11 +743,6 @@ section.ruled::after{content:"";position:absolute;z-index:-1;top:0;bottom:0;left
   </div>
 </section>
 
-<section class="seen" aria-label="Where to find Dani">
-  <p class="seen-t">Find Dani on</p>
-  <div class="marq" id="marq"><a class="pill" href="https://www.instagram.com/danidmc/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg><span>@danidmc</span></a><a class="pill" href="https://youtube.com/@theconfidencehour" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.500 11a6.500 6.500 0 0 0 13 0M12 17.500V21"/></svg><span>The Confidence Hour</span></a><a class="pill" href="https://www.instagram.com/theconfidencerebirth/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg><span>@theconfidencerebirth</span></a><a class="pill" href="https://youtube.com/@theconfidencehour" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2.500" y="5" width="19" height="14" rx="4"/><path d="M10 9.500v5l4.500-2.500z" fill="currentColor"/></svg><span>YouTube</span></a><a class="pill" href="#free"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="3.500" y="5" width="17" height="15" rx="2.500"/><path d="M3.500 10h17M8 3v4M16 3v4"/></svg><span>Live workshops</span></a><a class="pill" href="#about"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.500 11a6.500 6.500 0 0 0 13 0M12 17.500V21"/></svg><span>On stage</span></a></div>
-</section>
-
 <section class="title" id="about" aria-labelledby="about-h">
   <div class="wrap">
     <div class="stack">
@@ -986,8 +981,6 @@ const LINKS = { free:"#free", course:"#course", masterclass:"#masterclass", one:
 document.querySelectorAll("[data-link]").forEach(a => { const u = LINKS[a.dataset.link]; if (u) a.href = u; if (/^https?:/.test(u||"")) { a.target="_blank"; a.rel="noopener"; } });
 const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-// marquee: duplicate so it loops; the copy is hidden from screen readers and tabbing
-(function(){ const m=document.getElementById("marq"); [...m.children].forEach(a=>{ const c=a.cloneNode(true); c.setAttribute("aria-hidden","true"); c.tabIndex=-1; m.appendChild(c); }); })();
 
 // scroll: everything is scrubbed, so the page moves with you in both directions
 (function(){ if(reduce) return;
@@ -999,7 +992,7 @@ const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const hls=[...document.querySelectorAll(".hl")], hero=document.querySelector(".hero");
   const LIST=".intro-copy>*,.vsl-frame,.stack .w,.stack .k,.stack .hand,.title .cut img,.mcard,.m-foot,.quiz-band h2,.quiz-band .lede,.searchbar,.types li,.giant .box,.proof-view,.nf-big,.nf-sub,.nf-col li,.nf-end,.nf-cta,.row-head,.offer,.fit-body,.coach-copy>*,.faq details,.final,.final h2,.pb-txt>*,.phone";
   const items=[...document.querySelectorAll(LIST)].map(el=>{ const sibs=[...el.parentElement.children]; const row=el.matches(".types li,.offer,.mcard"); return {el,d:row?sibs.indexOf(el)*.14:0}; });
-  const marq=document.getElementById("marq").getAnimations()[0]; let last=scrollY, slow, queued=false;
+  const mq=document.getElementById("marq"), marq=mq&&mq.getAnimations()[0]; let last=scrollY, slow, queued=false;
   function run(){ queued=false; const vh=innerHeight, y=scrollY, max=root.scrollHeight-vh;
     root.style.setProperty("--sp",max>0?(y/max).toFixed(4):0);
     root.style.setProperty("--h",clamp(y/(hero.offsetHeight||1)).toFixed(3));
