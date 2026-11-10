@@ -139,6 +139,14 @@ body{margin:0;background:var(--cream) var(--noise);color:var(--ink);font:400 16p
 .stamp b{font:400 7cqw/1 var(--marker);color:#3f4a33}
 .strip{background:#FDFBF6;padding:5% 7%;font:400 3.6cqw/1.35 var(--type);color:#3f3833;clip-path:polygon(0 4%,8% 0,22% 5%,38% 1%,55% 6%,71% 0,88% 4%,100% 1%,99% 96%,86% 100%,70% 95%,52% 100%,34% 96%,18% 100%,2% 96%)}
 
+/* the pink notebook photo, with its elastic band laid back over the stickers */
+.book.pink{background:url(img/notebook-pink.webp) center/100% 100% no-repeat;aspect-ratio:897/1200;border-radius:0;box-shadow:none;filter:drop-shadow(0 30px 26px rgba(90,60,40,.32)) drop-shadow(0 4px 6px rgba(90,60,40,.2))}
+.book.pink::before{display:none}
+.book.pink .band{position:absolute;inset:0;z-index:8;pointer-events:none;filter:drop-shadow(-2px 1px 2px rgba(80,40,40,.35))}
+.book.pink .band i{position:absolute;inset:0;background:inherit;background:url(img/notebook-pink.webp) center/100% 100% no-repeat;clip-path:inset(0 10.6% 4.4% 82.9%)}
+.sec{font-variation-settings:"wdth" 108;font-weight:700;font-size:clamp(20px,2.4vw,26px);margin:clamp(28px,4vw,48px) 0 16px}
+@media (min-width:920px){.grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.grid.three .book.pink{width:min(340px,100%)}
 @media (prefers-reduced-motion:reduce){.s{opacity:1!important;animation:none!important}.lbl .hl{background-size:100% 100%;transition:none}.book{transform:none!important}}
 </style>
 </head>
@@ -161,10 +169,59 @@ body{margin:0;background:var(--cream) var(--noise);color:var(--ink);font:400 16p
 
 <div class="page">
 <header>
-  <h1>Notebook intro, 10 options</h1>
+  <h1>Notebook intro options</h1>
   <p>All 10 of your stickers on every notebook. Tap any sticker to peel it up. Replay to watch them stick again. Move your mouse or tilt your phone and the book moves with you.</p>
 </header>
 
+<h2 class="sec">On your pink notebook</h2>
+<div class="grid three">
+<figure class="opt"><div class="desk" style="--dk:#F5EEE3"><div class="book pink">
+  <div class="lbl" style="--lx:16%;--ly:38%;--lw:60%;--lr:-2deg;font-size:5cqw;padding:7% 6%"><span>THE</span><span class="i"><span class="hl">CONFIDENCE</span></span><span>REBIRTH</span></div>
+  <div class="s pic" style="--x:12;--y:3;--w:52;--r:-4"><img src="img/stickers/my-year.webp" alt=""></div>
+  <div class="s pic" style="--x:62;--y:3;--w:19;--r:8"><img src="img/stickers/day-by-day.webp" alt=""></div>
+  <div class="s pic" style="--x:12;--y:17;--w:27;--r:-6"><img src="img/stickers/yo.webp" alt=""></div>
+  <div class="s pic" style="--x:40;--y:16;--w:30;--r:5"><img src="img/stickers/enough.webp" alt=""></div>
+  <div class="s pic" style="--x:54;--y:33;--w:34;--r:7"><img src="img/stickers/no-excuses.webp" alt=""></div>
+  <div class="s pic" style="--x:70;--y:46;--w:15;--r:-8"><img src="img/stickers/ticket.webp" alt=""></div>
+  <div class="s pic" style="--x:12;--y:61;--w:27;--r:-5"><img src="img/stickers/love-real.webp" alt=""></div>
+  <div class="s pic" style="--x:40;--y:62;--w:28;--r:4"><img src="img/stickers/smiles.webp" alt=""></div>
+  <div class="s pic" style="--x:12;--y:82;--w:38;--r:5"><img src="img/stickers/manifested.webp" alt=""></div>
+  <div class="s pic" style="--x:48;--y:80;--w:38;--r:-3"><img src="img/stickers/choose-me.webp" alt=""></div>
+  <div class="band"><i></i></div>
+</div></div>
+<figcaption class="cap"><span class="n">A</span><div><h2>Collage</h2><p>Logo in the middle, stickers all around it. Some tuck under the elastic band.</p></div><button class="again" type="button">Replay</button></figcaption></figure>
+<figure class="opt"><div class="desk" style="--dk:#F5EEE3"><div class="book pink">
+  <div class="lbl" style="--lx:18%;--ly:37%;--lw:62%;--lr:-1.5deg;font-size:5.8cqw"><span>THE</span><span class="i"><span class="hl">CONFIDENCE</span></span><span>REBIRTH</span></div>
+  <div class="s pic" style="--x:12;--y:3;--w:40;--r:-3"><img src="img/stickers/my-year.webp" alt=""></div>
+  <div class="s pic" style="--x:54;--y:3;--w:28;--r:5"><img src="img/stickers/no-excuses.webp" alt=""></div>
+  <div class="s pic" style="--x:37;--y:13;--w:13;--r:-5"><img src="img/stickers/day-by-day.webp" alt=""></div>
+  <div class="s pic" style="--x:12;--y:13;--w:20;--r:-6"><img src="img/stickers/yo.webp" alt=""></div>
+  <div class="s pic" style="--x:62;--y:15;--w:22;--r:5"><img src="img/stickers/enough.webp" alt=""></div>
+  <div class="s pic" style="--x:12;--y:64;--w:11;--r:-5"><img src="img/stickers/ticket.webp" alt=""></div>
+  <div class="s pic" style="--x:26;--y:66;--w:20;--r:4"><img src="img/stickers/love-real.webp" alt=""></div>
+  <div class="s pic" style="--x:62;--y:62;--w:20;--r:-5"><img src="img/stickers/smiles.webp" alt=""></div>
+  <div class="s pic" style="--x:44;--y:72;--w:26;--r:3"><img src="img/stickers/manifested.webp" alt=""></div>
+  <div class="s pic" style="--x:30;--y:84;--w:36;--r:-2"><img src="img/stickers/choose-me.webp" alt=""></div>
+  <div class="band"><i></i></div>
+</div></div>
+<figcaption class="cap"><span class="n">B</span><div><h2>Frame</h2><p>Big logo in the middle, smaller stickers around the edges. The logo reads first.</p></div><button class="again" type="button">Replay</button></figcaption></figure>
+<figure class="opt"><div class="desk" style="--dk:#F5EEE3"><div class="book pink">
+  <div class="lbl" style="--lx:16%;--ly:5%;--lw:58%;--lr:1.5deg;font-size:5.2cqw"><span>THE</span><span class="i"><span class="hl">CONFIDENCE</span></span><span>REBIRTH</span></div>
+  <div class="s pic" style="--x:62;--y:78;--w:13;--r:-6"><img src="img/stickers/day-by-day.webp" alt=""></div>
+  <div class="s pic" style="--x:14;--y:30;--w:50;--r:-3"><img src="img/stickers/my-year.webp" alt=""></div>
+  <div class="s pic" style="--x:60;--y:28;--w:28;--r:6"><img src="img/stickers/enough.webp" alt=""></div>
+  <div class="s pic" style="--x:12;--y:44;--w:26;--r:-6"><img src="img/stickers/yo.webp" alt=""></div>
+  <div class="s pic" style="--x:40;--y:46;--w:26;--r:4"><img src="img/stickers/love-real.webp" alt=""></div>
+  <div class="s pic" style="--x:64;--y:50;--w:26;--r:-5"><img src="img/stickers/smiles.webp" alt=""></div>
+  <div class="s pic" style="--x:12;--y:68;--w:38;--r:5"><img src="img/stickers/manifested.webp" alt=""></div>
+  <div class="s pic" style="--x:44;--y:70;--w:34;--r:-4"><img src="img/stickers/no-excuses.webp" alt=""></div>
+  <div class="s pic" style="--x:77;--y:6;--w:12;--r:6"><img src="img/stickers/ticket.webp" alt=""></div>
+  <div class="s pic" style="--x:14;--y:80;--w:42;--r:2"><img src="img/stickers/choose-me.webp" alt=""></div>
+  <div class="band"><i></i></div>
+</div></div>
+<figcaption class="cap"><span class="n">C</span><div><h2>Label on top</h2><p>Logo up top like a name label, stickers cascading down the cover.</p></div><button class="again" type="button">Replay</button></figcaption></figure>
+</div>
+<h2 class="sec">The other 10</h2>
 <div class="grid">
 
 <figure class="opt"><div class="desk" style="--dk:#F6EEE2"><div class="book kraft">
