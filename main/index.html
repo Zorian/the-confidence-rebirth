@@ -814,6 +814,14 @@ section.quiz-band.ruled::after{display:none}
 @media (max-width:1000px){.fit-tap{margin-top:18px}.fit-tap svg{rotate:62deg;translate:0 8px}@keyframes tapbob{50%{translate:2px 12px}}}
 @media (prefers-reduced-motion:reduce){.fitband .q-opt,.fit-tap svg{animation:none}}
 
+/* faq: each question is its own paper card so it's easy to read and tap */
+.faqband .faq details,.faqband .faq details:first-child{background:#FFFDF8;border:1px solid rgba(43,38,35,.16);border-radius:6px;margin-bottom:10px;padding:0 18px;box-shadow:0 10px 22px -20px rgba(70,50,30,.45);transition:box-shadow .2s,border-color .2s}
+.faqband .faq details:hover{border-color:rgba(43,38,35,.4)}
+.faqband .faq details[open]{border-color:var(--pen);box-shadow:-4px 4px 0 var(--butter)}
+.faqband .faq summary{padding:18px 0;font-size:16.5px;line-height:1.35;color:var(--ink)}
+.faqband .faq details p{color:var(--ink-2);font-size:15.5px;line-height:1.6;padding:0 40px 18px 0;margin:0}
+.faqband .faq summary::after{width:28px;height:28px}
+
 /* final + phone band */
 .final{background:var(--paper)}
 .final .wrap{background:var(--butter-2);padding:clamp(40px,6vw,72px) 20px;border-radius:3px;position:relative;box-shadow:0 18px 40px -30px rgba(70,50,30,.45)}
