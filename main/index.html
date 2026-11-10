@@ -639,6 +639,8 @@ section.ruled::after{content:"";position:absolute;z-index:-1;top:0;bottom:0;left
 .pl-key{position:relative;display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;background:var(--black);border:1.5px solid var(--yellow);color:var(--yellow);font-weight:700;font-size:13px;letter-spacing:.04em;text-transform:uppercase}
 .pillars .pl-cta{flex-direction:column;align-items:center;gap:12px;text-align:center}
 .pl-cta p{color:#B9B6AE;font-size:15px}
+.notfor+.pillars{padding-top:clamp(8px,2vw,24px)}
+.notfor+.pillars .pl-head{padding-top:clamp(40px,5vw,64px);border-top:1px solid #2A2B2A;max-width:min(1148px,calc(100% - 32px))}
 </style>
 <script>
 // notebook intro: first visit only, skipped for ad traffic and reduced motion
@@ -727,38 +729,6 @@ section.ruled::after{content:"";position:absolute;z-index:-1;top:0;bottom:0;left
   </div>
 </section>
 
-<section class="pillars" id="pillars" aria-labelledby="pl-h">
-  <div class="wrap pl-head">
-    <h2 id="pl-h">Your rebirth in <span class="hl v2">5 steps</span></h2>
-    <p>Dani's proven method. The 5 pillars she takes every woman through, whatever area of life you want your confidence back in.</p>
-  </div>
-  <div class="pl-track" id="pl-track" tabindex="0" aria-label="The 5 pillars, scroll sideways">
-      <article class="pl on" aria-label="Step 1 of 5: Reawaken">
-        <div class="pl-top"><span class="pl-step">Step</span><span class="pl-num" aria-hidden="true">1</span><h3>Reawaken</h3><p class="pl-line">Notice what’s really been running your life.</p></div>
-        <div class="pl-lock"><span class="pl-bars" aria-hidden="true"><i></i><i></i><i></i></span><span class="pl-key"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Unlocked inside coaching</span></div>
-      </article>
-      <article class="pl" aria-label="Step 2 of 5: Repair">
-        <div class="pl-top"><span class="pl-step">Step</span><span class="pl-num" aria-hidden="true">2</span><h3>Repair</h3><p class="pl-line">Heal the places it all started.</p></div>
-        <div class="pl-lock"><span class="pl-bars" aria-hidden="true"><i></i><i></i><i></i></span><span class="pl-key"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Unlocked inside coaching</span></div>
-      </article>
-      <article class="pl" aria-label="Step 3 of 5: Rewire">
-        <div class="pl-top"><span class="pl-step">Step</span><span class="pl-num" aria-hidden="true">3</span><h3>Rewire</h3><p class="pl-line">Change the story you tell yourself.</p></div>
-        <div class="pl-lock"><span class="pl-bars" aria-hidden="true"><i></i><i></i><i></i></span><span class="pl-key"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Unlocked inside coaching</span></div>
-      </article>
-      <article class="pl" aria-label="Step 4 of 5: Refocus">
-        <div class="pl-top"><span class="pl-step">Step</span><span class="pl-num" aria-hidden="true">4</span><h3>Refocus</h3><p class="pl-line">Put your energy where it grows you.</p></div>
-        <div class="pl-lock"><span class="pl-bars" aria-hidden="true"><i></i><i></i><i></i></span><span class="pl-key"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Unlocked inside coaching</span></div>
-      </article>
-      <article class="pl" aria-label="Step 5 of 5: Rebuild">
-        <div class="pl-top"><span class="pl-step">Step</span><span class="pl-num" aria-hidden="true">5</span><h3>Rebuild</h3><p class="pl-line">Show up as the woman you’re becoming.</p></div>
-        <div class="pl-lock"><span class="pl-bars" aria-hidden="true"><i></i><i></i><i></i></span><span class="pl-key"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Unlocked inside coaching</span></div>
-      </article>
-  </div>
-  <div class="wrap">
-    <div class="pl-nav"><button type="button" id="pl-prev" aria-label="Previous step" disabled>‹</button><div class="pl-dots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i></div><button type="button" id="pl-next" aria-label="Next step">›</button></div>
-    <div class="pl-cta"><a class="hw-btn" href="#one" data-link="one">Apply for coaching<em aria-hidden="true">›</em></a><p>Dani takes you through all 5 when you work with her.</p></div>
-  </div>
-</section>
 
 <section class="title" id="about" aria-labelledby="about-h">
   <div class="wrap">
@@ -875,6 +845,39 @@ section.ruled::after{content:"";position:absolute;z-index:-1;top:0;bottom:0;left
       <a class="btn" href="#free" data-link="free">I'm ready. Save my spot</a>
       <a class="nf-alt" href="quiz.html">Not sure yet? Take the 2 minute quiz</a>
     </div>
+  </div>
+</section>
+
+<section class="pillars" id="pillars" aria-labelledby="pl-h">
+  <div class="wrap pl-head">
+    <h2 id="pl-h">Your rebirth in <span class="hl v2">5 steps</span></h2>
+    <p>Dani's proven method. The 5 pillars she takes every woman through, whatever area of life you want your confidence back in.</p>
+  </div>
+  <div class="pl-track" id="pl-track" tabindex="0" aria-label="The 5 pillars, scroll sideways">
+      <article class="pl on" aria-label="Step 1 of 5: Reawaken">
+        <div class="pl-top"><span class="pl-step">Step</span><span class="pl-num" aria-hidden="true">1</span><h3>Reawaken</h3><p class="pl-line">Notice what’s really been running your life.</p></div>
+        <div class="pl-lock"><span class="pl-bars" aria-hidden="true"><i></i><i></i><i></i></span><span class="pl-key"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Unlocked inside coaching</span></div>
+      </article>
+      <article class="pl" aria-label="Step 2 of 5: Repair">
+        <div class="pl-top"><span class="pl-step">Step</span><span class="pl-num" aria-hidden="true">2</span><h3>Repair</h3><p class="pl-line">Heal the places it all started.</p></div>
+        <div class="pl-lock"><span class="pl-bars" aria-hidden="true"><i></i><i></i><i></i></span><span class="pl-key"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Unlocked inside coaching</span></div>
+      </article>
+      <article class="pl" aria-label="Step 3 of 5: Rewire">
+        <div class="pl-top"><span class="pl-step">Step</span><span class="pl-num" aria-hidden="true">3</span><h3>Rewire</h3><p class="pl-line">Change the story you tell yourself.</p></div>
+        <div class="pl-lock"><span class="pl-bars" aria-hidden="true"><i></i><i></i><i></i></span><span class="pl-key"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Unlocked inside coaching</span></div>
+      </article>
+      <article class="pl" aria-label="Step 4 of 5: Refocus">
+        <div class="pl-top"><span class="pl-step">Step</span><span class="pl-num" aria-hidden="true">4</span><h3>Refocus</h3><p class="pl-line">Put your energy where it grows you.</p></div>
+        <div class="pl-lock"><span class="pl-bars" aria-hidden="true"><i></i><i></i><i></i></span><span class="pl-key"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Unlocked inside coaching</span></div>
+      </article>
+      <article class="pl" aria-label="Step 5 of 5: Rebuild">
+        <div class="pl-top"><span class="pl-step">Step</span><span class="pl-num" aria-hidden="true">5</span><h3>Rebuild</h3><p class="pl-line">Show up as the woman you’re becoming.</p></div>
+        <div class="pl-lock"><span class="pl-bars" aria-hidden="true"><i></i><i></i><i></i></span><span class="pl-key"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Unlocked inside coaching</span></div>
+      </article>
+  </div>
+  <div class="wrap">
+    <div class="pl-nav"><button type="button" id="pl-prev" aria-label="Previous step" disabled>‹</button><div class="pl-dots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i></div><button type="button" id="pl-next" aria-label="Next step">›</button></div>
+    <div class="pl-cta"><a class="hw-btn" href="#one" data-link="one">Apply for coaching<em aria-hidden="true">›</em></a><p>Dani takes you through all 5 when you work with her.</p></div>
   </div>
 </section>
 
