@@ -7,7 +7,7 @@
 <meta name="robots" content="noindex, nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Caveat:wght@500&family=Reenie+Beanie&family=Shadows+Into+Light+Two&family=Covered+By+Your+Grace&family=Gaegu:wght@400;700&family=Sue+Ellen+Francisco&family=Instrument+Serif&family=Montserrat:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Caveat:wght@500&family=Reenie+Beanie&family=Shadows+Into+Light+Two&family=Covered+By+Your+Grace&family=Gaegu:wght@400;700&family=Sue+Ellen+Francisco&family=Gochi+Hand&family=Patrick+Hand&family=Indie+Flower&family=Just+Another+Hand&family=Schoolbell&family=Instrument+Serif&family=Montserrat:wght@400;600;700&display=swap">
 <style>
 :root{--paper:#F7F3EA;--ink:#2B2623;--ink-2:#4A433E;--pen:#B4382F;--rule:rgba(96,120,150,.16)}
 *{box-sizing:border-box}
@@ -41,18 +41,23 @@ header p{margin:0;color:var(--ink-2)}
 .f5{font-family:"Covered By Your Grace",cursive}
 .f6{font-family:"Gaegu",cursive;font-weight:700;font-size-adjust:.4}
 .f7{font-family:"Sue Ellen Francisco",cursive}
+.f8{font-family:"Gochi Hand",cursive}
+.f9{font-family:"Patrick Hand",cursive}
+.f10{font-family:"Indie Flower",cursive}
+.f11{font-family:"Just Another Hand",cursive}
+.f12{font-family:"Schoolbell",cursive}
 </style>
 </head>
 <body>
 <div class="page">
 <header>
   <h1>Handwriting options</h1>
-  <p>The red pen notes across the site, written in 7 different hands. Number 1 is the one on the site now. Pick a number and I'll swap it in everywhere.</p>
+  <p>The red pen notes across the site, written in 12 different hands. Number 3 is the one on the site now. Pick a number and I'll swap it in everywhere.</p>
 </header>
 <div class="grid">
 <!-- each card shows the same real lines from the site so they're easy to compare -->
 <script>
-const F=[["f1","Nanum Pen Script","Thin biro, quick and natural",true],["f2","Caveat","Neat and easy to read, slightly joined"],["f3","Reenie Beanie","Fast, messy biro, most like real notes"],["f4","Shadows Into Light Two","Light and airy, soft girly print"],["f5","Covered By Your Grace","Felt tip, bolder and confident"],["f6","Gaegu","Rounded and cute, like a diary"],["f7","Sue Ellen Francisco","Tall and skinny, journaling style"]];
+const F=[["f1","Nanum Pen Script","Thin biro, quick and natural"],["f2","Caveat","Neat and easy to read, slightly joined"],["f3","Reenie Beanie","Fast, messy biro, most like real notes",true],["f4","Shadows Into Light Two","Light and airy, soft girly print"],["f5","Covered By Your Grace","Felt tip, bolder and confident"],["f6","Gaegu","Rounded and cute, like a diary"],["f7","Sue Ellen Francisco","Tall and skinny, journaling style"],["f8","Gochi Hand","Bouncy marker, playful"],["f9","Patrick Hand","Tidy print, the easiest to read"],["f10","Indie Flower","Round and bubbly, teen diary"],["f11","Just Another Hand","Tall, narrow and quick"],["f12","Schoolbell","Neat school notes, a little slanted"]];
 document.write(F.map(([c,n,d,cur],i)=>`<article class="card"><div class="top"><span class="n">${i+1}</span><div><b>${n}</b><br><small>${d}</small></div>${cur?'<span class="cur">On the site now</span>':''}</div>
 <p class="hw l1 ${c}">one coach, five ways in</p>
 <p class="hw l2 ${c}">Hey, I'm Dani, your confidence coach</p>

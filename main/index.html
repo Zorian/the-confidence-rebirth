@@ -9,7 +9,7 @@
 <meta name="robots" content="noindex, nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400..800&family=Archivo:wdth,wght@100..125,400..700&family=Kalam:wght@700&family=Permanent+Marker&family=Instrument+Serif:ital@0;1&family=Mrs+Saint+Delafield&family=Caveat:wght@500..700&family=Playfair+Display:ital,wght@1,500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400..800&family=Archivo:wdth,wght@100..125,400..700&family=Kalam:wght@700&family=Permanent+Marker&family=Instrument+Serif:ital@0;1&family=Mrs+Saint+Delafield&family=Reenie+Beanie&display=swap">
 <style>
 :root{padding-top:env(safe-area-inset-top,0px)}
 body{margin:0}
@@ -377,7 +377,7 @@ section.ruled::after{content:"";position:absolute;z-index:-1;top:0;bottom:0;left
 .nb-page{position:absolute;z-index:4;inset:0;display:grid;place-items:center;background:#F3F0EA repeating-linear-gradient(to bottom,transparent 0 31px,rgba(47,90,140,.17) 31px 32px);opacity:0;pointer-events:none;transition:opacity .4s .8s,transform 1s 3.6s cubic-bezier(.6,.05,.3,1)}
 .nb-page::after{content:"";position:absolute;top:0;bottom:0;left:max(14px,calc(50% - 640px));width:2px;background:#C8373F;opacity:.5}
 .nb-page svg{width:min(640px,90vw)}
-.nb-pen{font:italic 500 92px "Playfair Display",Georgia,serif;letter-spacing:0;fill:transparent;stroke:#2B2623;stroke-width:1.6;stroke-dasharray:3200;stroke-dashoffset:3200}
+.nb-pen{font:400 100px var(--cond);text-transform:uppercase;letter-spacing:1px;fill:transparent;stroke:#2B2623;stroke-width:1.6;stroke-dasharray:3200;stroke-dashoffset:3200}
 .nb.open .nb-cover,.nb.open .nb-spine{transform:rotateY(-160deg)}
 .nb.open .nb-book{transform:scale(3.2);opacity:0;transition:transform 1s cubic-bezier(.6,.05,.3,1),opacity .5s .9s}
 .nb.open .nb-page{opacity:1;transform:translateY(-110%) rotate(-4deg)}
@@ -653,7 +653,7 @@ section.ruled::after{content:"";position:absolute;z-index:-1;top:0;bottom:0;left
 :root{
   --paper:#F7F3EA; --paper-2:#EFE8DA; --butter:#F3E2A0; --butter-2:#FAF0C8; --ink:#2B2623; --ink-2:#4A433E; --muted:#776D66;
   --pen:#B4382F; --rule:rgba(96,120,150,.16);
-  --serif:"Instrument Serif","Times New Roman",serif; --sign:"Mrs Saint Delafield",cursive; --pencil:"Caveat","Kalam",cursive; --sans:"Montserrat","Helvetica Neue",Arial,sans-serif;
+  --serif:"Instrument Serif","Times New Roman",serif; --sign:"Mrs Saint Delafield",cursive; --pencil:"Reenie Beanie","Kalam",cursive; --sans:"Montserrat","Helvetica Neue",Arial,sans-serif;
   --wide:var(--sans); --hand:var(--pencil); --cond:var(--serif);
 }
 body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-variation-settings:normal;font-size:15.5px;line-height:1.65}
@@ -663,7 +663,7 @@ h1{font-size:clamp(48px,5.6vw,76px)}
 .lede,.lede b{color:var(--ink-2)}
 .kicker,.offer .tier,.pcard cite,.seen-t,.mstat,.mcard p b,.pl-step,.tk-live{font-family:var(--sans);font-weight:700;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-2)}
 /* handwriting: one hand for notes, a signature pen for flourishes */
-.m-note,.nf-note,.stack .hand,.nf-end,.giant .note,.giant .box,.fitband .q-label,.nf-col h3,.hand-note{font-family:var(--pencil);font-style:normal;font-weight:500;font-size-adjust:.5;color:var(--pen);letter-spacing:.01em}
+.m-note,.nf-note,.stack .hand,.nf-end,.giant .note,.giant .box,.fitband .q-label,.nf-col h3,.hand-note{font-family:var(--pencil);font-style:normal;font-weight:400;font-size-adjust:.64;color:var(--pen);letter-spacing:.01em}
 .m-note,.nf-note{font-size:clamp(24px,2.4vw,30px);transform:rotate(-2deg);transform-origin:left}
 .sign{font-family:var(--sign);font-weight:400;color:var(--pen);line-height:1;font-size:clamp(44px,5vw,72px);letter-spacing:0}
 
@@ -690,7 +690,7 @@ h1{font-size:clamp(48px,5.6vw,76px)}
 .hero{background:#E9E1D6}
 .hero-photo::after{background:linear-gradient(90deg,rgba(233,225,214,0) 55%,#E9E1D6 98%)}
 .hq blockquote{font-family:var(--serif);font-weight:400;font-variation-settings:normal;font-size:clamp(30px,3vw,40px);line-height:1.12}
-.hq cite{background:none;padding:0;border-radius:0;font-family:var(--pencil);text-transform:none;letter-spacing:0;font-weight:400;font-size:26px;font-size-adjust:.5;color:var(--pen)}
+.hq cite{background:none;padding:0;border-radius:0;font-family:var(--pencil);text-transform:none;letter-spacing:0;font-weight:400;font-size:26px;font-size-adjust:.64;color:var(--pen)}
 
 /* lined paper sections get softer lines */
 section.ruled.ruled{background-color:var(--paper);background-image:repeating-linear-gradient(to bottom,transparent 0 31px,var(--rule) 31px 32px)}
@@ -811,7 +811,7 @@ section.quiz-band.ruled::after{display:none}
 .fitband .q-opt:hover::before,.fitband .q-opt.picked::before{background-color:var(--butter);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2 6.5l2.6 2.4L10 3' fill='none' stroke='%23B4382F' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")}
 .fitband .q-opt:hover::after{translate:4px 0}
 .fitband .q-label{margin-bottom:10px}
-.fit-tap{display:flex;align-items:flex-end;gap:6px;margin-top:26px;font-family:var(--pencil);font-size-adjust:.5;font-size:28px;color:var(--pen);rotate:-3deg;transform-origin:left}
+.fit-tap{display:flex;align-items:flex-end;gap:6px;margin-top:26px;font-family:var(--pencil);font-size-adjust:.64;font-size:28px;color:var(--pen);rotate:-3deg;transform-origin:left}
 .fit-tap svg{width:76px;height:34px;fill:none;stroke:var(--pen);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;animation:tapbob 1.6s ease-in-out infinite}
 @keyframes tapbob{50%{translate:6px 2px}}
 @media (max-width:1000px){.fit-tap{margin-top:18px}.fit-tap svg{rotate:62deg;translate:0 8px}@keyframes tapbob{50%{translate:2px 12px}}}
@@ -1394,7 +1394,7 @@ const NEXT_WORKSHOP = "2026-12-05T15:00:00Z";
 
 // intro: place the live highlighter behind "now" once the font has loaded
 (function(){ const sv=document.querySelector(".nb-page svg"); if(!sv) return; const t=sv.querySelectorAll("text")[1], im=sv.querySelector(".nb-hlnow");
-  const place=()=>{ try{ const s=t.textContent, i=s.indexOf("now"), x=+t.getAttribute("x")+t.getSubStringLength(0,i), w=t.getSubStringLength(i,3), fs=parseFloat(getComputedStyle(t).fontSize)||92, y=+t.getAttribute("y");
+  const place=()=>{ try{ const s=t.textContent, i=s.indexOf("now"), x=+t.getAttribute("x")+t.getSubStringLength(0,i), w=t.getSubStringLength(i,3), fs=parseFloat(getComputedStyle(t).fontSize)||100, y=+t.getAttribute("y");
     im.setAttribute("x",x-fs*.12); im.setAttribute("width",w+fs*.26); im.setAttribute("y",y-fs*.62); im.setAttribute("height",fs*.78); }catch(e){} };
   (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(place); document.addEventListener("click",place,true);
 })();
