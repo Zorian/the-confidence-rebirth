@@ -1,0 +1,1172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Confidence Rebirth</title>
+<meta name="description" content="Dani Carbonari's confidence coaching community, only for the woman who is ready. Start with a free live workshop every month.">
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@800&family=Archivo:wdth,wght@100..125,400..700&family=Kalam:wght@700&family=Permanent+Marker&display=swap">
+<style>
+:root{padding-top:env(safe-area-inset-top,0px)}
+body{margin:0}
+[hidden]{display:none!important}
+/* Main site: inspo 1 base, with Dani's picks from inspo 2, 3 and 4. */
+:root{
+  --yellow:#FFDE17; --yellow-soft:#FFE58A; --ink:#212322; --ink-2:#404241; --muted:#5E605F;
+  --stone:#F4F4EE; --stone-2:#E8E8DA; --white:#FFFFFF; --night:#0E0F0E; --sand:#DCD2C8;
+  --wide:"Archivo", "Helvetica Neue", Arial, sans-serif; --cond:"Anton","Impact","Arial Narrow",sans-serif; --hand:"Archivo","Helvetica Neue",Arial,sans-serif; --marker:"Permanent Marker","Comic Sans MS",cursive; --black:#121212; --tape:rgba(226,212,176,.9);
+  --r-btn:12px; --r-card:14px; --max:1180px;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:#F3F0EA;color:var(--ink);font-family:var(--wide);font-size:16px;line-height:1.55;font-variation-settings:"wdth" 100;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--yellow)}
+a{color:inherit}
+img,video{max-width:100%;height:auto;display:block}
+h1,h2,h3{font-family:var(--wide);font-variation-settings:"wdth" 118;font-weight:600;line-height:1.08;letter-spacing:-.01em;margin:0;text-wrap:balance;color:var(--ink)}
+p{margin:0}
+.wrap{max-width:var(--max);margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.band{padding-block:clamp(56px,8vw,104px)}
+.stone{background:var(--stone)}
+.kicker{font-variation-settings:"wdth" 118;font-weight:600;font-size:clamp(17px,1.6vw,22px);text-transform:uppercase;color:var(--ink-2);letter-spacing:.01em}
+.lede{color:var(--ink-2);font-size:17px;max-width:46ch}
+.lede b{color:var(--ink);font-weight:600}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px;border-radius:6px}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 26px;border-radius:var(--r-btn);background:var(--yellow);color:var(--ink);border:1.5px solid var(--ink);font-weight:600;font-size:13px;letter-spacing:.03em;text-transform:uppercase;text-decoration:none;font-variation-settings:"wdth" 112;cursor:pointer;transition:background .15s, transform .15s}
+.btn:hover{background:#FFE84D}
+.btn:active{transform:translateY(1px)}
+.btn.dark{background:var(--ink);color:var(--white);border-color:var(--ink)}
+.btn.dark:hover{background:#000}
+.btn.line{background:transparent}
+.btn.line:hover{background:var(--white)}
+.tlink{font-weight:600;font-size:15px;text-underline-offset:4px}
+
+/* ticker */
+.ticker{background:var(--yellow);overflow:hidden;white-space:nowrap;height:44px;display:flex;align-items:center;position:relative;z-index:5}
+.ticker .tk-cta{position:absolute;z-index:2;right:0;top:0;bottom:0;display:flex;align-items:center;gap:10px;padding:0 22px;background:var(--black);color:var(--yellow);font-weight:700;font-size:13px;letter-spacing:.05em;text-transform:uppercase;white-space:nowrap;text-decoration:none;font-variation-settings:"wdth" 108;overflow:hidden;isolation:isolate;transition:background .15s}
+.tk-cta:hover{background:#2A2A28}
+.tk-cta:active{background:#000;box-shadow:inset 0 3px 8px rgba(0,0,0,.6)}
+.tk-cta:focus-visible{outline:3px solid var(--ink);outline-offset:-5px;box-shadow:inset 0 0 0 2px var(--yellow)}
+.tk-cta em{font-style:normal;font-size:22px;line-height:1;margin-top:-3px;display:inline-block;animation:tkng 1.3s ease-in-out infinite}
+@keyframes tkng{50%{transform:translateX(5px)}}
+.tk-cta::after{content:"";position:absolute;z-index:-1;top:0;bottom:0;left:-40%;width:30%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);animation:tksh 3s ease-in-out infinite}
+@keyframes tksh{0%,50%{left:-40%}100%{left:120%}}
+.ticker-track{display:inline-flex;gap:56px;animation:tick 26s linear infinite;padding-left:56px}
+.ticker a{font-weight:500;font-size:15px;text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1.5px;font-variation-settings:"wdth" 110}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* header */
+.top{position:absolute;left:0;right:0;top:calc(44px + env(safe-area-inset-top,0px));z-index:20}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:18px}
+.top .logo img{width:150px;height:auto}
+.pill{display:flex;align-items:center;gap:4px}
+.pill a{font-size:14px;font-weight:600;text-decoration:none;padding:8px 13px;border-radius:999px}
+.pill a:hover{text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:2px}
+.pill .join{background:var(--yellow);border:1.5px solid var(--ink);border-radius:999px;margin-left:4px;padding:7px 16px;white-space:nowrap}
+.pill .join:hover{background:#FFE84D}
+.menu-btn{display:none;width:40px;height:40px;border:0;background:none;cursor:pointer;align-items:center;justify-content:center;border-radius:8px}
+.menu-btn span,.menu-btn span::before,.menu-btn span::after{display:block;width:20px;height:2px;background:var(--ink);position:relative;transition:transform .2s}
+.menu-btn span::before,.menu-btn span::after{content:"";position:absolute;left:0}
+.menu-btn span::before{top:-6px}.menu-btn span::after{top:6px}
+.menu-open .menu-btn span{background:transparent}
+.menu-open .menu-btn span::before{transform:translateY(6px) rotate(45deg)}
+.menu-open .menu-btn span::after{transform:translateY(-6px) rotate(-45deg)}
+.drawer{display:none}
+
+/* hero */
+.hero{background:var(--sand);color:var(--ink);position:relative;overflow:hidden;min-height:clamp(560px,52vw,700px);display:flex}
+.hero-photo{position:absolute;inset:0 auto 0 0;width:62%}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 18%}
+.hero-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(220,210,200,0) 55%,var(--sand) 98%)}
+.hero .wrap{position:relative;width:100%;display:flex;align-items:center;justify-content:flex-end}
+.hq{width:min(460px,42%);text-align:center;padding-top:80px}
+.hq-stage{display:grid}
+.hq figure{grid-area:1/1;margin:0;opacity:0;transform:translateY(10px);transition:opacity .6s,transform .6s;pointer-events:none}
+.hq figure.on{opacity:1;transform:none;pointer-events:auto}
+.hq blockquote{margin:0;font-size:clamp(22px,2.2vw,28px);line-height:1.28;font-weight:500;font-variation-settings:"wdth" 108;text-wrap:balance}
+.hq cite{display:inline-block;margin-top:18px;font-style:normal;font-size:14px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);background:var(--yellow);padding:4px 10px;border-radius:6px}
+.dots{display:flex;gap:7px;justify-content:center;margin-top:26px}
+.dots button{width:7px;height:7px;border-radius:50%;border:0;padding:0;background:rgba(255,255,255,.35);cursor:pointer}
+.dots button.on{background:var(--white)}
+.dots.dark button{background:#C9CAC2}
+.dots.dark button.on{background:var(--ink)}
+
+/* intro (podcast section analogue) */
+.vcard{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(24px,4vw,56px);align-items:center;padding:clamp(12px,1.4vw,18px);background:#FBFAF6;border:1px solid #E2DDD2;border-radius:24px;box-shadow:0 18px 40px -28px rgba(0,0,0,.35)}
+.intro-copy{display:grid;gap:16px;justify-items:start;max-width:460px;padding:clamp(4px,1vw,12px) clamp(4px,2vw,24px) clamp(4px,1vw,12px) 0}
+.intro h1{font-size:clamp(40px,4.6vw,60px)}
+.intro .sub{font-size:19px;color:var(--ink);font-weight:500;max-width:30ch;margin:0}
+.intro .lede{margin:0;font-size:16px}
+.next{display:grid;gap:6px;padding:14px 16px;background:var(--white);border-radius:var(--r-card);border:1px solid var(--stone-2);font-size:14px;color:var(--ink-2)}
+.next b{color:var(--ink)}
+.live{display:inline-block;width:8px;height:8px;border-radius:50%;background:#E0362C;margin-right:8px;box-shadow:0 0 0 0 rgba(224,54,44,.5);animation:pulse 1.8s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 8px rgba(224,54,44,0)}100%{box-shadow:0 0 0 0 rgba(224,54,44,0)}}
+.clock{font-variant-numeric:tabular-nums}
+.cta-row{display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px}
+
+.cover{position:relative;display:block;border-radius:16px;overflow:hidden;aspect-ratio:16/11;background:var(--ink);width:100%;border:0;padding:0;cursor:pointer;text-align:left;color:var(--ink);font:inherit}
+.cover video,.cover img{width:100%;height:100%;object-fit:cover;object-position:50% 14%}
+.vtag{position:absolute;left:14px;bottom:14px;display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:6px;background:#E5484D;color:#fff;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.vtag i{width:7px;height:7px;border-radius:50%;background:#fff;animation:pulse 1.8s infinite}
+.cover-tag{position:absolute;left:0;right:0;bottom:0;height:46%;background:var(--yellow);clip-path:polygon(0 24%,100% 0,100% 100%,0 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:24px 26px}
+.cover-tag small{font-size:12px;font-weight:700;letter-spacing:.24em;text-transform:uppercase}
+.cover-tag strong{font-variation-settings:"wdth" 75;font-weight:700;font-size:clamp(40px,5vw,62px);line-height:.88;text-transform:uppercase;letter-spacing:-.01em}
+.cover-tag em{font-style:normal;display:inline-block;margin-top:10px;background:var(--ink);color:var(--white);font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;padding:4px 10px;align-self:flex-start}
+.play{position:absolute;top:50%;left:50%;margin:-32px 0 0 -32px;width:64px;height:64px;border-radius:50%;background:var(--white);display:grid;place-items:center;box-shadow:0 6px 24px rgba(0,0,0,.25);transition:transform .2s}
+.cover:hover .play{transform:scale(1.07)}
+.play::before{content:"";border-left:18px solid var(--ink);border-top:11px solid transparent;border-bottom:11px solid transparent;margin-left:5px}
+.soon{position:absolute;left:16px;right:16px;top:16px;background:var(--ink);color:var(--white);padding:14px 16px;border-radius:12px;font-size:15px;font-weight:500;text-align:center}
+
+/* rows */
+.row-head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:22px}
+.swipe{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+.area .tile{aspect-ratio:16/10;border-radius:12px;display:flex;align-items:flex-end;padding:14px 16px;overflow:hidden;position:relative}
+.area .tile span{font-variation-settings:"wdth" 122;font-weight:700;font-size:clamp(22px,2vw,28px);line-height:1}
+.area:nth-child(3n+1) .tile{background:var(--yellow)}
+.area:nth-child(3n+2) .tile{background:var(--ink);color:var(--white)}
+.area:nth-child(3n) .tile{background:var(--stone-2)}
+.area small{display:block;margin:12px 0 4px;font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+.area p{font-size:15px;font-weight:600;line-height:1.3}
+
+/* quiz (library search analogue) */
+.quiz-band{text-align:center}
+.quiz-band h2{font-size:clamp(28px,3vw,38px);max-width:22ch;margin:0 auto}
+.quiz-band .lede{margin:16px auto 0;text-align:center;max-width:52ch;font-size:15px}
+.searchbar{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:560px;margin:28px auto 0;min-height:52px;padding:0 10px 0 20px;border-radius:12px;background:var(--stone);text-decoration:none;color:var(--muted);font-size:15px;transition:background .15s}
+.searchbar:hover{background:var(--stone-2)}
+.searchbar i{width:34px;height:34px;border-radius:8px;display:grid;place-items:center;background:var(--yellow);color:var(--ink)}
+.types{list-style:none;padding:0;margin:44px 0 0;display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+.types a{display:grid;justify-items:center;gap:14px;padding:26px 12px;border-radius:12px;background:var(--stone);text-decoration:none;font-weight:600;font-size:14px;letter-spacing:.03em;text-transform:uppercase;transition:background .15s}
+.types a:hover{background:var(--stone-2)}
+.types svg{width:38px;height:38px;padding:8px;border-radius:50%;background:var(--yellow);stroke:var(--ink);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* proof row */
+.proof-view{overflow:hidden;padding-top:14px}
+.proof{display:flex;gap:16px;width:max-content;animation:slideRight 60s linear infinite}
+.proof-view:hover .proof,.proof-view:focus-within .proof,.proof-view.held .proof{animation-play-state:paused}
+@keyframes slideRight{from{transform:translateX(-25%)}to{transform:translateX(0)}}
+.proof .pcard{flex:0 0 clamp(280px,27vw,380px)}
+.pcard{background:var(--white);border-radius:var(--r-card);padding:26px;display:grid;gap:14px;align-content:start}
+.pcard blockquote{margin:0;font-variation-settings:"wdth" 116;font-weight:600;font-size:22px;line-height:1.2}
+.pcard p{color:var(--ink-2);font-size:15px}
+.pcard cite{font-style:normal;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+
+/* offers */
+.offers{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(6,auto);column-gap:16px;row-gap:0;align-items:stretch}
+.offer{background:var(--white);border-radius:var(--r-card);padding:24px;display:grid;grid-row:span 6;grid-template-rows:subgrid;row-gap:16px;align-content:start;border:1.5px solid var(--ink)}
+.offer>.tier{grid-row:1;align-self:start}
+.offer>h3{grid-row:2}
+.offer>.price{grid-row:3}
+.offer>.mwrap{grid-row:4}
+.offer>ul{grid-row:5;align-self:start}
+#free>ul{grid-row:4 / 6}
+.offer>.act{grid-row:6;align-self:start}
+.mwrap{display:grid;gap:10px;align-content:start}
+.offers-hint{display:none}
+.offer.featured{border-color:var(--ink);box-shadow:6px 6px 0 var(--yellow)}
+.offer .tier{font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.offer.featured .tier{display:inline-block;background:var(--yellow);color:var(--ink);padding:3px 8px;border-radius:6px;align-self:flex-start}
+.offer h3{font-size:22px}
+.price{font-variation-settings:"wdth" 118;font-weight:600;font-size:24px}
+.price small{display:block;font-variation-settings:"wdth" 100;font-weight:400;font-size:13px;color:var(--muted);margin-top:2px}
+.offer ul{list-style:none;margin:0;padding:0;display:grid;gap:9px;font-size:15px;color:var(--ink-2)}
+.offer li{padding-left:24px;position:relative}
+.offer li::before{content:"";position:absolute;left:0;top:5px;width:14px;height:14px;border-radius:50%;background:var(--yellow);box-shadow:inset 0 0 0 4px var(--yellow),inset 0 0 0 14px var(--ink);transform:scale(.55)}
+.offer .act{display:grid;gap:8px}
+.offer .act small{font-size:13px;color:var(--muted)}
+.offer .btn{width:100%;padding:0 12px;text-align:center}
+.soon-line{margin-top:24px;text-align:center;font-size:15px;color:var(--ink-2)}
+
+/* fit finder */
+.fit{display:grid;grid-template-columns:1fr 1.2fr;gap:clamp(28px,5vw,72px);align-items:start}
+.fit h2{font-size:clamp(30px,3.2vw,42px)}
+.fit .lede{margin-top:14px}
+.fdots{display:flex;gap:6px;margin-top:22px}
+.fdots i{width:28px;height:5px;border-radius:3px;background:var(--stone-2)}
+.fdots i.on{background:var(--ink)}
+.fit-body{background:var(--stone);border-radius:18px;padding:clamp(20px,3vw,32px);display:grid;gap:10px}
+.q-label{font-variation-settings:"wdth" 116;font-weight:600;font-size:21px;margin-bottom:6px}
+.q-opt{text-align:left;font:inherit;font-size:16px;font-weight:500;min-height:54px;padding:12px 18px;border-radius:12px;border:1.5px solid transparent;background:var(--white);color:var(--ink);cursor:pointer;transition:border-color .15s,background .15s}
+.q-opt:hover{border-color:var(--ink)}
+.q-opt.picked{background:var(--yellow);border-color:var(--ink)}
+.q-back{justify-self:start;background:none;border:0;font:inherit;font-size:14px;font-weight:600;text-decoration:underline;text-underline-offset:4px;cursor:pointer;color:var(--ink-2);padding:6px 0}
+.q-result{display:grid;gap:12px;justify-items:start}
+.q-result .tier{font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;background:var(--yellow);padding:3px 8px;border-radius:6px}
+.q-result h3{font-size:28px}
+.q-result .price{font-size:20px}
+.q-result p{color:var(--ink-2)}
+.q-result .row{display:flex;flex-wrap:wrap;gap:12px 18px;align-items:center;margin-top:4px}
+.step{animation:stepIn .35s ease-out}
+@keyframes stepIn{from{opacity:.2;transform:translateY(6px)}}
+
+/* faq */
+.faq-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:clamp(28px,5vw,72px)}
+.faq-grid h2{font-size:clamp(30px,3.2vw,42px)}
+.faq details{border-bottom:1px solid #D9D9CB}
+.faq details:first-child{border-top:1px solid #D9D9CB}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:16px;align-items:center;padding:20px 0;font-weight:600;font-size:17px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";flex:none;width:30px;height:30px;border-radius:50%;background:var(--yellow);display:grid;place-items:center;font-size:20px;font-weight:500;transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{padding:0 0 22px;color:var(--ink-2);max-width:60ch}
+
+/* final */
+.final{background:var(--yellow);text-align:center}
+.final .wrap{display:grid;gap:18px;justify-items:center}
+.final h2{font-size:clamp(36px,5vw,64px);max-width:16ch}
+.final p{font-size:18px;max-width:44ch}
+
+/* footer */
+footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
+.f-top{display:grid;grid-template-columns:1.3fr repeat(3,1fr);gap:28px}
+.f-top img{width:160px}
+.f-col h4{margin:0 0 12px;font-size:15px;font-weight:600;font-variation-settings:"wdth" 112}
+.f-col a{display:block;text-decoration:none;color:var(--ink);padding:3px 0}
+.f-col a:hover{color:var(--ink);text-decoration:underline}
+.socials{display:flex;gap:16px;margin-top:40px}
+.socials a{width:24px;height:24px;display:grid;place-items:center}
+.socials svg{width:20px;height:20px;fill:var(--ink)}
+.f-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;border-top:1px solid rgba(33,35,34,.3);margin-top:18px;padding-top:18px;font-size:12px;color:var(--ink)}
+.f-bottom nav{display:flex;gap:18px}
+.f-bottom a{text-underline-offset:3px}
+
+/* fit: dark notebook band */
+.fitband{background:#191917;color:#fff}
+.fitband h2{font-family:"Montserrat",var(--wide);font-variation-settings:normal;font-weight:800;text-transform:uppercase;color:#fff;font-size:clamp(38px,4.3vw,58px);line-height:1.04;letter-spacing:-.01em;text-wrap:wrap}
+.fitband .hl{color:var(--ink)}
+.fitband .lede{color:#CFCFC8}
+.fitband .fdots i{background:#55554F}
+.fitband .fdots i.on{background:var(--yellow)}
+.fitband .fit-body{background:none;padding:0;border-radius:0}
+.fitband .q-label{font-family:var(--hand);font-variation-settings:normal;font-weight:600;font-size:clamp(23px,2.2vw,28px);color:var(--yellow);line-height:1.2}
+.fitband .q-opt{background:transparent;border:1.5px solid rgba(255,255,255,.55);color:#fff;border-radius:6px;min-height:56px}
+.fitband .q-opt:hover{border-color:var(--yellow);color:var(--yellow)}
+.fitband .q-opt.picked{background:var(--yellow);border-color:var(--yellow);color:var(--ink)}
+.fitband .q-back,.fitband .tlink{color:#fff}
+.fitband .q-result h3{color:#fff}
+.fitband .q-result p{color:#CFCFC8}
+.fitband .q-result .price{color:#fff}
+.fitband .q-result .tier{color:var(--ink)}
+.fitband .btn{border-color:var(--yellow)}
+.fitband :focus-visible{outline-color:var(--yellow)}
+
+/* faq: big retro type, heavy rules */
+.faqband h2{font-family:var(--cond);font-weight:400;text-transform:uppercase;font-size:clamp(56px,6.4vw,92px);line-height:1.08;letter-spacing:.005em;color:var(--black);text-wrap:wrap}
+.faqband .faq details,.faqband .faq details:first-child{border-top:0;border-bottom:2px solid var(--black)}
+.faqband .faq summary{font-size:17px;font-weight:700;color:var(--black);padding:18px 0}
+.faqband .faq summary::after{border-radius:5px;background:var(--yellow);color:var(--black)}
+.faqband .faq details p{color:var(--ink-2);padding-bottom:20px}
+
+/* scroll progress */
+#sp{position:fixed;left:0;right:0;top:0;height:4px;background:var(--yellow);box-shadow:0 1px 0 var(--ink);transform:scaleX(var(--sp,0));transform-origin:left;z-index:70;pointer-events:none}
+
+/* everything below moves with the scroll; --r runs 0 to 1 and defaults to 1 without JS */
+.hq{transform:translateY(calc(var(--h,0)*-70px));opacity:calc(1 - var(--h,0)*.6)}
+.intro-copy>*{transform:translateY(calc((1 - var(--r,1))*34px));opacity:var(--r,1)}
+.vsl-frame{transform:scale(calc(.94 + var(--r,1)*.06))}
+.stack .w{translate:calc((1 - var(--r,1))*-90px) 0}
+.stack .k{translate:calc((1 - var(--r,1))*90px) 0}
+.stack .hand{opacity:var(--r,1)}
+.title .cut img{transform:translateY(calc((1 - var(--r,1))*110px))}
+.quiz-band h2,.quiz-band .lede,.searchbar,.types li,.offer,.row-head,.fit-body,.coach-copy>*,.faq details,.pb-txt>*{transform:translateY(calc((1 - var(--r,1))*var(--d,36px)));opacity:var(--r,1)}
+.giant .box{transform:translateY(calc((1 - var(--r,1))*60px)) rotate(calc((1 - var(--r,1))*9deg))}
+.proof-view{transform:translateY(calc((1 - var(--r,1))*50px));opacity:var(--r,1)}
+.nf-col.no li{transform:translateX(calc((1 - var(--r,1))*-46px));opacity:var(--r,1)}
+.nf-col.yes li{transform:translateX(calc((1 - var(--r,1))*46px));opacity:var(--r,1)}
+.m-foot,.nf-big,.nf-sub,.nf-end,.nf-cta{transform:translateY(calc((1 - var(--r,1))*30px));opacity:var(--r,1)}
+.notfor h2 span{display:inline-block}
+.final{clip-path:inset(0 calc((1 - var(--r,1))*7%) round calc((1 - var(--r,1))*32px))}
+.final h2{transform:scale(calc(.86 + var(--r,1)*.14))}
+.phone{transform:translateY(calc((1 - var(--r,1))*150px))}
+.phone:hover{transform:translateY(calc((1 - var(--r,1))*150px));translate:0 -8px}
+.phone{transition:translate .25s}
+
+/* method picker inside the offers */
+.mpick{font-size:14px;font-weight:600;line-height:1.2}
+.mrows{display:grid;gap:5px}
+.mrow{display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;min-height:38px;padding:6px 12px;border:1.5px solid transparent;border-radius:10px;background:var(--stone);color:var(--ink);font:inherit;font-size:15px;font-weight:600;font-variation-settings:"wdth" 106;text-align:left;cursor:pointer;transition:background .15s,transform .15s}
+.mrow:hover{background:var(--stone-2)}
+.mrow[aria-pressed="true"]{background:var(--yellow);border-color:var(--ink)}
+.mrow i{flex:none;font-style:normal;font-size:12px;font-weight:500;font-variation-settings:"wdth" 100;line-height:1;white-space:nowrap;color:var(--ink-2)}
+.mrow[aria-pressed="true"] i{color:var(--ink)}
+
+/* find your method */
+.methods{overflow:hidden}
+.m-note{font-family:var(--hand);font-weight:600;font-style:italic;font-size:clamp(16px,1.6vw,19px);display:inline-block;margin-bottom:6px}
+.methods h2{font-family:var(--cond);font-weight:400;text-transform:uppercase;letter-spacing:.005em;font-size:clamp(68px,10vw,150px);line-height:1}
+.methods .lede{margin-top:14px}
+.mgrid{display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(28px,2.6vw,32px) clamp(16px,2vw,24px);margin-top:clamp(36px,4vw,52px)}
+.mgrid .mcard{flex:0 1 calc((100% - 2*clamp(16px,2vw,24px))/3)}
+.micon{display:grid;place-items:center;width:86px;height:70px;margin:-6px 0 -4px -10px;background:url(img/hl-1.webp) center/100% 74% no-repeat}
+.micon svg{width:56px;height:56px;fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.mcard{position:relative;display:flex;flex-direction:column;gap:12px;align-items:flex-start;padding:30px 24px 24px;border-radius:6px;background-color:#F1EEE6;background-image:repeating-linear-gradient(180deg,transparent 0 27px,rgba(47,90,140,.07) 27px 28px);transform:translateY(calc((1 - var(--r,1))*90px)) rotate(calc((1 - var(--r,1))*var(--tilt,-5deg)));opacity:var(--r,1)}
+.mcard:nth-child(2){--tilt:4deg}
+.mcard:nth-child(3){--tilt:-3deg}
+.mcard:nth-child(4){--tilt:3deg}
+.mcard:nth-child(5){--tilt:-4deg}
+.mcard::before{content:"";position:absolute;top:-13px;left:calc(50% - 46px);width:92px;height:26px;background:var(--tape);transform:rotate(-3deg)}
+.mcard:nth-child(2)::before{transform:rotate(3deg)}
+.mcard.open{background:var(--black);background-image:none;color:#fff}
+.mstat{font-size:13px;font-weight:600;line-height:1.2;color:var(--ink-2)}
+.mcard.open .mstat{color:var(--yellow)}
+.mcard h3{font-family:var(--cond);font-weight:400;text-transform:uppercase;letter-spacing:.005em;font-size:clamp(42px,4.2vw,60px);line-height:.98;text-wrap:wrap;margin-bottom:6px}
+.mcard h3 small{display:block;font-family:var(--wide);font-variation-settings:"wdth" 112;font-weight:600;font-size:13px;letter-spacing:.06em;line-height:1.5}
+.mcard.open h3{color:var(--yellow)}
+.mcard.open h3 small{color:#fff}
+.mcard p{font-size:16px;line-height:1.4}
+.mcard p b{display:block;font-size:13px;font-weight:600;color:var(--muted)}
+.mcard.open p b{color:#BDBDB6}
+.mcard .btn{margin-top:auto}
+.mcard p:last-of-type{margin-bottom:10px}
+.mcard.open .btn{border-color:var(--yellow)}
+.mcard.open :focus-visible{outline-color:var(--yellow)}
+.m-foot{margin-top:24px;font-size:16px;color:var(--ink-2)}
+.m-foot a{font-weight:600;text-underline-offset:4px;color:var(--ink)}
+
+/* hero workshop call to action */
+.hw{display:grid;justify-items:center;gap:14px;margin-top:26px}
+.hw-date{display:flex;align-items:center;gap:10px;font-weight:600;font-size:17px;margin:0}
+.hw-date .live{margin-right:0;width:10px;height:10px}
+.hlx{position:relative;isolation:isolate;padding:2px 10px;white-space:nowrap}
+.hlx::before{content:"";position:absolute;z-index:-1;inset:0;border-style:solid;border-width:0 12px;border-image:url(img/hl-1.webp) 0 90 fill / 0 12px stretch;animation:hwsw 4s cubic-bezier(.6,.05,.3,1) infinite}
+@keyframes hwsw{0%{clip-path:inset(-15% 100% -15% 0)}25%,92%{clip-path:inset(-15% 0 -15% 0)}100%{clip-path:inset(-15% 0 -15% 100%)}}
+.hw-btn{position:relative;overflow:hidden;isolation:isolate;display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:56px;padding:0 30px;border-radius:12px;background:var(--black);color:var(--yellow);font-weight:700;font-size:15px;letter-spacing:.05em;text-transform:uppercase;font-variation-settings:"wdth" 110;text-decoration:none;box-shadow:0 6px 0 #000;transition:transform .12s,box-shadow .12s}
+.hw-btn:hover{transform:translateY(-2px);box-shadow:0 8px 0 #000}
+.hw-btn:active{transform:translateY(5px);box-shadow:0 1px 0 #000}
+.hw-btn em{font-style:normal;font-size:24px;line-height:1;margin-top:-3px;animation:hwng 1.3s ease-in-out infinite}
+@keyframes hwng{50%{transform:translateX(5px)}}
+.hw-btn::after{content:"";position:absolute;z-index:-1;top:0;bottom:0;left:-40%;width:30%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.3),transparent);animation:hwsh 3s ease-in-out infinite}
+@keyframes hwsh{0%,50%{left:-40%}100%{left:120%}}
+.hw-btn:focus-visible{outline:3px solid var(--ink);outline-offset:4px}
+
+/* notebook paper, like the first site: cream everywhere, ruled lines and a red margin on some sections */
+.band.stone,footer{background:transparent}
+section.ruled.ruled{position:relative;isolation:isolate;background-color:#F3F0EA;background-image:repeating-linear-gradient(to bottom,transparent 0 31px,rgba(47,90,140,.17) 31px 32px)}
+section.ruled::after{content:"";position:absolute;z-index:-1;top:0;bottom:0;left:max(14px,calc(50% - 640px));width:2px;background:#C8373F;opacity:.5;pointer-events:none}
+@media (max-width:760px){section.ruled::after{left:6px;width:1.5px;opacity:.4}}
+
+/* notebook intro */
+.nb{display:none}
+.nb-on .nb{display:grid}
+.nb.reset,.nb.reset *{transition:none!important;animation:none!important}
+.nb-on body{overflow:hidden}
+.nb{position:fixed;inset:0;z-index:200;place-items:center;perspective:1600px;background:#F4EEE4 radial-gradient(90% 70% at 50% 42%,#FBF7F0,transparent 70%);cursor:pointer;transition:opacity .6s}
+.nb.out{opacity:0;pointer-events:none}
+.nb-book{position:relative;width:min(380px,86vw,56vh);aspect-ratio:955/1284;transform-style:preserve-3d;transform:rotateX(var(--ty,0deg)) rotateY(var(--tx,0deg));transition:transform .3s ease-out,opacity .5s .9s;animation:nbdrop 1s cubic-bezier(.2,.9,.3,1.12) .1s both}
+@keyframes nbdrop{0%{opacity:0;translate:0 -46px;rotate:-7deg;scale:1.1}60%{opacity:1}100%{opacity:1;translate:0 0;rotate:-1.5deg;scale:1}}
+.nb-book::before{content:"";position:absolute;inset:1.2% -1.2% -1.2% 7%;background:#F7F4EC;border-radius:2.4%/1.8%;box-shadow:0 34px 48px -24px rgba(90,60,40,.5),0 8px 14px -8px rgba(90,60,40,.3)}
+.nb-book::after{content:"";position:absolute;inset:.6% -.6% -.6% 6.5%;background:repeating-linear-gradient(to bottom,#FBF9F3 0 2px,#E8E3D8 2px 3px);border-radius:2.4%/1.8%}
+.nb-cover,.nb-spine{position:absolute;transform-origin:left center;transition:transform 1.1s cubic-bezier(.6,.05,.3,1)}
+.nb-cover{inset:0;z-index:2;transform-origin:6% center;backface-visibility:hidden;background:url(img/notebook-cover.webp) center/100% 100% no-repeat}
+/* a soft glint of light moves across the cover, shaped to the notebook */
+.nb-cover::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(110deg,transparent 38%,rgba(255,255,255,.42) 48%,rgba(255,255,255,.1) 54%,transparent 62%) 160% 0/260% 100% no-repeat;-webkit-mask:url(img/notebook-cover.webp) center/100% 100% no-repeat;mask:url(img/notebook-cover.webp) center/100% 100% no-repeat}
+.nb.go .nb-cover::after{animation:nbglint 1.6s cubic-bezier(.4,.1,.3,1) .2s both}
+@keyframes nbglint{from{background-position:160% 0}to{background-position:-60% 0}}
+.nb-hint{position:absolute;left:50%;bottom:calc(5vh + env(safe-area-inset-bottom,0px));translate:-50% 0;font:700 18px/1 "Kalam","Comic Sans MS",cursive;color:#6b5e55;opacity:0;transition:opacity .4s}
+.nb.go:not(.open) .nb-hint{opacity:1;animation:nbhint 1.8s ease-in-out infinite}
+@keyframes nbhint{50%{translate:-50% -4px}}
+.nb-cover svg{position:absolute;inset:0;width:100%;height:100%}
+.nb-spine{display:none}
+.nb-page{position:absolute;z-index:4;inset:0;display:grid;place-items:center;background:#F3F0EA repeating-linear-gradient(to bottom,transparent 0 31px,rgba(47,90,140,.17) 31px 32px);opacity:0;pointer-events:none;transition:opacity .4s .8s,transform 1s 3.6s cubic-bezier(.6,.05,.3,1)}
+.nb-page::after{content:"";position:absolute;top:0;bottom:0;left:max(14px,calc(50% - 640px));width:2px;background:#C8373F;opacity:.5}
+.nb-page svg{width:min(640px,90vw)}
+.nb-pen{font:400 100px var(--cond);text-transform:uppercase;letter-spacing:1px;fill:transparent;stroke:#212322;stroke-width:2;stroke-dasharray:1400;stroke-dashoffset:1400}
+.nb.open .nb-cover,.nb.open .nb-spine{transform:rotateY(-160deg)}
+.nb.open .nb-book{transform:scale(3.2);opacity:0;transition:transform 1s cubic-bezier(.6,.05,.3,1),opacity .5s .9s}
+.nb.open .nb-page{opacity:1;transform:translateY(-110%) rotate(-4deg)}
+.nb.open .nb-pen{animation:nbwr 1.4s ease-out 1.2s forwards}
+.nb.open .nb-pen+.nb-pen{animation-delay:2.1s}
+@keyframes nbwr{60%{fill:transparent}to{stroke-dashoffset:0;fill:#212322}}
+.nb-enter{position:absolute;left:50%;bottom:calc(28px + env(safe-area-inset-bottom,0px));translate:-50% 0;padding:10px 20px;border-radius:999px;background:var(--yellow);color:var(--ink);border:2px solid var(--ink);font-weight:700;font-size:14px;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;animation:nbpulse 1.8s ease-in-out infinite;transition:opacity .3s}
+@keyframes nbpulse{50%{transform:scale(1.06)}}
+.nb.open .nb-enter{opacity:0}
+.nb:focus-visible{outline:3px solid var(--yellow);outline-offset:-6px}
+
+/* masking tape, used in a few places */
+.intro{overflow-x:clip}
+.vsl-frame{position:relative;width:100%}
+.pcard{position:relative}
+.pcard::before,.giant .box::before{content:"";position:absolute;top:-13px;left:calc(50% - 46px);width:92px;height:26px;background:var(--tape);z-index:2;pointer-events:none}
+.pcard::before{transform:rotate(-3deg)}
+.pcard:nth-child(3n+2)::before{transform:rotate(2.500deg);left:calc(38% - 46px)}
+.pcard:nth-child(3n)::before{transform:rotate(-1.500deg);left:calc(60% - 46px)}
+.giant .box{position:relative}
+.giant .box::before{transform:rotate(-5deg)}
+
+/* real highlighter: ends stay rough, only the middle stretches */
+.hl{position:relative;display:inline-block;isolation:isolate;padding:0 .1em;white-space:nowrap;--p:1}
+.hl::before{content:"";position:absolute;z-index:-1;inset:.03em -.08em -.01em;border-style:solid;border-width:0 .42em;border-image:url(img/hl-1.webp) 0 90 fill / 0 .42em stretch}
+.hl::before{clip-path:inset(-15% calc((1 - var(--p))*100%) -15% 0)}
+.hl.v2::before{border-image-source:url(img/hl-2.webp)}
+.hl.v3::before{border-image-source:url(img/hl-3.webp)}
+
+/* eye catching quiz link */
+.intro .cta-row{display:grid;justify-items:start;gap:16px}
+.b5{display:grid;gap:12px;width:100%;max-width:430px;padding:16px 18px;border:1.5px solid var(--ink);border-radius:14px;background:#fff;text-decoration:none;color:var(--ink);transition:box-shadow .2s,translate .2s}
+.b5:hover{box-shadow:5px 5px 0 var(--yellow);translate:-2px -2px}
+.b5-q{font-weight:600;font-size:clamp(18px,1.6vw,20px);font-variation-settings:"wdth" 108;line-height:1.25}
+.b5-word{position:relative;isolation:isolate;display:inline-block;padding:0 .3em;white-space:nowrap}
+.b5-word::before{content:"";position:absolute;z-index:-1;inset:0 -.1em;border-style:solid;border-width:0 12px;border-image:url(img/hl-1.webp) 0 90 fill / 0 12px stretch}
+.b5-word span{display:inline-block}
+.b5-word span.in{animation:b5w .32s ease-out}
+@keyframes b5w{from{opacity:0;transform:translateY(8px)}}
+.b5-go{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:14px;font-weight:600;border-top:1px solid var(--stone-2);padding-top:12px}
+.b5-start{flex:none;display:inline-flex;align-items:center;padding:8px 18px;border-radius:999px;background:var(--yellow);border:1.5px solid var(--ink);font-size:13px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;animation:b5pop 1.8s ease-in-out infinite}
+@keyframes b5pop{50%{transform:scale(1.08)}}
+
+/* find dani on */
+.seen{background:#FBF8F1;color:var(--ink);padding-block:12px 14px;overflow:hidden;text-align:center;border-block:1px solid #E6E0D4}
+.seen-t{font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#6B6862;margin:0}
+.marq{display:flex;gap:10px;width:max-content;align-items:center;margin-top:8px;animation:marq 40s linear infinite}
+.marq:hover,.marq:focus-within{animation-play-state:paused}
+@keyframes marq{to{transform:translateX(-50%)}}
+.marq .pill{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:999px;background:#fff;border:1px solid #E2DCCF;font-size:14px;font-weight:500;color:#3A3836;white-space:nowrap;text-decoration:none;box-shadow:0 1px 2px rgba(0,0,0,.05);transition:background .15s,border-color .15s}
+.marq .pill:hover,.marq .pill:focus-visible{background:#FFF6BF;border-color:#E8D56A}
+.marq .pill:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+
+/* confidence coach */
+.title{background:var(--yellow);overflow:hidden}
+.title .wrap{display:grid;grid-template-columns:1.25fr .75fr;align-items:end;gap:20px}
+.stack{padding-block:clamp(40px,6vw,72px);display:grid;justify-items:start}
+.cond{font-family:var(--cond);text-transform:uppercase;letter-spacing:.005em;line-height:.92;font-size:clamp(52px,9vw,128px)}
+.stack .w{background:#fff;color:var(--black);padding:.06em .14em 0;rotate:-1.5deg}
+.stack .k{background:var(--black);color:var(--yellow);padding:.06em .2em 0;margin-left:clamp(40px,8vw,110px);rotate:1deg}
+.coach-h{display:grid;justify-items:start;font:inherit;margin:0;text-wrap:wrap;color:inherit}
+.stack .hand{font-family:var(--hand);font-weight:600;font-style:italic;margin-bottom:14px;font-size:clamp(20px,2.2vw,26px);line-height:1.2;color:var(--black)}
+.coach-copy{width:100%;display:grid;gap:14px;justify-items:start;margin-top:clamp(24px,3vw,36px);max-width:54ch;color:var(--ink);font-size:17px}
+.facts{list-style:none;margin:2px 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.facts li{background:#fff;border-radius:999px;padding:6px 14px;font-size:13px;font-weight:600}
+.coach-cta{width:100%;display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+.coach-cta .btn.line{border-color:var(--ink)}
+.coach-cta .btn.line:hover{background:#fff}
+.coach-line{font-weight:600}
+.title :focus-visible{outline-color:var(--ink)}
+.title .cut img{max-height:600px;width:auto;margin-left:auto;filter:drop-shadow(5px 0 0 #fff) drop-shadow(-5px 0 0 #fff) drop-shadow(0 -5px 0 #fff)}
+
+/* take up space */
+.giant{padding-block:30px clamp(44px,5vw,72px);overflow:hidden}
+.giant h2{font-family:var(--cond);font-weight:400;text-transform:uppercase;color:var(--yellow);font-size:clamp(104px,15vw,230px);line-height:.92;letter-spacing:-.005em}
+#grow{display:inline-block;position:relative;transform-origin:left center;transform:scale(var(--s,1))}
+.giant .note{position:absolute;font-family:var(--hand);font-size:clamp(14px,1.6vw,22px);color:var(--black);text-transform:none;letter-spacing:0;line-height:1.1;padding:6px 16px;border:2.5px solid var(--black);border-radius:50%;rotate:-8deg;left:2%;top:40%;background:rgba(255,255,255,.4);white-space:nowrap}
+.giant .box{margin:calc(-1 * clamp(0px,6vw,90px)) 0 0 auto;max-width:330px;font-family:var(--hand);font-size:clamp(17px,1.7vw,21px);color:var(--black);line-height:1.3;border:2.5px solid var(--black);border-radius:10px 14px 8px 12px;padding:12px 16px;rotate:2deg}
+
+/* not for everybody */
+.notfor{background:var(--black);color:#fff;padding-block:clamp(64px,9vw,120px);overflow:hidden}
+.nf-note{font-family:var(--hand);font-weight:600;font-style:italic;font-size:clamp(16px,1.6vw,19px);display:inline-block;margin-bottom:14px}
+.notfor h2{font-family:var(--cond);font-weight:400;text-transform:uppercase;color:var(--yellow);font-size:clamp(76px,12vw,180px);line-height:.94;max-width:9ch;text-wrap:wrap}
+.nf-big{font-variation-settings:"wdth" 116;font-weight:600;font-size:clamp(26px,3.2vw,42px);line-height:1.2;margin-top:clamp(28px,4vw,48px);max-width:24ch}
+.notfor .hl{color:var(--ink)}
+.nf-sub{margin-top:18px;font-size:18px;max-width:52ch;color:#D8D8D2}
+.nf-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,72px);margin-top:clamp(36px,5vw,60px)}
+.nf-col h3{font-family:var(--hand);font-weight:700;font-size:clamp(24px,2.4vw,30px);color:#fff;margin-bottom:14px}
+.nf-col.yes h3{color:var(--yellow)}
+.nf-col ul{list-style:none;margin:0;padding:0}
+.nf-col li{padding:14px 0 14px 34px;border-top:1px solid #3A3A38;position:relative;font-size:17px;line-height:1.4}
+.nf-col li::before{position:absolute;left:0;top:11px;font-family:var(--hand);font-size:22px}
+.nf-col.no li{color:#B9B9B3}
+.nf-col.no li::before{content:"x";color:#8D8D87}
+.nf-col.yes li::before{content:"\2713";font-family:var(--wide);font-weight:700;color:var(--yellow)}
+.nf-end{font-family:var(--hand);font-weight:600;font-style:italic;font-size:clamp(20px,2.2vw,28px);color:var(--yellow);margin-top:clamp(36px,5vw,56px);transform-origin:left}
+.nf-cta{display:flex;flex-wrap:wrap;align-items:center;gap:14px 24px;margin-top:20px}
+.nf-cta .btn{border-color:var(--yellow);min-height:52px;font-size:14px}
+.nf-alt{font-weight:600;font-size:15px;text-underline-offset:4px;color:#fff}
+.notfor :focus-visible{outline-color:var(--yellow)}
+
+/* phone band */
+.phoneband{background:#171614;color:#fff}
+.pb-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:end}
+.pb-txt{display:grid;gap:14px;justify-items:start;padding-block:48px}
+.pb-txt h2{color:#fff;font-weight:500;font-size:clamp(26px,2.6vw,34px)}
+.pb-txt p{max-width:50ch;color:#E6E6E0;font-size:15px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:4px 0 6px}
+.chips li{font-size:13px;border:1px solid rgba(255,255,255,.45);border-radius:999px;padding:4px 12px}
+.pb-txt .btn{border-color:var(--yellow);border-radius:999px}
+.phoneband :focus-visible{outline-color:var(--yellow)}
+.phone{display:block;justify-self:center;width:230px;height:340px;margin-top:-60px;border:8px solid #111;border-bottom:0;border-radius:36px 36px 0 0;background:#F8ECA0;position:relative;overflow:hidden;box-shadow:0 0 0 2px #444;text-decoration:none;color:var(--ink);transition:transform .25s}
+.phone:hover{transform:translateY(-8px)}
+.phone::before{content:"";position:absolute;top:10px;left:50%;transform:translateX(-50%);width:70px;height:20px;border-radius:12px;background:#111;z-index:2}
+.ptitle{position:absolute;top:40px;left:0;right:0;text-align:center;font-size:17px;font-weight:600;line-height:1.15;padding:0 18px}
+.face{position:absolute;left:50%;top:110px;transform:translateX(-50%);width:170px;height:170px;border-radius:50%;overflow:hidden;border:5px solid #FFF8D6}
+.face img{width:100%;height:100%;object-fit:cover;object-position:50% 15%}
+.pbtn{position:absolute;left:20px;right:20px;bottom:18px;background:var(--yellow);border-radius:999px;text-align:center;font-size:13px;font-weight:600;padding:8px}
+.final{padding-bottom:clamp(96px,10vw,136px)}
+
+/* sticky dock on phones */
+.dock{display:none}
+
+/* responsive */
+@media (max-width:1100px) and (min-width:761px){
+  .offers{grid-template-rows:none;row-gap:16px}
+  .offer{grid-row:auto;grid-template-rows:none;display:flex;flex-direction:column}
+  .offer>.act{margin-top:auto}
+}
+@media (max-width:1000px){
+  .swipe{grid-template-columns:repeat(3,1fr)}
+  .offers{grid-template-columns:repeat(2,1fr)}
+  .types{grid-template-columns:repeat(3,1fr)}
+}
+@media (max-width:760px){
+  .top .logo img{width:118px}
+  .ticker .tk-cta{font-size:12px;padding:0 14px;gap:8px}
+  .dots button{position:relative}
+  .dots button::after{content:"";position:absolute;inset:-14px -6px}
+  .f-col a{padding:8px 0}
+  .f-bottom a{display:inline-block;padding:8px 0}
+  .socials a{width:44px;height:44px;margin-left:-10px}
+  .socials{gap:6px}
+  .nf-alt,.m-foot a,.lede a{display:inline-block;padding-block:8px}
+  .top .logo{display:block;padding-block:6px}
+  .quiz-band h2,.quiz-band .lede,.searchbar,.types li,.offer,.row-head,.fit-body,.coach-copy>*,.faq details,.pb-txt>*{--d:20px}
+  .stack .w{translate:calc((1 - var(--r,1))*-40px) 0}
+  .stack .k{translate:calc((1 - var(--r,1))*40px) 0}
+  .nf-col.no li{transform:translateX(calc((1 - var(--r,1))*-22px))}
+  .nf-col.yes li{transform:translateX(calc((1 - var(--r,1))*22px))}
+  .title .wrap,.nf-grid,.pb-grid{grid-template-columns:1fr}
+  .mcard{min-height:0}
+  .mgrid{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin-inline:-20px;padding:18px 20px 12px;scrollbar-width:none}
+  .mgrid::-webkit-scrollbar{display:none}
+  .mgrid .mcard{flex:0 0 82%;scroll-snap-align:center}
+  .title .cut img{max-height:320px;margin:0 auto}
+  .stack{padding-bottom:6px}
+  .giant .note{left:auto;right:2%;top:42%}
+  .phone{margin-top:0}
+  .pb-txt{padding-bottom:12px}
+  .final{padding-bottom:clamp(56px,8vw,104px)}
+  .nf-cta .btn{width:100%}
+  .coach-cta,.coach-cta .btn{width:100%}
+  .pill a:not(.join){display:none}
+  .menu-btn{display:inline-flex}
+  .drawer{position:absolute;top:100%;left:max(16px,env(safe-area-inset-left,0px));right:max(16px,env(safe-area-inset-right,0px));background:var(--white);border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.25);padding:8px;display:none}
+  .menu-open .drawer{display:grid}
+  .drawer a{padding:14px 12px;font-weight:600;text-decoration:none;border-radius:8px}
+  .drawer a:hover{background:var(--stone)}
+  .hero{flex-direction:column;min-height:0}
+  .hero-photo{position:relative;width:100%;height:clamp(360px,100vw,480px)}
+  .hero-photo::after{background:linear-gradient(0deg,var(--sand) 2%,rgba(220,210,200,0) 40%)}
+  .hero .wrap{justify-content:center;margin-top:-28px;padding-bottom:36px}
+  .hero-photo img{object-position:50% 8%}
+  .hq{width:100%;padding-top:0}
+  .vcard,.fit,.faq-grid{grid-template-columns:1fr}
+  .vcard{border-radius:20px}
+  .intro-copy{padding:4px 8px 10px}
+  .intro-copy{margin:0;max-width:none}
+  .swipe,.offers{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin-inline:calc(-1 * max(16px,env(safe-area-inset-left,0px)));padding-inline:max(16px,env(safe-area-inset-left,0px));scroll-padding-inline:max(16px,env(safe-area-inset-left,0px));scrollbar-width:none;padding-bottom:4px}
+  .swipe::-webkit-scrollbar,.offers::-webkit-scrollbar{display:none}
+  .swipe>*{flex:0 0 62%;scroll-snap-align:start}
+  .proof .pcard{flex:0 0 min(84vw,330px)}
+  .giant .box{margin-top:22px}
+  .offers>*{flex:0 0 86%;scroll-snap-align:center}
+  .offer{display:flex;flex-direction:column;grid-template-rows:none;gap:12px;padding:20px;border:1.5px solid var(--ink);min-height:0}
+  .offer.featured{border-color:var(--ink);box-shadow:4px 4px 0 var(--yellow)}
+  .offer>.act{margin-top:auto;align-self:stretch}
+  .offers{padding-top:4px;padding-bottom:10px;align-items:flex-start}
+  .offer ul{gap:7px;font-size:14px}
+  .offer h3{font-size:20px;line-height:1.08;min-height:2.16em}
+  .offer>.tier{display:flex;align-items:center;align-self:flex-start;min-height:24px;line-height:1.2}
+  .offer>.price{min-height:56px}
+  .offers-hint{display:block;font-family:var(--hand);font-weight:600;font-style:italic;font-size:14px;text-align:right;margin-bottom:10px}
+  .mrow{min-height:40px;padding:6px 12px}
+  .types{grid-template-columns:repeat(2,1fr)}
+  .f-top{grid-template-columns:1fr 1fr}
+  .f-top>div:first-child{grid-column:1/-1}
+  .dock{display:block;position:fixed;left:0;right:0;bottom:0;z-index:40;padding:10px max(16px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));background:linear-gradient(0deg,var(--white) 60%,rgba(255,255,255,0));transform:translateY(110%);transition:transform .3s}
+  .dock.show{transform:none}
+  .dock .btn{width:100%;min-height:52px}
+}
+@media (max-width:350px){
+  .notfor h2{font-size:62px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  #grow{transform:none}
+  .proof-view{overflow-x:auto}
+  .phone:hover{translate:none}
+  html{scroll-behavior:auto}
+}
+
+/* 5 pillars: Dani's step by step process */
+.pillars{background:var(--black);color:#EDEAE2;padding-block:clamp(56px,7vw,96px);overflow:hidden}
+.pl-head{display:grid;justify-items:center;text-align:center;gap:12px;margin-bottom:clamp(28px,4vw,44px)}
+.pl-head h2{color:#fff;font-size:clamp(34px,4.6vw,58px)}
+.pl-head h2 .hl{color:var(--ink)}
+.pl-head p{color:#B9B6AE;max-width:44ch;font-size:17px}
+.pl-track{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:max(16px,calc(50% - 590px));padding:8px max(16px,calc(50% - 590px)) 20px;scrollbar-width:none;overscroll-behavior-x:contain}
+.pl-track::-webkit-scrollbar{display:none}
+.pl{flex:0 0 min(84vw,360px);scroll-snap-align:start;display:flex;flex-direction:column;border-radius:20px;background:#1B1C1B;border:1.5px solid #2A2B2A;overflow:hidden;transition:border-color .3s}
+.pl.on{border-color:var(--yellow)}
+.pl-top{position:relative;display:grid;justify-items:center;text-align:center;padding:26px 22px 22px;background:linear-gradient(180deg,rgba(255,222,23,.95) 0%,rgba(255,222,23,.42) 34%,rgba(255,222,23,0) 78%)}
+.pl-step{font-weight:700;font-size:20px;color:#fff;font-variation-settings:"wdth" 112;text-shadow:0 1px 10px rgba(0,0,0,.25)}
+.pl-num{font-family:var(--cond);font-size:clamp(120px,14vw,150px);line-height:.95;margin:2px 0 10px;background:linear-gradient(180deg,#fff 0%,var(--yellow) 55%,#C9AE00 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.pl h3{color:#fff;font-size:clamp(26px,2.4vw,30px);font-variation-settings:"wdth" 118}
+.pl-line{margin-top:8px;color:#CFCBC1;font-size:15.5px;max-width:28ch;min-height:3em;line-height:1.5}
+.pl ul{list-style:none;margin:0;padding:6px 16px 18px;display:grid;gap:10px}
+.pl li{display:grid;grid-template-columns:28px 1fr;gap:12px;align-items:center;padding:14px 14px;border-radius:12px;background:#232423;border:1px solid #2F302F;color:#E9E6DE;font-size:15px;line-height:1.4}
+.pl li svg{width:24px;height:24px;color:var(--yellow)}
+.pl-nav{display:flex;justify-content:center;align-items:center;gap:14px;margin-top:10px}
+.pl-nav button{width:48px;height:48px;border-radius:50%;border:0;background:var(--yellow);color:var(--ink);font-size:26px;line-height:1;cursor:pointer;display:grid;place-items:center;transition:transform .15s,opacity .2s}
+.pl-nav button:disabled{opacity:.3;cursor:default}
+.pl-nav button:not(:disabled):hover{transform:scale(1.06)}
+.pl-dots{display:flex;gap:8px}
+.pl-dots i{width:8px;height:8px;border-radius:8px;background:#4A4B4A;transition:width .3s,background .3s}
+.pl-dots i.on{width:26px;background:var(--yellow)}
+.pl-cta{display:flex;justify-content:center;margin-top:clamp(26px,3vw,36px)}
+.pillars .hw-btn{background:var(--yellow);color:var(--ink);box-shadow:0 6px 0 #B89F00}
+.pillars .hw-btn:hover{box-shadow:0 8px 0 #B89F00}
+.pillars .hw-btn:active{box-shadow:0 1px 0 #B89F00}
+@media (max-width:760px){.pl-head p{font-size:16px}.pl{flex-basis:84vw}.pillars .hw-btn{width:100%;max-width:420px;padding:0 14px;font-size:13px;letter-spacing:.03em;gap:8px;white-space:nowrap}}
+
+/* hero workshop button as an event ticket: date on a tear off stub */
+.hw-ticket{padding:0;min-height:72px;align-items:stretch;gap:0;border-radius:14px;width:min(100%,480px)}
+.hw-ticket .tk-txt{flex:1;display:flex;align-items:center;justify-content:center;gap:12px;padding:0 20px}
+.hw-ticket em{animation:hwng 1.3s ease-in-out infinite}
+.tk-stub{position:relative;flex:none;display:grid;align-content:center;justify-items:center;gap:2px;padding:0 20px;background:var(--yellow);color:var(--ink);text-transform:none;letter-spacing:0;font-size:13px;font-weight:600;line-height:1.15;text-align:center}
+.tk-stub::before{content:"";position:absolute;left:-1px;top:7px;bottom:7px;border-left:2px dashed var(--black)}
+.tk-stub b{font-size:16px;font-weight:800}
+.tk-live{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:800;letter-spacing:.09em;text-transform:uppercase}
+.tk-live .live{margin:0;width:7px;height:7px}
+@media (max-width:760px){.hw-ticket{width:100%;max-width:440px}.hw-ticket .tk-txt{padding:0 12px;font-size:13.5px;letter-spacing:.03em;gap:8px;text-align:center}.tk-stub{padding:0 14px;font-size:12px}.tk-stub b{font-size:15px}}
+.coach-cta .btn .live{width:9px;height:9px;flex:none}
+.pl-lock{position:relative;margin:4px 16px 18px;height:150px;border-radius:12px;background:#232423;border:1px solid #2F302F;overflow:hidden;display:grid;place-items:center}
+.pl-bars{position:absolute;inset:18px;display:grid;gap:14px;align-content:start;filter:blur(5px);opacity:.55}
+.pl-bars i{display:block;height:30px;border-radius:8px;background:linear-gradient(90deg,#5A5B55 0 12%,transparent 12% 18%,#77786F 18% 92%,transparent 92%)}
+.pl-bars i:nth-child(2){width:86%}.pl-bars i:nth-child(3){width:70%}
+.pl-key{position:relative;display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;background:var(--black);border:1.5px solid var(--yellow);color:var(--yellow);font-weight:700;font-size:13px;letter-spacing:.04em;text-transform:uppercase}
+.pillars .pl-cta{flex-direction:column;align-items:center;gap:12px;text-align:center}
+.pl-cta p{color:#B9B6AE;font-size:15px}
+.notfor+.pillars{padding-top:clamp(8px,2vw,24px)}
+.notfor+.pillars .pl-head{padding-top:clamp(40px,5vw,64px);border-top:1px solid #2A2B2A;max-width:min(1148px,calc(100% - 32px))}
+.pl-top{padding-bottom:30px}
+</style>
+<script>
+// notebook intro: first visit only, skipped for ad traffic and reduced motion
+(function(){ try{ const q=location.search, seen=localStorage.getItem("cr-intro-seen");
+  if(!seen && !/[?&](fbclid|gclid|ttclid)=|utm_medium=(paid|cpc|ads?)/i.test(q) && !matchMedia("(prefers-reduced-motion: reduce)").matches) document.documentElement.classList.add("nb-on");
+}catch(e){} })();
+</script>
+</head>
+<body>
+<div class="nb" id="nb" role="button" tabindex="0" aria-label="Enter the site">
+  <div class="nb-page" aria-hidden="true"><svg viewBox="0 0 600 230"><text x="40" y="105" class="nb-pen">Your rebirth</text><text x="40" y="205" class="nb-pen">starts now.</text></svg></div>
+  <div class="nb-book" aria-hidden="true"><div class="nb-spine"></div><div class="nb-cover"></div></div>
+  <span class="nb-hint" aria-hidden="true">tap to open ♡</span>
+</div>
+<div id="sp" aria-hidden="true"></div>
+
+<div class="ticker" aria-label="Announcement">
+  <div class="ticker-track">
+    <a href="#free">Free monthly confidence workshop with Dani. Save your spot</a>
+    <a href="quiz.html">What's holding your confidence back? Take the 2 minute quiz</a>
+    <a href="#free">Free monthly confidence workshop with Dani. Save your spot</a>
+    <a href="quiz.html">What's holding your confidence back? Take the 2 minute quiz</a>
+  </div>
+</div>
+
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="logo" href="#top"><img src="img/logo-cutout.png" alt="The Confidence Rebirth, home" width="720" height="231"></a>
+    <nav class="pill" aria-label="Main">
+      <a href="#about">New here?</a>
+      <a href="#quiz">Free quiz</a>
+      <a href="#offers">Coaching</a>
+      <a href="#stories">Stories</a>
+      <a href="#faq">FAQ</a>
+      <button class="menu-btn" id="menu-btn" type="button" aria-label="Open menu" aria-expanded="false"><span></span></button>
+    </nav>
+  </div>
+  <div class="wrap" style="position:relative;padding-block:0">
+    <nav class="drawer" id="drawer" aria-label="Mobile">
+      <a href="#about">New here?</a><a href="#quiz">Free quiz</a><a href="#offers">Coaching</a><a href="#stories">Stories</a><a href="#faq">FAQ</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero" aria-label="What women say">
+  <div class="hero-photo"><img src="img/dani-portrait.jpg" alt="Dani Carbonari smiling at the microphone" width="1236" height="1400" fetchpriority="high"></div>
+  <div class="wrap">
+    <div class="hq">
+      <div class="hq-stage" id="hq">
+        <figure class="on"><blockquote>"Best decision I've ever made. It was worth every penny."</blockquote><cite>Jada, 23</cite></figure>
+        <figure><blockquote>"It unlocked a new level of confidence inside of me."</blockquote><cite>Taylor, 28</cite></figure>
+        <figure><blockquote>"I love the person I am becoming."</blockquote><cite>Jaleesa, 25</cite></figure>
+      </div>
+      <div class="dots dark" id="hq-dots" role="tablist" aria-label="Choose quote"></div>
+      <div class="hw">
+        <a class="hw-btn hw-ticket" href="#free" data-link="free"><span class="tk-txt">Join the free workshop<em aria-hidden="true">›</em></span><span class="tk-stub"><span class="tk-live"><span class="live"></span>Live</span><b>Sat 5 Dec</b><span>3pm GMT</span></span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band stone intro ruled" aria-labelledby="intro-h">
+  <div class="wrap">
+    <div class="vcard">
+      <div class="vsl-frame"><button class="cover" id="vsl" type="button" aria-label="Play Dani's video">
+        <video src="img/dani-loop.mp4" poster="img/dani-loop-poster.jpg" muted autoplay loop playsinline aria-hidden="true"></video>
+        <span class="play" aria-hidden="true"></span>
+        <span class="vtag"><i></i>Start here</span>
+        <span class="soon" id="soon" hidden>Dani's video lands here soon</span>
+      </button></div>
+      <div class="intro-copy">
+        <h1 id="intro-h">Your <span class="hl">rebirth</span> starts now.</h1>
+        <p class="sub">You don't need to become someone new. You need to come back to you.</p>
+        <p class="lede">Confidence coaching with Dani Carbonari, for women ready to feel confident at work, in love and in their own skin.</p>
+        <div class="cta-row">
+          <a class="b5" href="quiz.html"><span class="b5-q">Are you <span class="b5-word"><span id="b5-w">a People Pleaser</span></span>?</span><span class="b5-go"><span>Take the 2 minute quiz to find out</span><span class="b5-start">Start</span></span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="title" id="about" aria-labelledby="about-h">
+  <div class="wrap">
+    <div class="stack">
+      <h2 id="about-h" class="coach-h">
+        <span class="hand">Hey, I'm Dani, your</span>
+        <span class="cond w">Confidence</span>
+        <span class="cond k">Coach</span>
+      </h2>
+      <div class="coach-copy">
+        <p>I spent years living for everyone else. Choosing myself changed everything, and now I help women do the same.</p>
+        <p>Honest conversations, practical tools and a sisterhood that has your back.</p>
+        <p class="coach-line">This isn't for everyone. It's for the woman who's ready to work on herself.</p>
+        <ul class="facts"><li>Host, The Confidence Hour</li><li>Workshop host</li><li>Speaker</li></ul>
+        <div class="coach-cta">
+          <a class="btn dark" href="#free" data-link="free"><span class="live" aria-hidden="true"></span>Join my free workshop</a>
+          <a class="btn line" href="quiz.html">New here? Take the quiz</a>
+        </div>
+      </div>
+    </div>
+    <div class="cut"><img src="img/dani-stage-cut.webp" alt="Dani on stage" width="341" height="567" loading="lazy"></div>
+  </div>
+</section>
+
+<section class="band methods ruled" id="methods" aria-labelledby="methods-h">
+  <div class="wrap">
+    <p class="m-note">one coach, five ways in</p>
+    <h2 id="methods-h">Find your <span class="hl v3">method</span></h2>
+    <p class="lede">Confidence coaching for women. Get your confidence back, starting from where you are right now.</p>
+    <div class="mgrid">
+      <article class="mcard">
+        <span class="micon" aria-hidden="true"><svg viewBox="0 0 48 48"><circle cx="24" cy="8.5" r="4.5"/><path d="M17 43l4-13-3.5-8.5c0-3.8 2.8-6.3 6.5-6.3s6.5 2.5 6.5 6.3L27 30l4 13z"/><path d="M36.5 11.5c-1.2-1.6-3.7-1.2-3.7.9 0 1.7 2.3 3 3.7 4 1.4-1 3.7-2.3 3.7-4 0-2.1-2.5-2.5-3.7-.9z"/></svg></span>
+        <span class="mstat" hidden data-ms="headtoe">Open now</span>
+        <h3><small>The</small>Head to Toe<small>Method</small></h3>
+        <p><b>Who it's for</b> Women who pick their body apart in the mirror and don't feel at home in their own skin.</p>
+        <p><b>What changes</b> Feel good in your body as it is now, without waiting to change first.</p>
+        <a class="btn" href="#offers" data-pick="headtoe">See how to start</a>
+      </article>
+      <article class="mcard">
+        <span class="micon" aria-hidden="true"><svg viewBox="0 0 48 48"><ellipse cx="17" cy="18" rx="9.5" ry="12"/><path d="M17 30v12"/><path d="M27 25l13-11"/><path d="M33 13.5h7v7"/><path d="M38 31l1.4 3 3 1.4-3 1.4-1.4 3-1.4-3-3-1.4 3-1.4z"/></svg></span>
+        <span class="mstat" hidden data-ms="beyond">Open now</span>
+        <h3><small>The</small>Beyond the Mirror<small>Method</small></h3>
+        <p><b>Who it's for</b> Women who've worked on body confidence but still doubt themselves day to day.</p>
+        <p><b>What changes</b> Carry yourself with confidence everywhere and go after the job, the partner and the lifestyle.</p>
+        <a class="btn" href="#offers" data-pick="beyond">See how to start</a>
+      </article>
+      <article class="mcard">
+        <span class="micon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M29 6l4 8.5 9.3 1.2-6.8 6.4 1.8 9.2L29 26.8l-8.3 4.5 1.8-9.2-6.8-6.4 9.3-1.2z"/><path d="M6 30h9M9 36h10M14 42h10"/></svg></span>
+        <span class="mstat" hidden data-ms="gogetter">Open now</span>
+        <h3><small>The</small>Go Getter<small>Method</small></h3>
+        <p><b>Who it's for</b> Women with imposter syndrome who don't speak up for themselves, or haven't found their purpose yet.</p>
+        <p><b>What changes</b> Speak up, back yourself at work and go after what you're here to do.</p>
+        <a class="btn" href="#offers" data-pick="gogetter">See how to start</a>
+      </article>
+      <article class="mcard">
+        <span class="micon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M24 5l15 5.5v11c0 10-6.5 16.5-15 21-8.5-4.5-15-11-15-21v-11z"/><path d="M17 23.5l5 5 9-10"/></svg></span>
+        <span class="mstat" hidden data-ms="boundary">Open now</span>
+        <h3><small>The</small>Boundary Boss<small>Method</small></h3>
+        <p><b>Who it's for</b> People pleasers who struggle to say no and stand firm.</p>
+        <p><b>What changes</b> Say no, mean it and hold your boundaries, without the guilt.</p>
+        <a class="btn" href="#offers" data-pick="boundary">See how to start</a>
+      </article>
+      <article class="mcard">
+        <span class="micon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M24 43c-7.7 0-12.5-4.8-12.5-11.3 0-6.4 5.2-9.4 6.5-16.2 3.6 2.7 4.8 6.1 4.8 9 1.9-1.6 3-4.6 2.9-7.7C31.6 20.2 36.5 25 36.5 31.4 36.5 38.1 31.7 43 24 43z"/><path d="M24 43c-3 0-5-2-5-4.7 0-2.8 2.6-4.2 3.3-7 2.6 1.6 6.7 3.8 6.7 7 0 2.7-2 4.7-5 4.7z"/></svg></span>
+        <span class="mstat" hidden data-ms="comeback">Open now</span>
+        <h3><small>The</small>Comeback<small>Method</small></h3>
+        <p><b>Who it's for</b> Women rebuilding after a breakup, a loss or a hard season, who feel they've lost their spark.</p>
+        <p><b>What changes</b> Rebuild after a hard season and get your spark back.</p>
+        <a class="btn" href="#offers" data-pick="comeback">See how to start</a>
+      </article>
+    </div>
+    <p class="m-foot">Five areas of confidence. Not sure which one is yours? <a href="#quiz">Take the 2 minute quiz</a>.</p>
+  </div>
+</section>
+
+<section class="band quiz-band ruled" id="quiz" aria-labelledby="quiz-h">
+  <div class="wrap">
+    <h2 id="quiz-h">What's really holding your <span class="hl v2">confidence</span> back?</h2>
+    <p class="lede">Ten quick taps. Find your <b>Confidence Type</b>, get a free plan for it and see which method is made for you.</p>
+    <a class="searchbar" href="quiz.html">Take the 2 minute confidence quiz<i aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></a>
+    <ul class="types">
+      <li><a href="quiz.html"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg>People Pleaser</a></li>
+      <li><a href="quiz.html"><svg viewBox="0 0 24 24"><path d="M14.500 6.500a4 4 0 0 1 5-1l-2.700 2.700 2 2 2.700-2.700a4 4 0 0 1-5.500 5L8 20a2 2 0 0 1-3-3l7.500-7.500a4 4 0 0 1 2-3z"/></svg>Fixer</a></li>
+      <li><a href="quiz.html"><svg viewBox="0 0 24 24"><path d="M7 18a4 4 0 0 1-.6-8A6 6 0 0 1 18 9a4.5 4.5 0 0 1-.5 9z"/><path d="M10 14h4"/></svg>Overthinker</a></li>
+      <li><a href="quiz.html"><svg viewBox="0 0 24 24"><path d="M3 12s3.5-6 9-6c1.6 0 3 .5 4.2 1.2M21 12s-3.5 6-9 6c-1.6 0-3-.5-4.2-1.2"/><path d="M4 20 20 4"/></svg>Hider</a></li>
+      <li><a href="quiz.html"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M5 21c.8-3.6 3.6-6 7-6s6.2 2.4 7 6"/></svg>Imposter</a></li>
+      <li><a href="quiz.html"><svg viewBox="0 0 24 24"><path d="M4 18 3 8l5 4 4-7 4 7 5-4-1 10z"/></svg>Main Character</a></li>
+    </ul>
+  </div>
+</section>
+
+<section class="band stone" id="stories" aria-labelledby="proof-h">
+  <div class="wrap">
+    <div class="row-head"><h2 class="kicker" id="proof-h">From women who did <span class="hl v3">the work</span></h2></div>
+  </div>
+  <div class="proof-view" aria-label="What women say">
+    <div class="proof" id="proof">
+      <figure class="pcard" style="margin:0"><blockquote>Best decision I've ever made.</blockquote><p>I went back and forth on whether I deserved to spend that on myself. Between the workbook, the weekly sessions and the sisterhood, it was worth every penny.</p><cite>Jada, 23</cite></figure>
+      <figure class="pcard" style="margin:0"><blockquote>It unlocked a new level of confidence inside of me.</blockquote><p>I spoke with women from all walks of life and felt heard. It taught me confidence goes far deeper than how you look.</p><cite>Taylor, 28</cite></figure>
+      <figure class="pcard" style="margin:0"><blockquote>I love the person I am becoming.</blockquote><p>Five weeks of laughing, crying and finding a safe space with powerful women. The catalyst I needed.</p><cite>Jaleesa, 25</cite></figure>
+    </div>
+  </div>
+</section>
+
+<section class="notfor" id="ready" aria-labelledby="ready-h">
+  <div class="wrap">
+    <p class="nf-note">read this before you scroll</p>
+    <h2 id="ready-h">This is not for everybody.</h2>
+    <p class="nf-big">This is only for the woman who is <span class="hl">ready</span>. Not curious. Not "maybe next year". Ready.</p>
+    <p class="nf-sub">This isn't a confidence boost. It's a whole rebirth, and it will ask something of you. You don't get to keep playing small and come out the other side.</p>
+    <div class="nf-grid">
+      <div class="nf-col no">
+        <h3>Not for you if</h3>
+        <ul>
+          <li>You want a quick fix and a quote to screenshot.</li>
+          <li>You're waiting for the perfect time.</li>
+          <li>You'd rather be comfortable than honest.</li>
+          <li>You want someone else to do it for you.</li>
+        </ul>
+      </div>
+      <div class="nf-col yes">
+        <h3>For you if</h3>
+        <ul>
+          <li>You're in your 20s or 30s and done living by everyone else's expectations.</li>
+          <li>You'll say the hard thing out loud, with women doing the same.</li>
+          <li>You want confidence everywhere: work, love, money, your own skin.</li>
+          <li>You already know the old you has had long enough.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="nf-end">Still reading? That's usually the sign.</p>
+    <div class="nf-cta">
+      <a class="btn" href="#free" data-link="free">I'm ready. Save my spot</a>
+      <a class="nf-alt" href="quiz.html">Not sure yet? Take the 2 minute quiz</a>
+    </div>
+  </div>
+</section>
+
+<section class="pillars" id="pillars" aria-labelledby="pl-h">
+  <div class="wrap pl-head">
+    <h2 id="pl-h">Your rebirth in <span class="hl v2">5 steps</span></h2>
+    <p>Dani's proven method. The 5 pillars she takes every woman through, whatever area of life you want your confidence back in.</p>
+  </div>
+  <div class="pl-track" id="pl-track" tabindex="0" aria-label="The 5 pillars, scroll sideways">
+      <article class="pl on" aria-label="Step 1 of 5: Reawaken">
+        <div class="pl-top"><span class="pl-step">Step</span><span class="pl-num" aria-hidden="true">1</span><h3>Reawaken</h3><p class="pl-line">Notice what’s really been running your life.</p></div>
+      </article>
+      <article class="pl" aria-label="Step 2 of 5: Repair">
+        <div class="pl-top"><span class="pl-step">Step</span><span class="pl-num" aria-hidden="true">2</span><h3>Repair</h3><p class="pl-line">Heal the places it all started.</p></div>
+      </article>
+      <article class="pl" aria-label="Step 3 of 5: Rewire">
+        <div class="pl-top"><span class="pl-step">Step</span><span class="pl-num" aria-hidden="true">3</span><h3>Rewire</h3><p class="pl-line">Change the story you tell yourself.</p></div>
+      </article>
+      <article class="pl" aria-label="Step 4 of 5: Refocus">
+        <div class="pl-top"><span class="pl-step">Step</span><span class="pl-num" aria-hidden="true">4</span><h3>Refocus</h3><p class="pl-line">Put your energy where it grows you.</p></div>
+      </article>
+      <article class="pl" aria-label="Step 5 of 5: Rebuild">
+        <div class="pl-top"><span class="pl-step">Step</span><span class="pl-num" aria-hidden="true">5</span><h3>Rebuild</h3><p class="pl-line">Show up as the woman you’re becoming.</p></div>
+      </article>
+  </div>
+  <div class="wrap">
+    <div class="pl-nav"><button type="button" id="pl-prev" aria-label="Previous step" disabled>‹</button><div class="pl-dots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i></div><button type="button" id="pl-next" aria-label="Next step">›</button></div>
+    <div class="pl-cta"><a class="hw-btn" href="#one" data-link="one">Apply for coaching<em aria-hidden="true">›</em></a><p>Dani takes you through all 5 when you work with her.</p></div>
+  </div>
+</section>
+
+<section class="band" id="offers" aria-labelledby="offers-h">
+  <div class="wrap">
+    <div class="row-head" style="display:grid;gap:10px;justify-items:center;justify-content:center;text-align:center;margin-bottom:36px">
+      <h2 id="offers-h" style="font-size:clamp(32px,3.6vw,46px)">Choose your <span class="hl v2">next step</span></h2>
+      <p class="lede" style="text-align:center">Five methods, taught three ways. Not sure which one? <a href="#fit">Find your fit</a>, or start free.</p>
+    </div>
+    <p class="offers-hint" aria-hidden="true">swipe to see all 4 levels</p>
+    <div class="offers">
+      <article class="offer" id="free">
+        <span class="tier">Start here</span><h3>Free monthly workshop</h3>
+        <div class="price">$0<small>No card needed</small></div>
+        <ul><li>Live with Dani every month</li><li>Replay for 7 days</li><li>Announcements group chat</li></ul>
+        <div class="act"><a class="btn" href="#free" data-link="free">Join free</a><small>Takes 30 seconds.</small></div>
+      </article>
+      <article class="offer" id="course">
+        <span class="tier">5 courses, one per method</span><h3>The Course</h3>
+        <div class="price">$888<small>Per course</small></div>
+        <div class="mwrap"><p class="mpick">Pick your method</p><div class="mrows" role="group" aria-label="Choose your method"><button type="button" class="mrow" data-m="headtoe" aria-pressed="false"><span>Head to Toe</span><i data-st="headtoe"></i></button><button type="button" class="mrow" data-m="beyond" aria-pressed="false"><span>Beyond the Mirror</span><i data-st="beyond"></i></button><button type="button" class="mrow" data-m="gogetter" aria-pressed="false"><span>Go Getter</span><i data-st="gogetter"></i></button><button type="button" class="mrow" data-m="boundary" aria-pressed="false"><span>Boundary Boss</span><i data-st="boundary"></i></button><button type="button" class="mrow" data-m="comeback" aria-pressed="false"><span>Comeback</span><i data-st="comeback"></i></button></div></div>
+        <ul><li>Recorded by Dani</li><li>Go at your own pace</li></ul>
+        <div class="act"><a class="btn" id="course-cta" href="#"></a><small id="course-note"></small></div>
+      </article>
+      <article class="offer featured" id="masterclass">
+        <span class="tier">5 groups, 25 women each</span><h3>The 25 Woman Masterclass</h3>
+        <div class="price">By application<small>Payment plans available</small></div>
+        <div class="mwrap"><p class="mpick">Pick your group</p><div class="mrows" role="group" aria-label="Choose your method"><button type="button" class="mrow" data-m="headtoe" aria-pressed="false"><span>Head to Toe</span><i data-st="headtoe"></i></button><button type="button" class="mrow" data-m="beyond" aria-pressed="false"><span>Beyond the Mirror</span><i data-st="beyond"></i></button><button type="button" class="mrow" data-m="gogetter" aria-pressed="false"><span>Go Getter</span><i data-st="gogetter"></i></button><button type="button" class="mrow" data-m="boundary" aria-pressed="false"><span>Boundary Boss</span><i data-st="boundary"></i></button><button type="button" class="mrow" data-m="comeback" aria-pressed="false"><span>Comeback</span><i data-st="comeback"></i></button></div></div>
+        <ul><li>8 weeks, live with Dani every week</li><li>Ask questions and get coached live</li><li>Your own private group chat</li><li>Course included</li></ul>
+        <div class="act"><a class="btn" id="class-cta" href="#"></a><small id="class-note"></small></div>
+      </article>
+      <article class="offer" id="one">
+        <span class="tier">1:1, 10 women only</span><h3>1:1 with Dani</h3>
+        <div class="price">By application<small>Payment plans available</small></div>
+        <div class="mwrap"><p class="mpick">Choose your method</p><div class="mrows" role="group" aria-label="Choose your method"><button type="button" class="mrow" data-m="headtoe" aria-pressed="false"><span>Head to Toe</span></button><button type="button" class="mrow" data-m="beyond" aria-pressed="false"><span>Beyond the Mirror</span></button><button type="button" class="mrow" data-m="gogetter" aria-pressed="false"><span>Go Getter</span></button><button type="button" class="mrow" data-m="boundary" aria-pressed="false"><span>Boundary Boss</span></button><button type="button" class="mrow" data-m="comeback" aria-pressed="false"><span>Comeback</span></button></div></div>
+        <ul><li>12 weeks, a 1:1 call every week</li><li>Fully personalised to you</li><li>Direct voice notes with Dani</li><li>Course included</li></ul>
+        <div class="act"><a class="btn" href="#" data-link="one">Apply for 1:1</a><small>A short form, then a call with our team.</small></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="band fitband" id="fit" aria-labelledby="fit-h">
+  <div class="wrap fit">
+    <div>
+      <h2 id="fit-h">Not sure which level? Find your <span class="hl">fit.</span></h2>
+      <p class="lede">Three quick questions. Dani's pick for you at the end.</p>
+      <div class="fdots" id="q-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+    </div>
+    <div class="fit-body" id="q-body" aria-live="polite"></div>
+  </div>
+</section>
+
+<section class="band faqband ruled" id="faq" aria-labelledby="faq-h">
+  <div class="wrap faq-grid">
+    <h2 id="faq-h">You asked,<br><span class="hl v2">Dani</span><br>answered</h2>
+    <div class="faq">
+      <details><summary>Is this for everyone?</summary><p>No, and that's on purpose. It's for the woman who is ready to do the work. If you're not sure yet, start with the free workshop and see how it feels.</p></details>
+      <details><summary>Is this only about body confidence?</summary><p>No. Body is one part. We work on confidence at work, in relationships, with money, travelling and living on your own terms.</p></details>
+      <details><summary>Where does everything happen?</summary><p>In our private community app. Live calls, replays and the chat are all in one place, on your phone or laptop.</p></details>
+      <details><summary>What if I can't make the live calls?</summary><p>Every call is recorded. Free members get the replay for 7 days. Masterclass and 1:1 women keep every replay.</p></details>
+      <details><summary>Which option is right for me?</summary><p>Start with the free workshop. If you want to go at your own pace, get the course. If you want Dani in your corner every week, apply for the masterclass or 1:1.</p></details>
+      <details><summary>How do I know which method is mine?</summary><p>Take the 2 minute quiz. It points you to the one that fits where you are right now.</p></details>
+      <details><summary>Can I do more than one method?</summary><p>Yes. Most women start with the one that feels most urgent right now, then add another later.</p></details>
+      <details><summary>What happens on the call?</summary><p>A relaxed 20 minute chat about where you are and where you want to be. If the masterclass or 1:1 is right for you, we'll tell you. If it isn't, we'll point you to what is. No pressure.</p></details>
+      <details><summary>Are there payment plans?</summary><p>Yes. The masterclass and 1:1 both have payment plans. We'll go through the options on your call.</p></details>
+      <details><summary>How do I contact Dani?</summary><p>Send a DM to @theconfidencerebirth on Instagram. We reply within a day.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="band final" id="final">
+  <div class="wrap">
+    <h2>Your rebirth starts with one yes.</h2>
+    <p>Join the free workshop this month. Bring yourself, Dani will bring the rest.</p>
+    <a class="btn dark" href="#free" data-link="free">Join the free monthly workshop</a>
+  </div>
+</section>
+
+<section class="phoneband" id="phoneband" aria-labelledby="pb-h">
+  <div class="wrap pb-grid">
+    <div class="pb-txt">
+      <h2 id="pb-h">What's really holding your confidence back?</h2>
+      <p>Take the 2 minute quiz to find your Confidence Type, get a free plan for it and see which method is made for you.</p>
+      <ul class="chips"><li>People Pleaser</li><li>Fixer</li><li>Overthinker</li><li>Hider</li><li>Imposter</li><li>Main Character</li></ul>
+      <a class="btn" href="quiz.html">Take the 2 minute quiz</a>
+    </div>
+    <a class="phone" href="quiz.html" aria-label="Find my Confidence Type">
+      <span class="ptitle">The Confidence<br>Rebirth</span>
+      <span class="face"><img src="img/dani-portrait.jpg" alt="" loading="lazy" width="1236" height="1400"></span>
+      <span class="pbtn">Find my type</span>
+    </a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-top">
+      <div><a href="#top"><img src="img/logo-cutout.png" alt="The Confidence Rebirth" loading="lazy" width="720" height="231"></a></div>
+      <div class="f-col"><h4>Coaching</h4><a href="#free">Free workshop</a><a href="#course">The Course</a><a href="#masterclass">25 Woman Masterclass</a><a href="#one">1:1 with Dani</a></div>
+      <div class="f-col"><h4>Explore</h4><a href="quiz.html">Confidence quiz</a><a href="#methods">Find your method</a><a href="#fit">Find your fit</a><a href="#stories">Stories</a><a href="#about">About Dani</a><a href="#faq">FAQ</a></div>
+      <div class="f-col"><h4>Follow along</h4><a href="https://www.instagram.com/theconfidencerebirth/" target="_blank" rel="noopener">@theconfidencerebirth</a><a href="https://www.instagram.com/danidmc/" target="_blank" rel="noopener">@danidmc</a><a href="https://youtube.com/@theconfidencehour" target="_blank" rel="noopener">The Confidence Hour</a></div>
+    </div>
+    <div class="socials">
+      <a href="https://www.instagram.com/theconfidencerebirth/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zM17.3 5.5a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4zM12 2c-2.7 0-3.1 0-4.1.1C3.6 2.3 2.3 3.6 2.1 7.9 2 8.9 2 9.3 2 12s0 3.1.1 4.1c.2 4.3 1.5 5.6 5.8 5.8 1 .1 1.4.1 4.1.1s3.1 0 4.1-.1c4.3-.2 5.6-1.5 5.8-5.8.1-1 .1-1.4.1-4.1s0-3.1-.1-4.1c-.2-4.3-1.5-5.6-5.8-5.8C15.1 2 14.7 2 12 2zm0 1.8c2.7 0 3 0 4 .1 3.1.1 4 1.1 4.1 4.1.1 1 .1 1.3.1 4s0 3-.1 4c-.1 3-1 4-4.1 4.1-1 .1-1.3.1-4 .1s-3 0-4-.1c-3.1-.1-4-1.1-4.1-4.1-.1-1-.1-1.3-.1-4s0-3 .1-4C4 4.9 4.9 4 8 3.9c1-.1 1.3-.1 4-.1z"/></svg></a>
+      <a href="https://youtube.com/@theconfidencehour" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.8a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.7 15V9l5.8 3z"/></svg></a>
+    </div>
+    <div class="f-bottom">
+      <span>© 2026 The Confidence Rebirth. All rights reserved.</span>
+      <nav aria-label="Legal"><a href="#" data-link="privacy">Privacy</a><a href="#" data-link="terms">Terms</a><a href="#" data-link="refunds">Refunds</a></nav>
+    </div>
+  </div>
+</footer>
+
+<div class="dock" id="dock"><a class="btn" href="#free" data-link="free">Join the free workshop</a></div>
+
+<script>
+// Swap these for the real Circle, Stripe and Tally links before launch.
+const LINKS = { free:"#free", course:"#course", masterclass:"#masterclass", one:"#one", waitlist:"https://ig.me/m/theconfidencerebirth", privacy:"#", terms:"#", refunds:"#" };
+document.querySelectorAll("[data-link]").forEach(a => { const u = LINKS[a.dataset.link]; if (u) a.href = u; if (/^https?:/.test(u||"")) { a.target="_blank"; a.rel="noopener"; } });
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+
+// scroll: everything is scrubbed, so the page moves with you in both directions
+(function(){ if(reduce) return;
+  const clamp=v=>Math.min(1,Math.max(0,v)), ease=t=>1-Math.pow(1-t,3), root=document.documentElement;
+  // split the big "not for everybody" line so it lights up word by word
+  const nfh=document.getElementById("ready-h"); nfh.setAttribute("aria-label",nfh.textContent);
+  nfh.innerHTML=nfh.textContent.split(" ").map(w=>`<span aria-hidden="true">${w}</span>`).join(" ");
+  const words=[...nfh.children];
+  const hls=[...document.querySelectorAll(".hl")], hero=document.querySelector(".hero");
+  const LIST=".intro-copy>*,.vsl-frame,.stack .w,.stack .k,.stack .hand,.title .cut img,.mcard,.m-foot,.quiz-band h2,.quiz-band .lede,.searchbar,.types li,.giant .box,.proof-view,.nf-big,.nf-sub,.nf-col li,.nf-end,.nf-cta,.row-head,.offer,.fit-body,.coach-copy>*,.faq details,.final,.final h2,.pb-txt>*,.phone";
+  const items=[...document.querySelectorAll(LIST)].map(el=>{ const sibs=[...el.parentElement.children]; const row=el.matches(".types li,.offer,.mcard"); return {el,d:row?sibs.indexOf(el)*.14:0}; });
+  const mq=document.getElementById("marq"), marq=mq&&mq.getAnimations()[0]; let last=scrollY, slow, queued=false;
+  function run(){ queued=false; const vh=innerHeight, y=scrollY, max=root.scrollHeight-vh;
+    root.style.setProperty("--sp",max>0?(y/max).toFixed(4):0);
+    root.style.setProperty("--h",clamp(y/(hero.offsetHeight||1)).toFixed(3));
+    items.forEach(({el,d})=>{ const t=el.getBoundingClientRect().top; el.style.setProperty("--r",ease(clamp((vh*.98-t)/(vh*.36)-d)).toFixed(3)); });
+    hls.forEach(h=>{ const t=h.getBoundingClientRect().top; h.style.setProperty("--p",clamp((vh*.9-t)/(vh*.32)).toFixed(3)); });
+    const n=nfh.getBoundingClientRect().top, np=clamp((vh*.86-n)/(vh*.46))*words.length;
+    words.forEach((w,i)=>{ const v=clamp(np-i); w.style.opacity=(.1+.9*v).toFixed(2); w.style.transform=`translateY(${((1-v)*26).toFixed(1)}px)`; });
+    if(marq){ marq.playbackRate=1+Math.min(Math.abs(y-last)*.16,6); clearTimeout(slow); slow=setTimeout(()=>{ marq.playbackRate=1; },140); }
+    last=y; }
+  const on=()=>{ if(!queued){ queued=true; requestAnimationFrame(run); } };
+  addEventListener("scroll",on,{passive:true}); addEventListener("resize",on); addEventListener("load",on); run();
+})();
+
+// the five methods: open:false switches a method to the waitlist. Paste each checkout and application link
+const METHODS = {
+  headtoe: { name:"Head to Toe", open:true, course:"#", apply:"#" },
+  beyond: { name:"Beyond the Mirror", open:true, course:"#", apply:"#" },
+  gogetter: { name:"Go Getter", open:true, course:"#", apply:"#" },
+  boundary: { name:"Boundary Boss", open:true, course:"#", apply:"#" },
+  comeback: { name:"Comeback", open:true, course:"#", apply:"#" }
+};
+(function(){ const param=new URLSearchParams(location.search).get("method"); const el=id=>document.getElementById(id);
+  // labels only show on methods that are still coming soon
+  document.querySelectorAll("[data-st]").forEach(t=>{ t.textContent=METHODS[t.dataset.st].open?"":"Coming soon"; });
+  document.querySelectorAll("[data-ms]").forEach(t=>{ const k=t.dataset.ms, a=t.parentElement.querySelector("[data-pick]"); t.textContent=METHODS[k].open?"":"Coming soon"; t.hidden=METHODS[k].open;
+    if(!METHODS[k].open){ a.textContent="Join the waitlist"; a.href="https://ig.me/m/theconfidencerebirth?ref="+k+"_waitlist"; a.target="_blank"; a.rel="noopener"; a.removeAttribute("data-pick"); } });
+  const wait=k=>"https://ig.me/m/theconfidencerebirth?ref="+k+"_waitlist";
+  const set=(a,href)=>{ a.href=href; if(/^https/.test(href)){ a.target="_blank"; a.rel="noopener"; } else { a.removeAttribute("target"); a.removeAttribute("rel"); } };
+  function pick(k){ const M=METHODS[k];
+    document.querySelectorAll(".mrow").forEach(b=>b.setAttribute("aria-pressed",b.dataset.m===k));
+    const c=el("course-cta"), g=el("class-cta");
+    c.textContent=M.open?"Get the course":"Join the waitlist"; set(c,M.open?M.course:wait(k));
+    el("course-note").textContent=M.open?"No application needed.":"This course is coming soon.";
+    g.textContent=M.open?"Apply to join":"Join the waitlist"; set(g,M.open?M.apply:wait(k));
+    el("class-note").textContent=M.open?"A short form, then a call with our team.":"This group is coming soon.";
+  }
+  document.querySelectorAll(".mrow").forEach(b=>b.addEventListener("click",()=>pick(b.dataset.m)));
+  document.querySelectorAll("[data-pick]").forEach(a=>a.addEventListener("click",()=>pick(a.dataset.pick)));
+  const first=Object.keys(METHODS).find(k=>METHODS[k].open)||"headtoe";
+  pick(METHODS[param]?param:first);
+})();
+
+// testimonials: copies make the slide loop without a gap. Add real quotes as new figures in the HTML.
+(function(){ const p=document.getElementById("proof"), view=p.parentElement, cards=[...p.children];
+  for(let n=0;n<3;n++) cards.forEach(c=>{ const k=c.cloneNode(true); k.setAttribute("aria-hidden","true"); p.appendChild(k); });
+  view.addEventListener("touchstart",()=>view.classList.add("held"),{passive:true});
+  ["touchend","touchcancel"].forEach(t=>view.addEventListener(t,()=>view.classList.remove("held"),{passive:true}));
+})();
+
+// notebook intro: plays on first visit and whenever the logo is tapped; a tap anywhere skips to the site, which always opens at the top
+(function(){ const nb=document.getElementById("nb"), root=document.documentElement, still=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let timers=[], playing=false;
+  const toTop=()=>{ const b=root.style.scrollBehavior; root.style.scrollBehavior="auto"; window.scrollTo(0,0); root.style.scrollBehavior=b; };
+  const done=()=>{ if(!playing) return; playing=false; timers.forEach(clearTimeout); timers=[]; toTop(); nb.classList.add("out");
+    setTimeout(()=>{ root.classList.remove("nb-on"); nb.classList.remove("out","go","open"); toTop(); requestAnimationFrame(toTop); },650); try{ localStorage.setItem("cr-intro-seen","1"); }catch(e){} };
+  const play=()=>{ if(still){ toTop(); return; } if(location.hash) history.replaceState(null,"",location.pathname+location.search); playing=true; timers.forEach(clearTimeout); timers=[];
+    nb.classList.add("reset"); nb.classList.remove("out","go","open"); root.classList.add("nb-on"); toTop(); void nb.offsetWidth; nb.classList.remove("reset");
+    timers.push(setTimeout(()=>nb.classList.add("go"),600));
+    timers.push(setTimeout(()=>nb.classList.add("open"),4200));
+    timers.push(setTimeout(done,4200+4400)); };
+  // tap jumps straight to the book opening and the writing, then into the site
+  const openNow=()=>{ if(!playing||nb.classList.contains("open")) return; timers.forEach(clearTimeout); timers=[]; nb.classList.add("go","open"); timers.push(setTimeout(done,4400)); };
+  nb.addEventListener("click",openNow);
+  nb.addEventListener("keydown",e=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); openNow(); } else if(e.key==="Escape"){ e.preventDefault(); done(); } });
+  const bk=nb.querySelector(".nb-book"), tilt=(x,y)=>{ bk.style.setProperty("--tx",x+"deg"); bk.style.setProperty("--ty",y+"deg"); };
+  nb.addEventListener("pointermove",e=>{ if(e.pointerType==="mouse") tilt((e.clientX/innerWidth-.5)*14,-(e.clientY/innerHeight-.5)*10); });
+  if(window.DeviceOrientationEvent && typeof DeviceOrientationEvent.requestPermission!=="function") addEventListener("deviceorientation",e=>{ if(playing&&e.gamma!=null) tilt(Math.max(-9,Math.min(9,e.gamma/3)),-Math.max(-7,Math.min(7,(e.beta-45)/5))); });
+  document.querySelectorAll(".top .logo").forEach(a=>a.addEventListener("click",e=>{ e.preventDefault(); play(); }));
+  if(root.classList.contains("nb-on")){ root.classList.remove("nb-on"); play(); }
+})();
+
+// quiz button: the type names change by themselves
+(function(){ if(reduce) return; const W=["a People Pleaser","a Fixer","an Overthinker","a Hider","an Imposter","a Main Character"], el=document.getElementById("b5-w"); let i=0;
+  setInterval(()=>{ i=(i+1)%W.length; el.textContent=W[i]; el.classList.remove("in"); void el.offsetWidth; el.classList.add("in"); },1700);
+})();
+
+// mobile menu
+(function(){ const b=document.getElementById("menu-btn"), top=document.getElementById("top");
+  b.addEventListener("click",()=>{ const o=top.classList.toggle("menu-open"); b.setAttribute("aria-expanded",o); b.setAttribute("aria-label",o?"Close menu":"Open menu"); });
+  document.querySelectorAll("#drawer a").forEach(a=>a.addEventListener("click",()=>{ top.classList.remove("menu-open"); b.setAttribute("aria-expanded",false); }));
+})();
+
+// hero quote rotator
+(function(){ const figs=[...document.querySelectorAll("#hq figure")], dots=document.getElementById("hq-dots"); let i=0, timer;
+  figs.forEach((_,n)=>{ const d=document.createElement("button"); d.type="button"; d.setAttribute("aria-label","Quote "+(n+1)); d.addEventListener("click",()=>{ go(n); restart(); }); dots.appendChild(d); });
+  const ds=[...dots.children];
+  function go(n){ i=n; figs.forEach((f,k)=>f.classList.toggle("on",k===n)); ds.forEach((d,k)=>d.classList.toggle("on",k===n)); }
+  function restart(){ clearInterval(timer); if(!reduce) timer=setInterval(()=>go((i+1)%figs.length),5500); }
+  go(0); restart();
+})();
+
+// countdown to the next free workshop
+const NEXT_WORKSHOP = "2026-12-05T15:00:00Z";
+(function(){ const when=new Date(NEXT_WORKSHOP), els=[...document.querySelectorAll("[data-cd]")]; if(isNaN(when)||!els.length) return;
+  const tick=()=>{ let x=Math.max(0,Math.floor((when-Date.now())/1000)); const d=Math.floor(x/86400),h=Math.floor(x%86400/3600),m=Math.floor(x%3600/60),sec=String(x%60).padStart(2,"0");
+    els.forEach(e=>e.textContent=d+"d "+h+"h "+m+"m "+sec+"s"); setTimeout(tick,1000); }; tick();
+})();
+
+// VSL placeholder until the real video is filmed
+(function(){ const v=document.getElementById("vsl"), s=document.getElementById("soon"); v.addEventListener("click",()=>{ s.hidden=!s.hidden; }); if(reduce){ const vid=v.querySelector("video"); vid.removeAttribute("autoplay"); vid.pause(); } })();
+
+// find your fit
+(function(){
+  const QS=[{q:"What do you want most right now?",a:["To see what this is about first","A course I can do in my own time","Weekly coaching in a small group","Dani coaching me directly"]},
+            {q:"How much time can you give this each week?",a:["Less than an hour","An hour or two","A few hours","Whatever it takes"]},
+            {q:"How ready are you to invest in yourself?",a:["Just exploring for now","Something small to start","A one off investment","I'm all in"]}];
+  const R=[{id:"free",name:"The free monthly workshop",price:"$0",why:"Meet Dani live, feel the energy and decide your next step from there.",cta:"Join free"},
+           {id:"course",name:"The Course",price:"$888",why:"Your full method from Dani, recorded, so you can go through it in your own time.",cta:"Get the course"},
+           null,
+           {id:"masterclass",name:"The 25 Woman Masterclass",price:"By application",why:"Eight weeks of Dani every week, with a small group of women who hold you to it.",cta:"Apply for the masterclass"},
+           {id:"one",name:"1:1 with Dani",price:"By application",why:"Twelve weeks with Dani, just you. The most personal support Dani offers.",cta:"Apply for 1:1"}];
+  const body=document.getElementById("q-body"), dots=[...document.querySelectorAll("#q-dots i")]; let ans=[];
+  const esc=t=>t.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  function render(){ body.classList.remove("step"); void body.offsetWidth; body.classList.add("step");
+    dots.forEach((d,i)=>d.classList.toggle("on",i<=Math.min(ans.length,2)));
+    if(ans.length<QS.length){ const {q,a}=QS[ans.length];
+      body.innerHTML=`<p class="q-label">${esc(q)}</p>`+a.map((t,i)=>`<button class="q-opt" type="button" data-i="${i}">${esc(t)}</button>`).join("")+(ans.length?`<button class="q-back" type="button">Back</button>`:""); return; }
+    const s=ans.reduce((x,v)=>x+v,0), pick=s<=1?0:s<=4?1:s<=7?3:4, r=R[pick];
+    body.innerHTML=`<div class="q-result"><span class="tier">Dani's pick for you</span><h3>${esc(r.name)}</h3><span class="price">${esc(r.price)}</span><p>${esc(r.why)}</p><div class="row"><a class="btn" href="${LINKS[r.id]}">${esc(r.cta)}</a>${pick?`<a class="tlink" href="${LINKS.free}">or start with the free workshop</a>`:""}</div></div><button class="q-back" type="button" data-restart>Start again</button>`;
+  }
+  body.addEventListener("click",e=>{ const o=e.target.closest(".q-opt"), b=e.target.closest(".q-back");
+    if(o){ if(body.dataset.busy) return; o.classList.add("picked"); body.dataset.busy=1; setTimeout(()=>{ delete body.dataset.busy; ans.push(+o.dataset.i); render(); }, reduce?0:280); }
+    else if(b){ b.hasAttribute("data-restart")?ans=[]:ans.pop(); render(); } });
+  render();
+})();
+
+// sticky join button on phones once the hero button scrolls away
+(function(){ const dock=document.getElementById("dock"), btn=document.querySelector(".hw-btn,.hw-glow"), fin=document.getElementById("final"), pb=document.getElementById("phoneband");
+  if(!("IntersectionObserver" in window)) return; let gone=false, hide=false; const vis=new Set();
+  const set=()=>dock.classList.toggle("show",gone&&!vis.size);
+  new IntersectionObserver(([e])=>{ gone=!e.isIntersecting&&e.boundingClientRect.top<0; set(); }).observe(btn);
+  const io=new IntersectionObserver(es=>{ es.forEach(e=>e.isIntersecting?vis.add(e.target):vis.delete(e.target)); set(); }); io.observe(fin); io.observe(pb); io.observe(document.getElementById("offers"));
+})();
+
+// 5 pillars carousel
+(function(){ const tr=document.getElementById("pl-track"); if(!tr) return; const cards=[...tr.querySelectorAll(".pl")], dots=[...document.querySelectorAll(".pl-dots i")], pv=document.getElementById("pl-prev"), nx=document.getElementById("pl-next");
+  const cur=()=>{ const x=tr.scrollLeft; let b=0,d=1e9; cards.forEach((c,i)=>{ const v=Math.abs(c.offsetLeft-cards[0].offsetLeft-x); if(v<d){d=v;b=i;} }); return b; };
+  const upd=()=>{ const end=tr.scrollLeft+tr.clientWidth>=tr.scrollWidth-4, i=end&&tr.scrollLeft>4?cards.length-1:cur(); cards.forEach((c,k)=>c.classList.toggle("on",k===i)); dots.forEach((d,k)=>d.classList.toggle("on",k===i)); pv.disabled=tr.scrollLeft<4; nx.disabled=end; };
+  const go=i=>{ i=Math.max(0,Math.min(cards.length-1,i)); tr.scrollTo({left:cards[i].offsetLeft-cards[0].offsetLeft,behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth"}); };
+  pv.addEventListener("click",()=>go(cur()-1)); nx.addEventListener("click",()=>go(cur()+1));
+  tr.addEventListener("scroll",()=>requestAnimationFrame(upd),{passive:true}); addEventListener("resize",upd); upd();
+})();
+</script>
+
+</body>
+</html>

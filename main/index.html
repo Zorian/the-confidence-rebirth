@@ -9,7 +9,7 @@
 <meta name="robots" content="noindex, nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@800&family=Archivo:wdth,wght@100..125,400..700&family=Kalam:wght@700&family=Permanent+Marker&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400..800&family=Archivo:wdth,wght@100..125,400..700&family=Kalam:wght@700&family=Permanent+Marker&family=Instrument+Serif:ital@0;1&family=Mrs+Saint+Delafield&family=Nanum+Pen+Script&display=swap">
 <style>
 :root{padding-top:env(safe-area-inset-top,0px)}
 body{margin:0}
@@ -643,6 +643,178 @@ section.ruled::after{content:"";position:absolute;z-index:-1;top:0;bottom:0;left
 .notfor+.pillars{padding-top:clamp(8px,2vw,24px)}
 .notfor+.pillars .pl-head{padding-top:clamp(40px,5vw,64px);border-top:1px solid #2A2B2A;max-width:min(1148px,calc(100% - 32px))}
 .pl-top{padding-bottom:30px}
+
+/* ============ JOURNAL SKIN ============
+   Soft, handwritten, like Dani's own notebook. Paper, ink, a red pen for notes,
+   butter yellow paper in place of the black blocks, and the highlighter only as a pen stroke. */
+:root{
+  --paper:#F7F3EA; --paper-2:#EFE8DA; --butter:#F3E2A0; --butter-2:#FAF0C8; --ink:#2B2623; --ink-2:#4A433E; --muted:#776D66;
+  --pen:#B4382F; --rule:rgba(96,120,150,.16);
+  --serif:"Instrument Serif","Times New Roman",serif; --sign:"Mrs Saint Delafield",cursive; --pencil:"Nanum Pen Script","Kalam",cursive; --sans:"Montserrat","Helvetica Neue",Arial,sans-serif;
+  --wide:var(--sans); --hand:var(--pencil); --cond:var(--serif);
+}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-variation-settings:normal;font-size:15.5px;line-height:1.65}
+body::before{background:var(--paper)}
+h1,h2,h3{font-family:var(--serif);font-variation-settings:normal;font-weight:400;letter-spacing:-.005em;line-height:1.02;color:var(--ink)}
+h1{font-size:clamp(48px,5.6vw,76px)}
+.lede,.lede b{color:var(--ink-2)}
+.kicker,.offer .tier,.pcard cite,.seen-t,.mstat,.mcard p b,.pl-step,.tk-live{font-family:var(--sans);font-weight:700;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-2)}
+/* handwriting: one hand for notes, a signature pen for flourishes */
+.m-note,.nf-note,.stack .hand,.nf-end,.giant .note,.giant .box,.fitband .q-label,.nf-col h3,.hand-note{font-family:var(--pencil);font-style:normal;font-weight:400;font-size-adjust:.5;color:var(--pen);letter-spacing:.01em}
+.m-note,.nf-note{font-size:clamp(24px,2.4vw,30px);transform:rotate(-2deg);transform-origin:left}
+.sign{font-family:var(--sign);font-weight:400;color:var(--pen);line-height:1;font-size:clamp(44px,5vw,72px);letter-spacing:0}
+
+/* buttons: soft paper pills, butter for the main action */
+.btn,.btn.dark,.btn.line,.b5-start,.hw-btn,.pillars .hw-btn,.pl-key,.nf-cta .btn,.pb-txt .btn,.fitband .btn,.mcard .btn,.mcard.open .btn{background:var(--butter);color:var(--ink);border:1px solid var(--ink);border-radius:999px;box-shadow:none;font-family:var(--sans);font-weight:600;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase}
+.btn.line,.pl-key{background:transparent}
+.btn:hover,.btn.dark:hover,.hw-btn:hover,.b5-start:hover{background:#EED68A;box-shadow:none;transform:none}
+.btn.line:hover{background:var(--butter-2)}
+.hw-btn{color:var(--ink)}
+.hw-btn:active{box-shadow:none}
+
+/* ticker, nav, progress */
+.ticker{background:var(--butter-2);border-bottom:1px solid rgba(43,38,35,.12)}
+.ticker,.ticker a{color:var(--ink);font-family:var(--sans);font-weight:500}
+.ticker .tk-cta{background:var(--butter);color:var(--ink);border-left:1px solid rgba(43,38,35,.15)}
+.tk-cta:active{background:#EED68A;box-shadow:none}
+.tk-stub{background:var(--butter);color:var(--ink)}
+.tk-stub::before{border-left-color:rgba(43,38,35,.35)}
+.pill .join{background:var(--butter);border-color:var(--ink)}
+.pill a{font-family:var(--sans);font-weight:500}
+#sp{height:2px;background:var(--pen);box-shadow:none}
+
+/* hero */
+.hero{background:#E9E1D6}
+.hero-photo::after{background:linear-gradient(90deg,rgba(233,225,214,0) 55%,#E9E1D6 98%)}
+.hq blockquote{font-family:var(--serif);font-weight:400;font-variation-settings:normal;font-size:clamp(30px,3vw,40px);line-height:1.12}
+.hq cite{background:none;padding:0;border-radius:0;font-family:var(--pencil);text-transform:none;letter-spacing:0;font-weight:400;font-size:26px;font-size-adjust:.5;color:var(--pen)}
+
+/* lined paper sections get softer lines */
+section.ruled.ruled{background-color:var(--paper);background-image:repeating-linear-gradient(to bottom,transparent 0 31px,var(--rule) 31px 32px)}
+section.ruled::after{background:var(--pen);opacity:.35;width:1.5px}
+.stone{background:var(--paper-2)}
+
+/* intro */
+.cover{background:var(--paper-2)}
+.cover-tag{background:var(--butter)}
+.vtag{background:var(--paper);color:var(--pen);border:1px solid var(--pen);font-family:var(--sans)}
+.vtag i{background:var(--pen)}
+.b5{border:1px solid rgba(43,38,35,.35);border-radius:4px;background:#FFFDF8;box-shadow:0 1px 0 rgba(0,0,0,.04)}
+.b5:hover{box-shadow:4px 4px 0 var(--butter);translate:-2px -2px}
+.b5-q{font-family:var(--serif);font-weight:400;font-variation-settings:normal;font-size:clamp(24px,2vw,28px)}
+.b5-go{border-top-color:rgba(43,38,35,.15)}
+
+/* "confidence coach" block: soft butter paper instead of the yellow slab */
+.title{background:var(--butter-2) var(--noise,none)}
+.cond{font-family:var(--serif);font-weight:400;text-transform:uppercase;letter-spacing:0;line-height:.9}
+.stack .w{background:#FFFDF8;color:var(--ink);box-shadow:0 2px 6px rgba(70,50,30,.12)}
+.stack .k{background:none;color:var(--ink);font-style:italic;text-transform:none;font-family:var(--serif)}
+.stack .hand{font-size:clamp(28px,2.8vw,36px)}
+.title .cut img{filter:drop-shadow(5px 0 0 #FFFDF8) drop-shadow(-5px 0 0 #FFFDF8) drop-shadow(0 -5px 0 #FFFDF8)}
+
+/* methods */
+.methods h2{font-family:var(--serif);font-weight:400;font-size:clamp(64px,9vw,132px);line-height:.95;letter-spacing:-.01em}
+.mcard{background-color:#FFFDF8;border-radius:3px;box-shadow:0 1px 0 rgba(0,0,0,.03),0 14px 30px -22px rgba(70,50,30,.35)}
+.mcard h3{font-family:var(--serif);font-size:clamp(40px,3.8vw,54px);line-height:.95}
+.mcard h3 small{font-family:var(--sans);font-weight:700;font-size:10.5px;letter-spacing:.24em}
+.micon{background:none}
+.micon svg{stroke:var(--pen);stroke-width:1.8}
+.m-foot{font-family:var(--sans)}
+.mrow{background:var(--paper);font-family:var(--sans);font-weight:500;font-variation-settings:normal}
+.mrow[aria-pressed="true"]{background:var(--butter);border-color:var(--ink)}
+
+/* quiz band */
+.quiz-band h2{font-family:var(--serif)}
+.searchbar{background:#FFFDF8;border:1px solid rgba(43,38,35,.3);border-radius:999px;font-family:var(--sans)}
+.searchbar i{background:var(--butter);border-radius:50%}
+.types a{background:#FFFDF8;border:1px solid rgba(43,38,35,.12);font-family:var(--sans);font-weight:600;font-size:11.5px;letter-spacing:.16em}
+.types svg{background:var(--butter-2);stroke:var(--pen);stroke-width:1.6}
+
+/* stories */
+.pcard{background:#FFFDF8;border-radius:3px}
+.pcard blockquote{font-family:var(--serif);font-size:clamp(24px,2.2vw,30px);line-height:1.15}
+
+/* not for everybody: a butter page, not a black one */
+.notfor{background:var(--butter-2);color:var(--ink)}
+.notfor h2{color:var(--ink);font-family:var(--serif);font-weight:400}
+.nf-big{font-family:var(--serif);font-weight:400;font-variation-settings:normal;font-size:clamp(30px,3.4vw,46px)}
+.nf-sub,.nf-col.no li{color:var(--ink-2)}
+.nf-col h3,.nf-col.yes h3{color:var(--pen);font-size:clamp(30px,3vw,38px)}
+.nf-col li{border-top-color:rgba(43,38,35,.15)}
+.nf-col.no li::before{color:var(--muted)}
+.nf-col.yes li::before{color:var(--pen);font-family:var(--pencil);font-size:28px;top:6px}
+.nf-end{color:var(--pen);font-size:clamp(28px,3vw,38px)}
+.nf-alt{color:var(--ink)}
+.notfor :focus-visible,.phoneband :focus-visible,.fitband :focus-visible,.mcard.open :focus-visible{outline-color:var(--ink)}
+.notfor+.pillars .pl-head{border-top-color:rgba(43,38,35,.15)}
+
+/* pillars: soft cards on butter */
+.pillars{background:var(--butter-2);color:var(--ink)}
+.pl-head h2{color:var(--ink)}
+.pl-head p{color:var(--ink-2)}
+.pl{background:#FFFDF8;border:1px solid rgba(43,38,35,.14);border-radius:4px;box-shadow:0 14px 30px -24px rgba(70,50,30,.4)}
+.pl.on{border-color:var(--pen)}
+.pl-top{background:none;border-bottom:1px dashed rgba(43,38,35,.18)}
+.pl-step{color:var(--ink-2);text-shadow:none}
+.pl-num{font-family:var(--serif);font-style:italic;background:none;-webkit-background-clip:initial;background-clip:initial;color:var(--pen);font-size:clamp(110px,12vw,140px)}
+.pl h3{color:var(--ink);font-family:var(--serif);font-variation-settings:normal;font-size:clamp(34px,3vw,40px)}
+.pl-line{color:var(--ink-2)}
+.pl li{background:var(--paper);border-color:rgba(43,38,35,.1);color:var(--ink)}
+.pl li svg{color:var(--pen)}
+.pl-nav button{background:#FFFDF8;border:1px solid var(--ink)}
+.pl-dots i{background:rgba(43,38,35,.2)}
+.pl-dots i.on{background:var(--pen)}
+
+/* offers */
+.offer{border:1px solid rgba(43,38,35,.25);border-radius:4px;background:#FFFDF8}
+.offer h3{font-family:var(--serif);font-size:clamp(30px,2.4vw,36px)}
+.offer .price{font-family:var(--serif)}
+.offer.featured{border-color:var(--ink);box-shadow:6px 6px 0 var(--butter)}
+.offer.featured .tier{background:var(--butter)}
+.offer li::before{background:none;box-shadow:none;transform:none;width:16px;height:16px;top:4px;border:1.4px solid var(--pen);border-radius:50%}
+.offer li::after{content:"";position:absolute;left:4px;top:7px;width:8px;height:4px;border-left:1.6px solid var(--pen);border-bottom:1.6px solid var(--pen);rotate:-45deg}
+.q-opt.picked{background:var(--butter)}
+.q-result .tier{background:var(--butter)}
+
+/* find your fit */
+.fitband{background:var(--paper-2);color:var(--ink)}
+.fitband h2{font-family:var(--serif);font-weight:400;text-transform:none;color:var(--ink);font-size:clamp(44px,4.8vw,64px);line-height:1}
+.fitband .fdots i{background:rgba(43,38,35,.2)}
+.fitband .fdots i.on{background:var(--pen)}
+.fitband .q-label{color:var(--pen);font-size:clamp(30px,2.8vw,36px)}
+.fitband .q-opt{color:var(--ink);border-color:rgba(43,38,35,.3);background:#FFFDF8}
+.fitband .q-opt:hover{border-color:var(--ink);color:var(--ink)}
+.fitband .q-opt.picked{background:var(--butter);border-color:var(--ink);color:var(--ink)}
+.fitband p,.fitband .lede{color:var(--ink-2)}
+
+/* faq */
+.faqband h2{font-family:var(--serif);font-weight:400;color:var(--ink)}
+.faqband .faq details,.faqband .faq details:first-child{border-bottom:1px solid rgba(43,38,35,.25)}
+.faqband .faq summary{color:var(--ink);font-family:var(--sans);font-weight:600}
+.faqband .faq summary::after,.faq summary::after{background:none;color:var(--pen);border:1.4px solid var(--pen);border-radius:50%;font-family:var(--sans)}
+
+/* final + phone band */
+.final{background:var(--paper)}
+.final .wrap{background:var(--butter-2);padding:clamp(40px,6vw,72px) 20px;border-radius:3px;position:relative;box-shadow:0 18px 40px -30px rgba(70,50,30,.45)}
+.final .wrap::before{content:"";position:absolute;top:-12px;left:calc(50% - 50px);width:100px;height:26px;background:var(--tape);rotate:-3deg}
+.phoneband{background:var(--paper-2);color:var(--ink)}
+.pb-txt h2{color:var(--ink);font-family:var(--serif);font-weight:400;font-size:clamp(34px,3.2vw,44px)}
+.pb-txt p{color:var(--ink-2)}
+.phone{border-color:#3A3430;background:var(--butter-2)}
+.pbtn{background:var(--butter)}
+footer{background:var(--paper);border-top:1px solid rgba(43,38,35,.12)}
+footer h4{font-family:var(--sans);font-weight:700;font-size:11px;letter-spacing:.2em;text-transform:uppercase}
+
+/* pen marks drawn on as you scroll */
+.pen{position:relative;display:inline-block;white-space:nowrap}
+.pen>svg{position:absolute;pointer-events:none;overflow:visible;fill:none;stroke:var(--pen);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.pen.c>svg{left:-9%;top:-16%;width:118%;height:134%}
+.pen.u>svg{left:-3%;bottom:-.1em;width:106%;height:.36em}
+.pen path{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.1s cubic-bezier(.5,.1,.3,1) .2s}
+.pen.drawn path{stroke-dashoffset:0}
+.pen.drawn path+path{transition-delay:.9s}
+.scrawl{display:block;font-family:var(--sign);color:var(--pen);font-size:clamp(46px,5vw,70px);line-height:.9;font-weight:400;rotate:-4deg;margin:-.1em 0 .1em}
+@media (prefers-reduced-motion:reduce){.pen path{transition:none;stroke-dashoffset:0}}
 </style>
 <script>
 // notebook intro: first visit only, skipped for ad traffic and reduced motion
@@ -716,7 +888,7 @@ section.ruled::after{content:"";position:absolute;z-index:-1;top:0;bottom:0;left
       </button></div>
       <div class="intro-copy">
         <h1 id="intro-h">Your <span class="hl">rebirth</span> starts now.</h1>
-        <p class="sub">You don't need to become someone new. You need to come back to you.</p>
+        <p class="sub">You don't need to become someone new. You need to <span class="pen u">come back to you</span>.</p>
         <p class="lede">Confidence coaching with Dani Carbonari, for women ready to feel confident at work, in love and in their own skin.</p>
         <div class="cta-row">
           <a class="b5" href="quiz.html"><span class="b5-q">Are you <span class="b5-word"><span id="b5-w">a People Pleaser</span></span>?</span><span class="b5-go"><span>Take the 2 minute quiz to find out</span><span class="b5-start">Start</span></span></a>
@@ -739,6 +911,7 @@ section.ruled::after{content:"";position:absolute;z-index:-1;top:0;bottom:0;left
         <p>I spent years living for everyone else. Choosing myself changed everything, and now I help women do the same.</p>
         <p>Honest conversations, practical tools and a sisterhood that has your back.</p>
         <p class="coach-line">This isn't for everyone. It's for the woman who's ready to work on herself.</p>
+        <p class="scrawl" aria-label="Love, Dani">love, Dani x</p>
         <ul class="facts"><li>Host, The Confidence Hour</li><li>Workshop host</li><li>Speaker</li></ul>
         <div class="coach-cta">
           <a class="btn dark" href="#free" data-link="free"><span class="live" aria-hidden="true"></span>Join my free workshop</a>
@@ -753,7 +926,7 @@ section.ruled::after{content:"";position:absolute;z-index:-1;top:0;bottom:0;left
 <section class="band methods ruled" id="methods" aria-labelledby="methods-h">
   <div class="wrap">
     <p class="m-note">one coach, five ways in</p>
-    <h2 id="methods-h">Find your <span class="hl v3">method</span></h2>
+    <h2 id="methods-h">Find your <span class="pen c">method</span></h2>
     <p class="lede">Confidence coaching for women. Get your confidence back, starting from where you are right now.</p>
     <div class="mgrid">
       <article class="mcard">
@@ -819,7 +992,7 @@ section.ruled::after{content:"";position:absolute;z-index:-1;top:0;bottom:0;left
 
 <section class="band stone" id="stories" aria-labelledby="proof-h">
   <div class="wrap">
-    <div class="row-head"><h2 class="kicker" id="proof-h">From women who did <span class="hl v3">the work</span></h2></div>
+    <div class="row-head"><h2 class="kicker" id="proof-h">From women who did <span class="pen u">the work</span></h2></div>
   </div>
   <div class="proof-view" aria-label="What women say">
     <div class="proof" id="proof">
@@ -895,7 +1068,7 @@ section.ruled::after{content:"";position:absolute;z-index:-1;top:0;bottom:0;left
 <section class="band" id="offers" aria-labelledby="offers-h">
   <div class="wrap">
     <div class="row-head" style="display:grid;gap:10px;justify-items:center;justify-content:center;text-align:center;margin-bottom:36px">
-      <h2 id="offers-h" style="font-size:clamp(32px,3.6vw,46px)">Choose your <span class="hl v2">next step</span></h2>
+      <h2 id="offers-h" style="font-size:clamp(32px,3.6vw,46px)">Choose your <span class="pen c">next step</span></h2>
       <p class="lede" style="text-align:center">Five methods, taught three ways. Not sure which one? <a href="#fit">Find your fit</a>, or start free.</p>
     </div>
     <p class="offers-hint" aria-hidden="true">swipe to see all 4 levels</p>
@@ -944,7 +1117,7 @@ section.ruled::after{content:"";position:absolute;z-index:-1;top:0;bottom:0;left
 
 <section class="band faqband ruled" id="faq" aria-labelledby="faq-h">
   <div class="wrap faq-grid">
-    <h2 id="faq-h">You asked,<br><span class="hl v2">Dani</span><br>answered</h2>
+    <h2 id="faq-h">You asked,<br><span class="pen u">Dani</span><br>answered</h2>
     <div class="faq">
       <details><summary>Is this for everyone?</summary><p>No, and that's on purpose. It's for the woman who is ready to do the work. If you're not sure yet, start with the free workshop and see how it feels.</p></details>
       <details><summary>Is this only about body confidence?</summary><p>No. Body is one part. We work on confidence at work, in relationships, with money, travelling and living on your own terms.</p></details>
@@ -962,7 +1135,7 @@ section.ruled::after{content:"";position:absolute;z-index:-1;top:0;bottom:0;left
 
 <section class="band final" id="final">
   <div class="wrap">
-    <h2>Your rebirth starts with one yes.</h2>
+    <h2>Your rebirth starts with <span class="pen c">one yes</span>.</h2>
     <p>Join the free workshop this month. Bring yourself, Dani will bring the rest.</p>
     <a class="btn dark" href="#free" data-link="free">Join the free monthly workshop</a>
   </div>
@@ -1165,6 +1338,15 @@ const NEXT_WORKSHOP = "2026-12-05T15:00:00Z";
   const go=i=>{ i=Math.max(0,Math.min(cards.length-1,i)); tr.scrollTo({left:cards[i].offsetLeft-cards[0].offsetLeft,behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth"}); };
   pv.addEventListener("click",()=>go(cur()-1)); nx.addEventListener("click",()=>go(cur()+1));
   tr.addEventListener("scroll",()=>requestAnimationFrame(upd),{passive:true}); addEventListener("resize",upd); upd();
+})();
+
+// pen marks: circles and underlines that draw themselves when they come into view
+(function(){ const C="M10 26C6 12 38 4 62 5c24 1 36 9 33 19-3 11-34 16-55 15C18 38 2 30 6 20 9 12 24 7 36 6", U1="M1 5C26 1 58 7 99 3", U2="M8 9C34 6 62 10 92 7";
+  document.querySelectorAll(".pen").forEach(el=>{ const c=el.classList.contains("c"); const sv=document.createElementNS("http://www.w3.org/2000/svg","svg");
+    sv.setAttribute("viewBox",c?"0 0 100 44":"0 0 100 12"); sv.setAttribute("preserveAspectRatio","none"); sv.setAttribute("aria-hidden","true");
+    (c?[C]:[U1,U2]).forEach(d=>{ const p=document.createElementNS("http://www.w3.org/2000/svg","path"); p.setAttribute("d",d); p.setAttribute("pathLength","1"); p.setAttribute("vector-effect","non-scaling-stroke"); sv.appendChild(p); }); el.appendChild(sv); });
+  const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add("drawn"); io.unobserve(e.target); } }),{threshold:.8});
+  document.querySelectorAll(".pen").forEach(el=>io.observe(el));
 })();
 </script>
 
