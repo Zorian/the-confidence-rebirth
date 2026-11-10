@@ -1057,8 +1057,10 @@ const METHODS = {
     timers.push(setTimeout(()=>nb.classList.add("go"),600));
     timers.push(setTimeout(()=>nb.classList.add("open"),3600));
     timers.push(setTimeout(done,3600+4400)); };
-  nb.addEventListener("click",done);
-  nb.addEventListener("keydown",e=>{ if(e.key==="Enter"||e.key===" "||e.key==="Escape"){ e.preventDefault(); done(); } });
+  // tap jumps straight to the book opening and the writing, then into the site
+  const openNow=()=>{ if(!playing||nb.classList.contains("open")) return; timers.forEach(clearTimeout); timers=[]; nb.classList.add("go","open"); timers.push(setTimeout(done,4400)); };
+  nb.addEventListener("click",openNow);
+  nb.addEventListener("keydown",e=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); openNow(); } else if(e.key==="Escape"){ e.preventDefault(); done(); } });
   document.querySelectorAll(".top .logo").forEach(a=>a.addEventListener("click",e=>{ e.preventDefault(); play(); }));
   if(root.classList.contains("nb-on")){ root.classList.remove("nb-on"); play(); }
 })();
