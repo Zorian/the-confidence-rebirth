@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Handwriting options | The Confidence Rebirth</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Caveat:wght@500&family=Reenie+Beanie&family=Shadows+Into+Light+Two&family=Covered+By+Your+Grace&family=Gaegu:wght@400;700&family=Sue+Ellen+Francisco&family=Instrument+Serif&family=Montserrat:wght@400;600;700&display=swap">
+<style>
+:root{--paper:#F7F3EA;--ink:#2B2623;--ink-2:#4A433E;--pen:#B4382F;--rule:rgba(96,120,150,.16)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 15px/1.6 Montserrat,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.page{max-width:1180px;margin:0 auto;padding:clamp(28px,5vw,56px) 16px 80px}
+header{max-width:58ch;margin-bottom:32px}
+h1{font:400 clamp(40px,6vw,64px)/1 "Instrument Serif",serif;margin:0 0 10px}
+header p{margin:0;color:var(--ink-2)}
+.grid{display:grid;gap:22px}
+@media (min-width:860px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.card{position:relative;background:#FFFDF8;border:1px solid rgba(43,38,35,.14);border-radius:4px;padding:22px 22px 26px 46px;box-shadow:0 14px 30px -24px rgba(70,50,30,.4);
+  background-image:repeating-linear-gradient(to bottom,transparent 0 33px,var(--rule) 33px 34px);background-position:0 56px}
+.card::before{content:"";position:absolute;top:0;bottom:0;left:30px;width:1.5px;background:var(--pen);opacity:.35}
+.top{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.n{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#F3E2A0;font-weight:700;font-size:14px;flex:none}
+.top b{font-weight:600}
+.top small{color:#776D66;font-size:13px}
+.cur{margin-left:auto;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--pen);border:1px solid var(--pen);border-radius:999px;padding:3px 10px}
+.hw{color:var(--pen);font-size-adjust:.5;line-height:1.25;margin:0}
+.hw.l1{font-size:34px;rotate:-2deg;transform-origin:left;margin-bottom:6px}
+.hw.l2{font-size:26px;margin-bottom:10px}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:8px 0 12px}
+.cols .hw{font-size:28px}
+.mini{font-size:15px;color:var(--ink-2);margin:2px 0 0}
+.mini span{color:var(--pen)}
+.sig{font-size:40px;rotate:-4deg;transform-origin:left;margin-top:6px}
+.f1{font-family:"Nanum Pen Script",cursive}
+.f2{font-family:"Caveat",cursive;font-weight:500}
+.f3{font-family:"Reenie Beanie",cursive}
+.f4{font-family:"Shadows Into Light Two",cursive}
+.f5{font-family:"Covered By Your Grace",cursive}
+.f6{font-family:"Gaegu",cursive;font-weight:700;font-size-adjust:.4}
+.f7{font-family:"Sue Ellen Francisco",cursive}
+</style>
+</head>
+<body>
+<div class="page">
+<header>
+  <h1>Handwriting options</h1>
+  <p>The red pen notes across the site, written in 7 different hands. Number 1 is the one on the site now. Pick a number and I'll swap it in everywhere.</p>
+</header>
+<div class="grid">
+<!-- each card shows the same real lines from the site so they're easy to compare -->
+<script>
+const F=[["f1","Nanum Pen Script","Thin biro, quick and natural",true],["f2","Caveat","Neat and easy to read, slightly joined"],["f3","Reenie Beanie","Fast, messy biro, most like real notes"],["f4","Shadows Into Light Two","Light and airy, soft girly print"],["f5","Covered By Your Grace","Felt tip, bolder and confident"],["f6","Gaegu","Rounded and cute, like a diary"],["f7","Sue Ellen Francisco","Tall and skinny, journaling style"]];
+document.write(F.map(([c,n,d,cur],i)=>`<article class="card"><div class="top"><span class="n">${i+1}</span><div><b>${n}</b><br><small>${d}</small></div>${cur?'<span class="cur">On the site now</span>':''}</div>
+<p class="hw l1 ${c}">one coach, five ways in</p>
+<p class="hw l2 ${c}">Hey, I'm Dani, your confidence coach</p>
+<div class="cols"><p class="hw ${c}">Not for you if</p><p class="hw ${c}">For you if</p></div>
+<p class="hw l2 ${c}">What do you want most right now?</p>
+<p class="mini">Quote by <span class="hw ${c}" style="font-size:24px">Jaleesa, 25</span></p>
+<p class="hw sig ${c}">love, Dani x</p></article>`).join(""));
+</script>
+</div>
+</div>
+</body>
+</html>
