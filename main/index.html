@@ -1396,7 +1396,12 @@ const NEXT_WORKSHOP = "2026-12-05T15:00:00Z";
 (function(){ const sv=document.querySelector(".nb-page svg"); if(!sv) return; const t=sv.querySelectorAll("text")[1], im=sv.querySelector(".nb-hlnow");
   const place=()=>{ try{ const s=t.textContent, i=s.indexOf("now"), x=+t.getAttribute("x")+t.getSubStringLength(0,i), w=t.getSubStringLength(i,3), fs=parseFloat(getComputedStyle(t).fontSize)||100, y=+t.getAttribute("y");
     im.setAttribute("x",x-fs*.12); im.setAttribute("width",w+fs*.26); im.setAttribute("y",y-fs*.8); im.setAttribute("height",fs*.9); }catch(e){} };
-  (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(place); document.addEventListener("click",place,true);
+  (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(place);
+  if(document.fonts&&document.fonts.addEventListener) document.fonts.addEventListener("loadingdone",place);
+  sv.querySelectorAll("text")[1].addEventListener("animationstart",place);
+  // measure again whenever the intro is shown, as it can't be measured while hidden
+  const nbEl=document.getElementById("nb"); new MutationObserver(()=>{ if(getComputedStyle(nbEl).display!=="none") place(); }).observe(nbEl,{attributes:true,attributeFilter:["class"]});
+  new MutationObserver(()=>place()).observe(document.documentElement,{attributes:true,attributeFilter:["class"]});
 })();
 </script>
 
