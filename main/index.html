@@ -302,16 +302,21 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
 .m-note{font-family:var(--hand);font-weight:600;font-style:italic;font-size:clamp(16px,1.6vw,19px);display:inline-block;margin-bottom:6px}
 .methods h2{font-family:var(--cond);font-weight:400;text-transform:uppercase;letter-spacing:.005em;font-size:clamp(68px,10vw,150px);line-height:1}
 .methods .lede{margin-top:14px}
-.mgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,24px);margin-top:clamp(36px,4vw,52px)}
+.mgrid{display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(28px,2.6vw,32px) clamp(16px,2vw,24px);margin-top:clamp(36px,4vw,52px)}
+.mgrid .mcard{flex:0 1 calc((100% - 2*clamp(16px,2vw,24px))/3)}
+.micon{display:grid;place-items:center;width:86px;height:70px;margin:-6px 0 -4px -10px;background:url(img/hl-1.webp) center/100% 74% no-repeat}
+.micon svg{width:56px;height:56px;fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 .mcard{position:relative;display:flex;flex-direction:column;gap:12px;align-items:flex-start;padding:30px 24px 24px;border-radius:6px;background-color:#F1EEE6;background-image:repeating-linear-gradient(180deg,transparent 0 27px,rgba(47,90,140,.07) 27px 28px);transform:translateY(calc((1 - var(--r,1))*90px)) rotate(calc((1 - var(--r,1))*var(--tilt,-5deg)));opacity:var(--r,1)}
 .mcard:nth-child(2){--tilt:4deg}
 .mcard:nth-child(3){--tilt:-3deg}
+.mcard:nth-child(4){--tilt:3deg}
+.mcard:nth-child(5){--tilt:-4deg}
 .mcard::before{content:"";position:absolute;top:-13px;left:calc(50% - 46px);width:92px;height:26px;background:var(--tape);transform:rotate(-3deg)}
 .mcard:nth-child(2)::before{transform:rotate(3deg)}
 .mcard.open{background:var(--black);background-image:none;color:#fff}
 .mstat{font-size:13px;font-weight:600;line-height:1.2;color:var(--ink-2)}
 .mcard.open .mstat{color:var(--yellow)}
-.mcard h3{font-family:var(--cond);font-weight:400;text-transform:uppercase;letter-spacing:.005em;font-size:clamp(44px,4.6vw,66px);line-height:.98;text-wrap:wrap;margin-bottom:6px}
+.mcard h3{font-family:var(--cond);font-weight:400;text-transform:uppercase;letter-spacing:.005em;font-size:clamp(42px,4.2vw,60px);line-height:.98;text-wrap:wrap;margin-bottom:6px}
 .mcard h3 small{display:block;font-family:var(--wide);font-variation-settings:"wdth" 112;font-weight:600;font-size:13px;letter-spacing:.06em;line-height:1.5}
 .mcard.open h3{color:var(--yellow)}
 .mcard.open h3 small{color:#fff}
@@ -523,9 +528,11 @@ section.ruled::after{content:"";position:absolute;z-index:-1;top:0;bottom:0;left
   .stack .k{translate:calc((1 - var(--r,1))*40px) 0}
   .nf-col.no li{transform:translateX(calc((1 - var(--r,1))*-22px))}
   .nf-col.yes li{transform:translateX(calc((1 - var(--r,1))*22px))}
-  .title .wrap,.nf-grid,.pb-grid,.mgrid{grid-template-columns:1fr}
+  .title .wrap,.nf-grid,.pb-grid{grid-template-columns:1fr}
   .mcard{min-height:0}
-  .mgrid{gap:24px}
+  .mgrid{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin-inline:-20px;padding:18px 20px 12px;scrollbar-width:none}
+  .mgrid::-webkit-scrollbar{display:none}
+  .mgrid .mcard{flex:0 0 82%;scroll-snap-align:center}
   .title .cut img{max-height:320px;margin:0 auto}
   .stack{padding-bottom:6px}
   .giant .note{left:auto;right:2%;top:42%}
@@ -745,33 +752,52 @@ section.ruled::after{content:"";position:absolute;z-index:-1;top:0;bottom:0;left
 
 <section class="band methods ruled" id="methods" aria-labelledby="methods-h">
   <div class="wrap">
-    <p class="m-note">one coach, three ways in</p>
+    <p class="m-note">one coach, five ways in</p>
     <h2 id="methods-h">Find your <span class="hl v3">method</span></h2>
     <p class="lede">Confidence coaching for women. Get your confidence back, starting from where you are right now.</p>
     <div class="mgrid">
-      <article class="mcard open">
-        <span class="mstat">Open now</span>
-        <h3><small>The</small>Come Back<small>Method</small></h3>
-        <p><b>Who it's for</b> Women who've lost themselves.</p>
-        <p><b>What changes</b> Come back to who you are and go after the life you want, without becoming someone new.</p>
-        <a class="btn" href="#offers" data-pick="come">See how to start</a>
+      <article class="mcard">
+        <span class="micon" aria-hidden="true"><svg viewBox="0 0 48 48"><circle cx="24" cy="8.5" r="4.5"/><path d="M17 43l4-13-3.5-8.5c0-3.8 2.8-6.3 6.5-6.3s6.5 2.5 6.5 6.3L27 30l4 13z"/><path d="M36.5 11.5c-1.2-1.6-3.7-1.2-3.7.9 0 1.7 2.3 3 3.7 4 1.4-1 3.7-2.3 3.7-4 0-2.1-2.5-2.5-3.7-.9z"/></svg></span>
+        <span class="mstat" hidden data-ms="headtoe">Open now</span>
+        <h3><small>The</small>Head to Toe<small>Method</small></h3>
+        <p><b>Who it's for</b> Women who pick their body apart in the mirror and don't feel at home in their own skin.</p>
+        <p><b>What changes</b> Feel good in your body as it is now, without waiting to change first.</p>
+        <a class="btn" href="#offers" data-pick="headtoe">See how to start</a>
       </article>
       <article class="mcard">
-        <span class="mstat">Coming soon</span>
-        <h3><small>The</small>Say No<small>Method</small></h3>
-        <p><b>Who it's for</b> People pleasers.</p>
-        <p><b>What changes</b> Say no and mean it, without feeling guilty.</p>
-        <a class="btn" href="#" data-link="waitlist">Join the waitlist</a>
+        <span class="micon" aria-hidden="true"><svg viewBox="0 0 48 48"><ellipse cx="17" cy="18" rx="9.5" ry="12"/><path d="M17 30v12"/><path d="M27 25l13-11"/><path d="M33 13.5h7v7"/><path d="M38 31l1.4 3 3 1.4-3 1.4-1.4 3-1.4-3-3-1.4 3-1.4z"/></svg></span>
+        <span class="mstat" hidden data-ms="beyond">Open now</span>
+        <h3><small>The</small>Beyond the Mirror<small>Method</small></h3>
+        <p><b>Who it's for</b> Women who've worked on body confidence but still doubt themselves day to day.</p>
+        <p><b>What changes</b> Carry yourself with confidence everywhere and go after the job, the partner and the lifestyle.</p>
+        <a class="btn" href="#offers" data-pick="beyond">See how to start</a>
       </article>
       <article class="mcard">
-        <span class="mstat">Coming soon</span>
-        <h3><small>The</small>Take Up Space<small>Method</small></h3>
-        <p><b>Who it's for</b> Women who shrink and play small.</p>
-        <p><b>What changes</b> Be seen and take up space, without faking it till you make it.</p>
-        <a class="btn" href="#" data-link="waitlist">Join the waitlist</a>
+        <span class="micon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M29 6l4 8.5 9.3 1.2-6.8 6.4 1.8 9.2L29 26.8l-8.3 4.5 1.8-9.2-6.8-6.4 9.3-1.2z"/><path d="M6 30h9M9 36h10M14 42h10"/></svg></span>
+        <span class="mstat" hidden data-ms="gogetter">Open now</span>
+        <h3><small>The</small>Go Getter<small>Method</small></h3>
+        <p><b>Who it's for</b> Women with imposter syndrome who don't speak up for themselves, or haven't found their purpose yet.</p>
+        <p><b>What changes</b> Speak up, back yourself at work and go after what you're here to do.</p>
+        <a class="btn" href="#offers" data-pick="gogetter">See how to start</a>
+      </article>
+      <article class="mcard">
+        <span class="micon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M24 5l15 5.5v11c0 10-6.5 16.5-15 21-8.5-4.5-15-11-15-21v-11z"/><path d="M17 23.5l5 5 9-10"/></svg></span>
+        <span class="mstat" hidden data-ms="boundary">Open now</span>
+        <h3><small>The</small>Boundary Boss<small>Method</small></h3>
+        <p><b>Who it's for</b> People pleasers who struggle to say no and stand firm.</p>
+        <p><b>What changes</b> Say no, mean it and hold your boundaries, without the guilt.</p>
+        <a class="btn" href="#offers" data-pick="boundary">See how to start</a>
+      </article>
+      <article class="mcard">
+        <span class="micon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M24 43c-7.7 0-12.5-4.8-12.5-11.3 0-6.4 5.2-9.4 6.5-16.2 3.6 2.7 4.8 6.1 4.8 9 1.9-1.6 3-4.6 2.9-7.7C31.6 20.2 36.5 25 36.5 31.4 36.5 38.1 31.7 43 24 43z"/><path d="M24 43c-3 0-5-2-5-4.7 0-2.8 2.6-4.2 3.3-7 2.6 1.6 6.7 3.8 6.7 7 0 2.7-2 4.7-5 4.7z"/></svg></span>
+        <span class="mstat" hidden data-ms="comeback">Open now</span>
+        <h3><small>The</small>Comeback<small>Method</small></h3>
+        <p><b>Who it's for</b> Women rebuilding after a breakup, a loss or a hard season, who feel they've lost their spark.</p>
+        <p><b>What changes</b> Rebuild after a hard season and get your spark back.</p>
+        <a class="btn" href="#offers" data-pick="comeback">See how to start</a>
       </article>
     </div>
-    <p class="m-foot">We fill one group, then open the next. Not sure which one is yours? <a href="#quiz">Take the 2 minute quiz</a>.</p>
+    <p class="m-foot">Five areas of confidence. Not sure which one is yours? <a href="#quiz">Take the 2 minute quiz</a>.</p>
   </div>
 </section>
 
@@ -870,7 +896,7 @@ section.ruled::after{content:"";position:absolute;z-index:-1;top:0;bottom:0;left
   <div class="wrap">
     <div class="row-head" style="display:grid;gap:10px;justify-items:center;justify-content:center;text-align:center;margin-bottom:36px">
       <h2 id="offers-h" style="font-size:clamp(32px,3.6vw,46px)">Choose your <span class="hl v2">next step</span></h2>
-      <p class="lede" style="text-align:center">Three methods, taught three ways. Not sure which one? <a href="#fit">Find your fit</a>, or start free.</p>
+      <p class="lede" style="text-align:center">Five methods, taught three ways. Not sure which one? <a href="#fit">Find your fit</a>, or start free.</p>
     </div>
     <p class="offers-hint" aria-hidden="true">swipe to see all 4 levels</p>
     <div class="offers">
@@ -881,23 +907,23 @@ section.ruled::after{content:"";position:absolute;z-index:-1;top:0;bottom:0;left
         <div class="act"><a class="btn" href="#free" data-link="free">Join free</a><small>Takes 30 seconds.</small></div>
       </article>
       <article class="offer" id="course">
-        <span class="tier">3 courses, one per method</span><h3>The Course</h3>
+        <span class="tier">5 courses, one per method</span><h3>The Course</h3>
         <div class="price">$888<small>Per course</small></div>
-        <div class="mwrap"><p class="mpick">Pick your method</p><div class="mrows" role="group" aria-label="Choose your method"><button type="button" class="mrow" data-m="come" aria-pressed="false"><span>Come Back</span><i data-st="come"></i></button><button type="button" class="mrow" data-m="say" aria-pressed="false"><span>Say No</span><i data-st="say"></i></button><button type="button" class="mrow" data-m="space" aria-pressed="false"><span>Take Up Space</span><i data-st="space"></i></button></div></div>
+        <div class="mwrap"><p class="mpick">Pick your method</p><div class="mrows" role="group" aria-label="Choose your method"><button type="button" class="mrow" data-m="headtoe" aria-pressed="false"><span>Head to Toe</span><i data-st="headtoe"></i></button><button type="button" class="mrow" data-m="beyond" aria-pressed="false"><span>Beyond the Mirror</span><i data-st="beyond"></i></button><button type="button" class="mrow" data-m="gogetter" aria-pressed="false"><span>Go Getter</span><i data-st="gogetter"></i></button><button type="button" class="mrow" data-m="boundary" aria-pressed="false"><span>Boundary Boss</span><i data-st="boundary"></i></button><button type="button" class="mrow" data-m="comeback" aria-pressed="false"><span>Comeback</span><i data-st="comeback"></i></button></div></div>
         <ul><li>Recorded by Dani</li><li>Go at your own pace</li></ul>
         <div class="act"><a class="btn" id="course-cta" href="#"></a><small id="course-note"></small></div>
       </article>
       <article class="offer featured" id="masterclass">
-        <span class="tier">3 groups, 25 women each</span><h3>The 25 Woman Masterclass</h3>
+        <span class="tier">5 groups, 25 women each</span><h3>The 25 Woman Masterclass</h3>
         <div class="price">By application<small>Payment plans available</small></div>
-        <div class="mwrap"><p class="mpick">Pick your group</p><div class="mrows" role="group" aria-label="Choose your method"><button type="button" class="mrow" data-m="come" aria-pressed="false"><span>Come Back</span><i data-st="come"></i></button><button type="button" class="mrow" data-m="say" aria-pressed="false"><span>Say No</span><i data-st="say"></i></button><button type="button" class="mrow" data-m="space" aria-pressed="false"><span>Take Up Space</span><i data-st="space"></i></button></div></div>
+        <div class="mwrap"><p class="mpick">Pick your group</p><div class="mrows" role="group" aria-label="Choose your method"><button type="button" class="mrow" data-m="headtoe" aria-pressed="false"><span>Head to Toe</span><i data-st="headtoe"></i></button><button type="button" class="mrow" data-m="beyond" aria-pressed="false"><span>Beyond the Mirror</span><i data-st="beyond"></i></button><button type="button" class="mrow" data-m="gogetter" aria-pressed="false"><span>Go Getter</span><i data-st="gogetter"></i></button><button type="button" class="mrow" data-m="boundary" aria-pressed="false"><span>Boundary Boss</span><i data-st="boundary"></i></button><button type="button" class="mrow" data-m="comeback" aria-pressed="false"><span>Comeback</span><i data-st="comeback"></i></button></div></div>
         <ul><li>8 weeks, live with Dani every week</li><li>Ask questions and get coached live</li><li>Your own private group chat</li><li>Course included</li></ul>
         <div class="act"><a class="btn" id="class-cta" href="#"></a><small id="class-note"></small></div>
       </article>
       <article class="offer" id="one">
         <span class="tier">1:1, 10 women only</span><h3>1:1 with Dani</h3>
         <div class="price">By application<small>Payment plans available</small></div>
-        <div class="mwrap"><p class="mpick">Choose your method</p><div class="mrows" role="group" aria-label="Choose your method"><button type="button" class="mrow" data-m="come" aria-pressed="false"><span>Come Back</span></button><button type="button" class="mrow" data-m="say" aria-pressed="false"><span>Say No</span></button><button type="button" class="mrow" data-m="space" aria-pressed="false"><span>Take Up Space</span></button></div></div>
+        <div class="mwrap"><p class="mpick">Choose your method</p><div class="mrows" role="group" aria-label="Choose your method"><button type="button" class="mrow" data-m="headtoe" aria-pressed="false"><span>Head to Toe</span></button><button type="button" class="mrow" data-m="beyond" aria-pressed="false"><span>Beyond the Mirror</span></button><button type="button" class="mrow" data-m="gogetter" aria-pressed="false"><span>Go Getter</span></button><button type="button" class="mrow" data-m="boundary" aria-pressed="false"><span>Boundary Boss</span></button><button type="button" class="mrow" data-m="comeback" aria-pressed="false"><span>Comeback</span></button></div></div>
         <ul><li>12 weeks, a 1:1 call every week</li><li>Fully personalised to you</li><li>Direct voice notes with Dani</li><li>Course included</li></ul>
         <div class="act"><a class="btn" href="#" data-link="one">Apply for 1:1</a><small>A short form, then a call with our team.</small></div>
       </article>
@@ -926,7 +952,7 @@ section.ruled::after{content:"";position:absolute;z-index:-1;top:0;bottom:0;left
       <details><summary>What if I can't make the live calls?</summary><p>Every call is recorded. Free members get the replay for 7 days. Masterclass and 1:1 women keep every replay.</p></details>
       <details><summary>Which option is right for me?</summary><p>Start with the free workshop. If you want to go at your own pace, get the course. If you want Dani in your corner every week, apply for the masterclass or 1:1.</p></details>
       <details><summary>How do I know which method is mine?</summary><p>Take the 2 minute quiz. It points you to the one that fits where you are right now.</p></details>
-      <details><summary>Why is only one method open?</summary><p>We fill one group, then open the next. If yours isn't open yet, join the waitlist and you'll hear first.</p></details>
+      <details><summary>Can I do more than one method?</summary><p>Yes. Most women start with the one that feels most urgent right now, then add another later.</p></details>
       <details><summary>What happens on the call?</summary><p>A relaxed 20 minute chat about where you are and where you want to be. If the masterclass or 1:1 is right for you, we'll tell you. If it isn't, we'll point you to what is. No pressure.</p></details>
       <details><summary>Are there payment plans?</summary><p>Yes. The masterclass and 1:1 both have payment plans. We'll go through the options on your call.</p></details>
       <details><summary>How do I contact Dani?</summary><p>Send a DM to @theconfidencerebirth on Instagram. We reply within a day.</p></details>
@@ -1011,14 +1037,19 @@ const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   addEventListener("scroll",on,{passive:true}); addEventListener("resize",on); addEventListener("load",on); run();
 })();
 
-// the three methods: set open to true on whichever is selling, and paste its checkout and application links
+// the five methods: open:false switches a method to the waitlist. Paste each checkout and application link
 const METHODS = {
-  come:  { name:"Come Back", open:true,  course:"#", apply:"#" },
-  say:   { name:"Say No", open:false, course:"#", apply:"#" },
-  space: { name:"Take Up Space", open:false, course:"#", apply:"#" }
+  headtoe: { name:"Head to Toe", open:true, course:"#", apply:"#" },
+  beyond: { name:"Beyond the Mirror", open:true, course:"#", apply:"#" },
+  gogetter: { name:"Go Getter", open:true, course:"#", apply:"#" },
+  boundary: { name:"Boundary Boss", open:true, course:"#", apply:"#" },
+  comeback: { name:"Comeback", open:true, course:"#", apply:"#" }
 };
 (function(){ const param=new URLSearchParams(location.search).get("method"); const el=id=>document.getElementById(id);
-  document.querySelectorAll("[data-st]").forEach(t=>{ t.textContent=METHODS[t.dataset.st].open?"Open now":"Coming soon"; });
+  // labels only show on methods that are still coming soon
+  document.querySelectorAll("[data-st]").forEach(t=>{ t.textContent=METHODS[t.dataset.st].open?"":"Coming soon"; });
+  document.querySelectorAll("[data-ms]").forEach(t=>{ const k=t.dataset.ms, a=t.parentElement.querySelector("[data-pick]"); t.textContent=METHODS[k].open?"":"Coming soon"; t.hidden=METHODS[k].open;
+    if(!METHODS[k].open){ a.textContent="Join the waitlist"; a.href="https://ig.me/m/theconfidencerebirth?ref="+k+"_waitlist"; a.target="_blank"; a.rel="noopener"; a.removeAttribute("data-pick"); } });
   const wait=k=>"https://ig.me/m/theconfidencerebirth?ref="+k+"_waitlist";
   const set=(a,href)=>{ a.href=href; if(/^https/.test(href)){ a.target="_blank"; a.rel="noopener"; } else { a.removeAttribute("target"); a.removeAttribute("rel"); } };
   function pick(k){ const M=METHODS[k];
@@ -1031,7 +1062,7 @@ const METHODS = {
   }
   document.querySelectorAll(".mrow").forEach(b=>b.addEventListener("click",()=>pick(b.dataset.m)));
   document.querySelectorAll("[data-pick]").forEach(a=>a.addEventListener("click",()=>pick(a.dataset.pick)));
-  const first=Object.keys(METHODS).find(k=>METHODS[k].open)||"come";
+  const first=Object.keys(METHODS).find(k=>METHODS[k].open)||"headtoe";
   pick(METHODS[param]?param:first);
 })();
 

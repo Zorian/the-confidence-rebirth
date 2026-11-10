@@ -240,7 +240,7 @@ button{font:inherit;color:inherit}
   <main class="screen intro" id="s-intro">
     <span class="note">a 2 minute quiz from Dani</span>
     <h1>What's really holding your <span class="hl swipe">confidence</span> back?</h1>
-    <p class="lede">Ten quick questions. Find your Confidence Type, get a free plan for it, and see which of Dani's three methods is made for you.</p>
+    <p class="lede">Ten quick questions. Find your Confidence Type, get a free plan for it, and see which of Dani's five methods is made for you.</p>
     <div class="go">
       <button class="btn" id="start" type="button">Start the quiz</button>
       <small>Free. Your result shows straight away.</small>
@@ -336,16 +336,18 @@ const DM_LINKS = { P: "", F: "", O: "", H: "", I: "", C: "" };
 // Dani's reveal video per type (mp4 URL from Bunny/Vimeo). Leave blank to show the placeholder.
 const VIDEOS = { P: "", F: "", O: "", H: "", I: "", C: "" };
 
-/* ===== The three methods. Set open: true on whichever method is selling; the others show the waitlist. ===== */
+/* ===== The five methods. open:false switches a method to the waitlist. ===== */
 const WAITLIST = m => "https://ig.me/m/theconfidencerebirth?ref=" + m + "_waitlist";
 const METHODS = {
-  come:  { title: "Come Back", open: true,  promise: "Come back to who you are and go after the life you want, without becoming someone new." },
-  say:   { title: "Say No", open: false, promise: "Say no and mean it, without feeling guilty." },
-  space: { title: "Take Up Space", open: false, promise: "Be seen and take up space, without faking it till you make it." }
+  headtoe: { title: "Head to Toe", open: true, promise: "Feel good in your body as it is now, without waiting to change first." },
+  beyond: { title: "Beyond the Mirror", open: true, promise: "Carry yourself with confidence everywhere and go after the job, the partner and the lifestyle." },
+  gogetter: { title: "Go Getter", open: true, promise: "Speak up, back yourself at work and go after what you're here to do." },
+  boundary: { title: "Boundary Boss", open: true, promise: "Say no, mean it and hold your boundaries, without the guilt." },
+  comeback: { title: "Comeback", open: true, promise: "Rebuild after a hard season and get your spark back." }
 };
 
 const TYPES = {
-  P: { method: "say", why: "You give your yes away before you've checked in with yourself. This method gets it back.", the: "The", name: "People Pleaser", short: "People Pleasers",
+  P: { method: "boundary", why: "You give your yes away before you've checked in with yourself. This method teaches you to say no and stand by it.", the: "The", name: "People Pleaser", short: "People Pleasers",
        hook: "You light up every room but your own.",
        desc: "You're the one everyone leans on. Somewhere along the way, keeping everyone happy became your job, and you got left off the list.",
        win: "Next time someone asks you for something, say \"Let me check and get back to you.\" Then decide later, on your terms.",
@@ -356,7 +358,7 @@ const TYPES = {
          travel: "You go wherever everyone else wants and call it being easygoing.",
          social: "You always show up for your friends, and rarely get asked how you are."
        } },
-  F: { method: "say", why: "You've spent years holding everyone else up. This method teaches you to put some of it down.", the: "The", name: "Fixer", short: "Fixers",
+  F: { method: "comeback", why: "You've spent so long holding everyone else up that your own spark went quiet. This method helps you get it back.", the: "The", name: "Fixer", short: "Fixers",
        hook: "You sort everything for everyone, and nothing for you.",
        desc: "You're the one who steps in, cleans up and makes it all okay. Being needed feels good, until you can't remember the last time you asked for anything.",
        win: "Next time someone brings you a problem, ask \"Do you want my help, or do you want me to listen?\" Then do only what they say.",
@@ -367,7 +369,7 @@ const TYPES = {
          travel: "You plan the whole trip, book it all and carry everyone through it.",
          social: "You're everyone's first call in a crisis. Nobody calls to check on you."
        } },
-  O: { method: "come", why: "You've been in your head so long you've lost track of what you actually want. This method brings you back to it.", the: "The", name: "Overthinker", short: "Overthinkers",
+  O: { method: "beyond", why: "The doubt in your head is louder than everything you've already done. This method helps you carry yourself like you believe it.", the: "The", name: "Overthinker", short: "Overthinkers",
        hook: "Your mind is brilliant. It just never clocks off.",
        desc: "You see every angle, which is a gift. But the what-ifs run on a loop, and somewhere in all that noise you stopped hearing your own voice.",
        win: "Make one small decision today in under two minutes, and don't go back to it.",
@@ -378,7 +380,7 @@ const TYPES = {
          travel: "You plan the trip so hard you stop wanting to go.",
          social: "You leave every night out replaying what you said."
        } },
-  H: { method: "space", why: "You've got very good at disappearing. This method gets you seen, as you.", the: "The", name: "Hider", short: "Hiders",
+  H: { method: "headtoe", why: "You've got very good at hiding. This method helps you feel at home in your own skin, as you are now.", the: "The", name: "Hider", short: "Hiders",
        hook: "You've been playing small so nobody looks too closely.",
        desc: "You're not shy. You learned that staying small felt safer than being seen, and now that habit keeps you on the sidelines.",
        win: "Keep one photo of yourself you'd normally delete. Look at it once a day this week.",
@@ -389,7 +391,7 @@ const TYPES = {
          travel: "You skip the trip, the beach and the photo.",
          social: "You stand at the edge of the room and hope nobody notices."
        } },
-  I: { method: "space", why: "You've already earned your place. This method helps you stand in it, with no pretending.", the: "The", name: "Imposter", short: "Imposters",
+  I: { method: "gogetter", why: "You've already earned your place. This method helps you speak up, back yourself and go after what's yours.", the: "The", name: "Imposter", short: "Imposters",
        hook: "You earned it. You just haven't believed it yet.",
        desc: "You've done the work and the proof is there. You keep waiting to feel ready, and the waiting is what's holding you back.",
        win: "Write down three wins from this year. Read them before your next big moment.",
@@ -400,7 +402,7 @@ const TYPES = {
          travel: "You talk yourself out of the solo trip because other people are braver.",
          social: "You assume everyone else in the group is more interesting than you."
        } },
-  C: { method: "come", why: "You know who you are. This method helps you go after the life that goes with it.", the: "The", name: "Main Character", short: "Main Characters",
+  C: { method: "gogetter", why: "You know who you are. This method helps you ask for what you're worth and go after your purpose.", the: "The", name: "Main Character", short: "Main Characters",
        hook: "You know who you are. Now it's about owning it everywhere.",
        desc: "You've already done a lot of the work. The next level is staying confident when it counts: the big room, the bad day, the moment nobody's clapping.",
        win: "Write down the one place you still shrink. That's your next level, and it's where Dani starts with you.",
