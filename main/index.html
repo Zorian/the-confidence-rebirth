@@ -359,7 +359,7 @@ section.ruled::after{content:"";position:absolute;z-index:-1;top:0;bottom:0;left
 .nb-on body{overflow:hidden}
 .nb{position:fixed;inset:0;z-index:200;place-items:center;perspective:1600px;background:#F4EEE4 radial-gradient(90% 70% at 50% 42%,#FBF7F0,transparent 70%);cursor:pointer;transition:opacity .6s}
 .nb.out{opacity:0;pointer-events:none}
-.nb-book{position:relative;width:min(380px,86vw,56vh);aspect-ratio:955/1284;transform-style:preserve-3d;transform:rotateX(var(--ty,0deg)) rotateY(var(--tx,0deg));transition:transform .3s ease-out,opacity .5s .9s;animation:nbdrop 1s cubic-bezier(.2,.9,.3,1.12) .1s both}
+.nb-book{position:relative;width:min(380px,86vw,56vh);aspect-ratio:961/1284;transform-style:preserve-3d;transform:rotateX(var(--ty,0deg)) rotateY(var(--tx,0deg));transition:transform .3s ease-out,opacity .5s .9s;animation:nbdrop 1s cubic-bezier(.2,.9,.3,1.12) .1s both}
 @keyframes nbdrop{0%{opacity:0;translate:0 -46px;rotate:-7deg;scale:1.1}60%{opacity:1}100%{opacity:1;translate:0 0;rotate:-1.5deg;scale:1}}
 .nb-book::before{content:"";position:absolute;inset:1.2% -1.2% -1.2% 7%;background:#F7F4EC;border-radius:2.4%/1.8%;box-shadow:0 34px 48px -24px rgba(90,60,40,.5),0 8px 14px -8px rgba(90,60,40,.3)}
 .nb-book::after{content:"";position:absolute;inset:.6% -.6% -.6% 6.5%;background:repeating-linear-gradient(to bottom,#FBF9F3 0 2px,#E8E3D8 2px 3px);border-radius:2.4%/1.8%}
