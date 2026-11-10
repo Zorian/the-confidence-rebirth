@@ -632,6 +632,13 @@ section.ruled::after{content:"";position:absolute;z-index:-1;top:0;bottom:0;left
 .tk-live .live{margin:0;width:7px;height:7px}
 @media (max-width:760px){.hw-ticket{width:100%;max-width:440px}.hw-ticket .tk-txt{padding:0 12px;font-size:13.5px;letter-spacing:.03em;gap:8px;text-align:center}.tk-stub{padding:0 14px;font-size:12px}.tk-stub b{font-size:15px}}
 .coach-cta .btn .live{width:9px;height:9px;flex:none}
+.pl-lock{position:relative;margin:4px 16px 18px;height:150px;border-radius:12px;background:#232423;border:1px solid #2F302F;overflow:hidden;display:grid;place-items:center}
+.pl-bars{position:absolute;inset:18px;display:grid;gap:14px;align-content:start;filter:blur(5px);opacity:.55}
+.pl-bars i{display:block;height:30px;border-radius:8px;background:linear-gradient(90deg,#5A5B55 0 12%,transparent 12% 18%,#77786F 18% 92%,transparent 92%)}
+.pl-bars i:nth-child(2){width:86%}.pl-bars i:nth-child(3){width:70%}
+.pl-key{position:relative;display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;background:var(--black);border:1.5px solid var(--yellow);color:var(--yellow);font-weight:700;font-size:13px;letter-spacing:.04em;text-transform:uppercase}
+.pillars .pl-cta{flex-direction:column;align-items:center;gap:12px;text-align:center}
+.pl-cta p{color:#B9B6AE;font-size:15px}
 </style>
 <script>
 // notebook intro: first visit only, skipped for ad traffic and reduced motion
@@ -723,32 +730,33 @@ section.ruled::after{content:"";position:absolute;z-index:-1;top:0;bottom:0;left
 <section class="pillars" id="pillars" aria-labelledby="pl-h">
   <div class="wrap pl-head">
     <h2 id="pl-h">Your rebirth in <span class="hl v2">5 steps</span></h2>
-    <p>The same 5 pillars Dani takes every woman through, whatever area of life you want your confidence back in.</p>
+    <p>Dani's proven method. The 5 pillars she takes every woman through, whatever area of life you want your confidence back in.</p>
   </div>
   <div class="pl-track" id="pl-track" tabindex="0" aria-label="The 5 pillars, scroll sideways">
       <article class="pl on" aria-label="Step 1 of 5: Reawaken">
         <div class="pl-top"><span class="pl-step">Step</span><span class="pl-num" aria-hidden="true">1</span><h3>Reawaken</h3><p class="pl-line">Notice what’s really been running your life.</p></div>
-        <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.600-7 10-7 10 7 10 7-3.600 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg><span>Hear the voice that keeps telling you to play small</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12h8"/></svg><span>Spot where you shrink, people please and hide</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.600 5.600l2.800 2.800M15.600 15.600l2.800 2.800M5.600 18.400l2.800-2.800M15.600 8.400l2.800-2.800"/></svg><span>Remember who you were before the doubt crept in</span></li></ul>
+        <div class="pl-lock"><span class="pl-bars" aria-hidden="true"><i></i><i></i><i></i></span><span class="pl-key"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Unlocked inside coaching</span></div>
       </article>
       <article class="pl" aria-label="Step 2 of 5: Repair">
         <div class="pl-top"><span class="pl-step">Step</span><span class="pl-num" aria-hidden="true">2</span><h3>Repair</h3><p class="pl-line">Heal the places it all started.</p></div>
-        <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.400-7-10a4 4 0 0 1 7-2.600A4 4 0 0 1 19 10c0 5.600-7 10-7 10z"/></svg><span>Unpack the moments that taught you to dim yourself</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19c0-8 6-14 14-14 0 8-6 14-14 14z"/><path d="M5 19l7-7"/></svg><span>Let go of old comments, comparison and hurt</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v6c0 4.500-3 7.500-7 9-4-1.500-7-4.500-7-9V6z"/></svg><span>Make peace with your past so it stops steering</span></li></ul>
+        <div class="pl-lock"><span class="pl-bars" aria-hidden="true"><i></i><i></i><i></i></span><span class="pl-key"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Unlocked inside coaching</span></div>
       </article>
       <article class="pl" aria-label="Step 3 of 5: Rewire">
         <div class="pl-top"><span class="pl-step">Step</span><span class="pl-num" aria-hidden="true">3</span><h3>Rewire</h3><p class="pl-line">Change the story you tell yourself.</p></div>
-        <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4-1 11-11-3-3L5 16l-1 4z"/><path d="M14 6l3 3"/></svg><span>Swap the beliefs that keep you stuck for ones that back you</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg><span>Build an inner voice that talks to you like a best friend</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12a8 8 0 0 1 14-5.300L20 9"/><path d="M20 4v5h-5"/><path d="M20 12a8 8 0 0 1-14 5.300L4 15"/><path d="M4 20v-5h5"/></svg><span>Practise new thoughts until they feel natural</span></li></ul>
+        <div class="pl-lock"><span class="pl-bars" aria-hidden="true"><i></i><i></i><i></i></span><span class="pl-key"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Unlocked inside coaching</span></div>
       </article>
       <article class="pl" aria-label="Step 4 of 5: Refocus">
         <div class="pl-top"><span class="pl-step">Step</span><span class="pl-num" aria-hidden="true">4</span><h3>Refocus</h3><p class="pl-line">Put your energy where it grows you.</p></div>
-        <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg><span>Handle triggers, bad days and setbacks without spiralling</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14l6-6 4 4 6-6"/><path d="M4 20h16"/></svg><span>Stop comparing and start choosing you</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v6c0 4.500-3 7.500-7 9-4-1.500-7-4.500-7-9V6z"/></svg><span>Set boundaries that protect your peace</span></li></ul>
+        <div class="pl-lock"><span class="pl-bars" aria-hidden="true"><i></i><i></i><i></i></span><span class="pl-key"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Unlocked inside coaching</span></div>
       </article>
       <article class="pl" aria-label="Step 5 of 5: Rebuild">
         <div class="pl-top"><span class="pl-step">Step</span><span class="pl-num" aria-hidden="true">5</span><h3>Rebuild</h3><p class="pl-line">Show up as the woman you’re becoming.</p></div>
-        <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 21V4h10v17"/><path d="M3 21h18"/><circle cx="13" cy="12.500" r="1" fill="currentColor"/></svg><span>Walk into any room like you belong there</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.500 11a6.500 6.500 0 0 0 13 0M12 17.500V21"/></svg><span>Speak up at work, in love and online</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.700 5.600 6.100.900-4.400 4.300 1 6.100L12 17l-5.400 2.900 1-6.100L3.200 9.500l6.100-.900z"/></svg><span>Keep your confidence for life, not just for a week</span></li></ul>
+        <div class="pl-lock"><span class="pl-bars" aria-hidden="true"><i></i><i></i><i></i></span><span class="pl-key"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Unlocked inside coaching</span></div>
       </article>
   </div>
   <div class="wrap">
     <div class="pl-nav"><button type="button" id="pl-prev" aria-label="Previous step" disabled>‹</button><div class="pl-dots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i></div><button type="button" id="pl-next" aria-label="Next step">›</button></div>
+    <div class="pl-cta"><a class="hw-btn" href="#one" data-link="one">Apply for coaching<em aria-hidden="true">›</em></a><p>Dani takes you through all 5 when you work with her.</p></div>
   </div>
 </section>
 
