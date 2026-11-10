@@ -810,7 +810,7 @@ footer h4{font-family:var(--sans);font-weight:700;font-size:11px;letter-spacing:
 /* pen marks drawn on as you scroll */
 .pen{position:relative;display:inline-block;white-space:nowrap}
 .pen>svg{position:absolute;pointer-events:none;overflow:visible;fill:none;stroke:var(--pen);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.pen.c>svg{left:-9%;top:-16%;width:118%;height:134%}
+.pen.c>svg{left:-9%;top:-16%;width:118%;height:134%;transform-origin:50% 50%}
 .pen.u>svg{left:-3%;bottom:-.1em;width:106%;height:.36em}
 .pen path{stroke-dasharray:1;stroke-dashoffset:1}
 .scrawl{display:block;font-family:var(--sign);color:var(--pen);font-size:clamp(46px,5vw,70px);line-height:.9;font-weight:400;rotate:-4deg;margin:-.1em 0 .1em}
@@ -926,7 +926,7 @@ footer h4{font-family:var(--sans);font-weight:700;font-size:11px;letter-spacing:
 <section class="band methods ruled" id="methods" aria-labelledby="methods-h">
   <div class="wrap">
     <p class="m-note">one coach, five ways in</p>
-    <h2 id="methods-h">Find your <span class="pen c">method</span></h2>
+    <h2 id="methods-h">Find your <span class="pen c orbit">method</span></h2>
     <p class="lede">Confidence coaching for women. Get your confidence back, starting from where you are right now.</p>
     <div class="mgrid">
       <article class="mcard">
@@ -1350,6 +1350,10 @@ const NEXT_WORKSHOP = "2026-12-05T15:00:00Z";
   if(matchMedia("(prefers-reduced-motion: reduce)").matches){ pens.forEach(o=>o.paths.forEach(p=>p.style.strokeDashoffset=0)); return; }
   let q=false; const run=()=>{ q=false; const vh=innerHeight;
     pens.forEach(o=>{ const r=o.el.getBoundingClientRect(); if(r.bottom<-200||r.top>vh+200) return;
+      // "orbit" marks keep travelling round the word for as long as it's on screen
+      if(o.el.classList.contains("orbit")){ const u=(vh*.95-r.top)/vh, L=.84*Math.min(1,Math.max(0,u/.45)), p=o.paths[0];
+        p.style.strokeDasharray=L.toFixed(3)+" "+(1-L+.001).toFixed(3); p.style.strokeDashoffset=(-Math.max(0,u-.45)*1.6).toFixed(3);
+        o.el.querySelector("svg").style.transform="rotate("+(Math.max(0,u-.45)*-14).toFixed(2)+"deg)"; return; }
       const t=Math.min(1,Math.max(0,(vh*.92-r.top)/(vh*.4))), n=o.paths.length;
       o.paths.forEach((p,i)=>{ const k=Math.min(1,Math.max(0,t*n-i)); p.style.strokeDashoffset=(1-k).toFixed(3); }); }); };
   const on=()=>{ if(!q){ q=true; requestAnimationFrame(run); } };
