@@ -52,6 +52,7 @@ body{margin:0;background:var(--cream) var(--noise);color:var(--ink);font:400 16p
 .s.in{animation:none;opacity:1;transition:translate .4s cubic-bezier(.3,1.4,.5,1),scale .4s cubic-bezier(.3,1.4,.5,1),rotate .4s,filter .4s}
 .s.peel{translate:0 -7%;scale:1.08;rotate:calc((var(--r,0) + 4)*1deg);filter:drop-shadow(0 3px 3px rgba(70,45,30,.2)) drop-shadow(0 18px 14px rgba(70,45,30,.22))}
 .s.dd{filter:none;pointer-events:none;z-index:2}
+.s.pic img{display:block;width:100%;height:auto;-webkit-user-drag:none;user-select:none}
 .s svg{display:block;width:100%;height:auto;overflow:visible}
 
 /* crease: two soft folds catching the light */
@@ -160,11 +161,63 @@ body{margin:0;background:var(--cream) var(--noise);color:var(--ink);font:400 16p
 
 <div class="page">
 <header>
-  <h1>Notebook intro, 10 options</h1>
-  <p>Tap any sticker to peel it up. Replay to watch them stick again. Move your mouse or tilt your phone and the book moves with you.</p>
+  <h1>Notebook intro options</h1>
+  <p>11 to 13 use your stickers. Tap any sticker to peel it up. Replay to watch them stick again. Move your mouse or tilt your phone and the book moves with you.</p>
 </header>
 
 <div class="grid">
+
+<!-- 11 -->
+<figure class="opt"><div class="desk" style="--dk:#F6EEE2"><div class="book creamc">
+  <div class="lbl" style="--lx:19%;--ly:41%;--lw:58%;--lr:-2deg;font-size:5.4cqw;padding:7% 6%"><span>THE</span><span class="i"><span class="hl">CONFIDENCE</span></span><span>REBIRTH</span></div>
+  <div class="s pic" style="--x:2;--y:2;--w:58;--r:-4"><img src="img/stickers/my-year.webp" alt=""></div>
+  <div class="s pic" style="--x:76;--y:3;--w:22;--r:8"><img src="img/stickers/day-by-day.webp" alt=""></div>
+  <div class="s pic" style="--x:3;--y:15;--w:30;--r:-6"><img src="img/stickers/yo.webp" alt=""></div>
+  <div class="s pic" style="--x:47;--y:14;--w:32;--r:5"><img src="img/stickers/enough.webp" alt=""></div>
+  <div class="s pic" style="--x:60;--y:36;--w:38;--r:7"><img src="img/stickers/no-excuses.webp" alt=""></div>
+  <div class="s pic" style="--x:2;--y:61;--w:29;--r:-5"><img src="img/stickers/love-real.webp" alt=""></div>
+  <div class="s pic" style="--x:79;--y:56;--w:19;--r:-8"><img src="img/stickers/ticket.webp" alt=""></div>
+  <div class="s pic" style="--x:33;--y:63;--w:31;--r:4"><img src="img/stickers/smiles.webp" alt=""></div>
+  <div class="s pic" style="--x:3;--y:84;--w:40;--r:5"><img src="img/stickers/manifested.webp" alt=""></div>
+  <div class="s pic" style="--x:50;--y:85;--w:46;--r:-3"><img src="img/stickers/choose-me.webp" alt=""></div>
+  <div class="s" style="--x:4;--y:42;--w:10;--r:-12"><svg><use href="#star"/></svg></div>
+</div></div>
+<figcaption class="cap"><span class="n">11</span><div><h2>Your stickers, full cover</h2><p>All 10 of your stickers layered over a cream cover, like the Note to Self page.</p></div><button class="again" type="button">Replay</button></figcaption></figure>
+
+<!-- 13 -->
+<figure class="opt"><div class="desk" style="--dk:#F4EDE1"><div class="book kraft">
+  <div class="lbl" style="--lx:19%;--ly:36%;--lw:62%;--lr:-1.5deg;font-size:5.6cqw"><span>THE</span><span class="i"><span class="hl">CONFIDENCE</span></span><span>REBIRTH</span></div>
+  <div class="s pic" style="--x:3;--y:3;--w:52;--r:-5"><img src="img/stickers/choose-me.webp" alt=""></div>
+  <div class="s pic" style="--x:74;--y:4;--w:23;--r:7"><img src="img/stickers/day-by-day.webp" alt=""></div>
+  <div class="s" style="--x:55;--y:18;--w:18;--r:9"><svg><use href="#star"/></svg></div>
+  <div class="s" style="--x:5;--y:20;--w:26;--r:5"><div class="note cr" style="--c:var(--sage)">come back to you</div></div>
+  <div class="s pic" style="--x:3;--y:62;--w:36;--r:-6"><img src="img/stickers/enough.webp" alt=""></div>
+  <div class="s pic" style="--x:78;--y:56;--w:18;--r:6"><img src="img/stickers/ticket.webp" alt=""></div>
+  <div class="s" style="--x:42;--y:66;--w:30;--r:-3"><div class="note" style="--c:var(--butter)">your rebirth starts now</div></div>
+  <div class="s pic" style="--x:30;--y:88;--w:62;--r:2"><img src="img/stickers/my-year.webp" alt=""></div>
+  <div class="s" style="--x:5;--y:80;--w:11;--r:-14"><svg><use href="#star"/></svg></div>
+</div></div>
+<figcaption class="cap"><span class="n">13</span><div><h2>Mix</h2><p>Five of your stickers with soft sticky notes and gold stars. Less busy than 11.</p></div><button class="again" type="button">Replay</button></figcaption></figure>
+
+<!-- 12 -->
+<figure class="opt wide"><div class="desk" style="--dk:#F5EEE3"><div class="book spread" style="--cv:#C9B79C">
+  <div class="pages"><div class="pg ruled"></div><div class="pg dots"></div></div>
+  <div class="lbl bare" style="--lx:13%;--ly:9%;--lw:34%"><span>THE</span><span class="i"><span class="hl">CONFIDENCE</span></span><span>REBIRTH</span></div>
+  <div class="big-title">note<br>to self</div>
+  <div class="s" style="--x:36;--y:70;--w:7;--r:-12"><svg><use href="#star"/></svg></div>
+  <div class="s dd" style="--x:14;--y:78;--w:4;--r:-8"><svg><use href="#dheart"/></svg></div>
+  <div class="s pic" style="--x:53;--y:7;--w:27;--r:-3"><img src="img/stickers/my-year.webp" alt=""></div>
+  <div class="s pic" style="--x:80;--y:5;--w:17;--r:6"><img src="img/stickers/enough.webp" alt=""></div>
+  <div class="s pic" style="--x:54;--y:23;--w:16;--r:-5"><img src="img/stickers/yo.webp" alt=""></div>
+  <div class="s pic" style="--x:71;--y:27;--w:16;--r:4"><img src="img/stickers/love-real.webp" alt=""></div>
+  <div class="s pic" style="--x:88;--y:30;--w:9;--r:-6"><img src="img/stickers/day-by-day.webp" alt=""></div>
+  <div class="s pic" style="--x:54;--y:51;--w:16;--r:-4"><img src="img/stickers/smiles.webp" alt=""></div>
+  <div class="s pic" style="--x:72;--y:52;--w:9;--r:7"><img src="img/stickers/ticket.webp" alt=""></div>
+  <div class="s pic" style="--x:81;--y:59;--w:16;--r:-3"><img src="img/stickers/choose-me.webp" alt=""></div>
+  <div class="s pic" style="--x:55;--y:79;--w:20;--r:3"><img src="img/stickers/no-excuses.webp" alt=""></div>
+  <div class="s pic" style="--x:76;--y:80;--w:20;--r:-4"><img src="img/stickers/manifested.webp" alt=""></div>
+</div></div>
+<figcaption class="cap"><span class="n">12</span><div><h2>Open journal, your stickers</h2><p>"Note to self" on the left page, your stickers covering the right.</p></div><button class="again" type="button">Replay</button></figcaption></figure>
 
 <!-- 1 -->
 <figure class="opt"><div class="desk" style="--dk:#F6EEE2"><div class="book kraft">
