@@ -372,7 +372,7 @@ section.ruled::after{content:"";position:absolute;z-index:-1;top:0;bottom:0;left
 .nb-page{position:absolute;z-index:4;inset:0;display:grid;place-items:center;background:#F3F0EA repeating-linear-gradient(to bottom,transparent 0 31px,rgba(47,90,140,.17) 31px 32px);opacity:0;pointer-events:none;transition:opacity .4s .8s,transform 1s 3.6s cubic-bezier(.6,.05,.3,1)}
 .nb-page::after{content:"";position:absolute;top:0;bottom:0;left:max(14px,calc(50% - 640px));width:2px;background:#C8373F;opacity:.5}
 .nb-page svg{width:min(640px,90vw)}
-.nb-pen{font:400 76px var(--marker);fill:transparent;stroke:#212322;stroke-width:2.2;stroke-dasharray:900;stroke-dashoffset:900}
+.nb-pen{font:400 100px var(--cond);text-transform:uppercase;letter-spacing:1px;fill:transparent;stroke:#212322;stroke-width:2;stroke-dasharray:1400;stroke-dashoffset:1400}
 .nb.open .nb-cover,.nb.open .nb-spine{transform:rotateY(-160deg)}
 .nb.open .nb-book{transform:scale(3.2);opacity:0}
 .nb.open .nb-page{opacity:1;transform:translateY(-110%) rotate(-4deg)}
@@ -641,7 +641,7 @@ section.ruled::after{content:"";position:absolute;z-index:-1;top:0;bottom:0;left
 </head>
 <body>
 <div class="nb" id="nb" role="button" tabindex="0" aria-label="Enter the site">
-  <div class="nb-page" aria-hidden="true"><svg viewBox="0 0 600 220"><text x="40" y="100" class="nb-pen">Your rebirth</text><text x="40" y="180" class="nb-pen">starts now.</text></svg></div>
+  <div class="nb-page" aria-hidden="true"><svg viewBox="0 0 600 230"><text x="40" y="105" class="nb-pen">Your rebirth</text><text x="40" y="205" class="nb-pen">starts now.</text></svg></div>
   <div class="nb-book" aria-hidden="true"><div class="nb-spine"></div><div class="nb-cover">
     <svg preserveAspectRatio="none"><filter id="nbm" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.035 0.05" numOctaves="4" seed="4"/><feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -7 0 0 0 3.6"/><feComposite in2="SourceGraphic" operator="in"/></filter><rect width="100%" height="100%" fill="#F4F2EC"/><rect width="100%" height="100%" fill="#111" filter="url(#nbm)"/></svg>
     <div class="nb-label"><span>THE</span><span class="l2"><span class="nb-hw"><span class="nb-hf"></span><b>CONFIDENCE</b></span></span><span>REBIRTH</span><i></i><i></i></div>
@@ -761,9 +761,9 @@ section.ruled::after{content:"";position:absolute;z-index:-1;top:0;bottom:0;left
         <span class="cond k">Coach</span>
       </h2>
       <div class="coach-copy">
-        <p>I spent years living by everyone else's expectations. Choosing myself changed everything, and now helping you do the same is my life's work.</p>
-        <p>I've coached women 1:1, I run workshops and I host The Confidence Hour podcast. My approach is simple: honest conversations, practical tools and a sisterhood that has your back.</p>
-        <p class="coach-line">My coaching isn't for everyone. It's for the woman who's done waiting and ready to work on herself. If that's you, you're in the right place.</p>
+        <p>I spent years living for everyone else. Choosing myself changed everything, and now I help women do the same.</p>
+        <p>Honest conversations, practical tools and a sisterhood that has your back.</p>
+        <p class="coach-line">This isn't for everyone. It's for the woman who's ready to work on herself.</p>
         <ul class="facts"><li>Host, The Confidence Hour</li><li>Workshop host</li><li>Speaker</li></ul>
         <div class="coach-cta">
           <a class="btn dark" href="#free" data-link="free">Join my free workshop</a>
