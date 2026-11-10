@@ -423,19 +423,14 @@ section.ruled::after{content:"";position:absolute;z-index:-1;top:0;bottom:0;left
 @keyframes b5pop{50%{transform:scale(1.08)}}
 
 /* find dani on */
-.seen{background:var(--black);color:#fff;padding-block:14px 16px;overflow:hidden;text-align:center}
-.seen-t{font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;opacity:.75;margin:0}
-.marq{display:flex;gap:52px;width:max-content;align-items:center;margin-top:8px;animation:marq 30s linear infinite}
+.seen{background:#FBF8F1;color:var(--ink);padding-block:12px 14px;overflow:hidden;text-align:center;border-block:1px solid #E6E0D4}
+.seen-t{font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#6B6862;margin:0}
+.marq{display:flex;gap:10px;width:max-content;align-items:center;margin-top:8px;animation:marq 40s linear infinite}
 .marq:hover,.marq:focus-within{animation-play-state:paused}
 @keyframes marq{to{transform:translateX(-50%)}}
-.marq a{font-size:17px;white-space:nowrap;text-decoration:none;color:#fff;opacity:.85;transition:opacity .15s,color .15s}
-.marq a:hover,.marq a:focus-visible{opacity:1;color:var(--yellow)}
-.marq a:focus-visible{outline-color:var(--yellow)}
-.marq .s1{font-family:var(--cond);text-transform:uppercase;letter-spacing:.06em}
-.marq .s2{font-family:Georgia,serif;font-style:italic}
-.marq .s3{font-weight:700;letter-spacing:.18em;font-size:12px;text-transform:uppercase}
-.marq .s4{width:38px;height:38px;border-radius:50%;background:#fff;color:var(--black);display:grid;place-items:center;font-weight:800;font-size:16px;opacity:1}
-.marq .s4:hover{background:var(--yellow);color:var(--black)}
+.marq .pill{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:999px;background:#fff;border:1px solid #E2DCCF;font-size:14px;font-weight:500;color:#3A3836;white-space:nowrap;text-decoration:none;box-shadow:0 1px 2px rgba(0,0,0,.05);transition:background .15s,border-color .15s}
+.marq .pill:hover,.marq .pill:focus-visible{background:#FFF6BF;border-color:#E8D56A}
+.marq .pill:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
 
 /* confidence coach */
 .title{background:var(--yellow);overflow:hidden}
@@ -686,7 +681,7 @@ section.ruled::after{content:"";position:absolute;z-index:-1;top:0;bottom:0;left
 
 <section class="seen" aria-label="Where to find Dani">
   <p class="seen-t">Find Dani on</p>
-  <div class="marq" id="marq"><a class="s1" href="https://youtube.com/@theconfidencehour" target="_blank" rel="noopener">The Confidence Hour</a><a class="s2" href="https://www.instagram.com/danidmc/" target="_blank" rel="noopener">@danidmc</a><a class="s3" href="#free">Live workshops</a><a class="s4" href="https://www.instagram.com/theconfidencerebirth/" target="_blank" rel="noopener">IG</a><a class="s1" href="#about">On stage</a><a class="s2" href="https://www.instagram.com/theconfidencerebirth/" target="_blank" rel="noopener">@theconfidencerebirth</a><a class="s3" href="https://youtube.com/@theconfidencehour" target="_blank" rel="noopener">YouTube</a></div>
+  <div class="marq" id="marq"><a class="pill" href="https://www.instagram.com/danidmc/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg><span>@danidmc</span></a><a class="pill" href="https://youtube.com/@theconfidencehour" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.500 11a6.500 6.500 0 0 0 13 0M12 17.500V21"/></svg><span>The Confidence Hour</span></a><a class="pill" href="https://www.instagram.com/theconfidencerebirth/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg><span>@theconfidencerebirth</span></a><a class="pill" href="https://youtube.com/@theconfidencehour" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2.500" y="5" width="19" height="14" rx="4"/><path d="M10 9.500v5l4.500-2.500z" fill="currentColor"/></svg><span>YouTube</span></a><a class="pill" href="#free"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="3.500" y="5" width="17" height="15" rx="2.500"/><path d="M3.500 10h17M8 3v4M16 3v4"/></svg><span>Live workshops</span></a><a class="pill" href="#about"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.500 11a6.500 6.500 0 0 0 13 0M12 17.500V21"/></svg><span>On stage</span></a></div>
 </section>
 
 <section class="title" id="about" aria-labelledby="about-h">
