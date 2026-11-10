@@ -268,7 +268,6 @@ footer{background:var(--stone);padding-block:48px 28px;font-size:14px}
 #sp{position:fixed;left:0;right:0;top:0;height:4px;background:var(--yellow);box-shadow:0 1px 0 var(--ink);transform:scaleX(var(--sp,0));transform-origin:left;z-index:70;pointer-events:none}
 
 /* everything below moves with the scroll; --r runs 0 to 1 and defaults to 1 without JS */
-.hero-photo img{transform:scale(calc(1 + var(--h,0)*.14)) translateY(calc(var(--h,0)*-3%))}
 .hq{transform:translateY(calc(var(--h,0)*-70px));opacity:calc(1 - var(--h,0)*.6)}
 .intro-copy>*{transform:translateY(calc((1 - var(--r,1))*34px));opacity:var(--r,1)}
 .vsl-frame{transform:scale(calc(.94 + var(--r,1)*.06))}
@@ -351,6 +350,7 @@ section.ruled::after{content:"";position:absolute;z-index:-1;top:0;bottom:0;left
 /* notebook intro */
 .nb{display:none}
 .nb-on .nb{display:grid}
+.nb.reset,.nb.reset *{transition:none!important;animation:none!important}
 .nb-on body{overflow:hidden}
 .nb{position:fixed;inset:0;z-index:200;place-items:center;perspective:1600px;background:#2B2724;cursor:pointer;transition:opacity .6s}
 .nb.out{opacity:0;pointer-events:none}
@@ -664,7 +664,7 @@ section.ruled::after{content:"";position:absolute;z-index:-1;top:0;bottom:0;left
       <div class="vsl-frame"><button class="cover" id="vsl" type="button" aria-label="Play Dani's video">
         <video src="img/dani-loop.mp4" poster="img/dani-loop-poster.jpg" muted autoplay loop playsinline aria-hidden="true"></video>
         <span class="play" aria-hidden="true"></span>
-        <span class="vtag"><i></i>A message from Dani</span>
+        <span class="vtag"><i></i>Start here</span>
         <span class="soon" id="soon" hidden>Dani's video lands here soon</span>
       </button></div>
       <div class="intro-copy">
@@ -980,15 +980,21 @@ const METHODS = {
   ["touchend","touchcancel"].forEach(t=>view.addEventListener(t,()=>view.classList.remove("held"),{passive:true}));
 })();
 
-// notebook intro: the highlight draws, then the cover opens by itself; a tap anywhere skips straight to the site
-(function(){ const nb=document.getElementById("nb"); if(!document.documentElement.classList.contains("nb-on")){ nb.remove(); return; }
-  let gone=false; const timers=[];
-  const done=()=>{ if(gone) return; gone=true; timers.forEach(clearTimeout); nb.classList.add("out"); setTimeout(()=>{ nb.remove(); document.documentElement.classList.remove("nb-on"); },650); try{ localStorage.setItem("cr-intro-seen","1"); }catch(e){} };
-  timers.push(setTimeout(()=>nb.classList.add("go"),600));
-  timers.push(setTimeout(()=>nb.classList.add("open"),3600));
-  timers.push(setTimeout(done,3600+4400));
+// notebook intro: plays on first visit and whenever the logo is tapped; a tap anywhere skips to the site, which always opens at the top
+(function(){ const nb=document.getElementById("nb"), root=document.documentElement, still=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let timers=[], playing=false;
+  const toTop=()=>{ const b=root.style.scrollBehavior; root.style.scrollBehavior="auto"; window.scrollTo(0,0); root.style.scrollBehavior=b; };
+  const done=()=>{ if(!playing) return; playing=false; timers.forEach(clearTimeout); timers=[]; toTop(); nb.classList.add("out");
+    setTimeout(()=>{ root.classList.remove("nb-on"); nb.classList.remove("out","go","open"); toTop(); requestAnimationFrame(toTop); },650); try{ localStorage.setItem("cr-intro-seen","1"); }catch(e){} };
+  const play=()=>{ if(still){ toTop(); return; } if(location.hash) history.replaceState(null,"",location.pathname+location.search); playing=true; timers.forEach(clearTimeout); timers=[];
+    nb.classList.add("reset"); nb.classList.remove("out","go","open"); root.classList.add("nb-on"); toTop(); void nb.offsetWidth; nb.classList.remove("reset");
+    timers.push(setTimeout(()=>nb.classList.add("go"),600));
+    timers.push(setTimeout(()=>nb.classList.add("open"),3600));
+    timers.push(setTimeout(done,3600+4400)); };
   nb.addEventListener("click",done);
   nb.addEventListener("keydown",e=>{ if(e.key==="Enter"||e.key===" "||e.key==="Escape"){ e.preventDefault(); done(); } });
+  document.querySelectorAll(".top .logo").forEach(a=>a.addEventListener("click",e=>{ e.preventDefault(); play(); }));
+  if(root.classList.contains("nb-on")){ root.classList.remove("nb-on"); play(); }
 })();
 
 // quiz button: the type names change by themselves
