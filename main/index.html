@@ -9,7 +9,7 @@
 <meta name="robots" content="noindex, nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400..800&family=Archivo:wdth,wght@100..125,400..700&family=Kalam:wght@700&family=Permanent+Marker&family=Instrument+Serif:ital@0;1&family=Mrs+Saint+Delafield&family=Caveat:wght@500..700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400..800&family=Archivo:wdth,wght@100..125,400..700&family=Kalam:wght@700&family=Permanent+Marker&family=Instrument+Serif:ital@0;1&family=Mrs+Saint+Delafield&family=Caveat:wght@500..700&family=Playfair+Display:ital,wght@1,500&display=swap">
 <style>
 :root{padding-top:env(safe-area-inset-top,0px)}
 body{margin:0}
@@ -377,13 +377,13 @@ section.ruled::after{content:"";position:absolute;z-index:-1;top:0;bottom:0;left
 .nb-page{position:absolute;z-index:4;inset:0;display:grid;place-items:center;background:#F3F0EA repeating-linear-gradient(to bottom,transparent 0 31px,rgba(47,90,140,.17) 31px 32px);opacity:0;pointer-events:none;transition:opacity .4s .8s,transform 1s 3.6s cubic-bezier(.6,.05,.3,1)}
 .nb-page::after{content:"";position:absolute;top:0;bottom:0;left:max(14px,calc(50% - 640px));width:2px;background:#C8373F;opacity:.5}
 .nb-page svg{width:min(640px,90vw)}
-.nb-pen{font:400 100px var(--cond);text-transform:uppercase;letter-spacing:1px;fill:transparent;stroke:#212322;stroke-width:2;stroke-dasharray:1400;stroke-dashoffset:1400}
+.nb-pen{font:italic 500 92px "Playfair Display",Georgia,serif;letter-spacing:0;fill:transparent;stroke:#2B2623;stroke-width:1.6;stroke-dasharray:3200;stroke-dashoffset:3200}
 .nb.open .nb-cover,.nb.open .nb-spine{transform:rotateY(-160deg)}
 .nb.open .nb-book{transform:scale(3.2);opacity:0;transition:transform 1s cubic-bezier(.6,.05,.3,1),opacity .5s .9s}
 .nb.open .nb-page{opacity:1;transform:translateY(-110%) rotate(-4deg)}
 .nb.open .nb-pen{animation:nbwr 1.4s ease-out 1.2s forwards}
 .nb.open .nb-pen+.nb-pen{animation-delay:2.1s}
-@keyframes nbwr{60%{fill:transparent}to{stroke-dashoffset:0;fill:#212322}}
+@keyframes nbwr{60%{fill:transparent}to{stroke-dashoffset:0;fill:#2B2623}}
 .nb-enter{position:absolute;left:50%;bottom:calc(28px + env(safe-area-inset-bottom,0px));translate:-50% 0;padding:10px 20px;border-radius:999px;background:var(--yellow);color:var(--ink);border:2px solid var(--ink);font-weight:700;font-size:14px;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;animation:nbpulse 1.8s ease-in-out infinite;transition:opacity .3s}
 @keyframes nbpulse{50%{transform:scale(1.06)}}
 .nb.open .nb-enter{opacity:0}

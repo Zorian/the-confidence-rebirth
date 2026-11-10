@@ -7,7 +7,7 @@
 <meta name="robots" content="noindex, nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Anton&family=Playfair+Display:ital,wght@1,500&family=Bodoni+Moda:opsz,wght@6..96,500&family=DM+Serif+Display&family=Covered+By+Your+Grace&family=Montserrat:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Anton&family=Playfair+Display:ital,wght@1,500&family=Bodoni+Moda:opsz,wght@6..96,500&family=DM+Serif+Display&family=Covered+By+Your+Grace&family=Cormorant+Garamond:ital,wght@1,500&family=Gloock&family=Fraunces:ital,opsz,wght@1,9..144,400&family=Libre+Caslon+Display&family=Italiana&family=Caveat:wght@600&family=Montserrat:wght@400;600;700&display=swap">
 <style>
 :root{--paper:#F7F3EA;--ink:#2B2623;--ink-2:#4A433E;--pen:#B4382F}
 *{box-sizing:border-box}
@@ -23,7 +23,7 @@ header p{margin:0;color:var(--ink-2)}
   background:#F3F0EA repeating-linear-gradient(to bottom,transparent 0 23px,rgba(47,90,140,.15) 23px 24px);box-shadow:0 14px 30px -24px rgba(70,50,30,.45)}
 .sheet::after{content:"";position:absolute;top:0;bottom:0;left:22px;width:1.5px;background:#C8373F;opacity:.45}
 .sheet svg{width:88%;overflow:visible}
-.w{fill:transparent;stroke:var(--ink);stroke-width:1.6;stroke-linejoin:round;stroke-dasharray:1600;stroke-dashoffset:1600}
+.w{fill:transparent;stroke:var(--ink);stroke-width:1.6;stroke-linejoin:round;stroke-dasharray:3200;stroke-dashoffset:3200}
 .go .w{animation:wr 1.5s ease-out forwards}
 .go .w+.w{animation-delay:.9s}
 @keyframes wr{60%{fill:transparent}to{stroke-dashoffset:0;fill:var(--ink)}}
@@ -39,19 +39,25 @@ figcaption small{display:block;color:#776D66;font-size:13px}
 <div class="page">
 <header>
   <h1>Intro font options</h1>
-  <p>The "Your rebirth starts now" page that writes itself after the notebook opens, in 6 fonts. Tap any card to watch it write again. Pick a number.</p>
+  <p>The "Your rebirth starts now" page that writes itself after the notebook opens, in 12 fonts. Tap any card to watch it write again. Pick a number.</p>
 </header>
 <div class="grid" id="grid"></div>
 </div>
 <script>
 // font, case, note, current
 const F=[
-  ["Instrument Serif",400,"normal",true,"Tall editorial serif, matches the new site headings",true],
+  ["Instrument Serif",400,"normal",true,"Tall editorial serif, matches the new site headings"],
   ["Anton",400,"normal",true,"Bold and punchy, the original intro font"],
-  ["Playfair Display",500,"italic",false,"Elegant italic, soft and feminine"],
+  ["Playfair Display",500,"italic",false,"Elegant italic, soft and feminine",true],
   ["Bodoni Moda",500,"normal",true,"High fashion, like a magazine cover"],
   ["DM Serif Display",400,"normal",false,"Warm, rounded serif, friendly"],
-  ["Covered By Your Grace",400,"normal",false,"Handwritten, like she wrote it in the notebook"]
+  ["Covered By Your Grace",400,"normal",false,"Handwritten, like she wrote it in the notebook"],
+  ["Cormorant Garamond",500,"italic",false,"Delicate, light italic, very soft"],
+  ["Gloock",400,"normal",false,"Strong high-contrast serif, confident"],
+  ["Fraunces",400,"italic",false,"Curvy, warm italic with a bit of character"],
+  ["Libre Caslon Display",400,"normal",true,"Classic book cover capitals"],
+  ["Italiana",400,"normal",true,"Thin and airy capitals, luxury feel"],
+  ["Caveat",600,"normal",false,"The site's red handwriting, in ink"]
 ];
 const g=document.getElementById("grid");
 g.innerHTML=F.map(([f,w,st,up,note,cur],i)=>`<figure class="card" tabindex="0" role="button" aria-label="Replay option ${i+1}">
