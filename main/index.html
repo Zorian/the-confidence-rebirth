@@ -825,6 +825,28 @@ section.quiz-band.ruled::after{display:none}
 .faqband .faq details p{color:var(--ink-2);font-size:15.5px;line-height:1.6;padding:0 40px 18px 0;margin:0}
 .faqband .faq summary::after{width:28px;height:28px}
 
+/* methods: five chapters in a swipe row, a red progress line, and name tabs that jump to each one */
+.chrow{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:2px;padding:10px 2px 20px;margin-top:clamp(28px,4vw,44px);scrollbar-width:none;overscroll-behavior-x:contain}
+.chrow::-webkit-scrollbar{display:none}
+.ch{position:relative;flex:0 0 min(340px,82vw);scroll-snap-align:start;display:flex;flex-direction:column;gap:12px;align-items:flex-start;padding:26px 24px 24px;background:#FFFDF8;border:1px solid rgba(43,38,35,.14);border-radius:3px;box-shadow:0 16px 30px -26px rgba(70,50,30,.45)}
+.ch-big{position:absolute;right:16px;top:12px;font:italic 400 124px/.8 var(--serif);color:var(--butter);-webkit-text-stroke:1px rgba(180,56,47,.35);pointer-events:none}
+.ch-lab{position:relative;font-weight:700;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-2)}
+.ch .micon{position:relative;background:none;width:auto;height:auto;margin:0}
+.ch .micon svg{width:46px;height:46px;stroke:var(--pen);stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.ch h3{position:relative;font-family:var(--serif);font-weight:400;font-size:clamp(38px,3.6vw,48px);line-height:.95;margin:0}
+.ch h3 small{display:block;font-family:var(--sans);font-weight:700;font-size:10px;letter-spacing:.24em;text-transform:uppercase;line-height:1.7}
+.ch p{font-size:15.5px;line-height:1.5}
+.ch p b{display:block;font-weight:700;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-2);margin-bottom:2px}
+.ch .btn{margin-top:auto}
+.ch-bar{position:relative;height:2px;background:rgba(43,38,35,.12);border-radius:2px}
+.ch-bar i{position:absolute;inset:0 auto 0 0;width:20%;background:var(--pen);border-radius:2px;transition:width .15s}
+.ch-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 12px;margin-top:26px}
+.ch-pills button{position:relative;padding:10px 18px;border-radius:999px;border:1px solid rgba(43,38,35,.3);background:#FFFDF8;font:500 14px var(--sans);color:var(--ink);cursor:pointer;transition:background .2s}
+.ch-pills button:hover{background:var(--butter-2)}
+.ch-pills button.on{background:var(--butter);border-color:var(--ink)}
+.ch-pills button.on::after{content:"";position:absolute;inset:-7px -10px;border:1.6px solid var(--pen);border-radius:50% 46% 52% 44%/60% 50% 56% 48%;rotate:-3deg;pointer-events:none}
+@media (max-width:760px){.chrow{margin-inline:-16px;padding-inline:16px;scroll-padding-inline:16px}.ch-pills{gap:8px}.ch-pills button{padding:8px 14px;font-size:13px}}
+
 /* final + phone band */
 .final{background:var(--paper)}
 .final .wrap{background:var(--butter-2);padding:clamp(40px,6vw,72px) 20px;border-radius:3px;position:relative;box-shadow:0 18px 40px -30px rgba(70,50,30,.45)}
@@ -958,8 +980,10 @@ footer h4{font-family:var(--sans);font-weight:700;font-size:11px;letter-spacing:
     <p class="m-note">one coach, five ways in</p>
     <h2 id="methods-h">Find your <span class="pen c orbit">method</span></h2>
     <p class="lede">Confidence coaching for women. Get your confidence back, starting from where you are right now.</p>
-    <div class="mgrid">
-      <article class="mcard">
+    <div class="chrow" id="chrow" tabindex="0" aria-label="The five methods, swipe to see them all">
+      <article class="ch" id="m-headtoe">
+        <span class="ch-big" aria-hidden="true">1</span>
+        <span class="ch-lab">Chapter 1</span>
         <span class="micon" aria-hidden="true"><svg viewBox="0 0 48 48"><circle cx="24" cy="8.5" r="4.5"/><path d="M17 43l4-13-3.5-8.5c0-3.8 2.8-6.3 6.5-6.3s6.5 2.5 6.5 6.3L27 30l4 13z"/><path d="M36.5 11.5c-1.2-1.6-3.7-1.2-3.7.9 0 1.7 2.3 3 3.7 4 1.4-1 3.7-2.3 3.7-4 0-2.1-2.5-2.5-3.7-.9z"/></svg></span>
         <span class="mstat" hidden data-ms="headtoe">Open now</span>
         <h3><small>The</small>Head to Toe<small>Method</small></h3>
@@ -967,7 +991,9 @@ footer h4{font-family:var(--sans);font-weight:700;font-size:11px;letter-spacing:
         <p><b>What changes</b> Feel good in your body as it is now, without waiting to change first.</p>
         <a class="btn" href="#offers" data-pick="headtoe">See how to start</a>
       </article>
-      <article class="mcard">
+      <article class="ch" id="m-beyond">
+        <span class="ch-big" aria-hidden="true">2</span>
+        <span class="ch-lab">Chapter 2</span>
         <span class="micon" aria-hidden="true"><svg viewBox="0 0 48 48"><ellipse cx="17" cy="18" rx="9.5" ry="12"/><path d="M17 30v12"/><path d="M27 25l13-11"/><path d="M33 13.5h7v7"/><path d="M38 31l1.4 3 3 1.4-3 1.4-1.4 3-1.4-3-3-1.4 3-1.4z"/></svg></span>
         <span class="mstat" hidden data-ms="beyond">Open now</span>
         <h3><small>The</small>Beyond the Mirror<small>Method</small></h3>
@@ -975,7 +1001,9 @@ footer h4{font-family:var(--sans);font-weight:700;font-size:11px;letter-spacing:
         <p><b>What changes</b> Carry yourself with confidence everywhere and go after the job, the partner and the lifestyle.</p>
         <a class="btn" href="#offers" data-pick="beyond">See how to start</a>
       </article>
-      <article class="mcard">
+      <article class="ch" id="m-gogetter">
+        <span class="ch-big" aria-hidden="true">3</span>
+        <span class="ch-lab">Chapter 3</span>
         <span class="micon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M29 6l4 8.5 9.3 1.2-6.8 6.4 1.8 9.2L29 26.8l-8.3 4.5 1.8-9.2-6.8-6.4 9.3-1.2z"/><path d="M6 30h9M9 36h10M14 42h10"/></svg></span>
         <span class="mstat" hidden data-ms="gogetter">Open now</span>
         <h3><small>The</small>Go Getter<small>Method</small></h3>
@@ -983,7 +1011,9 @@ footer h4{font-family:var(--sans);font-weight:700;font-size:11px;letter-spacing:
         <p><b>What changes</b> Speak up, back yourself at work and go after what you're here to do.</p>
         <a class="btn" href="#offers" data-pick="gogetter">See how to start</a>
       </article>
-      <article class="mcard">
+      <article class="ch" id="m-boundary">
+        <span class="ch-big" aria-hidden="true">4</span>
+        <span class="ch-lab">Chapter 4</span>
         <span class="micon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M24 5l15 5.5v11c0 10-6.5 16.5-15 21-8.5-4.5-15-11-15-21v-11z"/><path d="M17 23.5l5 5 9-10"/></svg></span>
         <span class="mstat" hidden data-ms="boundary">Open now</span>
         <h3><small>The</small>Boundary Boss<small>Method</small></h3>
@@ -991,7 +1021,9 @@ footer h4{font-family:var(--sans);font-weight:700;font-size:11px;letter-spacing:
         <p><b>What changes</b> Say no, mean it and hold your boundaries, without the guilt.</p>
         <a class="btn" href="#offers" data-pick="boundary">See how to start</a>
       </article>
-      <article class="mcard">
+      <article class="ch" id="m-comeback">
+        <span class="ch-big" aria-hidden="true">5</span>
+        <span class="ch-lab">Chapter 5</span>
         <span class="micon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M24 43c-7.7 0-12.5-4.8-12.5-11.3 0-6.4 5.2-9.4 6.5-16.2 3.6 2.7 4.8 6.1 4.8 9 1.9-1.6 3-4.6 2.9-7.7C31.6 20.2 36.5 25 36.5 31.4 36.5 38.1 31.7 43 24 43z"/><path d="M24 43c-3 0-5-2-5-4.7 0-2.8 2.6-4.2 3.3-7 2.6 1.6 6.7 3.8 6.7 7 0 2.7-2 4.7-5 4.7z"/></svg></span>
         <span class="mstat" hidden data-ms="comeback">Open now</span>
         <h3><small>The</small>Comeback<small>Method</small></h3>
@@ -1000,6 +1032,8 @@ footer h4{font-family:var(--sans);font-weight:700;font-size:11px;letter-spacing:
         <a class="btn" href="#offers" data-pick="comeback">See how to start</a>
       </article>
     </div>
+    <div class="ch-bar" aria-hidden="true"><i id="ch-prog"></i></div>
+    <div class="ch-pills" role="group" aria-label="Jump to a method"><button type="button" data-go="0">Head to Toe</button><button type="button" data-go="1">Beyond the Mirror</button><button type="button" data-go="2">Go Getter</button><button type="button" data-go="3">Boundary Boss</button><button type="button" data-go="4">Comeback</button></div>
     <p class="m-foot">Five areas of confidence. Not sure which one is yours? <a href="#quiz">Take the 2 minute quiz</a>.</p>
   </div>
 </section>
@@ -1403,6 +1437,14 @@ const NEXT_WORKSHOP = "2026-12-05T15:00:00Z";
   const nbEl=document.getElementById("nb"); new MutationObserver(()=>{ if(getComputedStyle(nbEl).display!=="none") place(); }).observe(nbEl,{attributes:true,attributeFilter:["class"]});
   new MutationObserver(()=>place()).observe(document.documentElement,{attributes:true,attributeFilter:["class"]});
 })();
+
+// methods row: red line follows the swipe, and the name tabs jump to each chapter and light up the one in view
+(function(){ const r=document.getElementById("chrow"); if(!r) return; const cs=[...r.children], bar=document.getElementById("ch-prog"), bs=[...document.querySelectorAll(".ch-pills button")];
+  const upd=()=>{ const max=r.scrollWidth-r.clientWidth, p=max>0?r.scrollLeft/max:1; bar.style.width=(20+p*80)+"%";
+    let best=0,d=1e9; cs.forEach((c,i)=>{ const x=Math.abs(c.offsetLeft-r.offsetLeft-r.scrollLeft); if(x<d){ d=x; best=i; } }); if(p>.98) best=cs.length-1; bs.forEach((b,i)=>b.classList.toggle("on",i===best)); };
+  r.addEventListener("scroll",()=>requestAnimationFrame(upd),{passive:true}); addEventListener("resize",upd);
+  bs.forEach(b=>b.addEventListener("click",()=>{ const c=cs[+b.dataset.go]; r.scrollTo({left:c.offsetLeft-r.offsetLeft-parseFloat(getComputedStyle(r).scrollPaddingLeft||0),behavior:"smooth"}); }));
+  upd(); })();
 </script>
 
 </body>
