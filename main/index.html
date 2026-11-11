@@ -875,7 +875,7 @@ footer h4{font-family:var(--sans);font-weight:700;font-size:11px;letter-spacing:
 <script>
 // notebook intro: first visit only, skipped for ad traffic and reduced motion
 (function(){ try{ const q=location.search, seen=localStorage.getItem("cr-intro-seen");
-  if(!seen && !/[?&](fbclid|gclid|ttclid)=|utm_medium=(paid|cpc|ads?)/i.test(q) && !matchMedia("(prefers-reduced-motion: reduce)").matches) document.documentElement.classList.add("nb-on");
+  if(!/[?&](fbclid|gclid|ttclid)=|utm_medium=(paid|cpc|ads?)/i.test(q) && !matchMedia("(prefers-reduced-motion: reduce)").matches) document.documentElement.classList.add("nb-on");
 }catch(e){} })();
 </script>
 </head>
