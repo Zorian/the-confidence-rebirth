@@ -114,7 +114,7 @@ p{margin:0}
 /* 7. chapters swipe row */
 .d7{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 4px 18px;scrollbar-width:none}
 .d7::-webkit-scrollbar{display:none}
-.d7 .ch{transition:border-color .25s,box-shadow .25s;flex:0 0 min(320px,80vw);scroll-snap-align:start;background:var(--card);border:1px solid rgba(43,38,35,.14);padding:26px 24px;display:grid;gap:12px;align-content:start;min-height:390px;position:relative}
+.d7 .ch{transition:border-color .25s,box-shadow .25s;flex:0 0 min(320px,80vw);scroll-snap-align:start;background:var(--card);border:1px solid rgba(43,38,35,.14);padding:26px 24px;display:flex;flex-direction:column;align-items:flex-start;gap:12px;min-height:390px;position:relative}
 .d7 .ch.sel{border-color:var(--pen);box-shadow:-5px 5px 0 var(--butter)}
 .d7 .big{font:italic 400 120px/.8 var(--serif);color:var(--butter);position:absolute;right:14px;top:14px;-webkit-text-stroke:1px rgba(180,56,47,.4)}
 .d7 .lab{position:relative}
