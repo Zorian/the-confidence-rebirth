@@ -845,6 +845,9 @@ section.quiz-band.ruled::after{display:none}
 .ch-pills{display:flex;flex-wrap:wrap;justify-content:flex-start;gap:10px 12px;margin-top:clamp(26px,3vw,36px)}
 .ch-pills button{position:relative;padding:10px 18px;border-radius:999px;border:1px solid rgba(43,38,35,.3);background:#FFFDF8;font:500 14px var(--sans);color:var(--ink);cursor:pointer;transition:background .2s}
 .ch-pills button:hover{background:var(--butter-2)}
+.ch-pills button{display:inline-flex;align-items:center;gap:8px}
+.ch-pills svg{width:22px;height:22px;flex:none;fill:none;stroke:var(--pen);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+
 .ch-pills button.on{background:var(--butter);border-color:var(--ink)}
 @media (max-width:760px){.chrow{margin-inline:-16px;padding-inline:16px;scroll-padding-inline:16px}.ch-pills{gap:8px}.ch-pills button{padding:8px 14px;font-size:13px}}
 
@@ -981,7 +984,7 @@ footer h4{font-family:var(--sans);font-weight:700;font-size:11px;letter-spacing:
     <p class="m-note">one coach, five ways in</p>
     <h2 id="methods-h">Find your <span class="pen c orbit">method</span></h2>
     <p class="lede">Confidence coaching for women. Get your confidence back, starting from where you are right now.</p>
-    <div class="ch-pills" role="group" aria-label="Jump to a method"><button type="button" data-go="0">Head to Toe</button><button type="button" data-go="1">Beyond the Mirror</button><button type="button" data-go="2">Go Getter</button><button type="button" data-go="3">Boundary Boss</button><button type="button" data-go="4">Comeback</button></div>
+    <div class="ch-pills" role="group" aria-label="Jump to a method"><button type="button" data-go="0"><svg aria-hidden="true" viewBox="0 0 48 48"><circle cx="24" cy="8.5" r="4.5"/><path d="M17 43l4-13-3.5-8.5c0-3.8 2.8-6.3 6.5-6.3s6.5 2.5 6.5 6.3L27 30l4 13z"/><path d="M36.5 11.5c-1.2-1.6-3.7-1.2-3.7.9 0 1.7 2.3 3 3.7 4 1.4-1 3.7-2.3 3.7-4 0-2.1-2.5-2.5-3.7-.9z"/></svg>Head to Toe</button><button type="button" data-go="1"><svg aria-hidden="true" viewBox="0 0 48 48"><ellipse cx="17" cy="18" rx="9.5" ry="12"/><path d="M17 30v12"/><path d="M27 25l13-11"/><path d="M33 13.5h7v7"/><path d="M38 31l1.4 3 3 1.4-3 1.4-1.4 3-1.4-3-3-1.4 3-1.4z"/></svg>Beyond the Mirror</button><button type="button" data-go="2"><svg aria-hidden="true" viewBox="0 0 48 48"><path d="M29 6l4 8.5 9.3 1.2-6.8 6.4 1.8 9.2L29 26.8l-8.3 4.5 1.8-9.2-6.8-6.4 9.3-1.2z"/><path d="M6 30h9M9 36h10M14 42h10"/></svg>Go Getter</button><button type="button" data-go="3"><svg aria-hidden="true" viewBox="0 0 48 48"><path d="M24 5l15 5.5v11c0 10-6.5 16.5-15 21-8.5-4.5-15-11-15-21v-11z"/><path d="M17 23.5l5 5 9-10"/></svg>Boundary Boss</button><button type="button" data-go="4"><svg aria-hidden="true" viewBox="0 0 48 48"><path d="M24 43c-7.7 0-12.5-4.8-12.5-11.3 0-6.4 5.2-9.4 6.5-16.2 3.6 2.7 4.8 6.1 4.8 9 1.9-1.6 3-4.6 2.9-7.7C31.6 20.2 36.5 25 36.5 31.4 36.5 38.1 31.7 43 24 43z"/><path d="M24 43c-3 0-5-2-5-4.7 0-2.8 2.6-4.2 3.3-7 2.6 1.6 6.7 3.8 6.7 7 0 2.7-2 4.7-5 4.7z"/></svg>Comeback</button></div>
     <div class="chrow" id="chrow" tabindex="0" aria-label="The five methods, swipe to see them all">
       <article class="ch" id="m-headtoe">
         <span class="ch-big" aria-hidden="true">1</span>
