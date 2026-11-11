@@ -838,6 +838,8 @@ section.quiz-band.ruled::after{display:none}
 .ch p{font-size:15.5px;line-height:1.5}
 .ch p b{display:block;font-weight:700;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-2);margin-bottom:2px}
 .ch .btn{margin-top:auto}
+.ch{transition:border-color .25s,box-shadow .25s}
+.ch.sel{border-color:var(--pen);box-shadow:-5px 5px 0 var(--butter),0 16px 30px -26px rgba(70,50,30,.45)}
 .ch-bar{position:relative;height:2px;background:rgba(43,38,35,.12);border-radius:2px}
 .ch-bar i{position:absolute;inset:0 auto 0 0;width:20%;background:var(--pen);border-radius:2px;transition:width .15s}
 .ch-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 12px;margin-top:26px}
@@ -1438,12 +1440,18 @@ const NEXT_WORKSHOP = "2026-12-05T15:00:00Z";
   new MutationObserver(()=>place()).observe(document.documentElement,{attributes:true,attributeFilter:["class"]});
 })();
 
-// methods row: red line follows the swipe, and the name tabs jump to each chapter and light up the one in view
+// methods row: red line follows the swipe, the name tabs jump to each chapter, and the chosen chapter is marked
 (function(){ const r=document.getElementById("chrow"); if(!r) return; const cs=[...r.children], bar=document.getElementById("ch-prog"), bs=[...document.querySelectorAll(".ch-pills button")];
+  let lock=0, t;
+  const mark=i=>{ bs.forEach((b,j)=>b.classList.toggle("on",i===j)); cs.forEach((c,j)=>c.classList.toggle("sel",i===j)); };
   const upd=()=>{ const max=r.scrollWidth-r.clientWidth, p=max>0?r.scrollLeft/max:1; bar.style.width=(20+p*80)+"%";
-    let best=0,d=1e9; cs.forEach((c,i)=>{ const x=Math.abs(c.offsetLeft-r.offsetLeft-r.scrollLeft); if(x<d){ d=x; best=i; } }); if(p>.98) best=cs.length-1; bs.forEach((b,i)=>b.classList.toggle("on",i===best)); };
-  r.addEventListener("scroll",()=>requestAnimationFrame(upd),{passive:true}); addEventListener("resize",upd);
-  bs.forEach(b=>b.addEventListener("click",()=>{ const c=cs[+b.dataset.go]; r.scrollTo({left:c.offsetLeft-r.offsetLeft-parseFloat(getComputedStyle(r).scrollPaddingLeft||0),behavior:"smooth"}); }));
+    if(Date.now()<lock) return;
+    let best=0,d=1e9; cs.forEach((c,i)=>{ const x=Math.abs(c.offsetLeft-r.offsetLeft-r.scrollLeft); if(x<d){ d=x; best=i; } }); if(p>.98&&max>0) best=cs.length-1; mark(best); };
+  r.addEventListener("scroll",()=>{ requestAnimationFrame(upd); },{passive:true}); addEventListener("resize",upd);
+  // the last few chapters can't all reach the left edge on a wide screen, so a tap always marks the one she chose
+  bs.forEach(b=>b.addEventListener("click",()=>{ const i=+b.dataset.go, c=cs[i]; lock=Date.now()+900; mark(i);
+    r.scrollTo({left:c.offsetLeft-r.offsetLeft-parseFloat(getComputedStyle(r).scrollPaddingLeft||0),behavior:"smooth"}); }));
+  r.addEventListener("pointerdown",()=>{ lock=0; });
   upd(); })();
 </script>
 
