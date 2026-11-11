@@ -713,7 +713,7 @@ section.ruled::after{background:var(--pen);opacity:.35;width:1.5px}
 .stack .w{background:#FFFDF8;color:var(--ink);box-shadow:0 2px 6px rgba(70,50,30,.12)}
 .stack .k{background:none;color:var(--ink);font-style:italic;text-transform:none;font-family:var(--serif)}
 .stack .hand{font-size:clamp(28px,2.8vw,36px)}
-.title .cut img{filter:drop-shadow(5px 0 0 #FFFDF8) drop-shadow(-5px 0 0 #FFFDF8) drop-shadow(0 -5px 0 #FFFDF8)}
+.title .cut img{filter:drop-shadow(0 0 1.5px #FFFDF8) drop-shadow(0 0 1.5px #FFFDF8) drop-shadow(0 0 2px #FFFDF8) drop-shadow(0 0 2px #FFFDF8) drop-shadow(0 12px 18px rgba(70,50,30,.18))}
 
 /* methods */
 .methods h2{font-family:var(--serif);font-weight:400;font-size:clamp(64px,9vw,132px);line-height:.95;letter-spacing:-.01em}
@@ -875,7 +875,7 @@ footer h4{font-family:var(--sans);font-weight:700;font-size:11px;letter-spacing:
 <script>
 // notebook intro: first visit only, skipped for ad traffic and reduced motion
 (function(){ try{ const q=location.search, seen=localStorage.getItem("cr-intro-seen");
-  if(!/[?&](fbclid|gclid|ttclid)=|utm_medium=(paid|cpc|ads?)/i.test(q) && !matchMedia("(prefers-reduced-motion: reduce)").matches) document.documentElement.classList.add("nb-on");
+  if(!location.hash && !/[?&]method=/.test(q) && !/[?&](fbclid|gclid|ttclid)=|utm_medium=(paid|cpc|ads?)/i.test(q) && !matchMedia("(prefers-reduced-motion: reduce)").matches) document.documentElement.classList.add("nb-on");
 }catch(e){} })();
 </script>
 </head>
@@ -975,7 +975,7 @@ footer h4{font-family:var(--sans);font-weight:700;font-size:11px;letter-spacing:
         </div>
       </div>
     </div>
-    <div class="cut"><img src="img/dani-stage-cut.webp" alt="Dani on stage" width="341" height="567" loading="lazy"></div>
+    <div class="cut"><img src="img/dani-stage-cut-hd.webp" alt="Dani on stage" width="820" height="1294" loading="lazy"></div>
   </div>
 </section>
 
@@ -1455,6 +1455,12 @@ const NEXT_WORKSHOP = "2026-12-05T15:00:00Z";
     r.scrollTo({left:c.offsetLeft-r.offsetLeft-parseFloat(getComputedStyle(r).scrollPaddingLeft||0),behavior:"smooth"}); }));
   r.addEventListener("pointerdown",()=>{ lock=0; });
   upd(); })();
+
+// arriving from the quiz with a method: land on the offers with it picked, once the page has settled
+(function(){ if(!/[?&]method=/.test(location.search)) return; const go=()=>{ const o=document.getElementById("offers"); if(!o) return; o.scrollIntoView({block:"start"});
+    // on phones the offers swipe sideways, so skip past the free one to the paid ones
+    const row=o.querySelector(".offers"), c=document.getElementById("course"); if(row&&c&&row.scrollWidth>row.clientWidth+10) row.scrollLeft=c.offsetLeft-row.offsetLeft-16; };
+  addEventListener("load",()=>{ go(); setTimeout(go,400); }); })();
 </script>
 
 </body>
