@@ -737,6 +737,10 @@ section.quiz-band.ruled::after{display:none}
 .searchbar i{background:var(--butter);border-radius:50%}
 .types a{background:#FFFDF8;border:1px solid rgba(43,38,35,.12);font-family:var(--sans);font-weight:600;font-size:11.5px;letter-spacing:.16em}
 .types svg{background:var(--butter-2);stroke:var(--pen);stroke-width:1.6}
+/* type tiles: stand out from the butter band */
+.types a{border:1px solid rgba(43,38,35,.35);box-shadow:0 10px 22px -16px rgba(70,50,30,.5);color:var(--ink);font-family:var(--serif);font-weight:400;font-size:clamp(20px,1.8vw,24px);letter-spacing:0;text-transform:none;line-height:1.05;text-align:center;transition:transform .18s,box-shadow .18s,border-color .18s}
+.types a:hover{background:#FFFDF8;border-color:var(--ink);transform:translateY(-3px);box-shadow:-4px 4px 0 var(--butter),0 12px 22px -16px rgba(70,50,30,.5)}
+.types svg{width:48px;height:48px;padding:10px;background:#FFFDF8;border:1.5px solid var(--pen);stroke:var(--pen);stroke-width:1.9}
 
 /* stories */
 .pcard{background:#FFFDF8;border-radius:3px}
