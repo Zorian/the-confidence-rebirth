@@ -151,9 +151,13 @@ p{margin:0}
 .types svg{width:38px;height:38px;padding:8px;border-radius:50%;background:var(--yellow);stroke:var(--ink);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 
 /* proof row */
-.proof-view{overflow:hidden;padding-top:14px}
-.proof{display:flex;gap:16px;width:max-content;animation:slideRight 60s linear infinite}
-.proof-view:hover .proof,.proof-view:focus-within .proof,.proof-view.held .proof{animation-play-state:paused}
+/* stories: swipe or drag across and read at your own pace; drifts on gently when left alone */
+.proof-view{--gut:max(20px,calc((100vw - 1148px)/2));scroll-padding-inline:var(--gut);overflow-x:auto;overflow-y:hidden;padding-top:14px;padding-bottom:10px;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain;cursor:grab;-webkit-overflow-scrolling:touch}
+.proof-view::-webkit-scrollbar{display:none}
+.proof-view.drag{cursor:grabbing;scroll-snap-type:none}
+.proof-view.drag *{user-select:none}
+.proof{display:flex;gap:16px;width:max-content;padding-inline:var(--gut,20px)}
+.proof .pcard{scroll-snap-align:start}
 @keyframes slideRight{from{transform:translateX(-25%)}to{transform:translateX(0)}}
 .proof .pcard{flex:0 0 clamp(280px,27vw,380px)}
 .pcard{background:var(--white);border-radius:var(--r-card);padding:26px;display:grid;gap:14px;align-content:start}
@@ -1322,10 +1326,20 @@ const METHODS = {
 })();
 
 // testimonials: copies make the slide loop without a gap. Add real quotes as new figures in the HTML.
-(function(){ const p=document.getElementById("proof"), view=p.parentElement, cards=[...p.children];
-  for(let n=0;n<3;n++) cards.forEach(c=>{ const k=c.cloneNode(true); k.setAttribute("aria-hidden","true"); p.appendChild(k); });
-  view.addEventListener("touchstart",()=>view.classList.add("held"),{passive:true});
-  ["touchend","touchcancel"].forEach(t=>view.addEventListener(t,()=>view.classList.remove("held"),{passive:true}));
+(function(){ const p=document.getElementById("proof"), view=p.parentElement, still=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let idle=0, down=null;
+  const touched=()=>{ idle=Date.now()+7000; };
+  ["touchstart","wheel","keydown","focusin"].forEach(t=>view.addEventListener(t,touched,{passive:true}));
+  view.addEventListener("mouseenter",()=>{ idle=Infinity; }); view.addEventListener("mouseleave",touched);
+  // drag with the mouse on desktop
+  view.addEventListener("pointerdown",e=>{ if(e.pointerType!=="mouse") return; down={x:e.clientX,l:view.scrollLeft,moved:false}; });
+  addEventListener("pointermove",e=>{ if(!down) return; const dx=e.clientX-down.x; if(Math.abs(dx)>4){ down.moved=true; view.classList.add("drag"); } view.scrollLeft=down.l-dx; });
+  addEventListener("pointerup",()=>{ if(!down) return; const m=down.moved; down=null; view.classList.remove("drag"); if(m){ view.addEventListener("click",ev=>{ ev.preventDefault(); ev.stopPropagation(); },{capture:true,once:true}); } touched(); });
+  if(still) return;
+  // gentle drift: one card every 5 seconds while nobody is reading
+  setInterval(()=>{ if(Date.now()<idle||document.hidden) return; const r=view.getBoundingClientRect(); if(r.bottom<0||r.top>innerHeight) return;
+    const max=view.scrollWidth-view.clientWidth, step=(p.children[0]?.offsetWidth||320)+16;
+    view.scrollTo({left:view.scrollLeft+step>max-4?0:view.scrollLeft+step,behavior:"smooth"}); },5000);
 })();
 
 // notebook intro: plays on first visit and whenever the logo is tapped; a tap anywhere skips to the site, which always opens at the top
