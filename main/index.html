@@ -84,6 +84,9 @@ p{margin:0}
 .hero{background:var(--sand);color:var(--ink);position:relative;overflow:hidden;min-height:clamp(560px,52vw,700px);display:flex}
 .hero-photo{position:absolute;inset:0 auto 0 0;width:62%}
 .hero-photo img{width:100%;height:100%;object-fit:cover;object-position:46% 20%}
+/* zoom in from the top so the photo stops just above the neckline */
+.hero-photo{overflow:hidden}
+.hero-photo img{transform:scale(1.14);transform-origin:46% 0}
 .hero-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(220,210,200,0) 55%,var(--sand) 98%)}
 .hero .wrap{position:relative;width:100%;display:flex;align-items:center;justify-content:flex-end}
 .hq{width:min(460px,42%);text-align:center;padding-top:80px}
