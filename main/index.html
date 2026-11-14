@@ -768,6 +768,16 @@ section.quiz-band.ruled::after{display:none}
 .pillars{background:var(--butter-2);color:var(--ink)}
 .pl-head h2{color:var(--ink)}
 .pl-head p{color:var(--ink-2)}
+.pl-head{position:relative}
+.pl-head p.pl-note{max-width:none;font-family:var(--pencil);font-size-adjust:.64;font-size:clamp(28px,2.8vw,36px);color:var(--pen);rotate:-2deg;margin-bottom:-4px}
+.pl-head p.pl-lead{font-family:var(--serif);font-size:clamp(24px,2.4vw,32px);line-height:1.2;color:var(--ink);max-width:30ch}
+.pl-stamp{position:absolute;right:clamp(8px,6vw,90px);top:-10px;width:clamp(86px,9vw,118px);rotate:12deg;opacity:.9;animation:stspin 30s linear infinite}
+.pl-stamp svg{display:block;width:100%;overflow:visible;fill:none;stroke:var(--pen);stroke-width:1.4}
+.pl-stamp text{fill:var(--pen);stroke:none;font:700 11.2px var(--sans);letter-spacing:.14em}
+.pl-stamp .st-n{font-size:30px;font-family:var(--serif)}
+@keyframes stspin{to{rotate:372deg}}
+@media (max-width:700px){.pl-stamp{position:static;rotate:-8deg;margin-bottom:-6px;width:88px}}
+@media (prefers-reduced-motion:reduce){.pl-stamp{animation:none}}
 .pl{background:#FFFDF8;border:1px solid rgba(43,38,35,.14);border-radius:4px;box-shadow:0 14px 30px -24px rgba(70,50,30,.4)}
 .pl.on{border-color:var(--pen)}
 .pl-top{background:none;border-bottom:1px dashed rgba(43,38,35,.18)}
@@ -1124,8 +1134,11 @@ footer h4{font-family:var(--sans);font-weight:700;font-size:11px;letter-spacing:
 
 <section class="pillars" id="pillars" aria-labelledby="pl-h">
   <div class="wrap pl-head">
+    <span class="pl-stamp" aria-hidden="true"><svg viewBox="0 0 120 120"><defs><path id="plc" d="M60 60m-44 0a44 44 0 1 1 88 0a44 44 0 1 1-88 0"/></defs><circle cx="60" cy="60" r="56"/><circle cx="60" cy="60" r="34"/><text><textPath href="#plc">ONLY WITH DANI • ONLY WITH DANI • </textPath></text><text x="60" y="68" text-anchor="middle" class="st-n">☆</text></svg></span>
+    <p class="pl-note">her own method, you won't find it anywhere else</p>
     <h2 id="pl-h">Your rebirth in <span class="hl v2">5 steps</span></h2>
-    <p>Dani's proven method. The 5 pillars she takes every woman through, whatever area of life you want your confidence back in.</p>
+    <p class="pl-lead">The Rebirth Method is Dani's own. She built it from her life, and she's proven it with every woman she's coached.</p>
+    <p>The same 5 pillars, whatever area of life you want your confidence back in. Taught by her, and only by her.</p>
   </div>
   <div class="pl-track" id="pl-track" tabindex="0" aria-label="The 5 pillars, scroll sideways">
       <article class="pl on" aria-label="Step 1 of 5: Reawaken">
