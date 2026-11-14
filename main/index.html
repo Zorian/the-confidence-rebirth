@@ -769,14 +769,13 @@ section.quiz-band.ruled::after{display:none}
 .pl-head h2{color:var(--ink)}
 .pl-head p{color:var(--ink-2)}
 .pl-head{position:relative}
-.pl-head p.pl-note{max-width:none;font-family:var(--pencil);font-size-adjust:.64;font-size:clamp(28px,2.8vw,36px);color:var(--pen);rotate:-2deg;margin-bottom:-4px}
+.pl-head p.pl-note{max-width:34ch;line-height:1.05;font-family:var(--pencil);font-size-adjust:.64;font-size:clamp(28px,2.8vw,36px);color:var(--pen);rotate:-2deg;margin-bottom:-4px}
 .pl-head p.pl-lead{font-family:var(--serif);font-size:clamp(24px,2.4vw,32px);line-height:1.2;color:var(--ink);max-width:30ch}
-.pl-stamp{position:absolute;right:clamp(8px,6vw,90px);top:-10px;width:clamp(86px,9vw,118px);rotate:12deg;opacity:.9;animation:stspin 30s linear infinite}
+.pl-stamp{position:static;width:clamp(86px,8vw,104px);margin-bottom:-4px;rotate:-8deg;opacity:.9;animation:stspin 30s linear infinite}
 .pl-stamp svg{display:block;width:100%;overflow:visible;fill:none;stroke:var(--pen);stroke-width:1.4}
 .pl-stamp text{fill:var(--pen);stroke:none;font:700 11.2px var(--sans);letter-spacing:.14em}
 .pl-stamp .st-n{font-size:30px;font-family:var(--serif)}
 @keyframes stspin{to{rotate:372deg}}
-@media (max-width:700px){.pl-stamp{position:static;rotate:-8deg;margin-bottom:-6px;width:88px}}
 @media (prefers-reduced-motion:reduce){.pl-stamp{animation:none}}
 .pl{background:#FFFDF8;border:1px solid rgba(43,38,35,.14);border-radius:4px;box-shadow:0 14px 30px -24px rgba(70,50,30,.4)}
 .pl.on{border-color:var(--pen)}
