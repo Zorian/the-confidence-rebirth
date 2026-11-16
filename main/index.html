@@ -1185,7 +1185,7 @@ footer h4{font-family:var(--sans);font-weight:700;font-size:11px;letter-spacing:
       </article>
       <article class="offer" id="course">
         <span class="tier">5 courses, one per method</span><h3>The Course</h3>
-        <div class="price">$888<small>Per course</small></div>
+        <div class="price">Coming soon<small>Join the waitlist to hear first</small></div>
         <div class="mwrap"><p class="mpick">Pick your method</p><div class="mrows" role="group" aria-label="Choose your method"><button type="button" class="mrow" data-m="headtoe" aria-pressed="false"><span>Head to Toe</span><i data-st="headtoe"></i></button><button type="button" class="mrow" data-m="beyond" aria-pressed="false"><span>Beyond the Mirror</span><i data-st="beyond"></i></button><button type="button" class="mrow" data-m="gogetter" aria-pressed="false"><span>Go Getter</span><i data-st="gogetter"></i></button><button type="button" class="mrow" data-m="boundary" aria-pressed="false"><span>Boundary Boss</span><i data-st="boundary"></i></button><button type="button" class="mrow" data-m="comeback" aria-pressed="false"><span>Comeback</span><i data-st="comeback"></i></button></div></div>
         <ul><li>Recorded by Dani</li><li>Go at your own pace</li></ul>
         <div class="act"><a class="btn" id="course-cta" href="#"></a><small id="course-note"></small></div>
@@ -1228,7 +1228,7 @@ footer h4{font-family:var(--sans);font-weight:700;font-size:11px;letter-spacing:
       <details><summary>Is this only about body confidence?</summary><p>No. Body is one part. We work on confidence at work, in relationships, with money, travelling and living on your own terms.</p></details>
       <details><summary>Where does everything happen?</summary><p>In our private community app. Live calls, replays and the chat are all in one place, on your phone or laptop.</p></details>
       <details><summary>What if I can't make the live calls?</summary><p>Every call is recorded. Free members get the replay for 7 days. Masterclass and 1:1 women keep every replay.</p></details>
-      <details><summary>Which option is right for me?</summary><p>Start with the free workshop. If you want to go at your own pace, get the course. If you want Dani in your corner every week, apply for the masterclass or 1:1.</p></details>
+      <details><summary>Which option is right for me?</summary><p>Start with the free workshop. If you want to go at your own pace, join the course waitlist. If you want Dani in your corner every week, apply for the masterclass or 1:1.</p></details>
       <details><summary>How do I know which method is mine?</summary><p>Take the 2 minute quiz. It points you to the one that fits where you are right now.</p></details>
       <details><summary>Can I do more than one method?</summary><p>Yes. Most women start with the one that feels most urgent right now, then add another later.</p></details>
       <details><summary>What happens on the call?</summary><p>A relaxed 20 minute chat about where you are and where you want to be. If the masterclass or 1:1 is right for you, we'll tell you. If it isn't, we'll point you to what is. No pressure.</p></details>
@@ -1333,8 +1333,8 @@ const METHODS = {
   function pick(k){ const M=METHODS[k];
     document.querySelectorAll(".mrow").forEach(b=>b.setAttribute("aria-pressed",b.dataset.m===k));
     const c=el("course-cta"), g=el("class-cta");
-    c.textContent=M.open?"Get the course":"Join the waitlist"; set(c,M.open?M.course:wait(k));
-    el("course-note").textContent=M.open?"No application needed.":"This course is coming soon.";
+    c.textContent="Join the waitlist"; set(c,wait(k));
+    el("course-note").textContent="Courses are coming soon. You'll hear first.";
     g.textContent=M.open?"Apply to join":"Join the waitlist"; set(g,M.open?M.apply:wait(k));
     el("class-note").textContent=M.open?"A short form, then a call with our team.":"This group is coming soon.";
   }
@@ -1419,7 +1419,7 @@ const NEXT_WORKSHOP = "2026-12-05T15:00:00Z";
             {q:"How much time can you give this each week?",a:["Less than an hour","An hour or two","A few hours","Whatever it takes"]},
             {q:"How ready are you to invest in yourself?",a:["Just exploring for now","Something small to start","A one off investment","I'm all in"]}];
   const R=[{id:"free",name:"The free monthly workshop",price:"$0",why:"Meet Dani live, feel the energy and decide your next step from there.",cta:"Join free"},
-           {id:"course",name:"The Course",price:"$888",why:"Your full method from Dani, recorded, so you can go through it in your own time.",cta:"Get the course"},
+           {id:"course",name:"The Course",price:"Coming soon",why:"Your full method from Dani, recorded, so you can go through it in your own time. Join the waitlist and you'll hear first.",cta:"Join the waitlist"},
            null,
            {id:"masterclass",name:"The 20 Woman Masterclass",price:"By application",why:"Five weeks live with Dani, one pillar a week, with a small group of women who hold you to it.",cta:"Apply for the masterclass"},
            {id:"one",name:"1:1 with Dani",price:"By application",why:"Ten weeks with Dani, just you, two weeks on each pillar. The most personal support Dani offers.",cta:"Apply for 1:1"}];
