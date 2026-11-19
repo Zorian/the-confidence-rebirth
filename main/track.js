@@ -1,6 +1,6 @@
 // Tracking for the main site and quiz. Paste the IDs once here; nothing loads while they are empty.
-const META_PIXEL_ID = ""; // Meta Events Manager > Data sources > Pixel ID
-const GA_ID = "";         // Google Analytics 4 measurement ID, e.g. G-XXXXXXX
+const META_PIXEL_ID = "28770727929290023"; // Meta Events Manager > Data sources > Pixel ID
+const GA_ID = "G-78HBX3FRHW";       // Google Analytics 4 measurement ID, e.g. G-XXXXXXX
 if (META_PIXEL_ID) {
   !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
   if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;
