@@ -1252,7 +1252,7 @@ footer h4{font-family:var(--sans);font-weight:700;font-size:11px;letter-spacing:
       <details><summary>How do I know which method is mine?</summary><p>Take the 2 minute quiz. It points you to the one that fits where you are right now.</p></details>
       <details><summary>Can I do more than one method?</summary><p>Yes. Most women start with the one that feels most urgent right now, then add another later.</p></details>
       <details><summary>When does coaching start?</summary><p>5 January 2027. Applications are open now and spots are limited, so apply early to lock yours in.</p></details>
-      <details><summary>Do I need a call before I join?</summary><p>No. Apply in 2 minutes and, if it's a fit, you can secure your spot straight away. If you'd like to talk it through first, book a relaxed 20 minute call instead. No pressure.</p></details>
+      <details><summary>Do I need a call before I join?</summary><p>No. Apply in 2 minutes and, if it's a fit, you can secure your spot straight away. If you'd like to talk it through first, book a relaxed 15 minute call instead. No pressure.</p></details>
       <details><summary>Are there payment plans?</summary><p>Yes. The masterclass and 1:1 both have payment plans. You'll see the options when you apply.</p></details>
       <details><summary>How do I contact Dani?</summary><p>Send a DM to @theconfidencerebirth on Instagram. We reply within a day.</p></details>
     </div>
@@ -1541,7 +1541,7 @@ const NEXT_WORKSHOP = "2026-12-05T15:00:00Z";
 const PAY = {
   masterclass: { full:"", plan:"" },          // Stripe payment links
   one: { deposit:"", full:"" },               // Stripe payment links
-  call: "",                                    // Calendly link for questions
+  call: "https://calendly.com/theconfidencerebirth/15min",                                    // Calendly link for questions
   hook: ""                                     // optional: Make/Zapier webhook that logs each application
 };
 (function(){
@@ -1587,7 +1587,7 @@ const PAY = {
       h=`<span class="tier">Thank you, ${esc(A.name)}</span><h3>Coaching might be the next step, not this one</h3><p>Start where it feels right. Come to the free workshop with Dani, or join the course waitlist for the founding price and first access.</p>
       <a class="btn" href="#free" data-close>Join the free workshop</a><div class="alt"><a href="${dm(A.method+"_waitlist")}" target="_blank" rel="noopener">Join the course waitlist</a></div>`;
     } else if(A.invest==="talk"||A.commit==="maybe"){ track("ApplyCallFirst",log);
-      h=`<span class="tier">You're a fit, ${esc(A.name)}</span><h3>Let's talk it through</h3><p>${esc(O.name)}, ${esc(m)}. Book a relaxed 20 minute call and get your questions answered before 5 January 2027.</p>
+      h=`<span class="tier">You're a fit, ${esc(A.name)}</span><h3>Let's talk it through</h3><p>${esc(O.name)}, ${esc(m)}. Book a relaxed 15 minute call and get your questions answered before 5 January 2027.</p>
       <a class="btn" href="${call()}"${ext(call())} data-t="BookCall">Book my call</a><div class="alt"><a href="${one?pay(PAY.one.deposit,"one_deposit"):pay(PAY.masterclass.full,"masterclass_full")}"${ext("https")} data-t="InitiateCheckout">Ready now? Secure my spot</a></div>`;
     } else { track("ApplyQualified",log);
       const main=one?[pay(PAY.one.deposit,"one_deposit"),"Hold my spot with a deposit"]:A.invest==="plan"?[pay(PAY.masterclass.plan,"masterclass_plan"),"Secure my spot with a payment plan"]:[pay(PAY.masterclass.full,"masterclass_full"),"Secure my spot"];
