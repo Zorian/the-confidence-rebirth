@@ -210,6 +210,24 @@ p{margin:0}
 .q-result .price{font-size:20px}
 .q-result p{color:var(--ink-2)}
 .q-result .row{display:flex;flex-wrap:wrap;gap:12px 18px;align-items:center;margin-top:4px}
+/* application: apply, then pay now or book a call */
+.apply{border:0;padding:0;width:min(560px,calc(100vw - 24px));max-height:calc(100dvh - 24px);border-radius:20px;background:var(--stone);color:var(--ink);box-shadow:8px 8px 0 var(--yellow);overflow:auto;outline:1.5px solid var(--ink)}
+.apply::backdrop{background:rgba(33,35,34,.55)}
+.ap-in{padding:clamp(20px,4vw,32px);display:grid;gap:10px}
+.ap-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:6px}
+.ap-top .fdots{margin:0}
+.ap-x{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--ink);background:var(--white);font:inherit;font-size:20px;line-height:1;cursor:pointer;color:var(--ink)}
+#ap-body{display:grid;gap:10px}
+.ap-sub{color:var(--ink-2);font-size:15px;margin:-4px 0 6px}
+.q-opt small{display:block;font-size:13px;font-weight:400;color:var(--muted);margin-top:2px}
+.ap-f{display:grid;gap:6px;font-size:14px;font-weight:600}
+.ap-f input{font:inherit;font-size:16px;font-weight:400;min-height:50px;padding:0 14px;border-radius:12px;border:1.5px solid var(--stone-2);background:var(--white);color:var(--ink)}
+.ap-f input:focus{border-color:var(--ink);outline:none}
+.ap-err{color:#9B1C1C;font-size:14px;min-height:1em}
+.ap-res .btn{width:100%}
+.ap-res .alt{display:grid;gap:8px;width:100%;margin-top:2px}
+.ap-res .alt a{font-weight:600;font-size:15px;text-underline-offset:4px;text-align:center;padding:6px 0}
+.ap-start{display:inline-block;background:var(--white);border:1.5px solid var(--ink);border-radius:999px;padding:6px 14px;font-size:14px;font-weight:600}
 .step{animation:stepIn .35s ease-out}
 @keyframes stepIn{from{opacity:.2;transform:translateY(6px)}}
 
@@ -1165,7 +1183,7 @@ footer h4{font-family:var(--sans);font-weight:700;font-size:11px;letter-spacing:
   </div>
   <div class="wrap">
     <div class="pl-nav"><button type="button" id="pl-prev" aria-label="Previous step" disabled>‹</button><div class="pl-dots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i></div><button type="button" id="pl-next" aria-label="Next step">›</button></div>
-    <div class="pl-cta"><a class="hw-btn" href="#one" data-link="one">Apply for coaching<em aria-hidden="true">›</em></a><p>Dani takes you through all 5 when you work with her.</p></div>
+    <div class="pl-cta"><a class="hw-btn" href="#apply">Apply for coaching<em aria-hidden="true">›</em></a><p>Dani takes you through all 5 when you work with her. Coaching starts 5 January.</p></div>
   </div>
 </section>
 
@@ -1174,6 +1192,7 @@ footer h4{font-family:var(--sans);font-weight:700;font-size:11px;letter-spacing:
     <div class="row-head" style="display:grid;gap:10px;justify-items:center;justify-content:center;text-align:center;margin-bottom:36px">
       <h2 id="offers-h" style="font-size:clamp(32px,3.6vw,46px)">Choose your <span class="pen c">next step</span></h2>
       <p class="lede" style="text-align:center">Five methods, taught three ways. Not sure which one? <a href="#fit">Find your fit</a>, or start free.</p>
+      <p class="ap-start">Coaching starts 5 January. Spots are limited, so apply now.</p>
     </div>
     <p class="offers-hint" aria-hidden="true">swipe to see all 4 levels</p>
     <div class="offers">
@@ -1192,17 +1211,17 @@ footer h4{font-family:var(--sans);font-weight:700;font-size:11px;letter-spacing:
       </article>
       <article class="offer featured" id="masterclass">
         <span class="tier">5 groups, 20 women each</span><h3>The 20 Woman Masterclass</h3>
-        <div class="price">By application<small>Payment plans available</small></div>
+        <div class="price">By application<small>Starts 5 January. Payment plans available.</small></div>
         <div class="mwrap"><p class="mpick">Pick your group</p><div class="mrows" role="group" aria-label="Choose your method"><button type="button" class="mrow" data-m="headtoe" aria-pressed="false"><span>Head to Toe</span><i data-st="headtoe"></i></button><button type="button" class="mrow" data-m="beyond" aria-pressed="false"><span>Beyond the Mirror</span><i data-st="beyond"></i></button><button type="button" class="mrow" data-m="gogetter" aria-pressed="false"><span>Go Getter</span><i data-st="gogetter"></i></button><button type="button" class="mrow" data-m="boundary" aria-pressed="false"><span>Boundary Boss</span><i data-st="boundary"></i></button><button type="button" class="mrow" data-m="comeback" aria-pressed="false"><span>Comeback</span><i data-st="comeback"></i></button></div></div>
         <ul><li>5 weeks live with Dani, one pillar a week</li><li>Ask questions and get coached live</li><li>A private group chat of like-minded women, for accountability and support</li><li>Course included</li></ul>
         <div class="act"><a class="btn" id="class-cta" href="#"></a><small id="class-note"></small></div>
       </article>
       <article class="offer" id="one">
         <span class="tier">1:1, 10 women only</span><h3>1:1 with Dani</h3>
-        <div class="price">By application<small>Payment plans available</small></div>
+        <div class="price">By application<small>Starts 5 January. Payment plans available.</small></div>
         <div class="mwrap"><p class="mpick">Choose your method</p><div class="mrows" role="group" aria-label="Choose your method"><button type="button" class="mrow" data-m="headtoe" aria-pressed="false"><span>Head to Toe</span></button><button type="button" class="mrow" data-m="beyond" aria-pressed="false"><span>Beyond the Mirror</span></button><button type="button" class="mrow" data-m="gogetter" aria-pressed="false"><span>Go Getter</span></button><button type="button" class="mrow" data-m="boundary" aria-pressed="false"><span>Boundary Boss</span></button><button type="button" class="mrow" data-m="comeback" aria-pressed="false"><span>Comeback</span></button></div></div>
         <ul><li>10 weeks of 1:1 calls, two weeks per pillar</li><li>Fully personalised to you</li><li>Dani on WhatsApp, voice notes and texts any time</li><li>Optional private group chat with like-minded women</li><li>Course included</li></ul>
-        <div class="act"><a class="btn" href="#" data-link="one">Apply for 1:1</a><small>A short form, then a call with our team.</small></div>
+        <div class="act"><a class="btn" href="#apply-one">Apply for 1:1</a><small>2 minute application. Hold your spot or book a call.</small></div>
       </article>
     </div>
   </div>
@@ -1231,8 +1250,9 @@ footer h4{font-family:var(--sans);font-weight:700;font-size:11px;letter-spacing:
       <details><summary>Which option is right for me?</summary><p>Start with the free workshop. If you want to go at your own pace, join the course waitlist. If you want Dani in your corner every week, apply for the masterclass or 1:1.</p></details>
       <details><summary>How do I know which method is mine?</summary><p>Take the 2 minute quiz. It points you to the one that fits where you are right now.</p></details>
       <details><summary>Can I do more than one method?</summary><p>Yes. Most women start with the one that feels most urgent right now, then add another later.</p></details>
-      <details><summary>What happens on the call?</summary><p>A relaxed 20 minute chat about where you are and where you want to be. If the masterclass or 1:1 is right for you, we'll tell you. If it isn't, we'll point you to what is. No pressure.</p></details>
-      <details><summary>Are there payment plans?</summary><p>Yes. The masterclass and 1:1 both have payment plans. We'll go through the options on your call.</p></details>
+      <details><summary>When does coaching start?</summary><p>5 January. Applications are open now and spots are limited, so apply early to lock yours in.</p></details>
+      <details><summary>Do I need a call before I join?</summary><p>No. Apply in 2 minutes and, if it's a fit, you can secure your spot straight away. If you'd like to talk it through first, book a relaxed 20 minute call instead. No pressure.</p></details>
+      <details><summary>Are there payment plans?</summary><p>Yes. The masterclass and 1:1 both have payment plans. You'll see the options when you apply.</p></details>
       <details><summary>How do I contact Dani?</summary><p>Send a DM to @theconfidencerebirth on Instagram. We reply within a day.</p></details>
     </div>
   </div>
@@ -1284,9 +1304,16 @@ footer h4{font-family:var(--sans);font-weight:700;font-size:11px;letter-spacing:
 
 <div class="dock" id="dock"><a class="btn" href="#free" data-link="free">Join the free workshop</a></div>
 
+<dialog class="apply" id="apply" aria-labelledby="ap-h">
+  <div class="ap-in">
+    <div class="ap-top"><div class="fdots" id="ap-dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div><button class="ap-x" type="button" id="ap-x" aria-label="Close">×</button></div>
+    <div id="ap-body" aria-live="polite"></div>
+  </div>
+</dialog>
+
 <script>
 // Swap these for the real Circle, Stripe and Tally links before launch.
-const LINKS = { free:"#free", course:"#course", masterclass:"#masterclass", one:"#one", waitlist:"https://ig.me/m/theconfidencerebirth", privacy:"#", terms:"#", refunds:"#" };
+const LINKS = { free:"#free", course:"#course", masterclass:"#apply-masterclass", one:"#apply-one", waitlist:"https://ig.me/m/theconfidencerebirth", privacy:"#", terms:"#", refunds:"#" };
 document.querySelectorAll("[data-link]").forEach(a => { const u = LINKS[a.dataset.link]; if (u) a.href = u; if (/^https?:/.test(u||"")) { a.target="_blank"; a.rel="noopener"; } });
 const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -1335,8 +1362,8 @@ const METHODS = {
     const c=el("course-cta"), g=el("class-cta");
     c.textContent="Join the waitlist"; set(c,wait(k));
     el("course-note").textContent="Founding price and first access for the waitlist.";
-    g.textContent=M.open?"Apply to join":"Join the waitlist"; set(g,M.open?M.apply:wait(k));
-    el("class-note").textContent=M.open?"A short form, then a call with our team.":"This group is coming soon.";
+    g.textContent=M.open?"Apply to join":"Join the waitlist"; set(g,M.open?"#apply-masterclass":wait(k)); window.curMethod=k;
+    el("class-note").textContent=M.open?"2 minute application. Pay now or book a call.":"This group is coming soon.";
   }
   document.querySelectorAll(".mrow").forEach(b=>b.addEventListener("click",()=>pick(b.dataset.m)));
   document.querySelectorAll("[data-pick]").forEach(a=>a.addEventListener("click",()=>pick(a.dataset.pick)));
@@ -1507,6 +1534,85 @@ const NEXT_WORKSHOP = "2026-12-05T15:00:00Z";
     // on phones the offers swipe sideways, so skip past the free one to the paid ones
     const row=o.querySelector(".offers"), c=document.getElementById("course"); if(row&&c&&row.scrollWidth>row.clientWidth+10) row.scrollLeft=c.offsetLeft-row.offsetLeft-16; };
   addEventListener("load",()=>{ go(); setTimeout(go,400); }); })();
+
+// application: a few questions, then hot buyers pay now and everyone else books a call
+// Paste the real links before launch. Empty links fall back to an Instagram DM so no sale is lost.
+const PAY = {
+  masterclass: { full:"", plan:"" },          // Stripe payment links
+  one: { deposit:"", full:"" },               // Stripe payment links
+  call: "",                                    // Calendly link for questions
+  hook: ""                                     // optional: Make/Zapier webhook that logs each application
+};
+(function(){
+  const dlg=document.getElementById("apply"), body=document.getElementById("ap-body"), dots=[...document.querySelectorAll("#ap-dots i")];
+  if(!dlg||!dlg.showModal) return;
+  const OFF={ masterclass:{name:"The 20 Woman Masterclass",price:"$3,333",short:"5 weeks live with Dani in a group of 20"}, one:{name:"1:1 with Dani",price:"$8,888",short:"10 weeks, just you and Dani"} };
+  const MS={headtoe:"The Head to Toe Method",beyond:"The Beyond the Mirror Method",gogetter:"The Go Getter Method",boundary:"The Boundary Boss Method",comeback:"The Comeback Method"};
+  const esc=t=>String(t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  const track=(n,d)=>{ try{ window.fbq&&fbq("trackCustom",n,d); window.gtag&&gtag("event",n,d); }catch(e){} };
+  let A={}, steps=[];
+  const dm=r=>"https://ig.me/m/theconfidencerebirth?ref="+r;
+  const ref=()=>(A.method+"__"+(A.ig||"")).replace(/[^\w-]/g,"").slice(0,190);
+  const pay=(u,r)=>u?u+(u.includes("?")?"&":"?")+"client_reference_id="+encodeURIComponent(ref()):dm(r);
+  const call=()=>PAY.call?PAY.call+(PAY.call.includes("?")?"&":"?")+"name="+encodeURIComponent(A.name||""):dm("call_"+A.offer);
+  const ext=u=>/^https/.test(u)?' target="_blank" rel="noopener"':"";
+
+  function build(){ steps=[];
+    if(!A.offer) steps.push({k:"offer",q:"Which kind of coaching do you want?",o:[["masterclass","The 20 Woman Masterclass",OFF.masterclass.short],["one","1:1 with Dani",OFF.one.short]]});
+    steps.push({k:"method",q:"Which method is yours?",sub:"Not sure? Pick the one that feels most urgent right now.",o:Object.entries(MS).map(([k,v])=>[k,v])});
+    steps.push({k:"commit",q:"Coaching starts 5 January. Can you show up every week from then?",o:[["yes","Yes, I'm ready"],["maybe","I think so, but I have questions"]]});
+    steps.push({k:"invest",q:()=>`${OFF[A.offer].name} is ${OFF[A.offer].price}, with payment plans. Are you ready to invest in yourself?`,o:[["full","Yes, I'll pay in full"],["plan","Yes, with a payment plan"],["talk","I'd like to talk it through first"],["no","Not right now"]]});
+    steps.push({k:"details"});
+  }
+  function render(){ const i=steps.findIndex(s=>s.k==="details"?!A.done:!(s.k in A));
+    dots.forEach((d,n)=>{ d.hidden=n>=steps.length; d.classList.toggle("on",i<0||n<=i); });
+    body.classList.remove("step"); void body.offsetWidth; body.classList.add("step");
+    if(i<0) return result();
+    const s=steps[i], back=i?`<button class="q-back" type="button" data-back>Back</button>`:"";
+    if(s.k==="details"){ body.innerHTML=`<form class="ap-in" style="padding:0" novalidate><p class="q-label" id="ap-h">Last step. Who are you?</p>
+      <label class="ap-f">First name<input name="name" autocomplete="given-name" required value="${esc(A.name||"")}"></label>
+      <label class="ap-f">Instagram handle<input name="ig" autocomplete="off" autocapitalize="none" placeholder="@yourname" required value="${esc(A.ig||"")}"></label>
+      <p class="ap-err" id="ap-err"></p><button class="btn dark" type="submit">See my result</button>${back}</form>`;
+      body.querySelector("input").focus(); return; }
+    const q=typeof s.q==="function"?s.q():s.q;
+    body.innerHTML=`<p class="q-label" id="ap-h">${esc(q)}</p>${s.sub?`<p class="ap-sub">${esc(s.sub)}</p>`:""}`+s.o.map(([v,t,sm])=>`<button class="q-opt${A[s.k]===v?" picked":""}" type="button" data-k="${s.k}" data-v="${v}">${esc(t)}${sm?`<small>${esc(sm)}</small>`:""}</button>`).join("")+back;
+    const f=body.querySelector(".q-opt.picked")||body.querySelector(".q-opt"); f&&f.focus();
+  }
+  function result(){ const O=OFF[A.offer], m=MS[A.method], one=A.offer==="one";
+    const log={offer:A.offer,method:A.method,commit:A.commit,invest:A.invest,name:A.name,ig:A.ig,at:new Date().toISOString()};
+    if(PAY.hook) fetch(PAY.hook,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain"},body:JSON.stringify(log)}).catch(()=>{});
+    let h;
+    if(A.invest==="no"){ track("ApplyNotReady",log);
+      h=`<span class="tier">Thank you, ${esc(A.name)}</span><h3>Coaching might be the next step, not this one</h3><p>Start where it feels right. Come to the free workshop with Dani, or join the course waitlist for the founding price and first access.</p>
+      <a class="btn" href="#free" data-close>Join the free workshop</a><div class="alt"><a href="${dm(A.method+"_waitlist")}" target="_blank" rel="noopener">Join the course waitlist</a></div>`;
+    } else if(A.invest==="talk"||A.commit==="maybe"){ track("ApplyCallFirst",log);
+      h=`<span class="tier">You're a fit, ${esc(A.name)}</span><h3>Let's talk it through</h3><p>${esc(O.name)}, ${esc(m)}. Book a relaxed 20 minute call and get your questions answered before 5 January.</p>
+      <a class="btn" href="${call()}"${ext(call())} data-t="BookCall">Book my call</a><div class="alt"><a href="${one?pay(PAY.one.deposit,"one_deposit"):pay(PAY.masterclass.full,"masterclass_full")}"${ext("https")} data-t="InitiateCheckout">Ready now? Secure my spot</a></div>`;
+    } else { track("ApplyQualified",log);
+      const main=one?[pay(PAY.one.deposit,"one_deposit"),"Hold my spot with a deposit"]:A.invest==="plan"?[pay(PAY.masterclass.plan,"masterclass_plan"),"Secure my spot with a payment plan"]:[pay(PAY.masterclass.full,"masterclass_full"),"Secure my spot"];
+      const alt=one?[pay(PAY.one.full,"one_full"),`Pay in full, ${O.price}`]:A.invest==="plan"?[pay(PAY.masterclass.full,"masterclass_full"),`Pay in full instead, ${O.price}`]:[pay(PAY.masterclass.plan,"masterclass_plan"),"Use a payment plan instead"];
+      h=`<span class="tier">You're in, ${esc(A.name)}</span><h3>Your spot is open</h3><span class="price">${esc(O.price)}<small>${one?"10 women only. A deposit holds your spot, the rest can go on a payment plan.":"20 women per group. Payment plans available."}</small></span>
+      <p>${esc(O.name)}, ${esc(m)}. Coaching starts 5 January. Secure your spot now and you'll get your welcome and first steps straight away.</p>
+      <a class="btn" href="${main[0]}" target="_blank" rel="noopener" data-t="InitiateCheckout">${main[1]}</a>
+      <div class="alt"><a href="${alt[0]}" target="_blank" rel="noopener" data-t="InitiateCheckout">${alt[1]}</a><a href="${call()}"${ext(call())} data-t="BookCall">I have a few questions first</a></div>`;
+    }
+    body.innerHTML=`<div class="q-result ap-res" id="ap-h">${h}</div>`; const b=body.querySelector(".btn"); b&&b.focus();
+  }
+  body.addEventListener("click",e=>{ const o=e.target.closest(".q-opt"), b=e.target.closest("[data-back]"), t=e.target.closest("[data-t]"), c=e.target.closest("[data-close]");
+    if(o){ document.querySelectorAll("#ap-body .q-opt").forEach(x=>x.classList.toggle("picked",x===o)); setTimeout(()=>{ A[o.dataset.k]=o.dataset.v; render(); },reduce?0:220); }
+    else if(b){ const i=steps.findIndex(s=>s.k==="details"?!A.done:!(s.k in A)); const p=steps[(i<0?steps.length:i)-1]; if(p){ if(p.k==="details") delete A.done; else delete A[p.k]; } render(); }
+    else if(t) track(t.dataset.t,{offer:A.offer,method:A.method});
+    else if(c) dlg.close();
+  });
+  body.addEventListener("submit",e=>{ e.preventDefault(); const f=e.target, n=f.name.value.trim(), g=f.ig.value.trim().replace(/^@+/,"");
+    if(!n||!g){ document.getElementById("ap-err").textContent="Add your first name and Instagram handle so we know it's you."; (n?f.ig:f.name).focus(); return; }
+    A.name=n; A.ig=g; A.done=1; render(); });
+  document.getElementById("ap-x").addEventListener("click",()=>dlg.close());
+  dlg.addEventListener("click",e=>{ if(e.target===dlg) dlg.close(); });
+  function open(offer){ A={}; if(offer) A.offer=offer; build(); render(); dlg.showModal(); track("ApplyStart",{offer:offer||"any"}); }
+  document.addEventListener("click",e=>{ const a=e.target.closest('a[href^="#apply"]'); if(!a||dlg.contains(a)) return; e.preventDefault(); const k=a.getAttribute("href").slice(7); open(k==="masterclass"||k==="one"?k:""); });
+  if(/^#apply/.test(location.hash)){ const k=location.hash.slice(7); open(k==="masterclass"||k==="one"?k:""); }
+})();
 </script>
 
 </body>
