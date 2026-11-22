@@ -126,6 +126,22 @@ p{margin:0}
 .cover:hover .play{transform:scale(1.07)}
 .play::before{content:"";border-left:18px solid var(--ink);border-top:11px solid transparent;border-bottom:11px solid transparent;margin-left:5px}
 .soon{position:absolute;left:16px;right:16px;top:16px;background:var(--ink);color:var(--white);padding:14px 16px;border-radius:12px;font-size:15px;font-weight:500;text-align:center}
+/* VSL player: opens over the page, sized for vertical video */
+.vsl-pop{border:0;padding:0;background:transparent;max-width:none;max-height:none;width:100%;height:100%;margin:0;overflow:hidden}
+.vsl-pop::backdrop{background:rgba(22,21,20,.86);backdrop-filter:blur(6px)}
+.vsl-pop[open]{display:grid;place-items:center}
+.vp-box{position:relative;height:min(88dvh,calc(92vw * 16 / 9));aspect-ratio:9/16;border-radius:18px;overflow:hidden;background:var(--ink);box-shadow:0 30px 80px rgba(0,0,0,.45);animation:vpin .28s ease-out}
+@keyframes vpin{from{opacity:0;transform:scale(.96) translateY(10px)}}
+.vp-box video{width:100%;height:100%;object-fit:cover;display:block;background:var(--ink)}
+.vp-x{position:absolute;top:12px;right:12px;z-index:3;width:42px;height:42px;border-radius:50%;border:0;background:rgba(255,255,255,.92);color:var(--ink);font-size:24px;line-height:1;cursor:pointer;display:grid;place-items:center}
+.vp-x:focus-visible,.vp-end a:focus-visible,.vp-end button:focus-visible{outline:3px solid var(--yellow);outline-offset:2px}
+.vp-end{position:absolute;inset:0;z-index:2;display:grid;place-content:center;justify-items:center;gap:14px;padding:28px;text-align:center;background:rgba(22,21,20,.78);color:var(--white)}
+.vp-end[hidden]{display:none}
+.vp-end p{font-size:20px;font-weight:600;line-height:1.3;max-width:16em}
+.vp-end a{display:inline-block;padding:14px 24px;border-radius:999px;background:var(--yellow);color:var(--ink);border:2px solid var(--ink);font-weight:700;text-decoration:none}
+.vp-end button{background:none;border:0;color:var(--white);text-decoration:underline;font:inherit;font-size:14px;cursor:pointer}
+@media (max-width:760px){.vp-box{height:100dvh;width:100vw;aspect-ratio:auto;border-radius:0}.vp-box video{object-fit:contain}}
+@media (prefers-reduced-motion:reduce){.vp-box{animation:none}}
 
 /* rows */
 .row-head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:22px}
@@ -995,8 +1011,18 @@ footer h4{font-family:var(--sans);font-weight:700;font-size:11px;letter-spacing:
         <video src="img/dani-loop.mp4" poster="img/dani-loop-poster.jpg" muted autoplay loop playsinline aria-hidden="true"></video>
         <span class="play" aria-hidden="true"></span>
         <span class="vtag"><i></i>Start here</span>
-        <span class="soon" id="soon" hidden>Dani's video lands here soon</span>
       </button></div>
+      <dialog class="vsl-pop" id="vsl-pop" aria-label="Dani's video">
+        <div class="vp-box">
+          <button class="vp-x" type="button" aria-label="Close video">&times;</button>
+          <video id="vsl-video" playsinline controls preload="none" poster="img/rebirth-vsl-poster.jpg"></video>
+          <div class="vp-end" id="vsl-end" hidden>
+            <p>Find out what's been holding your confidence back.</p>
+            <a href="quiz.html" data-t="VSLQuizClick">Take the 2 minute quiz</a>
+            <button type="button" id="vsl-replay">Watch again</button>
+          </div>
+        </div>
+      </dialog>
       <div class="intro-copy">
         <h1 id="intro-h">Your <span class="hl">rebirth</span> starts now.</h1>
         <p class="sub">You don't need to become someone new. You need to <span class="pen u">come back to you</span>.</p>
@@ -1441,8 +1467,26 @@ const NEXT_WORKSHOP = "2026-12-05T15:00:00Z";
     els.forEach(e=>e.textContent=d+"d "+h+"h "+m+"m "+sec+"s"); setTimeout(tick,1000); }; tick();
 })();
 
-// VSL placeholder until the real video is filmed
-(function(){ const v=document.getElementById("vsl"), s=document.getElementById("soon"); v.addEventListener("click",()=>{ s.hidden=!s.hidden; }); if(reduce){ const vid=v.querySelector("video"); vid.removeAttribute("autoplay"); vid.pause(); } })();
+// VSL: the full video only downloads when someone taps play
+(function(){
+  const cover=document.getElementById("vsl"), pop=document.getElementById("vsl-pop"), vid=document.getElementById("vsl-video"),
+        end=document.getElementById("vsl-end"), loop=cover.querySelector("video"), SRC="img/rebirth-vsl.mp4";
+  const track=(n,d)=>{ try{ window.fbq&&fbq("trackCustom",n,d); window.gtag&&gtag("event",n,d); }catch(e){} };
+  if(reduce){ loop.removeAttribute("autoplay"); loop.pause(); }
+  let marks={};
+  const open=()=>{ if(!vid.src){ vid.src=SRC; } end.hidden=true; pop.showModal(); loop.pause(); vid.play().catch(()=>{}); track("VSLPlay",{}); };
+  const close=()=>{ vid.pause(); if(pop.open) pop.close(); };
+  cover.addEventListener("click",open);
+  pop.querySelector(".vp-x").addEventListener("click",close);
+  pop.addEventListener("click",e=>{ if(e.target===pop) close(); });
+  pop.addEventListener("close",()=>{ vid.pause(); if(!reduce) loop.play().catch(()=>{}); });
+  vid.addEventListener("timeupdate",()=>{ if(!vid.duration) return; const p=vid.currentTime/vid.duration*100;
+    [25,50,75].forEach(m=>{ if(p>=m&&!marks[m]){ marks[m]=1; track("VSLProgress",{percent:m}); } }); });
+  vid.addEventListener("ended",()=>{ end.hidden=false; if(!marks[100]){ marks[100]=1; track("VSLComplete",{}); } });
+  document.getElementById("vsl-replay").addEventListener("click",()=>{ end.hidden=true; vid.currentTime=0; vid.play(); });
+  end.querySelector("a").addEventListener("click",()=>track("VSLQuizClick",{}));
+})();
+
 
 // find your fit
 (function(){
