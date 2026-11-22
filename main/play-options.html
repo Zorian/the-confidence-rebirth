@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Video play button options | The Confidence Rebirth</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Montserrat:wght@400;500;600;700&family=Reenie+Beanie&display=swap">
+<style>
+:root{--paper:#F7F3EA;--card:#FFFDF8;--butter:#F3E2A0;--yellow:#FFDE17;--ink:#2B2623;--ink-2:#4A433E;--muted:#776D66;--pen:#B4382F;--red:#E5484D;
+  --serif:"Instrument Serif",Georgia,serif;--sans:"Montserrat",system-ui,sans-serif;--hand:"Reenie Beanie",cursive}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 15px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+.page{max-width:1180px;margin:0 auto;padding:clamp(28px,5vw,56px) 16px 80px}
+.page>header{max-width:62ch;margin-bottom:34px}
+.page>header h1{font:400 clamp(38px,6vw,60px)/1 var(--serif);margin:0 0 10px}
+.page>header p{margin:0;color:var(--ink-2)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:44px 36px}
+@media (max-width:820px){.grid{grid-template-columns:1fr}}
+.opt .cap{display:flex;align-items:baseline;gap:10px;margin:0 0 4px}
+.opt .n{flex:none;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--ink);color:#fff;font-weight:700;font-size:13px}
+.opt h2{margin:0;font:600 17px/1.3 var(--sans)}
+.opt .why{margin:0 0 14px 38px;color:var(--muted);font-size:14px}
+.pick{display:inline-block;margin-left:6px;padding:2px 8px;border-radius:6px;background:var(--butter);font-size:11px;font-weight:700;letter-spacing:.06em}
+
+/* shared cover, same as the live site */
+.cover{position:relative;display:block;width:100%;aspect-ratio:16/11;border-radius:16px;overflow:hidden;background:var(--ink);border:0;padding:0;cursor:pointer;font:inherit;color:inherit;text-align:left}
+.cover video{width:100%;height:100%;object-fit:cover;object-position:50% 30%;display:block}
+.vtag{position:absolute;left:14px;bottom:14px;display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:6px;background:var(--card);color:var(--pen);border:1.5px solid var(--pen);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.vtag i{width:7px;height:7px;border-radius:50%;background:var(--pen)}
+.tri{width:0;height:0;border-left:13px solid currentColor;border-top:8px solid transparent;border-bottom:8px solid transparent;margin-left:3px}
+
+/* 1. Tap to unmute (Instagram style) */
+.o1 .mute{position:absolute;left:50%;bottom:18px;translate:-50% 0;display:inline-flex;align-items:center;gap:10px;padding:11px 18px;border-radius:999px;background:rgba(43,38,35,.82);color:#fff;font-weight:600;font-size:14px;backdrop-filter:blur(6px);animation:nudge 2.4s ease-in-out infinite}
+.o1 .mute svg{width:20px;height:20px}
+@keyframes nudge{0%,80%,100%{transform:scale(1)}88%{transform:scale(1.06)}}
+
+/* 2. Yellow watch bar along the bottom */
+.o2 .bar{position:absolute;left:0;right:0;bottom:0;display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--yellow);color:var(--ink);font-weight:700;font-size:15px}
+.o2 .bar .pb{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--ink);color:var(--yellow)}
+.o2 .bar small{margin-left:auto;font-weight:600;font-size:13px;opacity:.75}
+
+/* 3. Play button moved to the bookshelf side */
+.o3 .side{position:absolute;left:7%;top:50%;translate:0 -50%;display:grid;justify-items:center;gap:8px}
+.o3 .side .pb{display:grid;place-items:center;width:66px;height:66px;border-radius:50%;background:#fff;color:var(--ink);box-shadow:0 6px 24px rgba(0,0,0,.3)}
+.o3 .side span{color:#fff;font-weight:600;font-size:13px;text-shadow:0 1px 8px rgba(0,0,0,.6)}
+
+/* 4. Pill in the corner, merged with Start here */
+.o4 .pill{position:absolute;left:14px;bottom:14px;display:inline-flex;align-items:center;gap:10px;padding:8px 16px 8px 8px;border-radius:999px;background:var(--card);color:var(--ink);font-weight:700;font-size:14px;box-shadow:0 6px 20px rgba(0,0,0,.2)}
+.o4 .pill .pb{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--pen);color:#fff}
+.o4 .pill small{font-weight:500;color:var(--muted);font-size:13px}
+
+/* 5. Handwritten note with an arrow */
+.o5 .note{position:absolute;right:16px;top:14px;color:#fff;font:400 34px/1 var(--hand);text-shadow:0 2px 10px rgba(0,0,0,.5);rotate:-4deg}
+.o5 .arrow{position:absolute;right:56px;top:52px;width:70px;height:90px;color:#fff;filter:drop-shadow(0 2px 6px rgba(0,0,0,.4))}
+.o5 .pb{position:absolute;right:28px;bottom:22px;display:grid;place-items:center;width:62px;height:62px;border-radius:50%;background:var(--yellow);color:var(--ink);border:2px solid var(--ink)}
+
+/* 6. Dark lower third, play left, title right */
+.o6 .low{position:absolute;left:0;right:0;bottom:0;display:flex;align-items:center;gap:14px;padding:44px 18px 18px;background:linear-gradient(180deg,rgba(43,38,35,0),rgba(43,38,35,.85))}
+.o6 .low .pb{flex:none;display:grid;place-items:center;width:52px;height:52px;border-radius:50%;background:#fff;color:var(--ink)}
+.o6 .low b{display:block;color:#fff;font:400 26px/1 var(--serif);font-style:italic}
+.o6 .low small{color:rgba(255,255,255,.8);font-size:13px}
+
+@media (prefers-reduced-motion:reduce){.o1 .mute{animation:none}}
+</style>
+</head>
+<body>
+<main class="page">
+  <header>
+    <h1>Play button options</h1>
+    <p>Six ways to show the play button without covering Dani's face. Each one runs the real preview clip, so you can see how it looks as it moves.</p>
+  </header>
+
+  <div class="grid">
+    <section class="opt o1">
+      <div class="cap"><span class="n">1</span><h2>Tap to unmute <span class="pick">MY PICK</span></h2></div>
+      <p class="why">Same as Instagram and TikTok. The video already looks like it's playing, so people tap for the sound.</p>
+      <button class="cover" type="button"><video src="img/vsl-loop.mp4?v=4" poster="img/vsl-loop-poster.jpg?v=4" muted autoplay loop playsinline></video>
+        <span class="mute"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="m22 9-6 6M16 9l6 6"/></svg>Tap to hear Dani</span>
+      </button>
+    </section>
+
+    <section class="opt o2">
+      <div class="cap"><span class="n">2</span><h2>Yellow watch bar</h2></div>
+      <p class="why">A full strip along the bottom in the brand yellow. Easy to spot, and it shows how long the video is.</p>
+      <button class="cover" type="button"><video src="img/vsl-loop.mp4?v=4" poster="img/vsl-loop-poster.jpg?v=4" muted autoplay loop playsinline></video>
+        <span class="bar"><span class="pb"><i class="tri"></i></span>Watch Dani's message<small>1:38</small></span>
+      </button>
+    </section>
+
+    <section class="opt o3">
+      <div class="cap"><span class="n">3</span><h2>Play on the bookshelf side</h2></div>
+      <p class="why">Keeps the classic round button but moves it to the empty space beside her.</p>
+      <button class="cover" type="button"><video src="img/vsl-loop.mp4?v=4" poster="img/vsl-loop-poster.jpg?v=4" muted autoplay loop playsinline></video>
+        <span class="side"><span class="pb"><i class="tri"></i></span><span>Watch first</span></span>
+        <span class="vtag"><i></i>Start here</span>
+      </button>
+    </section>
+
+    <section class="opt o4">
+      <div class="cap"><span class="n">4</span><h2>Start here pill</h2></div>
+      <p class="why">Merges the play button and "Start here" into one tidy pill in the corner. Cleanest look.</p>
+      <button class="cover" type="button"><video src="img/vsl-loop.mp4?v=4" poster="img/vsl-loop-poster.jpg?v=4" muted autoplay loop playsinline></video>
+        <span class="pill"><span class="pb"><i class="tri"></i></span>Start here <small>1:38</small></span>
+      </button>
+    </section>
+
+    <section class="opt o5">
+      <div class="cap"><span class="n">5</span><h2>Handwritten note</h2></div>
+      <p class="why">A pen note with an arrow to a yellow play button. Fits the notebook feel of the site.</p>
+      <button class="cover" type="button"><video src="img/vsl-loop.mp4?v=4" poster="img/vsl-loop-poster.jpg?v=4" muted autoplay loop playsinline></video>
+        <span class="note">watch this first</span>
+        <svg class="arrow" viewBox="0 0 70 90" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M20 4c26 10 38 38 30 74"/><path d="M38 66l12 14 10-16"/></svg>
+        <span class="pb"><i class="tri"></i></span>
+      </button>
+    </section>
+
+    <section class="opt o6">
+      <div class="cap"><span class="n">6</span><h2>Title along the bottom</h2></div>
+      <p class="why">A soft dark fade at the bottom with the play button and a title. Feels like a proper film.</p>
+      <button class="cover" type="button"><video src="img/vsl-loop.mp4?v=4" poster="img/vsl-loop-poster.jpg?v=4" muted autoplay loop playsinline></video>
+        <span class="low"><span class="pb"><i class="tri"></i></span><span><b>Nothing is wrong with you.</b><small>A message from Dani, 1:38</small></span></span>
+      </button>
+    </section>
+  </div>
+</main>
+</body>
+</html>
