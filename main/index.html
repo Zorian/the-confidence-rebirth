@@ -1014,14 +1014,14 @@ footer h4{font-family:var(--sans);font-weight:700;font-size:11px;letter-spacing:
   <div class="wrap">
     <div class="vcard">
       <div class="vsl-frame"><button class="cover" id="vsl" type="button" aria-label="Play Dani's video with sound">
-        <video src="img/vsl-loop.mp4?v=7" poster="img/vsl-loop-poster.jpg?v=7" muted autoplay loop playsinline aria-hidden="true"></video>
+        <video src="img/vsl-loop.mp4?v=8" poster="img/vsl-loop-poster.jpg?v=8" muted autoplay loop playsinline aria-hidden="true"></video>
         <span class="vtag"><i></i>Start here</span>
         <span class="mute" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="m22 9-6 6M16 9l6 6"/></svg>Tap to hear Dani</span>
       </button></div>
       <dialog class="vsl-pop" id="vsl-pop" aria-label="Dani's video">
         <div class="vp-box">
           <button class="vp-x" type="button" aria-label="Close video">&times;</button>
-          <video id="vsl-video" playsinline controls preload="none" poster="img/rebirth-vsl-poster.jpg?v=7"></video>
+          <video id="vsl-video" playsinline controls preload="none" poster="img/rebirth-vsl-poster.jpg?v=8"></video>
           <div class="vp-end" id="vsl-end" hidden>
             <p>Find out what's been holding your confidence back.</p>
             <a href="quiz.html" data-t="VSLQuizClick">Take the 2 minute quiz</a>
@@ -1476,7 +1476,7 @@ const NEXT_WORKSHOP = "2026-12-05T15:00:00Z";
 // VSL: the full video only downloads when someone taps play
 (function(){
   const cover=document.getElementById("vsl"), pop=document.getElementById("vsl-pop"), vid=document.getElementById("vsl-video"),
-        end=document.getElementById("vsl-end"), loop=cover.querySelector("video"), SRC="img/rebirth-vsl.mp4?v=7";
+        end=document.getElementById("vsl-end"), loop=cover.querySelector("video"), SRC="img/rebirth-vsl.mp4?v=8";
   const track=(n,d)=>{ try{ window.fbq&&fbq("trackCustom",n,d); window.gtag&&gtag("event",n,d); }catch(e){} };
   if(reduce){ loop.removeAttribute("autoplay"); loop.pause(); }
   let marks={};
