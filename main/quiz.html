@@ -154,6 +154,8 @@ button{font:inherit;color:inherit}
 .video .note{color:var(--hl);font-size:19px}
 .video small{color:var(--muted-on-ink);font-size:13px}
 .video video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.video.has-vid{aspect-ratio:9/16;max-height:560px;padding:0;overflow:hidden}
+.video.has-vid .inner{visibility:hidden}
 
 .shows{display:grid;gap:6px;padding-left:16px;border-left:3px solid var(--blue)}
 .shows .note{font-size:18px}
@@ -383,7 +385,7 @@ h3{font-family:var(--head);font-weight:600;text-transform:none;letter-spacing:0}
 // ManyChat Instagram ref link per type, e.g. https://ig.me/m/theconfidencerebirth?ref=overthinker
 const DM_LINKS = { P: "", F: "", O: "", H: "", I: "", C: "" };
 // Dani's reveal video per type (mp4 URL from Bunny/Vimeo). Leave blank to show the placeholder.
-const VIDEOS = { P: "", F: "", O: "", H: "", I: "", C: "" };
+const VIDEOS = { P: "", F: "img/reveal/fixer.mp4", O: "", H: "", I: "", C: "" }; // poster = same name, .jpg
 
 /* ===== The five methods. open:false switches a method to the waitlist. ===== */
 const WAITLIST = m => "https://ig.me/m/theconfidencerebirth?ref=" + m + "_waitlist";
@@ -660,11 +662,13 @@ function reveal(r, focus, struggles){
   $("plan-title").textContent = n > 1 ? "Your " + n + " step plan" : "Your first step";
   $("v-note").textContent = "Dani's message for " + T.short;
 
-  const v = $("video"); const old = v.querySelector("video"); if(old) old.remove();
+  const v = $("video"); const old = v.querySelector("video"); if(old) old.remove(); v.classList.remove("has-vid");
   if(VIDEOS[r.type]){
     const vid = document.createElement("video");
-    vid.src = VIDEOS[r.type]; vid.controls = true; vid.playsInline = true; vid.preload = "metadata";
-    v.appendChild(vid);
+    vid.src = VIDEOS[r.type]; vid.poster = VIDEOS[r.type].replace(/\.mp4$/, ".jpg");
+    vid.controls = true; vid.playsInline = true; vid.preload = "none";
+    vid.addEventListener("play", () => { try{ window.fbq&&fbq("trackCustom","RevealPlay",{type:T.name}); window.gtag&&gtag("event","RevealPlay",{type:T.name}); }catch(e){} }, {once:true});
+    v.appendChild(vid); v.classList.add("has-vid");
   }
 
   const mix = $("mix"); mix.innerHTML = "";
