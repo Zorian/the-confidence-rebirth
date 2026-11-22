@@ -223,6 +223,9 @@ p{margin:0}
 .ap-f{display:grid;gap:6px;font-size:14px;font-weight:600}
 .ap-f input{font:inherit;font-size:16px;font-weight:400;min-height:50px;padding:0 14px;border-radius:12px;border:1.5px solid var(--stone-2);background:var(--white);color:var(--ink)}
 .ap-f input:focus{border-color:var(--ink);outline:none}
+.ap-opt{font-weight:400;color:var(--muted)}
+.ap-tick{display:flex;gap:10px;align-items:flex-start;font-size:14px;line-height:1.45;color:var(--ink-2);cursor:pointer}
+.ap-tick input{width:20px;height:20px;margin:1px 0 0;flex:none;accent-color:var(--ink)}
 .ap-err{color:#9B1C1C;font-size:14px;min-height:1em}
 .ap-res .btn{width:100%}
 .ap-res .alt{display:grid;gap:8px;width:100%;margin-top:2px}
@@ -1542,7 +1545,7 @@ const PAY = {
   masterclass: { full:"", plan:"" },          // Stripe payment links
   one: { deposit:"", full:"" },               // Stripe payment links
   call: "https://calendly.com/theconfidencerebirth/15min",                                    // Calendly link for questions
-  hook: ""                                     // optional: Make/Zapier webhook that logs each application
+  hook: ""                                     // Google Sheet web app URL (Apps Script) that logs each application
 };
 (function(){
   const dlg=document.getElementById("apply"), body=document.getElementById("ap-body"), dots=[...document.querySelectorAll("#ap-dots i")];
@@ -1553,9 +1556,9 @@ const PAY = {
   const track=(n,d)=>{ try{ window.fbq&&fbq("trackCustom",n,d); window.gtag&&gtag("event",n,d); }catch(e){} };
   let A={}, steps=[];
   const dm=r=>"https://ig.me/m/theconfidencerebirth?ref="+r;
-  const ref=()=>(A.method+"__"+(A.ig||"")).replace(/[^\w-]/g,"").slice(0,190);
-  const pay=(u,r)=>u?u+(u.includes("?")?"&":"?")+"client_reference_id="+encodeURIComponent(ref()):dm(r);
-  const call=()=>PAY.call?PAY.call+(PAY.call.includes("?")?"&":"?")+"name="+encodeURIComponent(A.name||""):dm("call_"+A.offer);
+  const ref=()=>(A.method+"__"+(A.phone||"").replace(/\D/g,"")).slice(0,190);
+  const pay=(u,r)=>u?u+(u.includes("?")?"&":"?")+"client_reference_id="+encodeURIComponent(ref())+"&prefilled_email="+encodeURIComponent(A.email||""):dm(r);
+  const call=()=>PAY.call?PAY.call+(PAY.call.includes("?")?"&":"?")+"name="+encodeURIComponent(A.name||"")+"&email="+encodeURIComponent(A.email||""):dm("call_"+A.offer);
   const ext=u=>/^https/.test(u)?' target="_blank" rel="noopener"':"";
 
   function build(){ steps=[];
@@ -1572,7 +1575,10 @@ const PAY = {
     const s=steps[i], back=i?`<button class="q-back" type="button" data-back>Back</button>`:"";
     if(s.k==="details"){ body.innerHTML=`<form class="ap-in" style="padding:0" novalidate><p class="q-label" id="ap-h">Last step. Who are you?</p>
       <label class="ap-f">First name<input name="name" autocomplete="given-name" required value="${esc(A.name||"")}"></label>
-      <label class="ap-f">Instagram handle<input name="ig" autocomplete="off" autocapitalize="none" placeholder="@yourname" required value="${esc(A.ig||"")}"></label>
+      <label class="ap-f">Email<input name="email" type="email" autocomplete="email" autocapitalize="none" required value="${esc(A.email||"")}"></label>
+      <label class="ap-f">WhatsApp number<input name="phone" type="tel" autocomplete="tel" placeholder="+44 7700 900000" required value="${esc(A.phone||"")}"></label>
+      <label class="ap-f"><span>Instagram handle <span class="ap-opt">(optional)</span></span><input name="ig" autocomplete="off" autocapitalize="none" placeholder="@yourname" value="${esc(A.ig||"")}"></label>
+      <label class="ap-tick"><input name="consent" type="checkbox"${A.consent?" checked":""}><span>I'm happy for The Confidence Rebirth to contact me about my application.</span></label>
       <p class="ap-err" id="ap-err"></p><button class="btn dark" type="submit">See my result</button>${back}</form>`;
       body.querySelector("input").focus(); return; }
     const q=typeof s.q==="function"?s.q():s.q;
@@ -1580,8 +1586,9 @@ const PAY = {
     const f=body.querySelector(".q-opt.picked")||body.querySelector(".q-opt"); f&&f.focus();
   }
   function result(){ const O=OFF[A.offer], m=MS[A.method], one=A.offer==="one";
-    const log={offer:A.offer,method:A.method,commit:A.commit,invest:A.invest,name:A.name,ig:A.ig,at:new Date().toISOString()};
-    if(PAY.hook) fetch(PAY.hook,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain"},body:JSON.stringify(log)}).catch(()=>{});
+    const log={offer:A.offer,method:A.method,commit:A.commit,invest:A.invest,name:A.name,email:A.email,phone:A.phone,ig:A.ig,consent:"yes",at:new Date().toISOString()};
+    log.result=A.invest==="no"?"not ready":(A.invest==="talk"||A.commit==="maybe")?"call first":"pay now";
+    if(PAY.hook&&!A.sent){ A.sent=1; fetch(PAY.hook,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain"},body:JSON.stringify(log)}).catch(()=>{}); }
     let h;
     if(A.invest==="no"){ track("ApplyNotReady",log);
       h=`<span class="tier">Thank you, ${esc(A.name)}</span><h3>Coaching might be the next step, not this one</h3><p>Start where it feels right. Come to the free workshop with Dani, or join the course waitlist for the founding price and first access.</p>
@@ -1605,9 +1612,13 @@ const PAY = {
     else if(t) track(t.dataset.t,{offer:A.offer,method:A.method});
     else if(c) dlg.close();
   });
-  body.addEventListener("submit",e=>{ e.preventDefault(); const f=e.target, n=f.name.value.trim(), g=f.ig.value.trim().replace(/^@+/,"");
-    if(!n||!g){ document.getElementById("ap-err").textContent="Add your first name and Instagram handle so we know it's you."; (n?f.ig:f.name).focus(); return; }
-    A.name=n; A.ig=g; A.done=1; render(); });
+  body.addEventListener("submit",e=>{ e.preventDefault(); const f=e.target, v=k=>f.elements.namedItem(k), err=(m,el)=>{ document.getElementById("ap-err").textContent=m; el.focus(); };
+    const n=v("name").value.trim(), em=v("email").value.trim(), ph=v("phone").value.trim(), g=v("ig").value.trim().replace(/^@+/,"");
+    if(!n) return err("Add your first name.",v("name"));
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) return err("Add an email address we can reach you on.",v("email"));
+    if(ph.replace(/\D/g,"").length<8) return err("Add your WhatsApp number, with your country code.",v("phone"));
+    if(!v("consent").checked) return err("Tick the box so we can contact you about your application.",v("consent"));
+    Object.assign(A,{name:n,email:em,phone:ph,ig:g,consent:1,done:1}); render(); });
   document.getElementById("ap-x").addEventListener("click",()=>dlg.close());
   dlg.addEventListener("click",e=>{ if(e.target===dlg) dlg.close(); });
   function open(offer){ A={}; if(offer) A.offer=offer; build(); render(); dlg.showModal(); track("ApplyStart",{offer:offer||"any"}); }
