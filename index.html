@@ -1653,11 +1653,11 @@ const PAY = {
     if(i<0) return result();
     const s=steps[i], back=i?`<button class="q-back" type="button" data-back>Back</button>`:"";
     if(s.k==="details"){ body.innerHTML=`<form class="ap-in" style="padding:0" novalidate><p class="q-label" id="ap-h">Last step. Who are you?</p>
-      <label class="ap-f">First name<input name="name" autocomplete="given-name" required value="${esc(A.name||"")}"></label>
+      <label class="ap-f">Full name<input name="name" autocomplete="name" required value="${esc(A.name||"")}"></label>
       <label class="ap-f">Email<input name="email" type="email" autocomplete="email" autocapitalize="none" required value="${esc(A.email||"")}"></label>
       <label class="ap-f">WhatsApp number<input name="phone" type="tel" autocomplete="tel" placeholder="+44 7700 900000" required value="${esc(A.phone||"")}"></label>
       <label class="ap-f"><span>Instagram handle <span class="ap-opt">(optional)</span></span><input name="ig" autocomplete="off" autocapitalize="none" placeholder="@yourname" value="${esc(A.ig||"")}"></label>
-      <label class="ap-tick"><input name="consent" type="checkbox"${A.consent?" checked":""}><span>I'm happy for The Confidence Rebirth to contact me about my application.</span></label>
+      <label class="ap-tick"><input name="consent" type="checkbox"${A.consent?" checked":""}><span>I'm happy for The Confidence Rebirth to reach out to me via the marketing channels given above.</span></label>
       <p class="ap-err" id="ap-err"></p><button class="btn dark" type="submit">See my result</button>${back}</form>`;
       body.querySelector("input").focus(); return; }
     const q=typeof s.q==="function"?s.q():s.q;
@@ -1670,15 +1670,15 @@ const PAY = {
     if(PAY.hook&&!A.sent){ A.sent=1; fetch(PAY.hook,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain"},body:JSON.stringify(log)}).catch(()=>{}); }
     let h;
     if(A.invest==="no"){ track("ApplyNotReady",log);
-      h=`<span class="tier">Thank you, ${esc(A.name)}</span><h3>Coaching might be the next step, not this one</h3><p>Start where it feels right. Come to the free workshop with Dani, or join the course waitlist for the founding price and first access.</p>
+      h=`<span class="tier">Thank you, ${esc(A.name.split(/\s+/)[0])}</span><h3>Coaching might be the next step, not this one</h3><p>Start where it feels right. Come to the free workshop with Dani, or join the course waitlist for the founding price and first access.</p>
       <a class="btn" href="#free" data-close>Join the free workshop</a><div class="alt"><a href="#waitlist-${A.method}">Join the course waitlist</a></div>`;
     } else if(A.invest==="talk"||A.commit==="maybe"){ track("ApplyCallFirst",log);
-      h=`<span class="tier">You're a fit, ${esc(A.name)}</span><h3>Let's talk it through</h3><p>${esc(O.name)}, ${esc(m)}. Book a relaxed 15 minute call and get your questions answered before 5 January 2027.</p>
+      h=`<span class="tier">You're a fit, ${esc(A.name.split(/\s+/)[0])}</span><h3>Let's talk it through</h3><p>${esc(O.name)}, ${esc(m)}. Book a relaxed 15 minute call and get your questions answered before 5 January 2027.</p>
       <a class="btn" href="${call()}"${ext(call())} data-t="BookCall">Book my call</a><div class="alt"><a href="${one?pay(PAY.one.deposit,"one_deposit"):pay(PAY.masterclass.full,"masterclass_full")}"${ext("https")} data-t="InitiateCheckout">Ready now? Secure my spot</a></div>`;
     } else { track("ApplyQualified",log);
       const main=one?[pay(PAY.one.deposit,"one_deposit"),"Hold my spot with a deposit"]:A.invest==="plan"?[pay(PAY.masterclass.plan,"masterclass_plan"),"Secure my spot with a payment plan"]:[pay(PAY.masterclass.full,"masterclass_full"),"Secure my spot"];
       const alt=one?[pay(PAY.one.full,"one_full"),`Pay in full, ${O.price}`]:A.invest==="plan"?[pay(PAY.masterclass.full,"masterclass_full"),`Pay in full instead, ${O.price}`]:[pay(PAY.masterclass.plan,"masterclass_plan"),"Use a payment plan instead"];
-      h=`<span class="tier">You're in, ${esc(A.name)}</span><h3>Your spot is open</h3><span class="price">${esc(O.price)}<small>${one?"10 women only. A deposit holds your spot, the rest can go on a payment plan.":"20 women per group. Payment plans available."}</small></span>
+      h=`<span class="tier">You're in, ${esc(A.name.split(/\s+/)[0])}</span><h3>Your spot is open</h3><span class="price">${esc(O.price)}<small>${one?"10 women only. A deposit holds your spot, the rest can go on a payment plan.":"20 women per group. Payment plans available."}</small></span>
       <p>${esc(O.name)}, ${esc(m)}. Coaching starts 5 January 2027. Secure your spot now and you'll get your welcome and first steps straight away.</p>
       <a class="btn" href="${main[0]}" target="_blank" rel="noopener" data-t="InitiateCheckout">${main[1]}</a>
       <div class="alt"><a href="${alt[0]}" target="_blank" rel="noopener" data-t="InitiateCheckout">${alt[1]}</a><a href="${call()}"${ext(call())} data-t="BookCall">I have a few questions first</a></div>`;
@@ -1693,10 +1693,10 @@ const PAY = {
   });
   body.addEventListener("submit",e=>{ e.preventDefault(); const f=e.target, v=k=>f.elements.namedItem(k), err=(m,el)=>{ document.getElementById("ap-err").textContent=m; el.focus(); };
     const n=v("name").value.trim(), em=v("email").value.trim(), ph=v("phone").value.trim(), g=v("ig").value.trim().replace(/^@+/,"");
-    if(!n) return err("Add your first name.",v("name"));
+    if(n.split(/\s+/).length<2) return err("Add your full name.",v("name"));
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) return err("Add an email address we can reach you on.",v("email"));
     if(ph.replace(/\D/g,"").length<8) return err("Add your WhatsApp number, with your country code.",v("phone"));
-    if(!v("consent").checked) return err("Tick the box so we can contact you about your application.",v("consent"));
+    if(!v("consent").checked) return err("Tick the box so we can reach out to you.",v("consent"));
     Object.assign(A,{name:n,email:em,phone:ph,ig:g,consent:1,done:1}); render(); });
   document.getElementById("ap-x").addEventListener("click",()=>dlg.close());
   dlg.addEventListener("click",e=>{ if(e.target===dlg) dlg.close(); });
@@ -1715,14 +1715,15 @@ const PAY = {
   let W={};
   function form(){ const m=MS[W.method];
     body.innerHTML=`<form class="ap-in" style="padding:0" novalidate><h3 id="wl-h">The ${esc(m)} course</h3><p class="ap-sub">Coming soon. Join the waitlist and you get the founding price and first access.</p>
-      <label class="ap-f">First name<input name="name" autocomplete="given-name" required></label>
+      <label class="ap-f">Full name<input name="name" autocomplete="name" required></label>
+      <label class="ap-f">Email<input name="email" type="email" autocomplete="email" autocapitalize="none" required></label>
       <label class="ap-f">WhatsApp number<input name="phone" type="tel" autocomplete="tel" placeholder="+44 7700 900000" required></label>
       <label class="ap-f"><span>Instagram handle <span class="ap-opt">(optional)</span></span><input name="ig" autocomplete="off" autocapitalize="none" placeholder="@yourname"></label>
-      <label class="ap-tick"><input name="consent" type="checkbox"><span>I'm happy for The Confidence Rebirth to message me on WhatsApp when the course opens.</span></label>
+      <label class="ap-tick"><input name="consent" type="checkbox"><span>I'm happy for The Confidence Rebirth to reach out to me via the marketing channels given above.</span></label>
       <p class="ap-err" id="wl-err"></p><button class="btn dark" type="submit">Join the waitlist</button></form>`;
     body.querySelector("input").focus(); }
   function done(){
-    body.innerHTML=`<div class="q-result ap-res wl-done"><h3 id="wl-h" tabindex="-1">You're on the list, ${esc(W.name)}</h3>
+    body.innerHTML=`<div class="q-result ap-res wl-done"><h3 id="wl-h" tabindex="-1">You're on the list, ${esc(W.name.split(/\s+/)[0])}</h3>
       <p>We'll message you on WhatsApp the moment the <b>${esc(MS[W.method])}</b> course opens. Your <span class="lock">founding price is locked in</span>.</p>
       <p class="wl-next">Don't wait for the course to start. Dani's free live workshop is on 5 December, 3pm GMT.</p>
       <a class="btn" href="${LINKS.free}" target="_blank" rel="noopener" data-wl-t="WaitlistJoinFree">Save my free seat</a>
@@ -1732,15 +1733,16 @@ const PAY = {
   function open(k){ W={method:MS[k]?k:"headtoe"}; form(); dlg.showModal(); track("WaitlistStart",{method:W.method}); }
   body.addEventListener("submit",e=>{ e.preventDefault(); const f=e.target;
     if(f.classList.contains("wl-ask")){ const n=f.elements.note.value.trim(); if(!n) return f.elements.note.focus();
-      send({type:"waitlist_note",method:W.method,name:W.name,phone:W.phone,note:n,at:new Date().toISOString()});
+      send({type:"waitlist_note",method:W.method,name:W.name,email:W.email,phone:W.phone,note:n,at:new Date().toISOString()});
       f.outerHTML=`<p class="wl-next" role="status">Sent. Thank you, Dani will see it.</p>`; return; }
     const v=k=>f.elements.namedItem(k), err=(m,el)=>{ document.getElementById("wl-err").textContent=m; el.focus(); };
-    const n=v("name").value.trim(), ph=v("phone").value.trim(), g=v("ig").value.trim().replace(/^@+/,"");
-    if(!n) return err("Add your first name.",v("name"));
+    const n=v("name").value.trim(), em=v("email").value.trim(), ph=v("phone").value.trim(), g=v("ig").value.trim().replace(/^@+/,"");
+    if(n.split(/\s+/).length<2) return err("Add your full name.",v("name"));
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) return err("Add an email address we can reach you on.",v("email"));
     if(ph.replace(/\D/g,"").length<8) return err("Add your WhatsApp number, with your country code.",v("phone"));
-    if(!v("consent").checked) return err("Tick the box so we can message you when it opens.",v("consent"));
-    Object.assign(W,{name:n,phone:ph,ig:g});
-    send({type:"waitlist",method:W.method,name:n,phone:ph,ig:g,consent:"yes",at:new Date().toISOString()});
+    if(!v("consent").checked) return err("Tick the box so we can reach out to you.",v("consent"));
+    Object.assign(W,{name:n,email:em,phone:ph,ig:g});
+    send({type:"waitlist",method:W.method,name:n,email:em,phone:ph,ig:g,consent:"yes",at:new Date().toISOString()});
     track("WaitlistJoin",{method:W.method}); done(); });
   body.addEventListener("click",e=>{ const t=e.target.closest("[data-wl-t]"), a=e.target.closest("[data-wl-apply]");
     if(t) track(t.dataset.wlT,{method:W.method});
