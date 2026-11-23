@@ -429,7 +429,14 @@ h3{font-family:var(--head);font-weight:600;text-transform:none;letter-spacing:0}
 /* ===== Settings: paste real links before launch ===== */
 // Free Circle invite link per type, so every member lands tagged with their Confidence Type.
 // Leave blank to fall back to the free workshop section on the main site.
-const CIRCLE_LINKS = { P: "", F: "", O: "", H: "", I: "", C: "" };
+const CIRCLE_LINKS = {
+  P: "https://the-confidence-rebirth-24f95c.circle.so/join?invitation_token=b88dde26be4a43738af324e8b9a0a5db3d573571-7d8196cc-6984-4e61-badd-dae80811a23f",
+  F: "https://the-confidence-rebirth-24f95c.circle.so/join?invitation_token=aa104c40528908527f5d314f821f6128e3f8e3a5-0aa83dc5-5774-4eaf-97df-490badec433a",
+  O: "https://the-confidence-rebirth-24f95c.circle.so/join?invitation_token=dbff67a395ff142c7799514f9a4c3eee47c7f194-7ba27c06-ef78-4fcb-b6e4-149a409cc67f",
+  H: "https://the-confidence-rebirth-24f95c.circle.so/join?invitation_token=81527eb8c41de43d5196a2ca96fbb5515d5fe00c-ec110cec-ab0b-49bd-af88-7647c13207eb",
+  I: "https://the-confidence-rebirth-24f95c.circle.so/join?invitation_token=21a7cf76193e2ae7ac6cd8fed9ceaf445172ef66-d3125412-5b98-4cf8-b6cf-c42e16cb8960",
+  C: "https://the-confidence-rebirth-24f95c.circle.so/join?invitation_token=f1ab0039006d8353f38067fe9e39aad9d38d7f18-2f2a7a2d-a2fb-4c11-af5b-c3d792d4e040"
+};
 // Next free live workshop (UTC). After it passes, the date stub hides until this is updated.
 const NEXT_WORKSHOP = "2026-12-05T15:00:00Z";
 // Dani's reveal video per type (mp4 URL from Bunny/Vimeo). Leave blank to show the placeholder.
