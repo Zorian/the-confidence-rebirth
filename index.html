@@ -1378,7 +1378,7 @@ footer h4{font-family:var(--sans);font-weight:700;font-size:11px;letter-spacing:
 
 <script>
 // Swap these for the real Circle, Stripe and Tally links before launch.
-const LINKS = { free:"https://the-confidence-rebirth-24f95c.circle.so/join?invitation_token=df606dd2d4096f54c2650b0ee133d3a513dbd184-34b46b48-2890-4d59-a98e-1c74934596f2", course:"#course", masterclass:"#apply-masterclass", one:"#apply-one", waitlist:"https://ig.me/m/theconfidencerebirth", privacy:"#", terms:"#", refunds:"#" };
+const LINKS = { free:"https://the-confidence-rebirth-24f95c.circle.so/join?invitation_token=df606dd2d4096f54c2650b0ee133d3a513dbd184-34b46b48-2890-4d59-a98e-1c74934596f2", course:"#course", masterclass:"#apply-masterclass", one:"#apply-one", waitlist:"https://ig.me/m/theconfidencerebirth", privacy:"privacy.html", terms:"#", refunds:"#" };
 document.querySelectorAll("[data-link]").forEach(a => { const u = LINKS[a.dataset.link]; if (u) a.href = u; if (/^https?:/.test(u||"")) { a.target="_blank"; a.rel="noopener"; } });
 const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -1657,7 +1657,7 @@ const PAY = {
       <label class="ap-f">Email<input name="email" type="email" autocomplete="email" autocapitalize="none" required value="${esc(A.email||"")}"></label>
       <label class="ap-f">WhatsApp number<input name="phone" type="tel" autocomplete="tel" placeholder="+44 7700 900000" required value="${esc(A.phone||"")}"></label>
       <label class="ap-f"><span>Instagram handle <span class="ap-opt">(optional)</span></span><input name="ig" autocomplete="off" autocapitalize="none" placeholder="@yourname" value="${esc(A.ig||"")}"></label>
-      <label class="ap-tick"><input name="consent" type="checkbox"${A.consent?" checked":""}><span>I'm happy for The Confidence Rebirth to reach out to me via the marketing channels given above.</span></label>
+      <label class="ap-tick"><input name="consent" type="checkbox"${A.consent?" checked":""}><span>I'm happy for The Confidence Rebirth to reach out to me via the marketing channels given above. <a href="privacy.html" target="_blank" rel="noopener">Privacy policy</a></span></label>
       <p class="ap-err" id="ap-err"></p><button class="btn dark" type="submit">See my result</button>${back}</form>`;
       body.querySelector("input").focus(); return; }
     const q=typeof s.q==="function"?s.q():s.q;
@@ -1719,7 +1719,7 @@ const PAY = {
       <label class="ap-f">Email<input name="email" type="email" autocomplete="email" autocapitalize="none" required></label>
       <label class="ap-f">WhatsApp number<input name="phone" type="tel" autocomplete="tel" placeholder="+44 7700 900000" required></label>
       <label class="ap-f"><span>Instagram handle <span class="ap-opt">(optional)</span></span><input name="ig" autocomplete="off" autocapitalize="none" placeholder="@yourname"></label>
-      <label class="ap-tick"><input name="consent" type="checkbox"><span>I'm happy for The Confidence Rebirth to reach out to me via the marketing channels given above.</span></label>
+      <label class="ap-tick"><input name="consent" type="checkbox"><span>I'm happy for The Confidence Rebirth to reach out to me via the marketing channels given above. <a href="privacy.html" target="_blank" rel="noopener">Privacy policy</a></span></label>
       <p class="ap-err" id="wl-err"></p><button class="btn dark" type="submit">Join the waitlist</button></form>`;
     body.querySelector("input").focus(); }
   function done(){
