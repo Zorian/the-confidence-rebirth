@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /$
+Allow: /quiz.html
+Allow: /img/
+Disallow: /inspo-
+Disallow: /v1
+Disallow: /v2/
+Disallow: /main/
+Disallow: /apps-script/
+Disallow: /*-options.html
+Disallow: /before-journal.html
+Sitemap: https://theconfidencerebirth.com/sitemap.xml
