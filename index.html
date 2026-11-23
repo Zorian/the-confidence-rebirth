@@ -259,6 +259,8 @@ p{margin:0}
 .ap-f{display:grid;gap:6px;font-size:14px;font-weight:600}
 .ap-f input{font:inherit;font-size:16px;font-weight:400;min-height:50px;padding:0 14px;border-radius:12px;border:1.5px solid var(--stone-2);background:var(--white);color:var(--ink)}
 .ap-f input:focus{border-color:var(--ink);outline:none}
+.ap-f textarea{font:inherit;font-size:16px;font-weight:400;padding:10px 14px;border-radius:12px;border:1.5px solid var(--stone-2);background:var(--white);color:var(--ink);resize:vertical;min-height:76px}
+.ap-f textarea:focus{border-color:var(--ink);outline:none}
 .ap-opt{font-weight:400;color:var(--muted)}
 .ap-tick{display:flex;gap:10px;align-items:flex-start;font-size:14px;line-height:1.45;color:var(--ink-2);cursor:pointer}
 .ap-tick input{width:20px;height:20px;margin:1px 0 0;flex:none;accent-color:var(--ink)}
@@ -1654,6 +1656,7 @@ const PAY = {
       <label class="ap-f">Email<input name="email" type="email" autocomplete="email" autocapitalize="none" required value="${esc(A.email||"")}"></label>
       <label class="ap-f">WhatsApp number<input name="phone" type="tel" autocomplete="tel" placeholder="+44 7700 900000" required value="${esc(A.phone||"")}"></label>
       <label class="ap-f"><span>Instagram handle <span class="ap-opt">(optional)</span></span><input name="ig" autocomplete="off" autocapitalize="none" placeholder="@yourname" value="${esc(A.ig||"")}"></label>
+      <label class="ap-f"><span>What's the one thing you want help with? <span class="ap-opt">(optional)</span></span><textarea name="help" maxlength="500" rows="3" placeholder="Dani reads every answer">${esc(A.help||"")}</textarea></label>
       <label class="ap-tick"><input name="consent" type="checkbox"${A.consent?" checked":""}><span>I'm happy for The Confidence Rebirth to reach out to me via the marketing channels given above. <a href="privacy.html" target="_blank" rel="noopener">Privacy policy</a></span></label>
       <p class="ap-err" id="ap-err"></p><button class="btn dark" type="submit"${A.consent?"":" disabled"}>See my result</button>${back}</form>`;
       body.querySelector("input").focus(); return; }
@@ -1664,7 +1667,8 @@ const PAY = {
   function result(){ const O=OFF[A.offer], m=MS[A.method], one=A.offer==="one";
     const log={offer:A.offer,method:A.method,commit:A.commit,invest:A.invest,name:A.name,email:A.email,phone:A.phone,ig:A.ig,consent:"yes",at:new Date().toISOString()};
     log.result=A.invest==="no"?"not ready":(A.invest==="talk"||A.commit==="maybe")?"call first":"pay now";
-    if(PAY.hook&&!A.sent){ A.sent=1; fetch(PAY.hook,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain"},body:JSON.stringify(log)}).catch(()=>{}); }
+    if(PAY.hook&&!A.sent){ A.sent=1; const post=d=>fetch(PAY.hook,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain"},body:JSON.stringify(d)});
+      post(log).then(()=>{ if(A.help) return post({type:"waitlist_note",name:A.name,email:A.email,phone:A.phone,note:A.help,at:log.at}); }).catch(()=>{}); }
     let h;
     if(A.invest==="no"){ track("ApplyNotReady",log);
       h=`<span class="tier">Thank you, ${esc(A.name.split(/\s+/)[0])}</span><h3>Coaching might be the next step, not this one</h3><p>Start where it feels right. Come to the free workshop with Dani, or join the course waitlist for the founding price and first access.</p>
@@ -1694,7 +1698,7 @@ const PAY = {
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) return err("Add an email address we can reach you on.",v("email"));
     if(ph.replace(/\D/g,"").length<8) return err("Add your WhatsApp number, with your country code.",v("phone"));
     if(!v("consent").checked) return err("Tick the box so we can reach out to you.",v("consent"));
-    Object.assign(A,{name:n,email:em,phone:ph,ig:g,consent:1,done:1}); render(); });
+    Object.assign(A,{name:n,email:em,phone:ph,ig:g,help:v("help").value.trim(),consent:1,done:1}); render(); });
   document.getElementById("ap-x").addEventListener("click",()=>dlg.close());
   dlg.addEventListener("click",e=>{ if(e.target===dlg) dlg.close(); });
   function open(offer){ A={}; if(offer) A.offer=offer; build(); render(); dlg.showModal(); track("ApplyStart",{offer:offer||"any"}); }
@@ -1711,7 +1715,9 @@ document.addEventListener("change",e=>{ const c=e.target; if(c.name!=="consent"|
   const MS={headtoe:"Head to Toe",beyond:"Beyond the Mirror",gogetter:"Go Getter",boundary:"Boundary Boss",comeback:"Comeback"};
   const esc=t=>String(t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
   const track=(n,d)=>{ try{ window.fbq&&fbq("trackCustom",n,d); window.gtag&&gtag("event",n,d); }catch(e){} };
-  const send=d=>{ if(!PAY.hook){ console.warn("Waitlist not saved: paste the Apps Script URL into PAY.hook"); return; } fetch(PAY.hook,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain"},body:JSON.stringify(d)}).catch(()=>{}); };
+  const post=d=>fetch(PAY.hook,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain"},body:JSON.stringify(d)});
+  // the help answer goes second, so it lands on the row the first one created
+  const send=(d,then)=>{ if(!PAY.hook){ console.warn("Waitlist not saved: paste the Apps Script URL into PAY.hook"); return; } post(d).then(()=>then&&post(then)).catch(()=>{}); };
   let W={};
   function form(){ const m=MS[W.method];
     body.innerHTML=`<form class="ap-in" style="padding:0" novalidate><h3 id="wl-h">The ${esc(m)} course</h3><p class="ap-sub">Coming soon. Join the waitlist and you get the founding price and first access.</p>
@@ -1719,6 +1725,7 @@ document.addEventListener("change",e=>{ const c=e.target; if(c.name!=="consent"|
       <label class="ap-f">Email<input name="email" type="email" autocomplete="email" autocapitalize="none" required></label>
       <label class="ap-f">WhatsApp number<input name="phone" type="tel" autocomplete="tel" placeholder="+44 7700 900000" required></label>
       <label class="ap-f"><span>Instagram handle <span class="ap-opt">(optional)</span></span><input name="ig" autocomplete="off" autocapitalize="none" placeholder="@yourname"></label>
+      <label class="ap-f"><span>What's the one thing you want help with? <span class="ap-opt">(optional)</span></span><textarea name="help" maxlength="500" rows="3" placeholder="Dani reads every answer"></textarea></label>
       <label class="ap-tick"><input name="consent" type="checkbox"><span>I'm happy for The Confidence Rebirth to reach out to me via the marketing channels given above. <a href="privacy.html" target="_blank" rel="noopener">Privacy policy</a></span></label>
       <p class="ap-err" id="wl-err"></p><button class="btn dark" type="submit" disabled>Join the waitlist</button></form>`;
     body.querySelector("input").focus(); }
@@ -1737,8 +1744,9 @@ document.addEventListener("change",e=>{ const c=e.target; if(c.name!=="consent"|
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) return err("Add an email address we can reach you on.",v("email"));
     if(ph.replace(/\D/g,"").length<8) return err("Add your WhatsApp number, with your country code.",v("phone"));
     if(!v("consent").checked) return err("Tick the box so we can reach out to you.",v("consent"));
+    const help=v("help").value.trim(), at=new Date().toISOString();
     Object.assign(W,{name:n,email:em,phone:ph,ig:g});
-    send({type:"waitlist",method:W.method,name:n,email:em,phone:ph,ig:g,consent:"yes",at:new Date().toISOString()});
+    send({type:"waitlist",method:W.method,name:n,email:em,phone:ph,ig:g,consent:"yes",at},help?{type:"waitlist_note",method:W.method,name:n,email:em,phone:ph,note:help,at}:null);
     track("WaitlistJoin",{method:W.method}); done(); });
   body.addEventListener("click",e=>{ const t=e.target.closest("[data-wl-t]"), a=e.target.closest("[data-wl-apply]");
     if(t) track(t.dataset.wlT,{method:W.method});
