@@ -391,14 +391,14 @@ h3{font-family:var(--head);font-weight:600;text-transform:none;letter-spacing:0}
     <section class="invite" aria-labelledby="inv-title">
       <span class="note">this isn't the end of it</span>
       <h2 id="inv-title"></h2>
-      <p class="inv-lede">Join Dani's free community. Inside, you get:</p>
+      <p class="inv-lede">Join Dani's free community and you get:</p>
       <ul class="inv-list">
-        <li id="inv-plan"></li>
         <li id="inv-workshop"></li>
-        <li>A reminder before it starts, so you don't miss it</li>
+        <li id="inv-type"></li>
+        <li>5 days of warm ups from Dani before it starts</li>
       </ul>
       <a class="btn inv-btn" id="join" href="./#free">
-        <span class="tk-txt">Join free and get my plan</span>
+        <span class="tk-txt">Save my free seat</span>
         <span class="tk-stub" id="join-stub"><span class="tk-live"><span class="live"></span>Live</span><b id="stub-day"></b><span id="stub-time"></span></span>
       </a>
       <small>Free to join. No card needed.</small>
@@ -751,9 +751,9 @@ function reveal(r, focus, struggles){
   else act("Join the waitlist", WAITLIST(T.method), "QuizWaitlistClick");
 
   // the invite
-  $("inv-title").textContent = "The rest of your plan is inside";
-  $("inv-plan").innerHTML = "Your full <b></b> plan from Dani, step by step";
-  $("inv-plan").querySelector("b").textContent = T.name;
+  $("inv-title").textContent = "Your next step is live with Dani";
+  $("inv-type").innerHTML = "Dani speaks to the <b></b> Confidence Type live on the call";
+  $("inv-type").querySelector("b").textContent = T.name;
   const when = new Date(NEXT_WORKSHOP), upcoming = !isNaN(when) && when > new Date();
   const day = upcoming ? when.toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short", timeZone: "UTC" }) : "";
   const time = upcoming ? when.toLocaleTimeString("en-GB", { hour: "numeric", minute: "2-digit", hour12: true, timeZone: "UTC" }).replace(":00","").replace(" ","") + " GMT" : "";
