@@ -274,6 +274,7 @@ p{margin:0}
 .wl-ask textarea:focus{border-color:var(--ink);outline:none}
 .wl-ask .btn{justify-self:start;width:auto}
 .wl-next{margin-top:6px;font-size:15px;color:var(--ink-2)}
+.btn:disabled{opacity:.4;cursor:not-allowed;transform:none}
 .ap-start{display:inline-block;background:var(--white);border:1.5px solid var(--ink);border-radius:999px;padding:6px 14px;font-size:14px;font-weight:600}
 .step{animation:stepIn .35s ease-out}
 @keyframes stepIn{from{opacity:.2;transform:translateY(6px)}}
@@ -1658,7 +1659,7 @@ const PAY = {
       <label class="ap-f">WhatsApp number<input name="phone" type="tel" autocomplete="tel" placeholder="+44 7700 900000" required value="${esc(A.phone||"")}"></label>
       <label class="ap-f"><span>Instagram handle <span class="ap-opt">(optional)</span></span><input name="ig" autocomplete="off" autocapitalize="none" placeholder="@yourname" value="${esc(A.ig||"")}"></label>
       <label class="ap-tick"><input name="consent" type="checkbox"${A.consent?" checked":""}><span>I'm happy for The Confidence Rebirth to reach out to me via the marketing channels given above. <a href="privacy.html" target="_blank" rel="noopener">Privacy policy</a></span></label>
-      <p class="ap-err" id="ap-err"></p><button class="btn dark" type="submit">See my result</button>${back}</form>`;
+      <p class="ap-err" id="ap-err"></p><button class="btn dark" type="submit"${A.consent?"":" disabled"}>See my result</button>${back}</form>`;
       body.querySelector("input").focus(); return; }
     const q=typeof s.q==="function"?s.q():s.q;
     body.innerHTML=`<p class="q-label" id="ap-h">${esc(q)}</p>${s.sub?`<p class="ap-sub">${esc(s.sub)}</p>`:""}`+s.o.map(([v,t,sm])=>`<button class="q-opt${A[s.k]===v?" picked":""}" type="button" data-k="${s.k}" data-v="${v}">${esc(t)}${sm?`<small>${esc(sm)}</small>`:""}</button>`).join("")+back;
@@ -1705,6 +1706,9 @@ const PAY = {
   if(/^#apply/.test(location.hash)){ const k=location.hash.slice(7); open(k==="masterclass"||k==="one"?k:""); }
 })();
 
+// submit buttons stay disabled until the consent box is ticked
+document.addEventListener("change",e=>{ const c=e.target; if(c.name!=="consent"||!c.form) return; const b=c.form.querySelector('button[type="submit"]'); if(b) b.disabled=!c.checked; });
+
 // course waitlist: short form logs to the Sheet (same PAY.hook), then sends her into the free community
 (function(){
   const dlg=document.getElementById("wl"), body=document.getElementById("wl-body"); if(!dlg||!dlg.showModal) return;
@@ -1720,11 +1724,11 @@ const PAY = {
       <label class="ap-f">WhatsApp number<input name="phone" type="tel" autocomplete="tel" placeholder="+44 7700 900000" required></label>
       <label class="ap-f"><span>Instagram handle <span class="ap-opt">(optional)</span></span><input name="ig" autocomplete="off" autocapitalize="none" placeholder="@yourname"></label>
       <label class="ap-tick"><input name="consent" type="checkbox"><span>I'm happy for The Confidence Rebirth to reach out to me via the marketing channels given above. <a href="privacy.html" target="_blank" rel="noopener">Privacy policy</a></span></label>
-      <p class="ap-err" id="wl-err"></p><button class="btn dark" type="submit">Join the waitlist</button></form>`;
+      <p class="ap-err" id="wl-err"></p><button class="btn dark" type="submit" disabled>Join the waitlist</button></form>`;
     body.querySelector("input").focus(); }
   function done(){
     body.innerHTML=`<div class="q-result ap-res wl-done"><h3 id="wl-h" tabindex="-1">You're on the list, ${esc(W.name.split(/\s+/)[0])}</h3>
-      <p>We'll message you on WhatsApp the moment the <b>${esc(MS[W.method])}</b> course opens. Your <span class="lock">founding price is locked in</span>.</p>
+      <p>We'll let you know the moment the <b>${esc(MS[W.method])}</b> course opens. Your <span class="lock">founding price is locked in</span>.</p>
       <p class="wl-next">Don't wait for the course to start. Dani's free live workshop is on 5 December, 3pm GMT.</p>
       <a class="btn" href="${LINKS.free}" target="_blank" rel="noopener" data-wl-t="WaitlistJoinFree">Save my free seat</a>
       <form class="wl-ask"><label class="ap-f" for="wl-note">What's the one thing you want this course to help you with?</label><textarea id="wl-note" name="note" maxlength="500" placeholder="Dani reads every answer"></textarea><button class="btn line" type="submit">Send to Dani</button></form>
