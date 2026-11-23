@@ -269,10 +269,6 @@ p{margin:0}
 .wl-tag{font-size:14px;font-weight:600;color:var(--ink-2)}
 .wl h3{font-family:var(--serif,inherit);font-weight:400;font-size:clamp(30px,6vw,40px);line-height:1.05;margin:2px 0 4px}
 .wl .lock{background:var(--butter,var(--yellow));padding:1px 4px;border-radius:3px;font-weight:600;box-decoration-break:clone;-webkit-box-decoration-break:clone}
-.wl-ask{display:grid;gap:8px;margin-top:6px;padding-top:14px;border-top:1.5px dashed var(--stone-2)}
-.wl-ask textarea{font:inherit;font-size:16px;min-height:76px;padding:10px 14px;border-radius:12px;border:1.5px solid var(--stone-2);background:var(--white);color:var(--ink);resize:vertical}
-.wl-ask textarea:focus{border-color:var(--ink);outline:none}
-.wl-ask .btn{justify-self:start;width:auto}
 .wl-next{margin-top:6px;font-size:15px;color:var(--ink-2)}
 .btn:disabled{opacity:.4;cursor:not-allowed;transform:none}
 .ap-start{display:inline-block;background:var(--white);border:1.5px solid var(--ink);border-radius:999px;padding:6px 14px;font-size:14px;font-weight:600}
@@ -1731,14 +1727,10 @@ document.addEventListener("change",e=>{ const c=e.target; if(c.name!=="consent"|
       <p>We'll let you know the moment the <b>${esc(MS[W.method])}</b> course opens. Your <span class="lock">founding price is locked in</span>.</p>
       <p class="wl-next">Don't wait for the course to start. Dani's free live workshop is on 5 December, 3pm GMT.</p>
       <a class="btn" href="${LINKS.free}" target="_blank" rel="noopener" data-wl-t="WaitlistJoinFree">Save my free seat</a>
-      <form class="wl-ask"><label class="ap-f" for="wl-note">What's the one thing you want this course to help you with?</label><textarea id="wl-note" name="note" maxlength="500" placeholder="Dani reads every answer"></textarea><button class="btn line" type="submit">Send to Dani</button></form>
       <div class="alt"><a href="#apply-masterclass" data-wl-apply>Want Dani live sooner? Coaching starts 5 January</a></div></div>`;
     body.querySelector("h3").focus(); }
   function open(k){ W={method:MS[k]?k:"headtoe"}; form(); dlg.showModal(); track("WaitlistStart",{method:W.method}); }
   body.addEventListener("submit",e=>{ e.preventDefault(); const f=e.target;
-    if(f.classList.contains("wl-ask")){ const n=f.elements.note.value.trim(); if(!n) return f.elements.note.focus();
-      send({type:"waitlist_note",method:W.method,name:W.name,email:W.email,phone:W.phone,note:n,at:new Date().toISOString()});
-      f.outerHTML=`<p class="wl-next" role="status">Sent. Thank you, Dani will see it.</p>`; return; }
     const v=k=>f.elements.namedItem(k), err=(m,el)=>{ document.getElementById("wl-err").textContent=m; el.focus(); };
     const n=v("name").value.trim(), em=v("email").value.trim(), ph=v("phone").value.trim(), g=v("ig").value.trim().replace(/^@+/,"");
     if(n.split(/\s+/).length<2) return err("Add your full name.",v("name"));
