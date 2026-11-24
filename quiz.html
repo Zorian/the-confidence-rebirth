@@ -294,6 +294,8 @@ h3{font-family:var(--head);font-weight:600;text-transform:none;letter-spacing:0}
 .m-acts{display:flex;flex-wrap:wrap;gap:6px 20px}
 .m-acts a{font:600 15px var(--body);color:var(--ink);text-decoration:underline;text-decoration-color:var(--pen);text-underline-offset:5px;text-decoration-thickness:1.5px;padding:6px 0}
 .m-acts a:hover{color:var(--pen)}
+.m-acts a.btn{width:100%;font:600 12px var(--head);letter-spacing:.18em;text-decoration:none;padding:0 22px;color:var(--ink);background:var(--butter)}
+.m-acts a.btn:hover{background:#EED68A;color:var(--ink)}
 @media (max-width:420px){.inv-btn .tk-txt{font-size:11px;letter-spacing:.12em;padding:0 10px}.tk-stub{padding:0 12px}}
 .method h2 small{color:var(--ink-2,#4A433E)}
 .m-promise{color:#4A433E}
@@ -383,6 +385,15 @@ h3{font-family:var(--head);font-weight:600;text-transform:none;letter-spacing:0}
       </div>
     </div>
 
+    <section class="method" aria-labelledby="m-name">
+      <span class="note">your next step</span>
+      <h2 id="m-name"></h2>
+      <p class="m-why" id="m-why"></p>
+      <p class="m-promise" id="m-promise"></p>
+      <p class="m-status" id="m-status"></p>
+      <div class="m-acts" id="m-acts"></div>
+    </section>
+
     <p class="r-desc" id="r-desc"></p>
 
     <div class="shows">
@@ -402,7 +413,7 @@ h3{font-family:var(--head);font-weight:600;text-transform:none;letter-spacing:0}
 
     <!-- the one ask: join the free Circle, where the full plan and the workshop live -->
     <section class="invite" aria-labelledby="inv-title">
-      <span class="note">this isn't the end of it</span>
+      <span class="note">not ready yet?</span>
       <h2 id="inv-title"></h2>
       <p class="inv-lede">Join Dani's free community and you get:</p>
       <ul class="inv-list">
@@ -422,14 +433,6 @@ h3{font-family:var(--head);font-weight:600;text-transform:none;letter-spacing:0}
       <ul class="mix" id="mix"></ul>
     </div>
 
-    <section class="method" aria-labelledby="m-name">
-      <span class="note">when you're ready</span>
-      <h2 id="m-name"></h2>
-      <p class="m-why" id="m-why"></p>
-      <p class="m-promise" id="m-promise"></p>
-      <p class="m-status" id="m-status"></p>
-      <div class="m-acts" id="m-acts"></div>
-    </section>
 
     <div class="cta">
       <div class="again"><button class="link" id="retake" type="button">Retake the quiz</button></div>
@@ -757,14 +760,14 @@ function reveal(r, focus, struggles){
   $("m-promise").textContent = M.promise;
   $("m-status").textContent = M.open ? "Open now" : "Opening soon. Get on the list and you'll hear first.";
   const acts = $("m-acts"); acts.innerHTML = "";
-  const act = (label, href, ev) => { const a = document.createElement("a"); a.textContent = label; a.href = href;
+  const act = (label, href, ev) => { const a = document.createElement("a"); a.className = "btn"; a.textContent = label; a.href = href;
     if(/^https/.test(href)){ a.target = "_blank"; a.rel = "noopener"; }
     a.addEventListener("click", () => track(ev, { confidence_type: T.name, method: T.method })); acts.appendChild(a); };
-  if(M.open) act("See how the " + M.title + " Method works", "./?method=" + T.method + "#offers", "QuizMethodClick");
+  if(M.open) act("See the " + M.title + " Method", "./?method=" + T.method + "#offers", "QuizMethodClick");
   else act("Join the waitlist", WAITLIST(T.method), "QuizWaitlistClick");
 
   // the invite
-  $("inv-title").textContent = "Your next step is live with Dani";
+  $("inv-title").textContent = "Start free, live with Dani";
   $("inv-type").innerHTML = "Dani speaks to the <b></b> Confidence Type live on the call";
   $("inv-type").querySelector("b").textContent = T.name;
   const when = new Date(NEXT_WORKSHOP), upcoming = !isNaN(when) && when > new Date();
