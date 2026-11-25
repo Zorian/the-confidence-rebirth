@@ -274,6 +274,8 @@ p{margin:0}
 .wl-next{margin-top:6px;font-size:15px;color:var(--ink-2)}
 .wl-done .btn+.btn{margin-top:10px}
 .btn:disabled{opacity:.4;cursor:not-allowed;transform:none}
+.ap-in .cap{border:1.5px dashed var(--pen,#B4382F);border-radius:12px;padding:12px 14px;font-size:15px;line-height:1.5;color:var(--ink);margin:4px 0 14px}
+.ap-in .cap b{font-weight:700}
 .ap-start{display:inline-block;background:var(--white);border:1.5px solid var(--ink);border-radius:999px;padding:6px 14px;font-size:14px;font-weight:600}
 .step{animation:stepIn .35s ease-out}
 @keyframes stepIn{from{opacity:.2;transform:translateY(6px)}}
@@ -1683,8 +1685,9 @@ const PAY = {
     } else { track("ApplyQualified",log);
       const main=one?[pay(PAY.one.deposit,"one_deposit"),"Hold my spot with a deposit"]:A.invest==="plan"?[pay(PAY.masterclass.plan,"masterclass_plan"),"Secure my spot with a payment plan"]:[pay(PAY.masterclass.full,"masterclass_full"),"Secure my spot"];
       const alt=one?[pay(PAY.one.full,"one_full"),`Pay in full, ${O.price}`]:A.invest==="plan"?[pay(PAY.masterclass.full,"masterclass_full"),`Pay in full instead, ${O.price}`]:[pay(PAY.masterclass.plan,"masterclass_plan"),"Use a payment plan instead"];
-      h=`<span class="tier">You're in, ${esc(A.name.split(/\s+/)[0])}</span><h3>Your spot is open</h3><span class="price">${esc(O.price)}<small>${one?"10 women only. A deposit holds your spot, the rest can go on a payment plan.":"20 women per group. Payment plans available."}</small></span>
+      h=`<span class="tier">You're in, ${esc(A.name.split(/\s+/)[0])}</span><h3>Your spot is open</h3><span class="price">${esc(O.price)}<small>${one?"A deposit holds your spot, the rest can go on a payment plan.":"Payment plans available."}</small></span>
       <p>${esc(O.name)}, ${esc(m)}. Coaching starts 5 January 2027. Secure your spot now and you'll get your welcome and first steps straight away.</p>
+      <div class="cap"><b>Only ${one?"10":"20"} spots.</b> When ${one?"they're gone":"this group is full"}, the next one doesn't open until next season.</div>
       <a class="btn" href="${main[0]}" target="_blank" rel="noopener" data-t="InitiateCheckout">${main[1]}</a>
       <div class="alt"><a href="${alt[0]}" target="_blank" rel="noopener" data-t="InitiateCheckout">${alt[1]}</a><a href="${call()}"${ext(call())} data-t="BookCall">I have a few questions first</a></div>`;
     }
