@@ -313,6 +313,7 @@ h3{font-family:var(--head);font-weight:600;text-transform:none;letter-spacing:0}
 .g-err{color:var(--pen);font:600 14px/1.4 var(--body);min-height:1.4em;margin:0}
 .g-form .btn{width:100%;min-height:58px}
 .g-skip{justify-self:center;font-size:14px}
+#g-h:focus{outline:none}
 .m-promise{color:#4A433E}
 .m-acts .btn.line{color:var(--ink);border-color:var(--ink);background:transparent}
 .m-acts .btn.line:hover{background:#FFFDF8}
@@ -739,7 +740,7 @@ function finish(){
   const struggles = answers[QUESTIONS.findIndex(Q => Q.multi)] || [];
   track("QuizComplete", { confidence_type: TYPES[r.type].name, method: TYPES[r.type].method, focus, struggles: struggles.join(",") });
   QID = Math.random().toString(36).slice(2, 10);
-  logQuiz({ type:"quiz", id:QID, ctype:TYPES[r.type].name, method:TYPES[r.type].method, focus, struggles:struggles.join(", "), source:SRC, at:new Date().toISOString() });
+  logQuiz({ type:"quiz", id:QID, ctype:TYPES[r.type].name, method:(METHODS[TYPES[r.type].method] || {}).title || TYPES[r.type].method, focus, struggles:struggles.join(", "), source:SRC, at:new Date().toISOString() });
   const wait = matchMedia("(prefers-reduced-motion: reduce)").matches ? 300 : 1700;
   // details page once per visit; a retake goes straight to the result
   setTimeout(() => gave ? reveal(r, focus, struggles) : gate(r, focus, struggles), wait);
