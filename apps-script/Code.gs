@@ -22,7 +22,7 @@ function doPost(e) {
   lock.waitLock(20000);
   try {
     const d = JSON.parse(e.postData.contents || "{}");
-    save(d);
+    if (d.type === "quiz" || d.type === "quiz_join") saveQuiz(d); else save(d);
     return out({ ok: true });
   } catch (err) {
     return out({ ok: false, error: String(err) });
@@ -55,7 +55,7 @@ function save(d) {
   if (r < 0) row[col("First seen")] = now;
   row[col("Last update")] = now;
   set("Name", d.name);
-  if (d.phone) row[col("WhatsApp")] = "'" + d.phone; // keep the + and leading zeros
+  if (d.phone) row[col("WhatsApp")] = "'" + intl(d.phone); // always +country code
   set("Email", d.email);
   if (d.ig) row[col("Instagram")] = "@" + String(d.ig).replace(/^@+/, "");
   set("Consent", d.consent);
@@ -83,6 +83,32 @@ function save(d) {
     sh.getRange(n, 1, 1, COLS.length).setValues([row]);
     sh.getRange(n, col("Paid") + 1, 1, 2).insertCheckboxes();
   } else sh.getRange(r + 1, 1, 1, COLS.length).setValues([row]);
+}
+
+// "07…" is read as UK, "00…" becomes "+", anything else gets a "+"
+function intl(v) {
+  let s = String(v || "").trim(), d = s.replace(/\D/g, "");
+  const plus = /^\+/.test(s) || /^00/.test(d);
+  if (/^00/.test(d)) d = d.slice(2); else if (!plus && /^0/.test(d)) d = "44" + d.slice(1);
+  return d ? "+" + d : "";
+}
+
+// Quiz tab: one anonymous row per finished quiz; "Joined community" ticks when she clicks the join button
+const QUIZ_COLS = ["Date", "Confidence Type", "Method", "Focus", "Struggles", "Source", "Joined community", "ID"];
+function saveQuiz(d) {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  let sh = ss.getSheetByName("Quiz");
+  if (!sh) sh = ss.insertSheet("Quiz");
+  if (sh.getLastRow() === 0) {
+    sh.appendRow(QUIZ_COLS); sh.setFrozenRows(1);
+    sh.getRange(1, 1, 1, QUIZ_COLS.length).setFontWeight("bold");
+  }
+  if (d.type === "quiz_join") {
+    const ids = sh.getRange(1, QUIZ_COLS.length, sh.getLastRow(), 1).getValues();
+    for (let i = ids.length - 1; i > 0; i--) if (ids[i][0] === d.id) { sh.getRange(i + 1, QUIZ_COLS.indexOf("Joined community") + 1).setValue("Yes"); return; }
+    return;
+  }
+  sh.appendRow([new Date(), d.ctype || "", d.method || "", d.focus || "", d.struggles || "", d.source || "", "", d.id || ""]);
 }
 
 function sheet() {

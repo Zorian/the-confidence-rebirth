@@ -1619,6 +1619,9 @@ const NEXT_WORKSHOP = "2026-12-05T15:00:00Z";
 
 // application: a few questions, then hot buyers pay now and everyone else books a call
 // Paste the real links before launch. Empty links fall back to an Instagram DM so no sale is lost.
+// WhatsApp numbers always saved as +country code: "07…" is read as UK, "00…" becomes "+"
+const intl=v=>{ let d=String(v||"").trim(); const plus=/^\+/.test(d)||/^00/.test(d.replace(/\D/g,"")); d=d.replace(/\D/g,"");
+  if(/^00/.test(d)) d=d.slice(2); else if(!plus&&/^0/.test(d)) d="44"+d.slice(1); return d?"+"+d:""; };
 const PAY = {
   masterclass: { full:"", plan:"" },          // Stripe payment links
   one: { deposit:"", full:"" },               // Stripe payment links
@@ -1693,7 +1696,7 @@ const PAY = {
     else if(c) dlg.close();
   });
   body.addEventListener("submit",e=>{ e.preventDefault(); const f=e.target, v=k=>f.elements.namedItem(k), err=(m,el)=>{ document.getElementById("ap-err").textContent=m; el.focus(); };
-    const n=v("name").value.trim(), em=v("email").value.trim(), ph=v("phone").value.trim(), g=v("ig").value.trim().replace(/^@+/,"");
+    const n=v("name").value.trim(), em=v("email").value.trim(), ph=intl(v("phone").value), g=v("ig").value.trim().replace(/^@+/,"");
     if(n.split(/\s+/).length<2) return err("Add your full name.",v("name"));
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) return err("Add an email address we can reach you on.",v("email"));
     if(ph.replace(/\D/g,"").length<8) return err("Add your WhatsApp number, with your country code.",v("phone"));
@@ -1739,7 +1742,7 @@ document.addEventListener("change",e=>{ const c=e.target; if(c.name!=="consent"|
   function open(k){ W={method:MS[k]?k:"headtoe"}; form(); dlg.showModal(); track("WaitlistStart",{method:W.method}); }
   body.addEventListener("submit",e=>{ e.preventDefault(); const f=e.target;
     const v=k=>f.elements.namedItem(k), err=(m,el)=>{ document.getElementById("wl-err").textContent=m; el.focus(); };
-    const n=v("name").value.trim(), em=v("email").value.trim(), ph=v("phone").value.trim(), g=v("ig").value.trim().replace(/^@+/,"");
+    const n=v("name").value.trim(), em=v("email").value.trim(), ph=intl(v("phone").value), g=v("ig").value.trim().replace(/^@+/,"");
     if(n.split(/\s+/).length<2) return err("Add your full name.",v("name"));
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) return err("Add an email address we can reach you on.",v("email"));
     if(ph.replace(/\D/g,"").length<8) return err("Add your WhatsApp number, with your country code.",v("phone"));

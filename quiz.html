@@ -602,6 +602,11 @@ const $ = id => document.getElementById(id);
 let idx = 0, answers = [], order = [], busy = false;
 
 function shuffle(a){ a = a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+// Anonymous quiz log to the "Quiz" tab of the leads Sheet. Runs in the background; nothing changes for her.
+const HOOK = "https://script.google.com/macros/s/AKfycbxDEqdLdq58AbcR_T4xWSi87eAM8qYzK57TpJ39rxHWa_yIdoE49zC7KVcAFndfSUwefA/exec";
+const QID = Math.random().toString(36).slice(2, 10);
+const SRC = (() => { const u = new URLSearchParams(location.search); return u.get("utm_source") || u.get("ref") || (document.referrer ? new URL(document.referrer).hostname : "direct"); })();
+function logQuiz(d){ try{ fetch(HOOK, { method:"POST", mode:"no-cors", keepalive:true, headers:{"Content-Type":"text/plain"}, body:JSON.stringify(d) }).catch(()=>{}); }catch(e){} }
 function track(name, data){ try{ window.fbq && fbq("trackCustom", name, data); }catch(e){} try{ window.gtag && gtag("event", name, data); }catch(e){} }
 function show(id){ ["s-intro","s-q","s-think","s-result"].forEach(s => $(s).hidden = s !== id); }
 function toast(msg){ const t=$("toast"); t.textContent=msg; t.classList.add("show"); clearTimeout(toast.t); toast.t=setTimeout(()=>t.classList.remove("show"),2600); }
@@ -703,6 +708,7 @@ function finish(){
   const focus = answers[QUESTIONS.findIndex(Q => Q.focus)];
   const struggles = answers[QUESTIONS.findIndex(Q => Q.multi)] || [];
   track("QuizComplete", { confidence_type: TYPES[r.type].name, method: TYPES[r.type].method, focus, struggles: struggles.join(",") });
+  logQuiz({ type:"quiz", id:QID, ctype:TYPES[r.type].name, method:TYPES[r.type].method, focus, struggles:struggles.join(", "), source:SRC, at:new Date().toISOString() });
   const wait = matchMedia("(prefers-reduced-motion: reduce)").matches ? 300 : 1700;
   setTimeout(() => reveal(r, focus, struggles), wait);
 }
@@ -788,6 +794,7 @@ function reveal(r, focus, struggles){
 $("join").addEventListener("click", () => {
   const t = $("join").dataset.type;
   track("QuizJoinClick", { confidence_type: TYPES[t] ? TYPES[t].name : "" });
+  logQuiz({ type:"quiz_join", id:QID });
 });
 $("start").addEventListener("click", () => { idx = 0; answers = []; order = []; show("s-q"); render(1); track("QuizStart", {}); });
 $("back").addEventListener("click", () => { if(busy || idx === 0) return; idx--; render(-1); });
