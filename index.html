@@ -978,6 +978,7 @@ footer h4{font-family:var(--sans);font-weight:700;font-size:11px;letter-spacing:
 }catch(e){} })();
 </script>
 <script src="track.js"></script>
+<script src="stream.js"></script>
 </head>
 <body>
 <div class="nb" id="nb" role="button" tabindex="0" aria-label="Enter the site">
@@ -1511,7 +1512,8 @@ const NEXT_WORKSHOP = "2026-12-05T15:00:00Z";
   const track=(n,d)=>{ try{ window.fbq&&fbq("trackCustom",n,d); window.gtag&&gtag("event",n,d); }catch(e){} };
   if(reduce){ loop.removeAttribute("autoplay"); loop.pause(); }
   let marks={};
-  const open=()=>{ if(!vid.src){ vid.src=SRC; } end.hidden=true; pop.showModal(); loop.pause(); vid.play().catch(()=>{}); track("VSLPlay",{}); };
+  let ready=null;
+  const open=()=>{ if(!ready){ ready=rbStream(vid,BUNNY.vsl,SRC); } end.hidden=true; pop.showModal(); loop.pause(); vid.play().catch(()=>{}); ready.then(()=>vid.play().catch(()=>{})); track("VSLPlay",{}); };
   const close=()=>{ vid.pause(); if(pop.open) pop.close(); };
   cover.addEventListener("click",open);
   pop.querySelector(".vp-x").addEventListener("click",close);

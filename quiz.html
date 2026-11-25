@@ -321,6 +321,7 @@ h3{font-family:var(--head);font-weight:600;text-transform:none;letter-spacing:0}
 .qtext{font:400 clamp(32px,6.4vw,42px)/1.08 var(--cond);letter-spacing:-.005em;max-width:22ch}
 </style>
 <script src="track.js"></script>
+<script src="stream.js"></script>
 </head>
 <body>
 
@@ -807,7 +808,7 @@ function reveal(r, focus, struggles){
   const v = $("video"); const old = v.querySelector("video"); if(old) old.remove(); v.classList.remove("has-vid");
   if(VIDEOS[r.type]){
     const vid = document.createElement("video");
-    vid.src = VIDEOS[r.type]; vid.poster = VIDEOS[r.type].replace(/\.mp4$/, ".jpg");
+    vid.poster = VIDEOS[r.type].replace(/\.mp4$/, ".jpg"); rbStream(vid, BUNNY[r.type], VIDEOS[r.type]);
     vid.controls = true; vid.playsInline = true; vid.preload = "none";
     vid.addEventListener("play", () => { try{ window.fbq&&fbq("trackCustom","RevealPlay",{type:T.name}); window.gtag&&gtag("event","RevealPlay",{type:T.name}); }catch(e){} }, {once:true});
     v.appendChild(vid); v.classList.add("has-vid");
