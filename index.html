@@ -1261,7 +1261,7 @@ footer h4{font-family:var(--sans);font-weight:700;font-size:11px;letter-spacing:
       </article>
       <article class="offer" id="course">
         <span class="tier">5 courses, one per method</span><h3>The Downloadable Course</h3>
-        <div class="price">Coming soon<small>Waitlist gets the founding price and first access</small></div>
+        <div class="price">$888<small>Coming soon. Waitlist founding price: $555</small></div>
         <div class="mwrap"><p class="mpick">Pick your method</p><div class="mrows" role="group" aria-label="Choose your method"><button type="button" class="mrow" data-m="headtoe" aria-pressed="false"><span>Head to Toe</span><i data-st="headtoe"></i></button><button type="button" class="mrow" data-m="beyond" aria-pressed="false"><span>Beyond the Mirror</span><i data-st="beyond"></i></button><button type="button" class="mrow" data-m="gogetter" aria-pressed="false"><span>Go Getter</span><i data-st="gogetter"></i></button><button type="button" class="mrow" data-m="boundary" aria-pressed="false"><span>Boundary Boss</span><i data-st="boundary"></i></button><button type="button" class="mrow" data-m="comeback" aria-pressed="false"><span>Comeback</span><i data-st="comeback"></i></button></div></div>
         <ul><li>Pre-recorded by Dani, yours to keep</li><li>Go at your own pace</li></ul>
         <div class="act"><a class="btn" id="course-cta" href="#"></a><small id="course-note"></small></div>
@@ -1528,7 +1528,7 @@ const NEXT_WORKSHOP = "2026-12-05T15:00:00Z";
             {q:"How much time can you give this each week?",a:["Less than an hour","An hour or two","A few hours","Whatever it takes"]},
             {q:"How ready are you to invest in yourself?",a:["Just exploring for now","Something small to start","A one off investment","I'm all in"]}];
   const R=[{id:"free",name:"The free monthly workshop",price:"$0",why:"Meet Dani live, feel the energy and decide your next step from there.",cta:"Join free"},
-           {id:"course",name:"The Downloadable Course",price:"Coming soon",why:"Your full method from Dani, pre-recorded, so you can go through it in your own time. Join the waitlist for the founding price and first access.",cta:"Join the waitlist"},
+           {id:"course",name:"The Downloadable Course",price:"$888, waitlist $555",why:"Your full method from Dani, pre-recorded, so you can go through it in your own time. Join the waitlist for the founding price and first access.",cta:"Join the waitlist"},
            null,
            {id:"masterclass",name:"The 20 Woman Masterclass",price:"By application",why:"Five weeks live with Dani, one pillar a week, with a small group of women who hold you to it.",cta:"Apply for the masterclass"},
            {id:"one",name:"1:1 with Dani",price:"By application",why:"Ten weeks with Dani, just you, two weeks on each pillar. The most personal support Dani offers.",cta:"Apply for 1:1"}];
@@ -1671,7 +1671,7 @@ const PAY = {
       post(log).then(()=>{ if(A.help) return post({type:"waitlist_note",name:A.name,email:A.email,phone:A.phone,note:A.help,at:log.at}); }).catch(()=>{}); }
     let h;
     if(A.invest==="no"){ track("ApplyNotReady",log);
-      h=`<span class="tier">Thank you, ${esc(A.name.split(/\s+/)[0])}</span><h3>Coaching might be the next step, not this one</h3><p>Start where it feels right. Come to the free workshop with Dani, or join the course waitlist for the founding price and first access.</p>
+      h=`<span class="tier">Thank you, ${esc(A.name.split(/\s+/)[0])}</span><h3>Coaching might be the next step, not this one</h3><p>Start where it feels right. Come to the free workshop with Dani, or join the course waitlist for the $555 founding price (normally $888) and first access.</p>
       <a class="btn" href="#free" data-close>Join the free workshop</a><div class="alt"><a href="#waitlist-${A.method}">Join the course waitlist</a></div>`;
     } else if(A.invest==="talk"||A.commit==="maybe"){ track("ApplyCallFirst",log);
       h=`<span class="tier">You're a fit, ${esc(A.name.split(/\s+/)[0])}</span><h3>Let's talk it through</h3><p>${esc(O.name)}, ${esc(m)}. Book a relaxed 15 minute call and get your questions answered before 5 January 2027.</p>
@@ -1720,7 +1720,7 @@ document.addEventListener("change",e=>{ const c=e.target; if(c.name!=="consent"|
   const send=(d,then)=>{ if(!PAY.hook){ console.warn("Waitlist not saved: paste the Apps Script URL into PAY.hook"); return; } post(d).then(()=>then&&post(then)).catch(()=>{}); };
   let W={};
   function form(){ const m=MS[W.method];
-    body.innerHTML=`<form class="ap-in" style="padding:0" novalidate><h3 id="wl-h">The ${esc(m)} course</h3><p class="ap-sub">Coming soon. Join the waitlist and you get the founding price and first access.</p>
+    body.innerHTML=`<form class="ap-in" style="padding:0" novalidate><h3 id="wl-h">The ${esc(m)} course</h3><p class="ap-sub">Coming soon. Normally $888. Join the waitlist and you get the founding price of $555, plus first access.</p>
       <label class="ap-f">Full name<input name="name" autocomplete="name" required></label>
       <label class="ap-f">Email<input name="email" type="email" autocomplete="email" autocapitalize="none" required></label>
       <label class="ap-f">WhatsApp number<input name="phone" type="tel" autocomplete="tel" placeholder="+44 7700 900000" required></label>
@@ -1731,7 +1731,7 @@ document.addEventListener("change",e=>{ const c=e.target; if(c.name!=="consent"|
     body.querySelector("input").focus(); }
   function done(){
     body.innerHTML=`<div class="q-result ap-res wl-done"><h3 id="wl-h" tabindex="-1">You're on the list, ${esc(W.name.split(/\s+/)[0])}</h3>
-      <p>We'll let you know the moment the <b>${esc(MS[W.method])}</b> course opens. Your <span class="lock">founding price is locked in</span>.</p>
+      <p>We'll let you know the moment the <b>${esc(MS[W.method])}</b> course opens. Your <span class="lock">founding price of $555 is locked in</span>.</p>
       <p class="wl-next">Don't wait for the course to start. Dani's free live workshop is on 5 December, 3pm GMT.</p>
       <a class="btn" href="${LINKS.free}" target="_blank" rel="noopener" data-wl-t="WaitlistJoinFree">Save my free seat</a>
       <div class="alt"><a href="#apply-masterclass" data-wl-apply>Want Dani live sooner? Coaching starts 5 January</a></div></div>`;
