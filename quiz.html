@@ -298,6 +298,21 @@ h3{font-family:var(--head);font-weight:600;text-transform:none;letter-spacing:0}
 .m-acts a.btn:hover{background:#EED68A;color:var(--ink)}
 @media (max-width:420px){.inv-btn .tk-txt{font-size:11px;letter-spacing:.12em;padding:0 10px}.tk-stub{padding:0 12px}}
 .method h2 small{color:var(--ink-2,#4A433E)}
+/* the details page: one notebook page between the questions and the reveal */
+.gate{gap:22px;padding-top:30px}
+.gate .note{font-size:24px;transform:rotate(-2deg);transform-origin:left;justify-self:start}
+.gate h1{font-size:clamp(44px,11vw,72px);max-width:12ch}
+.gate .lede{font:500 17px/1.5 var(--body);max-width:34ch;margin:0}
+.g-form{display:grid;gap:16px;max-width:480px}
+.g-f{display:grid;gap:6px;font:600 14px/1.3 var(--body)}
+.g-f input{font:400 16px var(--body);min-height:52px;padding:0 16px;border-radius:12px;border:1px solid rgba(43,38,35,.32);background:var(--card);color:var(--ink)}
+.g-f input:focus{border-color:var(--ink);outline:2px solid var(--butter);outline-offset:1px}
+.g-tick{display:grid;grid-template-columns:22px 1fr;gap:12px;align-items:start;font:400 14px/1.5 var(--body);color:var(--muted)}
+.g-tick input{width:20px;height:20px;margin:2px 0 0;accent-color:var(--ink)}
+.g-tick a{color:var(--ink)}
+.g-err{color:var(--pen);font:600 14px/1.4 var(--body);min-height:1.4em;margin:0}
+.g-form .btn{width:100%;min-height:58px}
+.g-skip{justify-self:center;font-size:14px}
 .m-promise{color:#4A433E}
 .m-acts .btn.line{color:var(--ink);border-color:var(--ink);background:transparent}
 .m-acts .btn.line:hover{background:#FFFDF8}
@@ -369,6 +384,21 @@ h3{font-family:var(--head);font-weight:600;text-transform:none;letter-spacing:0}
     <svg class="scribble" viewBox="0 0 220 40" aria-hidden="true"><path d="M8 26 C 50 10, 90 32, 130 18 S 190 12, 212 22"/></svg>
   </main>
 
+  <!-- details: optional, sits between the questions and the reveal -->
+  <main class="screen gate" id="s-gate" hidden>
+    <span class="note">your result is ready</span>
+    <h1 id="g-h" tabindex="-1">Where should we send it?</h1>
+    <p class="lede">You'll see it straight away. We'll also email you a copy with Dani's video for your type and your seat for her free live call.</p>
+    <form class="g-form" id="g-form" novalidate>
+      <label class="g-f">Full name<input name="name" autocomplete="name" required></label>
+      <label class="g-f">Email<input name="email" type="email" autocomplete="email" inputmode="email" required></label>
+      <label class="g-f">WhatsApp number<input name="phone" type="tel" autocomplete="tel" placeholder="+44 7700 900000" required></label>
+      <label class="g-tick"><input name="consent" type="checkbox"><span>I'm happy for The Confidence Rebirth to reach out to me via the marketing channels given above. <a href="privacy.html" target="_blank" rel="noopener">Privacy policy</a></span></label>
+      <p class="g-err" id="g-err" aria-live="polite"></p>
+      <button class="btn" type="submit">Show my result</button>
+      <button class="link g-skip" id="g-skip" type="button">Just show me my result</button>
+    </form>
+  </main>
   <!-- result -->
   <main class="screen result" id="s-result" hidden>
     <div class="r-head">
@@ -604,11 +634,11 @@ let idx = 0, answers = [], order = [], busy = false;
 function shuffle(a){ a = a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
 // Anonymous quiz log to the "Quiz" tab of the leads Sheet. Runs in the background; nothing changes for her.
 const HOOK = "https://script.google.com/macros/s/AKfycbxDEqdLdq58AbcR_T4xWSi87eAM8qYzK57TpJ39rxHWa_yIdoE49zC7KVcAFndfSUwefA/exec";
-const QID = Math.random().toString(36).slice(2, 10);
+let QID = "";
 const SRC = (() => { const u = new URLSearchParams(location.search); return u.get("utm_source") || u.get("ref") || (document.referrer ? new URL(document.referrer).hostname : "direct"); })();
 function logQuiz(d){ try{ fetch(HOOK, { method:"POST", mode:"no-cors", keepalive:true, headers:{"Content-Type":"text/plain"}, body:JSON.stringify(d) }).catch(()=>{}); }catch(e){} }
 function track(name, data){ try{ window.fbq && fbq("trackCustom", name, data); }catch(e){} try{ window.gtag && gtag("event", name, data); }catch(e){} }
-function show(id){ ["s-intro","s-q","s-think","s-result"].forEach(s => $(s).hidden = s !== id); }
+function show(id){ ["s-intro","s-q","s-think","s-gate","s-result"].forEach(s => $(s).hidden = s !== id); }
 function toast(msg){ const t=$("toast"); t.textContent=msg; t.classList.add("show"); clearTimeout(toast.t); toast.t=setTimeout(()=>t.classList.remove("show"),2600); }
 
 function progress(){
@@ -708,10 +738,44 @@ function finish(){
   const focus = answers[QUESTIONS.findIndex(Q => Q.focus)];
   const struggles = answers[QUESTIONS.findIndex(Q => Q.multi)] || [];
   track("QuizComplete", { confidence_type: TYPES[r.type].name, method: TYPES[r.type].method, focus, struggles: struggles.join(",") });
+  QID = Math.random().toString(36).slice(2, 10);
   logQuiz({ type:"quiz", id:QID, ctype:TYPES[r.type].name, method:TYPES[r.type].method, focus, struggles:struggles.join(", "), source:SRC, at:new Date().toISOString() });
   const wait = matchMedia("(prefers-reduced-motion: reduce)").matches ? 300 : 1700;
-  setTimeout(() => reveal(r, focus, struggles), wait);
+  // details page once per visit; a retake goes straight to the result
+  setTimeout(() => gave ? reveal(r, focus, struggles) : gate(r, focus, struggles), wait);
 }
+
+// WhatsApp numbers always saved as +country code: "07…" is read as UK, "00…" becomes "+"
+const intl = v => { let d = String(v || "").trim(); const plus = /^\+/.test(d) || /^00/.test(d.replace(/\D/g, "")); d = d.replace(/\D/g, "");
+  if(/^00/.test(d)) d = d.slice(2); else if(!plus && /^0/.test(d)) d = "44" + d.slice(1); return d ? "+" + d : ""; };
+let gave = false, pending = null;
+function gate(r, focus, struggles){
+  pending = [r, focus, struggles];
+  $("g-err").textContent = "";
+  show("s-gate"); progress(); window.scrollTo({top:0}); $("g-h").focus({preventScroll:true});
+  track("QuizGateView", { confidence_type: TYPES[r.type].name });
+}
+$("g-form").addEventListener("submit", e => {
+  e.preventDefault();
+  const f = e.target, v = k => f.elements.namedItem(k), err = (m, el) => { $("g-err").textContent = m; el.focus(); };
+  const name = v("name").value.trim(), email = v("email").value.trim(), phone = intl(v("phone").value);
+  if(name.split(/\s+/).length < 2) return err("Add your full name.", v("name"));
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return err("Add an email address we can reach you on.", v("email"));
+  if(phone.length < 9) return err("Add your WhatsApp number, with your country code.", v("phone"));
+  if(!v("consent").checked) return err("Tick the box so we can reach out to you.", v("consent"));
+  const [r] = pending, T = TYPES[r.type], M = METHODS[T.method];
+  const when = new Date(NEXT_WORKSHOP), upcoming = !isNaN(when) && when > new Date();
+  logQuiz({ type:"quiz_lead", id:QID, name, email, phone, consent:"yes",
+    ctype:T.name, the:T.the, hook:T.hook, win:T.win, method:M ? M.title : "",
+    video: VIDEOS[r.type] ? new URL(VIDEOS[r.type], location.href).href : "",
+    join: CIRCLE_LINKS[r.type] || new URL("./#free", location.href).href,
+    workshop: upcoming ? when.toLocaleString("en-GB", { weekday:"long", day:"numeric", month:"long", hour:"numeric", minute:"2-digit", timeZone:"Europe/London", timeZoneName:"short" }) : "",
+    at:new Date().toISOString() });
+  track("QuizLead", { confidence_type: T.name });
+  try{ window.fbq && fbq("track", "Lead", { content_name:"Quiz", content_category:T.name }); }catch(_){}
+  gave = true; reveal(...pending);
+});
+$("g-skip").addEventListener("click", () => { track("QuizGateSkip", { confidence_type: TYPES[pending[0].type].name }); gave = true; reveal(...pending); });
 
 function reveal(r, focus, struggles){
   const T = TYPES[r.type];
