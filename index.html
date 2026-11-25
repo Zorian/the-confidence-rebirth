@@ -1464,8 +1464,8 @@ const METHODS = {
   const play=()=>{ if(still){ toTop(); return; } if(location.hash) history.replaceState(null,"",location.pathname+location.search); playing=true; timers.forEach(clearTimeout); timers=[];
     nb.classList.add("reset"); nb.classList.remove("out","go","open"); root.classList.add("nb-on"); toTop(); void nb.offsetWidth; nb.classList.remove("reset");
     timers.push(setTimeout(()=>nb.classList.add("go"),600));
-    timers.push(setTimeout(()=>nb.classList.add("open"),4200));
-    timers.push(setTimeout(done,4200+5400)); };
+    timers.push(setTimeout(()=>nb.classList.add("open"),8000));
+    timers.push(setTimeout(done,8000+5400)); };
   // tap jumps straight to the book opening and the writing, then into the site
   const openNow=()=>{ if(!playing||nb.classList.contains("open")) return; timers.forEach(clearTimeout); timers=[]; nb.classList.add("go","open"); timers.push(setTimeout(done,5400)); };
   nb.addEventListener("click",openNow);
