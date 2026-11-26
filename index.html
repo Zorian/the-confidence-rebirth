@@ -974,7 +974,7 @@ footer h4{font-family:var(--sans);font-weight:700;font-size:11px;letter-spacing:
 <script>
 // notebook intro: first visit only, skipped for ad traffic and reduced motion
 (function(){ try{ const q=location.search, seen=localStorage.getItem("cr-intro-seen");
-  if(!location.hash && !/[?&]method=/.test(q) && !/[?&](fbclid|gclid|ttclid)=|utm_medium=(paid|cpc|ads?)/i.test(q) && !matchMedia("(prefers-reduced-motion: reduce)").matches) document.documentElement.classList.add("nb-on");
+  if(!location.hash && !/[?&](method|offer)=/.test(q) && !/[?&](fbclid|gclid|ttclid)=|utm_medium=(paid|cpc|ads?)/i.test(q) && !matchMedia("(prefers-reduced-motion: reduce)").matches) document.documentElement.classList.add("nb-on");
 }catch(e){} })();
 </script>
 <script src="track.js"></script>
@@ -1617,9 +1617,12 @@ const NEXT_WORKSHOP = "2026-12-05T15:00:00Z";
   upd(); })();
 
 // arriving from the quiz with a method: land on the offers with it picked, once the page has settled
-(function(){ if(!/[?&]method=/.test(location.search)) return; const go=()=>{ const o=document.getElementById("offers"); if(!o) return; o.scrollIntoView({block:"start"});
+// ?offer=course|masterclass|one swipes straight to that card (used by the Circle lock screens)
+(function(){ if(!/[?&](method|offer)=/.test(location.search)) return; const want=new URLSearchParams(location.search).get("offer");
+  const go=()=>{ const o=document.getElementById("offers"); if(!o) return; o.scrollIntoView({block:"start"});
     // on phones the offers swipe sideways, so skip past the free one to the paid ones
-    const row=o.querySelector(".offers"), c=document.getElementById("course"); if(row&&c&&row.scrollWidth>row.clientWidth+10) row.scrollLeft=c.offsetLeft-row.offsetLeft-16; };
+    const row=o.querySelector(".offers"), c=document.getElementById(/^(course|masterclass|one)$/.test(want||"")?want:"course");
+    if(row&&c&&row.scrollWidth>row.clientWidth+10) row.scrollLeft=c.offsetLeft-row.offsetLeft-(want&&want!=="course"?(row.clientWidth-c.offsetWidth)/2:16); };
   addEventListener("load",()=>{ go(); setTimeout(go,400); }); })();
 
 // application: a few questions, then hot buyers pay now and everyone else books a call
